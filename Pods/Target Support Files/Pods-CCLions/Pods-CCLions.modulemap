@@ -1,0 +1,6 @@
+framework module Pods_CCLions {
+  umbrella header "Pods-CCLions-umbrella.h"
+
+  export *
+  module * { export * }
+}
