@@ -549,6 +549,8 @@ NSString * const ID = @"cycleCell";
         cell.clipsToBounds = YES;
     }
     
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     return cell;
 }
 

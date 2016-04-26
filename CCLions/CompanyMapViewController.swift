@@ -169,6 +169,7 @@ extension CompanyMapViewController: MAMapViewDelegate {
 			let index = self.annotations.indexOf(self.selectedAnnotation!)
 			let companyShowViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CompanyShowViewController") as! CompanyShowViewController
 			companyShowViewController.company = self.companyArray[index!]
+			companyShowViewController.title = "公司详情"
 			self.navigationController?.pushViewController(companyShowViewController, animated: true)
 		}
 	}

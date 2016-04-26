@@ -41,7 +41,8 @@ class CompanyShowViewController: UIViewController {
 	 初始化顶部的照片展示
 	 */
 	func initTopScrollView() -> Void {
-		self.cycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 0, self.topView.frame.size.width, self.topView.frame.size.height), delegate: self, placeholderImage: UIImage(named: "placeholder"))
+		print(self.topView.frame)
+		self.cycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.topView.frame.size.height), delegate: self, placeholderImage: UIImage(named: "placeholder"))
 		cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter
 		cycleScrollView.currentPageDotColor = UIColor.whiteColor()
 		self.topView.addSubview(self.cycleScrollView)
@@ -54,14 +55,15 @@ class CompanyShowViewController: UIViewController {
 	 初始化底部的公司介绍界面
 	 */
 	func initBottomScrollView() -> Void {
-		self.companyNameLabel = UILabel(frame: CGRectMake(5, 5, self.bottomScrollView.frame.size.width - 10, 20))
+		print(self.bottomScrollView.frame)
+		self.companyNameLabel = UILabel(frame: CGRectMake(5, -64, self.view.frame.size.width - 10, 20))
 		self.companyNameLabel?.font = UIFont.boldSystemFontOfSize(15)
 		if (self.company != nil) {
 			self.companyNameLabel?.text = self.company?.company_name
 		}
 		self.bottomScrollView.addSubview(self.companyNameLabel!)
 
-		self.companyIntroTextView = UITextView(frame: CGRectMake(5, 5 + self.companyNameLabel!.frame.size.height + 10, self.bottomScrollView.frame.size.width - 10, self.bottomScrollView.frame.size.height))
+		self.companyIntroTextView = UITextView(frame: CGRectMake(5, -64 + self.companyNameLabel!.frame.size.height + 10, self.view.frame.size.width - 10, self.bottomScrollView.frame.size.height))
 		if (self.company != nil) {
 			self.companyIntroTextView?.text = self.company?.introduction
 		}
@@ -75,6 +77,10 @@ class CompanyShowViewController: UIViewController {
 	}
 
 	@IBAction func contact(sender: AnyObject) {
+		let callWebView = UIWebView()
+		let telUrl = NSURL(string: "tel:" + (self.company?.contact)!)
+		callWebView.loadRequest(NSURLRequest(URL: telUrl!))
+		self.view.addSubview(callWebView)
 	}
 
 	/*

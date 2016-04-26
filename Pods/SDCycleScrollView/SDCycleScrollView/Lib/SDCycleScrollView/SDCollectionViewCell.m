@@ -71,6 +71,7 @@
 {
     UIImageView *imageView = [[UIImageView alloc] init];
     _imageView = imageView;
+    _imageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.contentView addSubview:imageView];
 }
 
