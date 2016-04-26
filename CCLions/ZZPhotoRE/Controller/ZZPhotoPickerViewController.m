@@ -54,10 +54,9 @@
         UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 44)];
         [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
         button.titleLabel.font = [UIFont systemFontOfSize:17.0f];
-        [button.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button.titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:17]];
         [button setTitle:@"返回" forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
         _backBtn = [[UIBarButtonItem alloc] initWithCustomView:button];
         
@@ -71,10 +70,9 @@
         UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 44)];
         [button addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
         button.titleLabel.font = [UIFont systemFontOfSize:17.0f];
-        [button.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button.titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:17]];
         [button setTitle:@"取消" forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
         _cancelBtn = [[UIBarButtonItem alloc] initWithCustomView:button];
         
@@ -89,10 +87,9 @@
         _doneBtn = [[UIButton alloc]initWithFrame:CGRectMake(ZZ_VW - 60, 0, 50, 44)];
         [_doneBtn addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
         _doneBtn.titleLabel.font = [UIFont systemFontOfSize:17.0f];
-        [_doneBtn.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
-        [_doneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_doneBtn.titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:17]];
+        [_doneBtn setTitleColor:[[UIColor alloc] initWithRed:0.07 green:0.68 blue:0.14 alpha:1] forState:UIControlStateNormal];
         [_doneBtn setTitle:@"完成" forState:UIControlStateNormal];
-        [_doneBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     }
     return _doneBtn;
 }
@@ -104,10 +101,9 @@
         _previewBtn = [[UIButton alloc]initWithFrame:CGRectMake(10, 0, 50, 44)];
         [_previewBtn addTarget:self action:@selector(preview) forControlEvents:UIControlEventTouchUpInside];
         _previewBtn.titleLabel.font = [UIFont systemFontOfSize:17.0f];
-        [_previewBtn.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
-        [_previewBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_previewBtn.titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:17]];
         [_previewBtn setTitle:@"预览" forState:UIControlStateNormal];
-        [_previewBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_previewBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     return _previewBtn;
 }
@@ -210,9 +206,9 @@
     if (!_totalRound) {
         _totalRound = [[UILabel alloc]initWithFrame:CGRectMake(ZZ_VW - 90, 10, 22, 22)];
         if (self.roundColor == nil) {
-            _totalRound.backgroundColor = [UIColor redColor];
+            _totalRound.backgroundColor = [[UIColor alloc] initWithRed:0.07 green:0.68 blue:0.14 alpha:1];
         }else{
-            _totalRound.backgroundColor = self.roundColor;
+            _totalRound.backgroundColor = [[UIColor alloc] initWithRed:0.07 green:0.68 blue:0.14 alpha:1];
         }
         _totalRound.layer.masksToBounds = YES;
         _totalRound.textAlignment = NSTextAlignmentCenter;

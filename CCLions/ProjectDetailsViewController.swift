@@ -9,11 +9,17 @@
 import UIKit
 
 class ProjectDetailsViewController: UIViewController {
+    
+    var project: Project!
 
+    @IBOutlet weak var webView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.webView.delegate = self
+        self.initWeight()
+        self.loadWebPageWithString(project.details_page)
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +27,23 @@ class ProjectDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    /**
+     初始化导航栏
+     */
+    func initWeight() -> Void {
+        self.title = project.title
+    }
+    
+    /**
+     WebView加载活动详情URL
+     
+     - parameter urlString: 活动详情URL地址
+     */
+    func loadWebPageWithString(urlString: String) -> Void {
+        let url = NSURL(string: urlString)
+        let request = NSURLRequest(URL: url!)
+        webView.loadRequest(request)
+    }
     /*
     // MARK: - Navigation
 
@@ -32,4 +54,15 @@ class ProjectDetailsViewController: UIViewController {
     }
     */
 
+}
+
+extension ProjectDetailsViewController: UIWebViewDelegate {
+    
+    func webViewDidStartLoad(webView: UIWebView) {
+        SVProgressHUD.showWithStatus("正在加载...")
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        SVProgressHUD.dismiss()
+    }
 }

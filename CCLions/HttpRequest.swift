@@ -7,3 +7,24 @@
 //
 
 import Foundation
+
+enum RequestAddress: String {
+	case HTTP_LOGIN = "login.php"
+	case HTTP_REGISTER = "register.php"
+	case HTTP_PROJECT_PAGE = "project_page.php"
+	case HTTP_UPLOAD_HEADER_IMAGE = "accept_image_iOS.php"
+	case HTTP_COMPLETE_USER_INFO = "complete_user_info.php"
+	case HTTP_GET_COMPANY_OF_USER = "company_of_user.php"
+	case HTTP_UPLOAD_COMPANY_SHOW_IMAGE = "accept_multi_image.php"
+	case HTTP_ADD_COMPANY = "add_company.php"
+	case HTTP_CHECK_WHETHER_HAS_CAMPANY = "check_user_wether_has_company.php"
+	case HTTP_UPDATE_COMPANY_INFO = "update_company_info.php"
+	case HTTP_ACCEPT_ACTIVITY_IMAGE = "accept_activity_image_iOS.php"
+	case HTTP_ACCEPT_ACTIVITY_VIDEO = "accept_activity_video.php"
+	case HTTP_ADD_ACTIVITY = "publish_project.php"
+	case HTTP_GET_LOCAL_COMPANY = "get_local_company.php"
+}
+
+class HttpRequest {
+	static let HTTP_ADDRESS = "http://182.92.158.167/Sunshine_server/"
+}

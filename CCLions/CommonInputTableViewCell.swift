@@ -10,6 +10,8 @@ import UIKit
 
 class CommonInputTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var inputTextField: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
