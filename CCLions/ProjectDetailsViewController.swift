@@ -7,62 +7,154 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyDrop
 
-class ProjectDetailsViewController: UIViewController {
-    
-    var project: Project!
+class ProjectDetailsViewController: WPEditorViewController {
+	var project: Project!
+	var videoPressCache: NSCache = NSCache()
+	var mediaAdded: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
+	var contentHtml: String?
 
-    @IBOutlet weak var webView: UIWebView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        self.webView.delegate = self
-        self.initWeight()
-        self.loadWebPageWithString(project.details_page)
-    }
+		// Do any additional setup after loading the view.
+		self.delegate = self
+		self.initWeight()
+		self.updateEditorView()
+	}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /**
-     初始化导航栏
-     */
-    func initWeight() -> Void {
-        self.title = project.title
-    }
-    
-    /**
-     WebView加载活动详情URL
-     
-     - parameter urlString: 活动详情URL地址
-     */
-    func loadWebPageWithString(urlString: String) -> Void {
-        let url = NSURL(string: urlString)
-        let request = NSURLRequest(URL: url!)
-        webView.loadRequest(request)
-    }
-    /*
-    // MARK: - Navigation
+	func updateEditorView() {
+		SVProgressHUD.showWithStatus("正在加载...")
+		Alamofire.request(.GET, self.project.details_page)
+			.responseData { (response) in
+				if let data = response.result.value {
+					self.contentHtml = NSString(data: data, encoding: NSUTF8StringEncoding) as? String
+					self.updateHtml()
+				} else {
+					Drop.down(Tips.LOADING_FAIL, state: DropState.Error)
+				}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+				SVProgressHUD.dismiss()
+		}
+	}
 
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		if self.editorView.contentField != nil {
+			self.editorView.titleField.disableEditing()
+			self.editorView.contentField.disableEditing()
+		}
+	}
+
+	func updateHtml() -> Void {
+		if self.editorView.contentField != nil && self.contentHtml != nil {
+			self.editorView.titleField.disableEditing()
+			self.editorView.contentField.disableEditing()
+			self.editorView.contentField.setHtml(self.contentHtml!)
+			self.editorView.titleField.setText(self.project.title)
+		}
+	}
+
+	/**
+	 初始化导航栏
+	 */
+	func initWeight() -> Void {
+		self.title = "活动详情"
+	}
+
+	/*
+	 // MARK: - Navigation
+
+	 // In a storyboard-based application, you will often want to do a little preparation before navigation
+	 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	 // Get the new view controller using segue.destinationViewController.
+	 // Pass the selected object to the new view controller.
+	 }
+	 */
 }
 
-extension ProjectDetailsViewController: UIWebViewDelegate {
-    
-    func webViewDidStartLoad(webView: UIWebView) {
-        SVProgressHUD.showWithStatus("正在加载...")
-    }
-    
-    func webViewDidFinishLoad(webView: UIWebView) {
-        SVProgressHUD.dismiss()
-    }
+extension ProjectDetailsViewController: WPEditorViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+	// 开始编辑
+	func editorDidBeginEditing(editorController: WPEditorViewController!) {
+		print("Editor did begin editing.")
+		self.updateHtml()
+	}
+
+	// 结束编辑
+	func editorDidEndEditing(editorController: WPEditorViewController!) {
+		print("Editor did end editing.")
+	}
+
+	// 加载HTML结束
+	func editorDidFinishLoadingDOM(editorController: WPEditorViewController!) {
+		// let path = NSBundle.mainBundle().pathForResource("content", ofType: "html")
+		// let htmlParam = NSString(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
+		// self.titleText = "I'm editing a post!"
+	}
+
+	func editorShouldDisplaySourceView(editorController: WPEditorViewController!) -> Bool {
+		self.editorView.pauseAllVideos()
+		return true
+	}
+
+	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
+		self.navigationController?.dismissViewControllerAnimated(true, completion: { () -> Void in
+			// let assetURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+			// print(assetURL)
+			// self.addAssetToContent(assetURL)
+		})
+	}
+
+	// 添加图片
+	func editorDidPressMedia(editorController: WPEditorViewController!) {
+		// self.showPhotoPicker()
+	}
+
+	func editorTitleDidChange(editorController: WPEditorViewController!) {
+	}
+
+	func editorTextDidChange(editorController: WPEditorViewController!) {
+	}
+
+	func editorViewController(editorViewController: WPEditorViewController!, fieldCreated field: WPEditorField!) {
+	}
+
+	// 点击图片
+	func editorViewController(editorViewController: WPEditorViewController!, imageTapped imageId: String!, url: NSURL!, imageMeta: WPImageMeta) {
+	}
+
+	// 点击视频
+	func editorViewController(editorViewController: WPEditorViewController!, videoTapped videoID: String!, url: NSURL!) {
+	}
+
+	func editorViewController(editorViewController: WPEditorViewController!, imageReplaced imageId: String!) {
+		self.mediaAdded.removeValueForKey(imageId)
+	}
+
+	func editorViewController(editorViewController: WPEditorViewController!, videoReplaced videoID: String!) {
+		self.mediaAdded.removeValueForKey(videoID)
+	}
+
+	func editorViewController(editorViewController: WPEditorViewController!, videoPressInfoRequest videoID: String!) {
+		let videoPressInfo = self.videoPressCache.objectForKey(videoID) as! NSDictionary
+		let videoURL = videoPressInfo["source"] as! String?
+		let posterURL = videoPressInfo["poster"] as! String?
+
+		if (videoURL != nil) {
+			self.editorView.setVideoPress(videoID, source: videoURL, poster: posterURL)
+		}
+	}
+
+	func editorViewController(editorViewController: WPEditorViewController!, mediaRemoved mediaID: String!) {
+		let progress = self.mediaAdded[mediaID] as! NSProgress
+		progress.cancel()
+	}
 }
+

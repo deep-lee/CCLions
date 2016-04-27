@@ -15,6 +15,8 @@
 		14015FC11CB53D08004B5F59 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14015FC01CB53D08004B5F59 /* QuartzCore.framework */; };
 		14015FC31CB53D13004B5F59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14015FC21CB53D13004B5F59 /* UIKit.framework */; };
 		14015FCB1CB5405A004B5F59 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14015FCA1CB5405A004B5F59 /* CoreText.framework */; };
+		142578121CD0A5810007EA43 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142578111CD0A5810007EA43 /* SearchCollectionViewCell.swift */; };
+		142578141CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142578131CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift */; };
 		1426B9501CB381400099ED69 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426B94F1CB381400099ED69 /* SlideViewController.swift */; };
 		1426B9581CB38A490099ED69 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426B9571CB38A490099ED69 /* UIColor.swift */; };
 		1426B95A1CB38A6D0099ED69 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426B9591CB38A6D0099ED69 /* String.swift */; };
@@ -22,6 +24,8 @@
 		1426B95E1CB416B00099ED69 /* SelfCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426B95D1CB416B00099ED69 /* SelfCenterViewController.swift */; };
 		1426FA9E1CCD3090009FFC11 /* UpdateCompanyPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426FA9D1CCD3090009FFC11 /* UpdateCompanyPhotoViewController.swift */; };
 		1426FAA01CCD35D3009FFC11 /* UpdateShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426FA9F1CCD35D3009FFC11 /* UpdateShowImageViewController.swift */; };
+		1476C6561CCFCBCA00BE6E64 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1476C6541CCFCBCA00BE6E64 /* HeaderView.swift */; };
+		1476C6571CCFCBCA00BE6E64 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1476C6551CCFCBCA00BE6E64 /* HeaderView.xib */; };
 		149722AC1CCFA2DD005368A1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149722AB1CCFA2DD005368A1 /* Alamofire.framework */; };
 		149722AD1CCFA2FF005368A1 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 149722AB1CCFA2DD005368A1 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		149791391CA8022D0014D377 /* UIImage+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149791381CA8022D0014D377 /* UIImage+CornerRadius.swift */; };
@@ -150,6 +154,8 @@
 		14015FC81CB53E81004B5F59 /* WordPressComAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WordPressComAnalytics.framework; path = "Pods/../build/Debug-iphoneos/WordPressComAnalytics.framework"; sourceTree = "<group>"; };
 		14015FCA1CB5405A004B5F59 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		1403AA431C720A8600781580 /* CCLions-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCLions-Bridging-Header.h"; sourceTree = "<group>"; };
+		142578111CD0A5810007EA43 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		142578131CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCompanyLogoViewController.swift; sourceTree = "<group>"; };
 		1426B94F1CB381400099ED69 /* SlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
 		1426B9571CB38A490099ED69 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		1426B9591CB38A6D0099ED69 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -157,6 +163,8 @@
 		1426B95D1CB416B00099ED69 /* SelfCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfCenterViewController.swift; sourceTree = "<group>"; };
 		1426FA9D1CCD3090009FFC11 /* UpdateCompanyPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCompanyPhotoViewController.swift; sourceTree = "<group>"; };
 		1426FA9F1CCD35D3009FFC11 /* UpdateShowImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateShowImageViewController.swift; sourceTree = "<group>"; };
+		1476C6541CCFCBCA00BE6E64 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		1476C6551CCFCBCA00BE6E64 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		149722AB1CCFA2DD005368A1 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/CCLions-fpfktrodivzqfofwkpffzovrrdru/Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		149791381CA8022D0014D377 /* UIImage+CornerRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CornerRadius.swift"; sourceTree = "<group>"; };
 		14A58A6A1C6E0F8000EBDB2C /* CCLions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCLions.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -324,6 +332,16 @@
 				1426B9571CB38A490099ED69 /* UIColor.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		1476C6531CCFCB6400BE6E64 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				1476C6541CCFCBCA00BE6E64 /* HeaderView.swift */,
+				1476C6551CCFCBCA00BE6E64 /* HeaderView.xib */,
+				142578111CD0A5810007EA43 /* SearchCollectionViewCell.swift */,
+			);
+			name = CustomView;
 			sourceTree = "<group>";
 		};
 		14A58A611C6E0F8000EBDB2C = {
@@ -533,6 +551,7 @@
 				7C4287721CCC67FB00456E0E /* PickPositionOnMapViewController.swift */,
 				1426FA9D1CCD3090009FFC11 /* UpdateCompanyPhotoViewController.swift */,
 				1426FA9F1CCD35D3009FFC11 /* UpdateShowImageViewController.swift */,
+				142578131CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift */,
 			);
 			name = SelfCenter;
 			sourceTree = "<group>";
@@ -603,6 +622,7 @@
 		7C78D9461CB8E442002122A1 /* CompanySearch */ = {
 			isa = PBXGroup;
 			children = (
+				1476C6531CCFCB6400BE6E64 /* CustomView */,
 				7C78D9471CB8E4E5002122A1 /* SearchCompanyViewController.swift */,
 			);
 			name = CompanySearch;
@@ -773,6 +793,7 @@
 				14BECFF41CCB4E1D00091572 /* photo_add.png in Resources */,
 				14BECFFB1CCB4E1D00091572 /* zz_alumb_rightCell.png in Resources */,
 				7C78D92F1CB8CA81002122A1 /* AMap.bundle in Resources */,
+				1476C6571CCFCBCA00BE6E64 /* HeaderView.xib in Resources */,
 				14A58A731C6E0F8000EBDB2C /* Main.storyboard in Resources */,
 				14BECFF21CCB4E1D00091572 /* flash_open_pic.png in Resources */,
 			);
@@ -859,12 +880,14 @@
 				7C30AB201CC8A643002A7C3C /* EditCompanyIntroViewController.swift in Sources */,
 				14BECFE61CCB4E1D00091572 /* ZZCameraController.m in Sources */,
 				14BECFED1CCB4E1D00091572 /* ZZPhotoAnimation.m in Sources */,
+				142578121CD0A5810007EA43 /* SearchCollectionViewCell.swift in Sources */,
 				7C1D31021CBAA3CD00BE0F56 /* ActivityShowTableViewCell.swift in Sources */,
 				14CCD9731C6F0F7E005AD882 /* MainViewController.swift in Sources */,
 				14BECFFF1CCB4E1D00091572 /* ZZPageControl.m in Sources */,
 				7C4F33A91CB947E800892398 /* LoginViewController.swift in Sources */,
 				14BECFEC1CCB4E1D00091572 /* ZZCameraFlashState.m in Sources */,
 				7C4F33AE1CB9607300892398 /* HttpRequest.swift in Sources */,
+				142578141CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift in Sources */,
 				7C78D9431CB8CC29002122A1 /* CompanyMapViewController.swift in Sources */,
 				1426B95A1CB38A6D0099ED69 /* String.swift in Sources */,
 				14EA0A531CCB34D000169116 /* EditSelectDataViewController.swift in Sources */,
@@ -896,6 +919,7 @@
 				14DCF0911CCA7F38001F2FE4 /* EditTextFieldViewController.swift in Sources */,
 				14015FBB1CB539C0004B5F59 /* LaunchActivityFirstViewController.swift in Sources */,
 				14F539F91CCBD03000B319AC /* ShowImageViewController.swift in Sources */,
+				1476C6561CCFCBCA00BE6E64 /* HeaderView.swift in Sources */,
 				14BECFE71CCB4E1D00091572 /* ZZCameraPickerViewController.m in Sources */,
 				14BED0011CCB4E1D00091572 /* ZZPhotoListCell.m in Sources */,
 				14DCF08F1CCA707B001F2FE4 /* AddCompanyViewController.swift in Sources */,

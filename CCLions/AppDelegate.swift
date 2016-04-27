@@ -39,30 +39,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		let flag = Util.hasUserLogined() ? true : false
 		if flag {
-            // 用户已经登录的情况下，需要判断当前登录的用户资料是否已经填写完整
-            if Util.getLoginedUser()?.name == nil || Util.getLoginedUser()?.name == "" {
-                // 进入到资料填写界面
-                let completeUserInfo = storyboard.instantiateViewControllerWithIdentifier("EditSelfProfileViewController") as! EditSelfProfileViewController
-                completeUserInfo.flag = false
-                let nvc = UINavigationController(rootViewController: completeUserInfo)
-                nvc.navigationBar.barTintColor = UIColor(hex: "0395d8")
-                let dic = [
-                    NSForegroundColorAttributeName: UIColor.whiteColor()
-                ]
-                nvc.navigationBar.titleTextAttributes = dic
-                nvc.navigationBar.tintColor = UIColor.whiteColor()
-                self.window?.rootViewController = nvc
-            } else { // 用户的资料已经填写完整了
-                let leftViewController = storyboard.instantiateViewControllerWithIdentifier("SlideViewController") as! SlideViewController
-                
-                let nvc: UINavigationController = storyboard.instantiateViewControllerWithIdentifier("MainNavagationController") as! UINavigationController
-                nvc.navigationBar.barTintColor = UIColor(hex: "0395d8")
-                leftViewController.mainViewController = nvc
-                
-                let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
-                slideMenuController.automaticallyAdjustsScrollViewInsets = true
-                self.window?.rootViewController = slideMenuController
-            }
+			// 用户已经登录的情况下，需要判断当前登录的用户资料是否已经填写完整
+			if Util.getLoginedUser()?.name == nil || Util.getLoginedUser()?.name == "" {
+				// 进入到资料填写界面
+				let completeUserInfo = storyboard.instantiateViewControllerWithIdentifier("EditSelfProfileViewController") as! EditSelfProfileViewController
+				completeUserInfo.flag = false
+				let nvc = UINavigationController(rootViewController: completeUserInfo)
+				nvc.navigationBar.barTintColor = UIColor(hex: "0395d8")
+				let dic = [
+					NSForegroundColorAttributeName: UIColor.whiteColor()
+				]
+				nvc.navigationBar.titleTextAttributes = dic
+				nvc.navigationBar.tintColor = UIColor.whiteColor()
+				self.window?.rootViewController = nvc
+			} else { // 用户的资料已经填写完整了
+				let leftViewController = storyboard.instantiateViewControllerWithIdentifier("SlideViewController") as! SlideViewController
+
+				let nvc: UINavigationController = storyboard.instantiateViewControllerWithIdentifier("MainNavagationController") as! UINavigationController
+				nvc.navigationBar.barTintColor = UIColor(hex: "0395d8")
+				leftViewController.mainViewController = nvc
+
+				let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
+				slideMenuController.automaticallyAdjustsScrollViewInsets = true
+				self.window?.rootViewController = slideMenuController
+			}
 		} else {
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
 			self.window?.rootViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")

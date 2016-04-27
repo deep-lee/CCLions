@@ -129,9 +129,9 @@ class LaunchActivityFirstViewController: WPEditorViewController {
 		Alamofire.upload(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_ACCEPT_ACTIVITY_IMAGE.rawValue, data: imageData)
 			.progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) -> Void in
 
-                let progress: Float = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-                let progressStr = NSString(format: "%.0f", progress * 100)
-                SVProgressHUD.showWithStatus(Tips.UPLOADING_PHOTO + " " + (progressStr as String) + "%")
+				let progress: Float = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+				let progressStr = NSString(format: "%.0f", progress * 100)
+				SVProgressHUD.showWithStatus(Tips.UPLOADING_PHOTO + " " + (progressStr as String) + "%")
 		}
 			.responseJSON { response in
 				print(response)
@@ -210,42 +210,42 @@ class LaunchActivityFirstViewController: WPEditorViewController {
 		}
 	}
 
-    @IBAction func next(sender: AnyObject) {
-        // 首先判断内容是否填写完整
-        if !hasCompleted() {
-            Drop.down(Tips.ACTIVITY_CONTENT_NOT_COMPLETED, state: DropState.Warning)
-            return
-        }
-        
-        // 进入到下一界面
-        let moreInfoActivityViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MoreInfoActivityViewController") as! MoreInfoActivityViewController
-        moreInfoActivityViewController.activityTheme = self.editorView.titleField.html()
-        moreInfoActivityViewController.activityContent = self.editorView.contentField.html()
-        moreInfoActivityViewController.title = "更多信息"
-        moreInfoActivityViewController.setClosure(publishActivityCallBack)
-        self.navigationController?.pushViewController(moreInfoActivityViewController, animated: true)
-    }
-    
-    /**
-     发表活动回调
-     */
-    func publishActivityCallBack() -> Void {
-        self.editorView.titleField.setText("")
-        self.editorView.contentField.setText("")
-    }
-    
-    /**
-      判断内容是否填写完整
-     
-     - returns:
-     */
-    func hasCompleted() -> Bool {
-        if self.editorView.titleField.html().characters.count > 0 && self.editorView.contentField.html().characters.count > 0 {
-            return true
-        }
-        
-        return false
-    }
+	@IBAction func next(sender: AnyObject) {
+		// 首先判断内容是否填写完整
+		if !hasCompleted() {
+			Drop.down(Tips.ACTIVITY_CONTENT_NOT_COMPLETED, state: DropState.Warning)
+			return
+		}
+
+		// 进入到下一界面
+		let moreInfoActivityViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MoreInfoActivityViewController") as! MoreInfoActivityViewController
+		moreInfoActivityViewController.activityTheme = self.editorView.titleField.html()
+		moreInfoActivityViewController.activityContent = self.editorView.contentField.html()
+		moreInfoActivityViewController.title = "更多信息"
+		moreInfoActivityViewController.setClosure(publishActivityCallBack)
+		self.navigationController?.pushViewController(moreInfoActivityViewController, animated: true)
+	}
+
+	/**
+	 发表活动回调
+	 */
+	func publishActivityCallBack() -> Void {
+		self.editorView.titleField.setText("")
+		self.editorView.contentField.setText("")
+	}
+
+	/**
+	 判断内容是否填写完整
+
+	 - returns:
+	 */
+	func hasCompleted() -> Bool {
+		if self.editorView.titleField.html().characters.count > 0 && self.editorView.contentField.html().characters.count > 0 {
+			return true
+		}
+
+		return false
+	}
 	/*
 	 // MARK: - Navigation
 

@@ -44,6 +44,7 @@ class AddCompanyViewController: UIViewController {
 		self.dataArray.append(("简介", ""))
 		self.dataArray.append(("联系方式", ""))
 		self.dataArray.append(("展示照片", ""))
+		self.dataArray.append(("公司Logo", ""))
 	}
 
 	func goToEditTextFieldVC(row: Int) -> Void {
@@ -124,6 +125,12 @@ class AddCompanyViewController: UIViewController {
 		self.dataArray[row].1 = annotation.title
 		self.selectedAnnotation = annotation
 		self.tableView.reloadData()
+	}
+
+	func goToSelectLogoVC(row: Int) -> Void {
+		let selectCompanyLogoViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SelectCompanyLogoViewController") as! SelectCompanyLogoViewController
+		selectCompanyLogoViewController.title = self.dataArray[row].0
+		self.navigationController?.pushViewController(selectCompanyLogoViewController, animated: true)
 	}
 
 	/**
@@ -265,6 +272,8 @@ extension AddCompanyViewController: UITableViewDelegate, UITableViewDataSource {
 			self.goToEditTextViewVC(indexPath.row)
 		case 6:
 			self.goToSelectMultiPhotoVC(indexPath.row)
+		case 7:
+			self.goToSelectLogoVC(indexPath.row)
 		default:
 			return
 		}

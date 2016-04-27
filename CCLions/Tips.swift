@@ -39,4 +39,5 @@ class Tips {
 	static let ADD_ACTIVITY_FAIL = "添加活动失败，请重试"
 	static let ADD_ACTIVITY_SUCCESS = "添加活动成功"
 	static let GET_LOCAL_COMPANY_ERROR = "获取附近公司失败"
+	static let LOADING_FAIL = "加载失败"
 }
