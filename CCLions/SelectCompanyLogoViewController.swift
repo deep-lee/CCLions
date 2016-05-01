@@ -10,10 +10,13 @@ import UIKit
 import AssetsLibrary
 import MobileCoreServices
 
+typealias selectLogoSendValue = (row: Int, headerChanged: Bool, logoImage: UIImage?) -> Void
 class SelectCompanyLogoViewController: UIViewController {
 	@IBOutlet var logoImageView: UIImageView!
 	var hasUploadedLogo: String?
 	var headerChanged = false
+	var myClosure: selectLogoSendValue?
+	var row: Int!
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -27,6 +30,21 @@ class SelectCompanyLogoViewController: UIViewController {
 	func initView() -> Void {
 		if hasUploadedLogo != nil { // 更新Logo
 			self.logoImageView.sd_setImageWithURL(NSURL(string: self.hasUploadedLogo!))
+		}
+	}
+
+	func setClosure(closure: selectLogoSendValue) -> Void {
+		self.myClosure = closure
+	}
+
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		if (self.myClosure != nil) {
+			if headerChanged {
+				myClosure!(row: self.row, headerChanged: self.headerChanged, logoImage: self.logoImageView.image)
+			} else {
+				myClosure!(row: self.row, headerChanged: false, logoImage: nil)
+			}
 		}
 	}
 

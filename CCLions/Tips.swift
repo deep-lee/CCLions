@@ -40,4 +40,10 @@ class Tips {
 	static let ADD_ACTIVITY_SUCCESS = "添加活动成功"
 	static let GET_LOCAL_COMPANY_ERROR = "获取附近公司失败"
 	static let LOADING_FAIL = "加载失败"
+	static let REQUEST_HOT_INDUSTRY_FAIL = "获取信息失败"
+	static let SEARCH_COMPANY_FAIL = "搜索失败"
+	static let SEARCHING = "正在搜索..."
+	static let SEARCH_NO_RESULT = "搜索结果为空"
+	static let HOT_INDUSTRY_FAIL = "获取热门行业信息失败"
+    static let  SEARCH_PROJECT_FAIL = "搜索失败"
 }

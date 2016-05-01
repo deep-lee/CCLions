@@ -19,6 +19,7 @@ class AddCompanyViewController: UIViewController {
 	var selectedIndustry = -1
 	var selectedPhotos: [UIImage] = [UIImage]()
 	var selectedAnnotation: MAPointAnnotation?
+	var selectedLogoImage: UIImage?
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -130,7 +131,20 @@ class AddCompanyViewController: UIViewController {
 	func goToSelectLogoVC(row: Int) -> Void {
 		let selectCompanyLogoViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SelectCompanyLogoViewController") as! SelectCompanyLogoViewController
 		selectCompanyLogoViewController.title = self.dataArray[row].0
+		if self.selectedLogoImage != nil {
+			selectCompanyLogoViewController.logoImageView.image = self.selectedLogoImage
+		}
+		selectCompanyLogoViewController.setClosure(selectLogoCallBack)
+		selectCompanyLogoViewController.row = row
 		self.navigationController?.pushViewController(selectCompanyLogoViewController, animated: true)
+	}
+
+	func selectLogoCallBack(row: Int, headerChanged: Bool, logoImage: UIImage?) -> Void {
+		if headerChanged {
+			self.selectedLogoImage = logoImage
+			self.dataArray[row].1 = "已选择Logo"
+			self.tableView.reloadData()
+		}
 	}
 
 	/**
@@ -145,11 +159,10 @@ class AddCompanyViewController: UIViewController {
 			return
 		}
 		SVProgressHUD.showWithStatus(Tips.ADDING_COMPANY)
-		// 资料填写完整后，首先上传照片
+		// 资料填写完整后，首先上传展示照片
 		Alamofire.upload(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_UPLOAD_COMPANY_SHOW_IMAGE.rawValue, multipartFormData: { multipartFormData in
 			var index = 0
 			for image in self.selectedPhotos {
-//				multipartFormData.appendBodyPart(data: UIImageJPEGRepresentation(image, 0.5)!, name: "file\(index)")
 				multipartFormData.appendBodyPart(data: UIImageJPEGRepresentation(image, 0.5)!, name: "file\(index)", fileName: "file\(index)", mimeType: "image/jpeg")
 				index += 1
 			}
@@ -163,7 +176,8 @@ class AddCompanyViewController: UIViewController {
 						if code == 200 {
 							let data = json["data"].stringValue
 							print("收到的图片地址为：" + data)
-							self.requestNewCompany(data)
+							// 上传公司logo
+							self.uploadCompanyLogo(data)
 						} else {
 							Drop.down(Tips.UPLOAD_PHOTO_FAIL, state: DropState.Error)
 							SVProgressHUD.dismiss()
@@ -180,7 +194,33 @@ class AddCompanyViewController: UIViewController {
 		}
 	}
 
-	func requestNewCompany(photoAddress: String) -> Void {
+    /**
+     上传公司logo
+     
+     - parameter photoAddress: 公司展示照片地址
+     */
+	func uploadCompanyLogo(photoAddress: String) -> Void {
+		Alamofire.upload(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_ACCEPT_COMPANY_IMAGE_iOS.rawValue, data: UIImageJPEGRepresentation(self.selectedLogoImage!, 0.5)!)
+			.responseJSON { (response) in
+				if let value = response.result.value {
+					let json = JSON(value)
+					let code = json["code"].intValue
+					if code == 200 {
+						let logoAddress = HttpRequest.HTTP_ADDRESS + json["data"].stringValue
+						// 发起请求
+						self.requestNewCompany(photoAddress, logoAddress: logoAddress)
+					} else {
+						Drop.down(Tips.UPLOAD_PHOTO_FAIL, state: DropState.Error)
+						SVProgressHUD.dismiss()
+					}
+				} else {
+					Drop.down(Tips.UPLOAD_PHOTO_FAIL, state: DropState.Error)
+					SVProgressHUD.dismiss()
+				}
+		}
+	}
+
+	func requestNewCompany(photoAddress: String, logoAddress: String) -> Void {
 		let paras: [String: AnyObject] = [
 			"user_id": (Util.getLoginedUser()?.id)!,
 			"company_name": self.dataArray[0].1,
@@ -191,7 +231,8 @@ class AddCompanyViewController: UIViewController {
 			"show_photo": photoAddress,
 			"create_time": NSDate(),
 			"introduction": self.dataArray[4].1,
-			"contact": self.dataArray[5].1
+			"contact": self.dataArray[5].1,
+			"company_logo": logoAddress
 		]
 
 		Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_ADD_COMPANY.rawValue, parameters: paras)

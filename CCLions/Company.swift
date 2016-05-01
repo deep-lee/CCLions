@@ -21,8 +21,10 @@ class Company: NSObject {
 	var create_time: String!
 	var update_time: String!
 	var user_name: String!
+	var company_logo: String!
+	var hits: Int!
 
-	init(id: Int, user_id: Int, company_name: String, address_longitude: String, address_latitude: String, business_scope: String, industry: Int, show_photo: String, introduction: String, contact: String, create_time: String, update_time: String) {
+	init(id: Int, user_id: Int, company_name: String, address_longitude: String, address_latitude: String, business_scope: String, industry: Int, show_photo: String, introduction: String, contact: String, create_time: String, update_time: String, company_logo: String, hits: Int) {
 		self.id = id
 		self.user_id = user_id
 		self.company_name = company_name
@@ -35,5 +37,7 @@ class Company: NSObject {
 		self.contact = contact
 		self.create_time = create_time
 		self.update_time = update_time
+		self.company_logo = company_logo
+		self.hits = hits
 	}
 }

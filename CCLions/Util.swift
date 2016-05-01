@@ -15,7 +15,7 @@ class Util {
 	static let COMPANY_MAX_PHOTO_COUNT = 5
 	static let MAP_LIMIT_LENGTH = 20000 // 周边公司的距离
 	static let INDUSTRY = [
-		"教育", "房地产", "金融", "电子竞技", "互联网", "食品"
+		"互联网", "教育", "房地产", "餐饮", "金融", "汽车", "快消", "其他"
 	]
 
 	static let SEX = [

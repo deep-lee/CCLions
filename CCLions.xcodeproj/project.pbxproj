@@ -69,11 +69,16 @@
 		14BED0051CCB50FF00091572 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BED0041CCB50FF00091572 /* PhotoCollectionViewCell.swift */; };
 		14BED0071CCB519B00091572 /* SelectMultiPhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BED0061CCB519B00091572 /* SelectMultiPhotoCollectionViewController.swift */; };
 		14CCD9731C6F0F7E005AD882 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CCD9721C6F0F7E005AD882 /* MainViewController.swift */; };
+		14CDF0D41CD508DE00C6DB41 /* HotIndustry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDF0D31CD508DE00C6DB41 /* HotIndustry.swift */; };
 		14D0B9E21CCE7F3F00FE2072 /* CompanyShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D0B9E11CCE7F3F00FE2072 /* CompanyShowViewController.swift */; };
 		14DCF08F1CCA707B001F2FE4 /* AddCompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DCF08E1CCA707B001F2FE4 /* AddCompanyViewController.swift */; };
 		14DCF0911CCA7F38001F2FE4 /* EditTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DCF0901CCA7F38001F2FE4 /* EditTextFieldViewController.swift */; };
 		14EA0A531CCB34D000169116 /* EditSelectDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EA0A521CCB34D000169116 /* EditSelectDataViewController.swift */; };
 		14EA0A551CCB3D7900169116 /* EditTextViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EA0A541CCB3D7900169116 /* EditTextViewViewController.swift */; };
+		14EF2A111CD5F596008C521B /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF2A101CD5F596008C521B /* SearchResultTableViewCell.swift */; };
+		14EF2A131CD5F5F5008C521B /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF2A121CD5F5F5008C521B /* SearchResultViewController.swift */; };
+		14EF2A161CD63159008C521B /* SearhView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF2A151CD63159008C521B /* SearhView.swift */; };
+		14EF2A181CD641A0008C521B /* SearchProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF2A171CD641A0008C521B /* SearchProjectViewController.swift */; };
 		14F539F91CCBD03000B319AC /* ShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F539F81CCBD03000B319AC /* ShowImageViewController.swift */; };
 		62E5722BD7CAFA5847534265 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8307B145ABB1B55142C390 /* Pods.framework */; };
 		7C06B8B21CB8A54500752A4B /* CommonInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C06B8B11CB8A54500752A4B /* CommonInputTableViewCell.swift */; };
@@ -232,12 +237,17 @@
 		14BED0041CCB50FF00091572 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		14BED0061CCB519B00091572 /* SelectMultiPhotoCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMultiPhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		14CCD9721C6F0F7E005AD882 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		14CDF0D31CD508DE00C6DB41 /* HotIndustry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotIndustry.swift; sourceTree = "<group>"; };
 		14D0B9E11CCE7F3F00FE2072 /* CompanyShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyShowViewController.swift; sourceTree = "<group>"; };
 		14DCF08C1CCA5971001F2FE4 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = "../../Library/Developer/Xcode/DerivedData/CCLions-erekkjetaylcmzfxgehnpmpefara/Build/Products/Debug-iphoneos/Eureka.framework"; sourceTree = "<group>"; };
 		14DCF08E1CCA707B001F2FE4 /* AddCompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCompanyViewController.swift; sourceTree = "<group>"; };
 		14DCF0901CCA7F38001F2FE4 /* EditTextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTextFieldViewController.swift; sourceTree = "<group>"; };
 		14EA0A521CCB34D000169116 /* EditSelectDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSelectDataViewController.swift; sourceTree = "<group>"; };
 		14EA0A541CCB3D7900169116 /* EditTextViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTextViewViewController.swift; sourceTree = "<group>"; };
+		14EF2A101CD5F596008C521B /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		14EF2A121CD5F5F5008C521B /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		14EF2A151CD63159008C521B /* SearhView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearhView.swift; sourceTree = "<group>"; };
+		14EF2A171CD641A0008C521B /* SearchProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProjectViewController.swift; sourceTree = "<group>"; };
 		14F539F81CCBD03000B319AC /* ShowImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageViewController.swift; sourceTree = "<group>"; };
 		307C4E840F637AC1D1CBEE5C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		42087010F4C31094E0F3D6D0 /* Pods_CCLions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCLions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -340,6 +350,7 @@
 				1476C6541CCFCBCA00BE6E64 /* HeaderView.swift */,
 				1476C6551CCFCBCA00BE6E64 /* HeaderView.xib */,
 				142578111CD0A5810007EA43 /* SearchCollectionViewCell.swift */,
+				14EF2A101CD5F596008C521B /* SearchResultTableViewCell.swift */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -507,6 +518,14 @@
 			name = CustomeCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		14EF2A141CD63136008C521B /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				14EF2A151CD63159008C521B /* SearhView.swift */,
+			);
+			name = CustomView;
+			sourceTree = "<group>";
+		};
 		5604EFB8E3D627229B72765E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,8 +578,10 @@
 		7C06B8B51CB8A59A00752A4B /* ActivityShow */ = {
 			isa = PBXGroup;
 			children = (
+				14EF2A141CD63136008C521B /* CustomView */,
 				14CCD9721C6F0F7E005AD882 /* MainViewController.swift */,
 				7C1FF8901CBB59C30039AD47 /* ProjectDetailsViewController.swift */,
+				14EF2A171CD641A0008C521B /* SearchProjectViewController.swift */,
 			);
 			name = ActivityShow;
 			sourceTree = "<group>";
@@ -624,6 +645,7 @@
 			children = (
 				1476C6531CCFCB6400BE6E64 /* CustomView */,
 				7C78D9471CB8E4E5002122A1 /* SearchCompanyViewController.swift */,
+				14EF2A121CD5F5F5008C521B /* SearchResultViewController.swift */,
 			);
 			name = CompanySearch;
 			sourceTree = "<group>";
@@ -634,6 +656,7 @@
 				7C78D94A1CB8ECB7002122A1 /* User.swift */,
 				7C1D31051CBAAB7800BE0F56 /* Project.swift */,
 				7C86AAF21CBE19C80055644A /* Company.swift */,
+				14CDF0D31CD508DE00C6DB41 /* HotIndustry.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -869,6 +892,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14BECFEE1CCB4E1D00091572 /* ZZPhotoDatas.m in Sources */,
+				14EF2A131CD5F5F5008C521B /* SearchResultViewController.swift in Sources */,
 				14BED0071CCB519B00091572 /* SelectMultiPhotoCollectionViewController.swift in Sources */,
 				14015FB51CB4EA2B004B5F59 /* EditSelfProfileViewController.swift in Sources */,
 				7C4F33B01CB963BC00892398 /* Tips.swift in Sources */,
@@ -877,6 +901,7 @@
 				14BECFE81CCB4E1D00091572 /* ZZPhotoController.m in Sources */,
 				7C1D31061CBAAB7800BE0F56 /* Project.swift in Sources */,
 				7C4287731CCC67FB00456E0E /* PickPositionOnMapViewController.swift in Sources */,
+				14EF2A181CD641A0008C521B /* SearchProjectViewController.swift in Sources */,
 				7C30AB201CC8A643002A7C3C /* EditCompanyIntroViewController.swift in Sources */,
 				14BECFE61CCB4E1D00091572 /* ZZCameraController.m in Sources */,
 				14BECFED1CCB4E1D00091572 /* ZZPhotoAnimation.m in Sources */,
@@ -900,6 +925,7 @@
 				14015FB81CB508D8004B5F59 /* CompanyInfoViewController.swift in Sources */,
 				7C4F33A61CB9417200892398 /* Util.swift in Sources */,
 				14D0B9E21CCE7F3F00FE2072 /* CompanyShowViewController.swift in Sources */,
+				14EF2A111CD5F596008C521B /* SearchResultTableViewCell.swift in Sources */,
 				7C1FF8911CBB59C30039AD47 /* ProjectDetailsViewController.swift in Sources */,
 				7C1E25331CCE02350053509C /* MoreInfoActivityViewController.swift in Sources */,
 				14BECFE91CCB4E1D00091572 /* ZZPhotoListViewController.m in Sources */,
@@ -913,6 +939,7 @@
 				1426B95C1CB38B120099ED69 /* UIViewController.swift in Sources */,
 				14A58A6E1C6E0F8000EBDB2C /* AppDelegate.swift in Sources */,
 				14BED0051CCB50FF00091572 /* PhotoCollectionViewCell.swift in Sources */,
+				14CDF0D41CD508DE00C6DB41 /* HotIndustry.swift in Sources */,
 				14BECFFE1CCB4E1D00091572 /* ZZCameraPickerCell.m in Sources */,
 				14BED0001CCB4E1D00091572 /* ZZPhotoHud.m in Sources */,
 				1426B9581CB38A490099ED69 /* UIColor.swift in Sources */,
@@ -921,6 +948,7 @@
 				14F539F91CCBD03000B319AC /* ShowImageViewController.swift in Sources */,
 				1476C6561CCFCBCA00BE6E64 /* HeaderView.swift in Sources */,
 				14BECFE71CCB4E1D00091572 /* ZZCameraPickerViewController.m in Sources */,
+				14EF2A161CD63159008C521B /* SearhView.swift in Sources */,
 				14BED0011CCB4E1D00091572 /* ZZPhotoListCell.m in Sources */,
 				14DCF08F1CCA707B001F2FE4 /* AddCompanyViewController.swift in Sources */,
 				1426B9501CB381400099ED69 /* SlideViewController.swift in Sources */,

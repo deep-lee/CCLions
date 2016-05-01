@@ -23,6 +23,13 @@ enum RequestAddress: String {
 	case HTTP_ACCEPT_ACTIVITY_VIDEO = "accept_activity_video.php"
 	case HTTP_ADD_ACTIVITY = "publish_project.php"
 	case HTTP_GET_LOCAL_COMPANY = "get_local_company.php"
+	case HTTP_ACCEPT_COMPANY_IMAGE_iOS = "accept_company_image_iOS.php"
+	case HTTP_UPDATE_COMPANY_HITS = "update_company_hits.php"
+	case HTTP_GET_HOT_INDUSTRY = "get_hot_industry.php"
+	case HTTP_GET_HOT_COMPANY = "get_hot_company.php"
+	case HTTP_SEARCH_COMPANY_WITH_TEXT = "search_company_with_text.php"
+	case HTTP_GET_HOT_INDUSTRY_COMPANY = "get_hot_industry_company.php"
+	case HTTP_SEARCH_PROJECT = "search_project.php"
 }
 
 class HttpRequest {

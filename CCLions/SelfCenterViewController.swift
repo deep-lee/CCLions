@@ -80,7 +80,7 @@ class SelfCenterViewController: UIViewController {
 					if code == 200 { // 添加了公司信息
 
 						let data = json["data"]
-						let company = Company(id: data["id"].intValue, user_id: data["user_id"].intValue, company_name: data["company_name"].stringValue, address_longitude: data["address_longitude"].stringValue, address_latitude: data["address_latitude"].stringValue, business_scope: data["business_scope"].stringValue, industry: data["industry"].intValue, show_photo: data["show_photo"].stringValue, introduction: data["introduction"].stringValue, contact: data["contact"].stringValue, create_time: data["create_time"].stringValue, update_time: data["update_time"].stringValue)
+						let company = Company(id: data["id"].intValue, user_id: data["user_id"].intValue, company_name: data["company_name"].stringValue, address_longitude: data["address_longitude"].stringValue, address_latitude: data["address_latitude"].stringValue, business_scope: data["business_scope"].stringValue, industry: data["industry"].intValue, show_photo: data["show_photo"].stringValue, introduction: data["introduction"].stringValue, contact: data["contact"].stringValue, create_time: data["create_time"].stringValue, update_time: data["update_time"].stringValue, company_logo: data["company_logo"].stringValue, hits: data["hits"].intValue)
 						dispatch_async(dispatch_get_main_queue(), {
 							self.goToEditCompanyInfoVC(company)
 						})

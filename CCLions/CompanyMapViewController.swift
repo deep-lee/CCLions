@@ -81,7 +81,7 @@ class CompanyMapViewController: UIViewController {
 
 						let data = json["data"].arrayValue
 						for item in data {
-							let company = Company(id: item["id"].intValue, user_id: item["user_id"].intValue, company_name: item["company_name"].stringValue, address_longitude: item["address_longitude"].stringValue, address_latitude: item["address_latitude"].stringValue, business_scope: item["business_scope"].stringValue, industry: item["industry"].intValue, show_photo: item["show_photo"].stringValue, introduction: item["introduction"].stringValue, contact: item["contact"].stringValue, create_time: item["create_time"].stringValue, update_time: item["update_time"].stringValue)
+							let company = Company(id: item["id"].intValue, user_id: item["user_id"].intValue, company_name: item["company_name"].stringValue, address_longitude: item["address_longitude"].stringValue, address_latitude: item["address_latitude"].stringValue, business_scope: item["business_scope"].stringValue, industry: item["industry"].intValue, show_photo: item["show_photo"].stringValue, introduction: item["introduction"].stringValue, contact: item["contact"].stringValue, create_time: item["create_time"].stringValue, update_time: item["update_time"].stringValue, company_logo: item["company_logo"].stringValue, hits: item["hits"].intValue)
 							company.user_name = item["name"].stringValue
 							let coordinate = CLLocationCoordinate2D(latitude: Double(company.address_latitude)!, longitude: Double(company.address_longitude)!)
 							let annotation = MAPointAnnotation()

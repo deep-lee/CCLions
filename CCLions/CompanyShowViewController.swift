@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CompanyShowViewController: UIViewController {
 	@IBOutlet weak var topView: UIView!
@@ -25,6 +26,7 @@ class CompanyShowViewController: UIViewController {
 		initData()
 		initTopScrollView()
 		initBottomScrollView()
+		updateCompanyHits()
 	}
 
 	/**
@@ -81,6 +83,20 @@ class CompanyShowViewController: UIViewController {
 		let telUrl = NSURL(string: "tel:" + (self.company?.contact)!)
 		callWebView.loadRequest(NSURLRequest(URL: telUrl!))
 		self.view.addSubview(callWebView)
+	}
+
+	/**
+	 更新公司点击量
+	 */
+	func updateCompanyHits() -> Void {
+		let paras = [
+			"id": "\(self.company?.id)"
+		]
+		print(paras)
+		Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_UPDATE_COMPANY_HITS.rawValue, parameters: paras)
+			.responseJSON { (response) in
+				print(response.result.value)
+		}
 	}
 
 	/*

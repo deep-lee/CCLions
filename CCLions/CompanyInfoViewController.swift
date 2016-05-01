@@ -19,6 +19,7 @@ class CompanyInfoViewController: UIViewController {
 	var selectedPhotos: [UIImage] = [UIImage]()
 	var selectedIndustry = -1
 	var selectedAnnotation: MAPointAnnotation?
+	var selectedLogoImage: UIImage?
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -46,6 +47,7 @@ class CompanyInfoViewController: UIViewController {
 		self.dataArray.append(("简介", (company?.introduction)!))
 		self.dataArray.append(("联系方式", (company?.contact)!))
 		self.dataArray.append(("展示照片", "已选择\(self.hasUploadedPhotoArray.count)张照片"))
+		self.dataArray.append(("公司Logo", "已选择公司Logo"))
 	}
 
 	func goToEditTextFieldVC(row: Int) -> Void {
@@ -130,105 +132,171 @@ class CompanyInfoViewController: UIViewController {
 		self.tableView.reloadData()
 	}
 
+	func goToSelectLogoVC(row: Int) -> Void {
+		let selectCompanyLogoViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SelectCompanyLogoViewController") as! SelectCompanyLogoViewController
+		selectCompanyLogoViewController.title = self.dataArray[row].0
+		if self.selectedLogoImage != nil {
+			selectCompanyLogoViewController.logoImageView.image = self.selectedLogoImage
+		} else {
+			selectCompanyLogoViewController.hasUploadedLogo = self.company?.company_logo
+		}
+		selectCompanyLogoViewController.setClosure(selectLogoCallBack)
+		selectCompanyLogoViewController.row = row
+
+		self.navigationController?.pushViewController(selectCompanyLogoViewController, animated: true)
+	}
+
+	func selectLogoCallBack(row: Int, headerChanged: Bool, logoImage: UIImage?) -> Void {
+		if headerChanged {
+			self.selectedLogoImage = logoImage
+			self.dataArray[row].1 = "已选择Logo"
+			self.tableView.reloadData()
+		}
+	}
+
 	@IBAction func save(sender: AnyObject) {
 		// 首先检查资料是否填写完整
-        if !self.checkCompleted() {
-            Drop.down(Tips.USER_INFO_NOT_COMPLETED, state: DropState.Warning)
-            return
-        }
-        SVProgressHUD.showWithStatus(Tips.UPDATING_COMPANY)
-        // 资料填写完整后，首先看是否有图片需要上传
-        if self.selectedPhotos.count != 0 { // 有图片需要上传
-            Alamofire.upload(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_UPLOAD_COMPANY_SHOW_IMAGE.rawValue, multipartFormData: { multipartFormData in
-                var index = 0
-                for image in self.selectedPhotos {
-                    //				multipartFormData.appendBodyPart(data: UIImageJPEGRepresentation(image, 0.5)!, name: "file\(index)")
-                    multipartFormData.appendBodyPart(data: UIImageJPEGRepresentation(image, 0.5)!, name: "file\(index)", fileName: "file\(index)", mimeType: "image/jpeg")
-                    index += 1
-                }
-            }) { (encodingResult) in
-                switch encodingResult {
-                case .Success(let upload, _, _):
-                    upload.responseJSON { response in
-                        if let value = response.result.value {
-                            let json = JSON(value)
-                            let code = json["code"].intValue
-                            if code == 200 {
-                                let data = json["data"].stringValue
-                                print("收到的图片地址为：" + data)
-                                var photoAddress = ""
-                                if self.hasUploadedPhotoArray.count != 0 {
-                                    for item in self.hasUploadedPhotoArray {
-                                        photoAddress += item
-                                        photoAddress += ";"
-                                    }
-                                }
-                                photoAddress += data
-                                self.requestUpdateCompany(photoAddress)
-                            } else {
-                                Drop.down(Tips.UPLOAD_PHOTO_FAIL, state: DropState.Error)
-                                SVProgressHUD.dismiss()
-                            }
-                        } else {
-                            Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
-                            SVProgressHUD.dismiss()
-                        }
-                    }
-                case .Failure(_):
-                    Drop.down(Tips.UPLOAD_PHOTO_FAIL, state: DropState.Error)
-                    SVProgressHUD.dismiss()
-                }
-            }
-        } else { // 如果没有照片需要上传
-            var photoAddress = ""
-            for item in self.hasUploadedPhotoArray {
-                photoAddress += item
-                photoAddress += ";"
-            }
-            self.requestUpdateCompany(photoAddress)
-        }
+		if !self.checkCompleted() {
+			Drop.down(Tips.USER_INFO_NOT_COMPLETED, state: DropState.Warning)
+			return
+		}
+		SVProgressHUD.showWithStatus(Tips.UPDATING_COMPANY)
+		// 资料填写完整后，首先看是否有图片需要上传
+		if self.selectedPhotos.count != 0 { // 有图片需要上传
+			Alamofire.upload(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_UPLOAD_COMPANY_SHOW_IMAGE.rawValue, multipartFormData: { multipartFormData in
+				var index = 0
+				for image in self.selectedPhotos {
+					// multipartFormData.appendBodyPart(data: UIImageJPEGRepresentation(image, 0.5)!, name: "file\(index)")
+					multipartFormData.appendBodyPart(data: UIImageJPEGRepresentation(image, 0.5)!, name: "file\(index)", fileName: "file\(index)", mimeType: "image/jpeg")
+					index += 1
+				}
+			}) { (encodingResult) in
+				switch encodingResult {
+				case .Success(let upload, _, _):
+					upload.responseJSON { response in
+						if let value = response.result.value {
+							let json = JSON(value)
+							let code = json["code"].intValue
+							if code == 200 {
+								let data = json["data"].stringValue
+								print("收到的图片地址为：" + data)
+								var photoAddress = ""
+								if self.hasUploadedPhotoArray.count != 0 {
+									for item in self.hasUploadedPhotoArray {
+										photoAddress += item
+										photoAddress += ";"
+									}
+								}
+								photoAddress += data
+
+								// 判断是否需要更新了logo
+								if self.selectedLogoImage != nil {
+									// 更新了Logo
+									// 上传新的Logo
+									self.uploadCompanyLogo(photoAddress)
+								} else {
+									// 直接请求更新公司信息
+									self.requestUpdateCompany(photoAddress, logoAddress: (self.company?.company_logo)!)
+								}
+							} else {
+								Drop.down(Tips.UPLOAD_PHOTO_FAIL, state: DropState.Error)
+								SVProgressHUD.dismiss()
+							}
+						} else {
+							Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
+							SVProgressHUD.dismiss()
+						}
+					}
+				case .Failure(_):
+					Drop.down(Tips.UPLOAD_PHOTO_FAIL, state: DropState.Error)
+					SVProgressHUD.dismiss()
+				}
+			}
+		} else { // 如果没有照片需要上传
+			var photoAddress = ""
+			for item in self.hasUploadedPhotoArray {
+				photoAddress += item
+				photoAddress += ";"
+			}
+
+			// 判断是否需要更新了logo
+			if self.selectedLogoImage != nil {
+				// 更新了Logo
+				// 上传新的Logo
+				self.uploadCompanyLogo(photoAddress)
+			} else {
+				// 直接请求更新公司信息
+				self.requestUpdateCompany(photoAddress, logoAddress: (self.company?.company_logo)!)
+			}
+		}
 	}
-    
-    
-    /**
-     请求更新公司信息
-     
-     - parameter photoAddress: 公司照片展示地址
-     */
-    func requestUpdateCompany(photoAddress: String) -> Void {
-        let paras: [String: AnyObject] = [
-            "company_id": (self.company?.id)!,
-            "company_name": self.dataArray[0].1,
-            "address_longitude": self.selectedAnnotation == nil ? (self.company?.address_longitude)! : String(self.selectedAnnotation!.coordinate.longitude),
-            "address_latitude":  self.selectedAnnotation == nil ? (self.company?.address_latitude)! : String(self.selectedAnnotation!.coordinate.latitude),
-            "business_scope": self.dataArray[2].1,
-            "industry": self.selectedIndustry,
-            "show_photo": photoAddress,
-            "introduction": self.dataArray[4].1,
-            "contact": self.dataArray[5].1
-        ]
-        
-        Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_UPDATE_COMPANY_INFO.rawValue, parameters: paras)
-        .responseJSON { (response) in
-            if let value = response.result.value {
-                let json = JSON(value)
-                let code = json["code"].intValue
-                if code == 200 {
-                    // 更新公司成功
-                    Drop.down(Tips.UPDATE_COMPANY_SUCCESS, state: DropState.Success)
-                    self.navigationController?.popViewControllerAnimated(true)
-                    SVProgressHUD.dismiss()
-                } else {
-                    Drop.down(Tips.UPDATE_COMPANY_FAIL, state: DropState.Error)
-                    SVProgressHUD.dismiss()
-                }
-            } else {
-                Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
-                SVProgressHUD.dismiss()
-            }
-        }
-    }
-    
+
+	/**
+	 上传公司logo
+
+	 - parameter photoAddress: 公司展示照片地址
+	 */
+	func uploadCompanyLogo(photoAddress: String) -> Void {
+		Alamofire.upload(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_ACCEPT_COMPANY_IMAGE_iOS.rawValue, data: UIImageJPEGRepresentation(self.selectedLogoImage!, 0.5)!)
+			.responseJSON { (response) in
+				if let value = response.result.value {
+					let json = JSON(value)
+					let code = json["code"].intValue
+					if code == 200 {
+						let logoAddress = HttpRequest.HTTP_ADDRESS + json["data"].stringValue
+						// 发起请求
+						self.requestUpdateCompany(photoAddress, logoAddress: logoAddress)
+					} else {
+						Drop.down(Tips.UPLOAD_PHOTO_FAIL, state: DropState.Error)
+						SVProgressHUD.dismiss()
+					}
+				} else {
+					Drop.down(Tips.UPLOAD_PHOTO_FAIL, state: DropState.Error)
+					SVProgressHUD.dismiss()
+				}
+		}
+	}
+
+	/**
+	 请求更新公司信息
+
+	 - parameter photoAddress: 公司照片展示地址
+	 */
+	func requestUpdateCompany(photoAddress: String, logoAddress: String) -> Void {
+		let paras: [String: AnyObject] = [
+			"company_id": (self.company?.id)!,
+			"company_name": self.dataArray[0].1,
+			"address_longitude": self.selectedAnnotation == nil ? (self.company?.address_longitude)! : String(self.selectedAnnotation!.coordinate.longitude),
+			"address_latitude": self.selectedAnnotation == nil ? (self.company?.address_latitude)! : String(self.selectedAnnotation!.coordinate.latitude),
+			"business_scope": self.dataArray[2].1,
+			"industry": self.selectedIndustry,
+			"show_photo": photoAddress,
+			"introduction": self.dataArray[4].1,
+			"contact": self.dataArray[5].1,
+			"company_logo": logoAddress
+		]
+
+		Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_UPDATE_COMPANY_INFO.rawValue, parameters: paras)
+			.responseJSON { (response) in
+				if let value = response.result.value {
+					let json = JSON(value)
+					let code = json["code"].intValue
+					if code == 200 {
+						// 更新公司成功
+						Drop.down(Tips.UPDATE_COMPANY_SUCCESS, state: DropState.Success)
+						self.navigationController?.popViewControllerAnimated(true)
+						SVProgressHUD.dismiss()
+					} else {
+						Drop.down(Tips.UPDATE_COMPANY_FAIL, state: DropState.Error)
+						SVProgressHUD.dismiss()
+					}
+				} else {
+					Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
+					SVProgressHUD.dismiss()
+				}
+		}
+	}
+
 	/**
 	 检查资料是否填写完整
 
@@ -287,6 +355,8 @@ extension CompanyInfoViewController: UITableViewDelegate, UITableViewDataSource 
 			self.goToEditTextViewVC(indexPath.row)
 		case 6:
 			self.goToSelectMultiPhotoVC(indexPath.row)
+		case 7:
+			self.goToSelectLogoVC(indexPath.row)
 		default:
 			return
 		}
