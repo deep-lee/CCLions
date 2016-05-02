@@ -724,6 +724,9 @@
                             <constraint firstItem="U5F-l0-yex" firstAttribute="top" secondItem="e4l-x6-cLM" secondAttribute="top" id="Vfa-cg-482"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mTableView" destination="U5F-l0-yex" id="GF7-qZ-8Jv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5B-Po-dDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
