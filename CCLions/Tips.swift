@@ -45,5 +45,7 @@ class Tips {
 	static let SEARCHING = "正在搜索..."
 	static let SEARCH_NO_RESULT = "搜索结果为空"
 	static let HOT_INDUSTRY_FAIL = "获取热门行业信息失败"
-    static let  SEARCH_PROJECT_FAIL = "搜索失败"
+	static let SEARCH_PROJECT_FAIL = "搜索失败"
+	static let ADD_FAV_FAIL = "点赞失败，请重试"
+    static let ADD_FAV_AGAIN = "不能重复点赞喔"
 }

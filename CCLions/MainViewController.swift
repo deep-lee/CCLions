@@ -209,6 +209,57 @@ class MainViewController: UIViewController {
 		}
 	}
 
+	/**
+	 点赞接口
+
+	 - parameter id: 活动id
+	 */
+	func requestFav(sender: UIButton) -> Void {
+		let paras = [
+			"user_id": "\(Util.getLoginedUser()!.id)",
+			"project_id": "\(sender.tag)"
+		]
+
+		print(paras)
+
+		Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_ADD_FAV.rawValue, parameters: paras)
+			.responseJSON { (response) in
+				if let value = response.result.value {
+					print(value)
+					let json = JSON(value)
+					let code = json["code"].intValue
+					if code == 200 {
+						dispatch_async(dispatch_get_main_queue(), {
+							// 点赞成功
+							let cell = self.activityShowTableView.cellForRowAtIndexPath(NSIndexPath(forRow: (self.getRowForTag(sender.tag)), inSection: 0)) as! ActivityShowTableViewCell
+							cell.favLabel.text = "\(Int(cell.favLabel.text!)! + 1)"
+						})
+					} else {
+						let type = json["type"].intValue
+						if type == 102 { // 已经点过赞了
+							Drop.down(Tips.ADD_FAV_AGAIN, state: DropState.Info)
+						} else {
+							Drop.down(Tips.ADD_FAV_FAIL, state: DropState.Error)
+						}
+					}
+				} else {
+					Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
+				}
+		}
+	}
+
+	func getRowForTag(tag: Int) -> Int {
+		var row = 0
+		for item in self.dataArray {
+			if item.id == tag {
+				return row
+			}
+			row += 1
+		}
+
+		return row
+	}
+
 	/*
 	 // MARK: - Navigation
 
@@ -232,6 +283,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 		cell.activityTimeLabel.text = project.time
 		cell.activityLauncherLabel.text = project.name
 		cell.favLabel.text = "\(project.favorite)"
+		cell.favBtn.tag = project.id
+		cell.favBtn.addTarget(self, action: #selector(MainViewController.requestFav(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
 		return cell
 	}

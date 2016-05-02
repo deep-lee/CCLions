@@ -256,25 +256,26 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="146" height="76"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbY-2O-uda">
-                                                                            <rect key="frame" x="62" y="52" width="21" height="15"/>
+                                                                            <rect key="frame" x="63" y="52" width="21" height="15"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-heart" translatesAutoresizingMaskIntoConstraints="NO" id="1Jp-m0-GOI">
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghO-je-rh2">
                                                                             <rect key="frame" x="58" y="14" width="30" height="30"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="30" id="Ooo-aT-yAk"/>
-                                                                                <constraint firstAttribute="height" constant="30" id="ZvE-6h-rRJ"/>
+                                                                                <constraint firstAttribute="width" constant="30" id="LOJ-ql-ryK"/>
+                                                                                <constraint firstAttribute="height" constant="30" id="fNb-Bf-SiZ"/>
                                                                             </constraints>
-                                                                        </imageView>
+                                                                            <state key="normal" backgroundImage="icon-heart"/>
+                                                                        </button>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
-                                                                        <constraint firstItem="1Jp-m0-GOI" firstAttribute="centerX" secondItem="oTJ-jK-pls" secondAttribute="centerX" id="7Mp-gJ-x5G"/>
-                                                                        <constraint firstItem="PbY-2O-uda" firstAttribute="top" secondItem="1Jp-m0-GOI" secondAttribute="bottom" constant="8" id="Ple-Ii-AIa"/>
-                                                                        <constraint firstItem="1Jp-m0-GOI" firstAttribute="top" secondItem="oTJ-jK-pls" secondAttribute="top" constant="14" id="YL2-pE-abC"/>
-                                                                        <constraint firstItem="PbY-2O-uda" firstAttribute="centerX" secondItem="1Jp-m0-GOI" secondAttribute="centerX" id="pcS-qn-Urq"/>
+                                                                        <constraint firstItem="PbY-2O-uda" firstAttribute="top" secondItem="ghO-je-rh2" secondAttribute="bottom" constant="8" id="fAH-WB-amx"/>
+                                                                        <constraint firstItem="ghO-je-rh2" firstAttribute="top" secondItem="oTJ-jK-pls" secondAttribute="top" constant="14" id="fGK-3F-wzY"/>
+                                                                        <constraint firstItem="ghO-je-rh2" firstAttribute="centerX" secondItem="oTJ-jK-pls" secondAttribute="centerX" id="rf9-VZ-WkK"/>
+                                                                        <constraint firstItem="PbY-2O-uda" firstAttribute="centerX" secondItem="ghO-je-rh2" secondAttribute="centerX" id="zwY-hR-JUY"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bQ-mK-JAF">
@@ -374,7 +375,7 @@
                                             <outlet property="activityLauncherLabel" destination="Aa2-wr-S9u" id="4Lp-9w-Fih"/>
                                             <outlet property="activityTimeLabel" destination="H22-8Z-b4v" id="WKj-7w-KSd"/>
                                             <outlet property="commentImageView" destination="ccP-WD-yhe" id="bh7-ib-QEi"/>
-                                            <outlet property="favImageView" destination="1Jp-m0-GOI" id="jLc-Fv-gML"/>
+                                            <outlet property="favBtn" destination="ghO-je-rh2" id="aDZ-GC-p3x"/>
                                             <outlet property="favLabel" destination="PbY-2O-uda" id="hjF-bf-lFz"/>
                                             <outlet property="showIamgeView" destination="6Ga-b6-5Kf" id="rjG-Yg-qdT"/>
                                         </connections>
@@ -584,25 +585,26 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="146" height="76"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Wo-Li-y6D">
-                                                                            <rect key="frame" x="62" y="52" width="21" height="15"/>
+                                                                            <rect key="frame" x="63" y="52" width="21" height="15"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-heart" translatesAutoresizingMaskIntoConstraints="NO" id="v3F-fm-Awv">
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hib-9K-BXO">
                                                                             <rect key="frame" x="58" y="14" width="30" height="30"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="30" id="RdF-2E-s0S"/>
-                                                                                <constraint firstAttribute="width" constant="30" id="wus-8c-a5U"/>
+                                                                                <constraint firstAttribute="width" constant="30" id="5Ba-pH-BL5"/>
+                                                                                <constraint firstAttribute="height" constant="30" id="iGo-fM-acs"/>
                                                                             </constraints>
-                                                                        </imageView>
+                                                                            <state key="normal" backgroundImage="icon-heart"/>
+                                                                        </button>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
-                                                                        <constraint firstItem="v3F-fm-Awv" firstAttribute="centerX" secondItem="f3z-E3-SAd" secondAttribute="centerX" id="Gom-55-osK"/>
-                                                                        <constraint firstItem="5Wo-Li-y6D" firstAttribute="centerX" secondItem="v3F-fm-Awv" secondAttribute="centerX" id="Wk5-S2-bWd"/>
-                                                                        <constraint firstItem="5Wo-Li-y6D" firstAttribute="top" secondItem="v3F-fm-Awv" secondAttribute="bottom" constant="8" id="wgk-2J-fTj"/>
-                                                                        <constraint firstItem="v3F-fm-Awv" firstAttribute="top" secondItem="f3z-E3-SAd" secondAttribute="top" constant="14" id="wiK-Lb-2aO"/>
+                                                                        <constraint firstItem="hib-9K-BXO" firstAttribute="top" secondItem="f3z-E3-SAd" secondAttribute="top" constant="14" id="4yg-xT-gHr"/>
+                                                                        <constraint firstItem="5Wo-Li-y6D" firstAttribute="top" secondItem="hib-9K-BXO" secondAttribute="bottom" constant="8" id="PFF-KN-hO3"/>
+                                                                        <constraint firstItem="hib-9K-BXO" firstAttribute="centerX" secondItem="f3z-E3-SAd" secondAttribute="centerX" id="U5A-C5-N6E"/>
+                                                                        <constraint firstItem="5Wo-Li-y6D" firstAttribute="centerX" secondItem="hib-9K-BXO" secondAttribute="centerX" id="glz-t5-jde"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6BX-0p-cV3">
@@ -702,7 +704,7 @@
                                             <outlet property="activityLauncherLabel" destination="3o5-WG-ezS" id="PHm-5e-DfX"/>
                                             <outlet property="activityTimeLabel" destination="1he-if-WSu" id="FpF-Pl-YWO"/>
                                             <outlet property="commentImageView" destination="4va-eq-1qU" id="MLY-KW-G4d"/>
-                                            <outlet property="favImageView" destination="v3F-fm-Awv" id="OKg-sv-FgG"/>
+                                            <outlet property="favBtn" destination="hib-9K-BXO" id="eMc-t9-Aeh"/>
                                             <outlet property="favLabel" destination="5Wo-Li-y6D" id="hnU-EZ-xqi"/>
                                             <outlet property="showIamgeView" destination="bk1-f5-5jy" id="dET-6Y-dCV"/>
                                         </connections>
