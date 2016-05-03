@@ -1,7 +1,1 @@
-#import <UIKit/UIKit.h>
-
-extern CGFloat const WPTableViewFixedWidth;
-
-@interface WPTableViewCell : UITableViewCell
-
-@end
+../../../../WordPress-iOS-Shared/WordPress-iOS-Shared/Core/WPTableViewCell.h

@@ -37,6 +37,8 @@ class MainViewController: UIViewController {
 		activityShowTableView.mj_header.state = MJRefreshState.Refreshing
 
 		initSearchView()
+        
+        updateLoginedUserInfo()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -259,6 +261,35 @@ class MainViewController: UIViewController {
 
 		return row
 	}
+    
+    /**
+     如果当前有用户登录，那么先请求服务器更新用户的信息
+     */
+    func updateLoginedUserInfo() -> Void {
+        if Util.hasUserLogined() {
+            let paras = [
+                "userId": "\(Util.getLoginedUser()?.id)"
+            ]
+            
+            Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_GET_USER_INFO_WITH_ID.rawValue, parameters: paras)
+            .responseJSON(completionHandler: { (response) in
+                // 返回不为空
+                if let value = response.result.value {
+                    // 解析json
+                    let json = JSON(value)
+                    let code = json["code"].intValue
+                    if code == 200 { // 登录成功
+                        // 获取登录的用户信息
+                        let data = json["data"]
+                        let user = User(id: data["id"].intValue, username: data["username"].stringValue, password: data["password"].stringValue, header: data["header"].stringValue, name: data["name"].stringValue, sex: data["sex"].intValue, address: data["address"].stringValue, contact: data["contact"].stringValue, service_team: data["service_team"].stringValue, update_time: data["update_time"].stringValue)
+                        
+                        // 存储登录用户的信息
+                        Util.updateUser(user)
+                    }
+                }
+            })
+        }
+    }
 
 	/*
 	 // MARK: - Navigation

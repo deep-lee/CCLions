@@ -31,6 +31,7 @@ enum RequestAddress: String {
 	case HTTP_GET_HOT_INDUSTRY_COMPANY = "get_hot_industry_company.php"
 	case HTTP_SEARCH_PROJECT = "search_project.php"
 	case HTTP_ADD_FAV = "add_fav.php"
+    case HTTP_GET_USER_INFO_WITH_ID = "get_user_info_with_id.php"
 }
 
 class HttpRequest {

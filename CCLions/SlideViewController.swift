@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyDrop
+import SwiftyJSON
 
 enum LeftMenu: Int {
 	case Main = 0
@@ -100,6 +103,40 @@ extension SlideViewController: UITableViewDelegate, UITableViewDataSource, LeftM
 		changeViewController(LeftMenu(rawValue: indexPath.row)!)
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
 	}
+    
+    /**
+     检查用户是否有权限发起项目
+     */
+    func checkLaunchProject() -> Void {
+        SVProgressHUD.show()
+        let paras = [
+            "user_id": "\(Util.getLoginedUser()?.id)"
+        ]
+        
+        Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_CHECK_WHETHER_HAS_CAMPANY.rawValue, parameters: paras)
+        .responseJSON { (response) in
+            if let value = response.result.value {
+                let json = JSON(value)
+                let code = json["code"].intValue
+                if code == 200 {
+                    let data = json["data"].intValue
+                    if data == 0 {
+                        // 没有公司
+                        Drop.down(Tips.ADD_PROJECT_NO_AUTHORIZATION, state: DropState.Warning)
+                    } else if data == 1 {
+                        // 有公司
+                        self.slideMenuController()?.changeMainViewController(self.addActivityViewController, close: true)
+                    }
+                } else {
+                    Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
+                }
+            } else {
+                Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
+            }
+            
+            SVProgressHUD.dismiss()
+        }
+    }
 
     /**
      切换ViewController
@@ -112,7 +149,7 @@ extension SlideViewController: UITableViewDelegate, UITableViewDataSource, LeftM
 			self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
 
 		case .SelfCenter:
-			self.slideMenuController()?.changeMainViewController(self.selfCenterViewController, close: true)
+			self.checkLaunchProject()
 
 		case .AddActivity:
 			self.slideMenuController()?.changeMainViewController(self.addActivityViewController, close: true)

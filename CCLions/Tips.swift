@@ -48,4 +48,5 @@ class Tips {
 	static let SEARCH_PROJECT_FAIL = "搜索失败"
 	static let ADD_FAV_FAIL = "点赞失败，请重试"
     static let ADD_FAV_AGAIN = "不能重复点赞喔"
+    static let ADD_PROJECT_NO_AUTHORIZATION = "请先到个人中心完善公司信息"
 }

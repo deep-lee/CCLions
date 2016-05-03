@@ -1,8 +1,1 @@
-#import <UIKit/UIKit.h>
-
-@interface UIImage (Util)
-
-+ (UIImage *)imageWithColor:(UIColor *)color;
-+ (UIImage *)imageWithColor:(UIColor *)color havingSize:(CGSize)size;
-
-@end
+../../../../WordPress-iOS-Shared/WordPress-iOS-Shared/Core/UIImage+Util.h

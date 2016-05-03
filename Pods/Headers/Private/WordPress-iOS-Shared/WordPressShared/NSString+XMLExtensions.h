@@ -1,10 +1,1 @@
-#import <UIKit/UIKit.h>
-
-@interface NSString (XMLExtensions)
-
-+ (NSString *)encodeXMLCharactersIn : (NSString *)source;
-+ (NSString *)decodeXMLCharactersIn : (NSString *)source;
-- (NSString *)stringByDecodingXMLCharacters;
-- (NSString *)stringByEncodingXMLCharacters;
-
-@end
+../../../../WordPress-iOS-Shared/WordPress-iOS-Shared/Core/NSString+XMLExtensions.h
