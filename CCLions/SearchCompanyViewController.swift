@@ -149,6 +149,9 @@ class SearchCompanyViewController: UIViewController {
 	}
 
 	func requestSearch(searchText: String) -> Void {
+		// 统计搜索的内容
+		self.flurryStatisticsWithName(Statistics.SEARCH_COMPANY_CONTENT, paras: ["SEATCH_COMPANT": searchText])
+
 		SVProgressHUD.showWithStatus(Tips.SEARCHING)
 		let paras = [
 			"search": searchText

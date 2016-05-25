@@ -95,10 +95,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-CCLions/SDWebImage.framework"
   install_framework "Pods-CCLions/SVProgressHUD.framework"
   install_framework "Pods-CCLions/SlideMenuControllerSwift.framework"
+  install_framework "Pods-CCLions/SnapKit.framework"
   install_framework "Pods-CCLions/SwiftyDrop.framework"
   install_framework "Pods-CCLions/WordPressEditor.framework"
   install_framework "Pods-CCLions/WordPressShared.framework"
   install_framework "Pods-CCLions/WordPressComAnalytics.framework"
+  install_framework "Pods-CCLions/pop.framework"
   install_framework "Pods-CCLions/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -113,9 +115,11 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-CCLions/SDWebImage.framework"
   install_framework "Pods-CCLions/SVProgressHUD.framework"
   install_framework "Pods-CCLions/SlideMenuControllerSwift.framework"
+  install_framework "Pods-CCLions/SnapKit.framework"
   install_framework "Pods-CCLions/SwiftyDrop.framework"
   install_framework "Pods-CCLions/WordPressEditor.framework"
   install_framework "Pods-CCLions/WordPressShared.framework"
   install_framework "Pods-CCLions/WordPressComAnalytics.framework"
+  install_framework "Pods-CCLions/pop.framework"
   install_framework "Pods-CCLions/SwiftyJSON.framework"
 fi

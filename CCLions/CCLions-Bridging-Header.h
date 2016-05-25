@@ -18,3 +18,6 @@
 #import "JFImagePickerController.h"
 #import "ZZPhotoKit.h"
 #import "SDCycleScrollView.h"
+#import "Flurry.h"
+#import <pop/POP.h>
+#import <SMS_SDK/SMSSDK.h>

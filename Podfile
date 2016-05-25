@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-pod 'Alamofire'
+pod ‘Alamofire’
 
 pod 'SwiftyDrop', '~>2.0'
 pod 'SlideMenuControllerSwift’
@@ -22,6 +22,16 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 pod 'Eureka', '~> 1.5'
 pod 'SDCycleScrollView','~> 1.64'
+pod 'Fabric'
+pod 'Crashlytics'
+
+source 'https://github.com/CocoaPods/Specs.git'
+pod 'SnapKit', '~> 0.15.0'
+
+pod 'pop', '~> 1.0'
+
+pod 'MOBFoundation_IDFA'
+pod 'SMSSDK'
 
 target ‘CCLions’ do
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'

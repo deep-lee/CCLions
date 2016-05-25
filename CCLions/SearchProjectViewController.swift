@@ -100,8 +100,8 @@ extension SearchProjectViewController: UITableViewDelegate, UITableViewDataSourc
 		cell.activityTimeLabel.text = project.time
 		cell.activityLauncherLabel.text = project.name
 		cell.favLabel.text = "\(project.favorite)"
-		cell.favBtn.tag = project.id
-		cell.favBtn.addTarget(self, action: #selector(MainViewController.requestFav(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+//		cell.favBtn.tag = project.id
+//		cell.favBtn.addTarget(self, action: #selector(SearchProjectViewController.requestFav(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 		return cell
 	}
 

@@ -33,6 +33,11 @@ class SelfCenterViewController: UIViewController {
 			self.headerImageView.image = image.imageWithCornerRadius(self.headerImageView.bounds.size.width / 2)
 		}
 		self.nameLabel.text = self.user.name
+
+		// 判断当前用户的类型，如果当前不是狮子会会员，就不显示公司信息
+		if user.user_type == UserType.NonVip.rawValue {
+			self.dataArray.removeLast()
+		}
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -103,7 +108,6 @@ class SelfCenterViewController: UIViewController {
 	}
 
 	func goToAddCompanyInfoVC() -> Void {
-		print("进入添加公司信息")
 		let addCompanyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddCompanyViewController") as! AddCompanyViewController
 		addCompanyViewController.title = "添加公司"
 		self.navigationController?.pushViewController(addCompanyViewController, animated: true)

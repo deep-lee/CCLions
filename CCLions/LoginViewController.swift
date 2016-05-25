@@ -13,14 +13,35 @@ import SwiftyJSON
 import SlideMenuControllerSwift
 
 class LoginViewController: UIViewController {
-/// 用户名输入框
-	@IBOutlet weak var usernameTextField: UITextField!
-	/// 密码输入框
-	@IBOutlet weak var passwordTextField: UITextField!
+
+	var loginView: LoginView?
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		// Do any additional setup after loading the view.
+		initView()
+		initNoti()
+	}
+
+	/**
+	 初始化界面
+	 */
+	func initView() -> Void {
+		self.loginView = LoginView(frame: self.view.frame)
+		self.view.addSubview(self.loginView!)
+		self.loginView?.vipLoginCallBack = vipLoginAction
+		self.loginView?.nonVipLoginCallBack = nonVipLoginAction
+		self.loginView?.nonVipRegisterCallBAck = nonVipRegAction
+		self.loginView?.nonVipRegisterGetVerCodeCallBack = getVerCodeAction
+	}
+
+	/**
+	 初始化通知
+	 */
+	func initNoti() -> Void {
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.loginSuccessNoti(_:)), name: LOGIN_SUCCESS_NOTIFICATION, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.regSuccessNoti(_:)), name: REGISTER_SUCCESS_NOTIFICATION, object: nil)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -29,135 +50,122 @@ class LoginViewController: UIViewController {
 	}
 
 	/**
-	 进入到注册界面
+	 会员登录
 
-	 - parameter sender: 消息传递者
+	 - parameter username: 用户名
+	 - parameter psw:      密码
 	 */
-	@IBAction func goToRegisterViewController(sender: AnyObject) {
-		let registerVC = self.storyboard?.instantiateViewControllerWithIdentifier("RegisterViewController") as! RegisterViewController
-		self.presentViewController(registerVC, animated: true, completion: nil)
+	func vipLoginAction(username: String, psw: String) -> Void {
+		print("登录")
+		if username.isEmpty || psw.isEmpty {
+			Drop.down(Tips.USER_INFO_NOT_COMPLETED, state: DropState.Warning)
+			return
+		}
+		LoginModel.shareInstance().login(username, psw: psw)
 	}
 
 	/**
-	 登录事件
+	 非会员登录
 
-	 - parameter sender: 消息传递者
+	 - parameter username: 用户名
+	 - parameter psw:      密码
 	 */
-	@IBAction func loginAction(sender: AnyObject) {
-		// 首先判断资料是否填写完整
-		if !infoCompleted() {
+	func nonVipLoginAction(username: String, psw: String) -> Void {
+		if username.isEmpty || psw.isEmpty {
 			Drop.down(Tips.USER_INFO_NOT_COMPLETED, state: DropState.Warning)
 			return
 		}
 
-		// 输入正确之后，发起登录请求
-		// 显示正在加载的界面
-		SVProgressHUD.showWithStatus("正在登录...")
-		// 发送请求
-        self.sendLoginRequest()
+		LoginModel.shareInstance().login(username, psw: psw)
 	}
 
 	/**
-	 判断信息是否填写完整
+	 非会员注册
 
-	 - returns: 完整->yes
+	 - parameter username: 用户名
+	 - parameter psw:      密码
+	 - parameter verCode:  验证码
 	 */
-	func infoCompleted() -> Bool {
-		if self.usernameTextField.hasText() && self.passwordTextField.hasText() {
-			return true
+	func nonVipRegAction(username: String, psw: String, verCode: String) -> Void {
+		print(" 正在注册")
+		if username.isEmpty || psw.isEmpty || verCode.isEmpty {
+			Drop.down(Tips.USER_INFO_NOT_COMPLETED, state: DropState.Warning)
+			return
+		}
+		LoginModel.shareInstance().registerNonVip(username, psw: psw, verCode: verCode)
+	}
+
+	/**
+	 获取验证码
+
+	 - parameter username: 手机号
+	 - parameter verCode:  验证码
+	 */
+	func getVerCodeAction(username: String) -> Void {
+		print("正在获取验证码")
+		if username.isEmpty {
+			Drop.down(Tips.USERNAME_CAN_NOT_EMPTY, state: DropState.Warning)
+			return
 		}
 
-		return false
+		// 获取验证码
+		LoginModel.shareInstance().getVerCode(username)
 	}
-    
-    func sendLoginRequest() -> Void {
-        let paras = [
-            "username" : self.usernameTextField.text!,
-            "password" : self.passwordTextField.text!.md5
-        ]
-        
-        Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_LOGIN.rawValue, parameters: paras)
-        .responseJSON { (response) in
-            // 返回不为空
-            if let value = response.result.value {
-                // 解析json
-                let json = JSON(value)
-                let code = json["code"].intValue
-                if code == 200 { // 登录成功
-                    // 获取登录的用户信息
-                    let data = json["data"]
-                    let user = User(id: data["id"].intValue, username: data["username"].stringValue, password: data["password"].stringValue, header: data["header"].stringValue, name: data["name"].stringValue, sex: data["sex"].intValue, address: data["address"].stringValue, contact: data["contact"].stringValue, service_team: data["service_team"].stringValue, update_time: data["update_time"].stringValue)
-                    
-                    // 存储登录用户的信息
-                    Util.updateUser(user)
-                    
-                    // 此时需要判断当前登录的用户资料是否已经填写了
-                    // 如果没有填写，则进入到资料填写界面
-                    if (user.name == nil || user.name == "") {
-                        // 进入到资料填写界面
-                        self.goToCompleteInfoVC()
-                    } else {
-                        // 已经完成了资料的填写，进入到主界面
-                        self.goToMainActivity()
-                    }
-                } else {  // 参数缺少或数据库操作失败
-                    let type = json["type"].intValue
-                    if type == 100 || type == 101 {
-                        Drop.down(Tips.LOGIN_ERROR, state: DropState.Error)
-                    } else if type == 102 {
-                        Drop.down(Tips.LOGIN_USERNAME_OR_PASSWORD_ERROR, state: DropState.Error)
-                    }
-                }
-                
-            } else {  // 返回为空，也就是网络连接失败
-                // 显示错误信息
-                Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
-            }
-            
-            // 去掉加载界面
-            SVProgressHUD.dismiss()
-        }
-    }
-    
-    /**
-     进入到主界面
-     */
-    func goToMainActivity() -> Void {
-        let leftViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SlideViewController") as! SlideViewController
-        
-        let nvc: UINavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("MainNavagationController") as! UINavigationController
-        nvc.navigationBar.barTintColor = UIColor(hex: "0395d8")
-        leftViewController.mainViewController = nvc
-        
-        let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
-        slideMenuController.automaticallyAdjustsScrollViewInsets = true
-        self.presentViewController(slideMenuController, animated: true, completion: nil)
-    }
-    
-    /**
-     进入到完成用户资料界面
-     */
-    func goToCompleteInfoVC() -> Void {
-        // 进入到资料填写界面
-        let editSelfProfileViewController = self.storyboard!.instantiateViewControllerWithIdentifier("EditSelfProfileViewController") as! EditSelfProfileViewController
-        let nvc = UINavigationController(rootViewController: editSelfProfileViewController)
-        editSelfProfileViewController.flag = false
-        nvc.navigationBar.barTintColor = UIColor(hex: "0395d8")
-        let dic = [
-            NSForegroundColorAttributeName: UIColor.whiteColor()
-        ]
-        nvc.navigationBar.titleTextAttributes = dic
-        nvc.navigationBar.tintColor = UIColor.whiteColor()
-        self.presentViewController(nvc, animated: true, completion: nil)
-    }
-    
-	/*
-	 // MARK: - Navigation
 
-	 // In a storyboard-based application, you will often want to do a little preparation before navigation
-	 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-	 // Get the new view controller using segue.destinationViewController.
-	 // Pass the selected object to the new view controller.
-	 }
+	/**
+	 登陆成功通知
+
+	 - parameter noti: 通知
 	 */
+	func loginSuccessNoti(noti: NSNotification) -> Void {
+		// 判断当前用户资料是否填写完整
+		if Util.hasUserCompletedInfo() {
+			// 进入到主界面
+			self.goToMainActivity()
+		} else {
+			// 进入到资料填写界面
+			self.goToCompleteInfoVC()
+		}
+	}
+
+	/**
+	 注册成功通知
+
+	 - parameter noti: 通知
+	 */
+	func regSuccessNoti(noti: NSNotification) -> Void {
+		self.loginView?.dismissNonVipRegView()
+	}
+
+	/**
+	 进入到主界面
+	 */
+	func goToMainActivity() -> Void {
+		let leftViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SlideViewController") as! SlideViewController
+
+		let nvc: UINavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("MainNavagationController") as! UINavigationController
+		nvc.navigationBar.barTintColor = UIColor(hex: "0395d8")
+		leftViewController.mainViewController = nvc
+
+		let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
+		slideMenuController.automaticallyAdjustsScrollViewInsets = true
+		self.presentViewController(slideMenuController, animated: true, completion: nil)
+	}
+
+	/**
+	 进入到完成用户资料界面
+	 */
+	func goToCompleteInfoVC() -> Void {
+		// 进入到资料填写界面
+		let editSelfProfileViewController = self.storyboard!.instantiateViewControllerWithIdentifier("EditSelfProfileViewController") as! EditSelfProfileViewController
+		let nvc = UINavigationController(rootViewController: editSelfProfileViewController)
+		editSelfProfileViewController.flag = false
+		nvc.navigationBar.barTintColor = UIColor(hex: "0395d8")
+		let dic = [
+			NSForegroundColorAttributeName: UIColor.whiteColor()
+		]
+		nvc.navigationBar.titleTextAttributes = dic
+		nvc.navigationBar.tintColor = UIColor.whiteColor()
+		self.presentViewController(nvc, animated: true, completion: nil)
+	}
 }

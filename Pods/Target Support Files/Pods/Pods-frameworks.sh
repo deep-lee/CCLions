@@ -95,10 +95,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/SDWebImage.framework"
   install_framework "Pods/SVProgressHUD.framework"
   install_framework "Pods/SlideMenuControllerSwift.framework"
+  install_framework "Pods/SnapKit.framework"
   install_framework "Pods/SwiftyDrop.framework"
   install_framework "Pods/WordPressEditor.framework"
   install_framework "Pods/WordPressShared.framework"
   install_framework "Pods/WordPressComAnalytics.framework"
+  install_framework "Pods/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Alamofire.framework"
@@ -112,8 +114,10 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/SDWebImage.framework"
   install_framework "Pods/SVProgressHUD.framework"
   install_framework "Pods/SlideMenuControllerSwift.framework"
+  install_framework "Pods/SnapKit.framework"
   install_framework "Pods/SwiftyDrop.framework"
   install_framework "Pods/WordPressEditor.framework"
   install_framework "Pods/WordPressShared.framework"
   install_framework "Pods/WordPressComAnalytics.framework"
+  install_framework "Pods/pop.framework"
 fi

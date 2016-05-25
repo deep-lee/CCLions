@@ -8,101 +8,154 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>CocoaLumberjack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Eureka.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>JFImagePicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>NSObject-SafeExpectations.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>Pods-CCLions.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>SDCycleScrollView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>13</integer>
 		</dict>
 		<key>SlideMenuControllerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
+		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>21</integer>
 		</dict>
 		<key>SwiftyDrop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>14</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>15</integer>
 		</dict>
 		<key>WordPress-iOS-Editor.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>16</integer>
 		</dict>
 		<key>WordPress-iOS-Shared-WordPress-iOS-Shared.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>18</integer>
 		</dict>
 		<key>WordPress-iOS-Shared.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>17</integer>
 		</dict>
 		<key>WordPressCom-Analytics-iOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>19</integer>
+		</dict>
+		<key>pop.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>20</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>19BBE7F67640EC4E3854A1BDF4537181</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1F317FD7DE5204AA6D2DC2141088F4AE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,7 +200,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>62E0A4CBF09DA8862B0EAA246B96B844</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6847254D016329D4A531D34ED2B6DF81</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>704214B733794146B0654D743755FDEB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7219A96E8C5882FC2D8F2ECA45947D29</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -182,6 +250,46 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9342CC5B57E682D9EBFA4E977435A5E2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>957DAB2E84DA837D816E10B7F2168FFA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A7720CA87D215D77E773F41BA3DBA02</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7817E949FDD5D397FC47EF0FB71E79B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BC38F5CD013E310A12774E01E0FF360A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CA14DFD3139B3DA7D4362954FF96BD73</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D1D591560D611F1585C0AB22564D6075</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E424F77DADF0C2922013A398A0C86BC0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E4BA1B5002D46685ACD5DE3B484BA56E</key>
 		<dict>
 			<key>primary</key>
@@ -192,7 +300,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>F22F9EDC713D96D2A63626B2E21377EA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F9256A664003D4BEDF4F6BCB2151CFAA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FAC8F64BCE0AB89D42E87EA3852359EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -9,17 +9,36 @@
 import Foundation
 import AssetsLibrary
 import MobileCoreServices
+
+enum UserType: Int {
+	case CCLionVip = 1
+	case NonVip = 0
+}
+
 class Util {
 	static let LOINGED_USER_KEY = "loginedUser"
 	static let ORIGINAL_MAX_WIDTH: CGFloat = 640.0
 	static let COMPANY_MAX_PHOTO_COUNT = 5
 	static let MAP_LIMIT_LENGTH = 20000 // 周边公司的距离
+	static let FLURRY_API_KEY = "59GB5JNP8FSS3ZHGMW8D " // Flurry 统计Key
+	static let MOB_API_KEY = "572ee078e0f55a962d000682" // MOB 统计Key
 	static let INDUSTRY = [
 		"互联网", "教育", "房地产", "餐饮", "金融", "汽车", "快消", "其他"
 	]
 
 	static let SEX = [
 		"女", "男"
+	]
+
+	static let SETTING1 = [
+	]
+
+	static let SETTING2 = [
+		"退出登录"
+	]
+
+	static let SETTING_ARRAY = [
+		Util.SETTING1, Util.SETTING2
 	]
 
 	/**
@@ -81,6 +100,23 @@ class Util {
 	static func insertUser(user: User) {
 		let data = NSKeyedArchiver.archivedDataWithRootObject(user)
 		NSUserDefaults.standardUserDefaults().setObject(data, forKey: LOINGED_USER_KEY)
+	}
+
+	/**
+	 登出
+	 */
+	static func loginOut() {
+		// 清空登录的用户信息
+		clearLoginedUser()
+	}
+
+	static func hasUserCompletedInfo() -> Bool {
+		let user = Util.getLoginedUser()
+		if user?.name != nil {
+			return true
+		}
+
+		return false
 	}
 
 	/**

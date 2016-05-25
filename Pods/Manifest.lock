@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.3.1)
+  - Alamofire (3.4.0)
   - AMap2DMap (3.3.0)
   - AMapLocation (1.2.2)
   - AMapSearch (3.3.0)
@@ -11,17 +11,24 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.2.0):
     - CocoaLumberjack/Default
+  - Crashlytics (3.7.0):
+    - Fabric (~> 1.6.3)
   - Eureka (1.5.0)
+  - Fabric (1.6.7)
   - IQKeyboardManagerSwift (4.0.0)
   - JFImagePicker (1.0.0)
   - MJRefresh (3.1.0)
+  - MOBFoundation_IDFA (1.5.1)
   - NSObject-SafeExpectations (0.0.2)
+  - pop (1.0.9)
   - SDCycleScrollView (1.64):
     - SDWebImage (~> 3.7)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
   - SlideMenuControllerSwift (2.1.1)
+  - SMSSDK (2.0.4)
+  - SnapKit (0.15.0)
   - SVProgressHUD (2.0.3)
   - SwiftyDrop (2.4.1)
   - SwiftyJSON (2.3.2)
@@ -39,13 +46,19 @@ DEPENDENCIES:
   - AMap2DMap
   - AMapLocation
   - AMapSearch
+  - Crashlytics
   - Eureka (~> 1.5)
+  - Fabric
   - IQKeyboardManagerSwift
   - JFImagePicker
   - MJRefresh
+  - MOBFoundation_IDFA
+  - pop (~> 1.0)
   - SDCycleScrollView (~> 1.64)
   - SDWebImage (~> 3.7)
   - SlideMenuControllerSwift
+  - SMSSDK
+  - SnapKit (~> 0.15.0)
   - SVProgressHUD
   - SwiftyDrop (~> 2.0)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
@@ -61,19 +74,25 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   AMap2DMap: e53461cdc345375e514579db17dbd721ff9ed9eb
   AMapLocation: 5412fbf0385716d4d481e39a95929057cddc093f
   AMapSearch: cff4faf59c007f7d1f2bae2d7170c3912783981a
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
+  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   Eureka: 2fb37bb50569c62ee3284689d5b7aca694b040e0
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   IQKeyboardManagerSwift: ede2a27b4e1ce053d03073b9c7fa439322f5e405
   JFImagePicker: 2914c69dac80767a98664e768ac50118664e9f04
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  MOBFoundation_IDFA: f5d3d1f89166f60c6985e34b7d90e6fb5d58fb61
   NSObject-SafeExpectations: 7d7f48df90df4e11da7cfe86b64f45eff7a7f521
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SDCycleScrollView: 806fedb9342ab03b58b84442f985517b42c7cbb7
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SlideMenuControllerSwift: 82ada9b04e03538c84d034cf1c09e5849c0113f7
+  SMSSDK: 642b6a8c55fd382be44487cd5e0b0710681895f9
+  SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SwiftyDrop: 54a30c4edd51be9863429c3ad2ad4108eb7b7814
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
