@@ -194,11 +194,11 @@ class AddCompanyViewController: UIViewController {
 		}
 	}
 
-    /**
-     上传公司logo
-     
-     - parameter photoAddress: 公司展示照片地址
-     */
+	/**
+	 上传公司logo
+
+	 - parameter photoAddress: 公司展示照片地址
+	 */
 	func uploadCompanyLogo(photoAddress: String) -> Void {
 		Alamofire.upload(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_ACCEPT_COMPANY_IMAGE_iOS.rawValue, data: UIImageJPEGRepresentation(self.selectedLogoImage!, 0.5)!)
 			.responseJSON { (response) in

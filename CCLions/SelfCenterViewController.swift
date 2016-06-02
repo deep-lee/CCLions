@@ -34,9 +34,10 @@ class SelfCenterViewController: UIViewController {
 		}
 		self.nameLabel.text = self.user.name
 
-		// 判断当前用户的类型，如果当前不是狮子会会员，就不显示公司信息
+		// 判断当前用户的类型，如果当前不是狮子会会员，就不显示公司信息，显示身份认证状态
 		if user.user_type == UserType.NonVip.rawValue {
 			self.dataArray.removeLast()
+			self.dataArray.append("身份认证")
 		}
 	}
 
@@ -118,6 +119,34 @@ class SelfCenterViewController: UIViewController {
 		companyInfoViewController.company = company
 		self.navigationController?.pushViewController(companyInfoViewController, animated: true)
 	}
+
+	/**
+	 获取当前用户的身份认证状态
+
+	 - returns: <#return value description#>
+	 */
+	func getUserAuthenticationType() -> String {
+		var status: String!
+		switch user.authentication_status {
+		case UserAuthenticationStatus.NotAuthentication.rawValue:
+			status = "未认证"
+		case UserAuthenticationStatus.InAuthentication.rawValue:
+			status = "认证中"
+		case UserAuthenticationStatus.FailAuthentication.rawValue:
+			status = "认证失败"
+		case UserAuthenticationStatus.SuccessAuthentication.rawValue:
+			status = "已通过认证"
+		default:
+			status = "Error"
+		}
+		return status
+	}
+
+	func goToAuthenVC() -> Void {
+		let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AuthenticationVC")
+		vc?.title = "身份认证"
+		self.navigationController?.pushViewController(vc!, animated: true)
+	}
 }
 
 extension SelfCenterViewController: UITabBarDelegate, UITableViewDataSource {
@@ -129,6 +158,10 @@ extension SelfCenterViewController: UITabBarDelegate, UITableViewDataSource {
 		let cell = tableView.dequeueReusableCellWithIdentifier("SelfCenterCell", forIndexPath: indexPath)
 
 		cell.textLabel?.text = dataArray[indexPath.row]
+		if indexPath.row == 1 && user.user_type == UserType.NonVip.rawValue {
+			cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+			cell.detailTextLabel?.text = self.getUserAuthenticationType()
+		}
 
 		return cell
 	}
@@ -138,7 +171,11 @@ extension SelfCenterViewController: UITabBarDelegate, UITableViewDataSource {
 		case 0:
 			self.goToEditSelfProfileViewController()
 		case 1:
-			self.checkCompanyInfo()
+			if user.user_type == UserType.CCLionVip.rawValue {
+				self.checkCompanyInfo()
+			} else {
+				self.goToAuthenVC()
+			}
 		default:
 			return
 		}

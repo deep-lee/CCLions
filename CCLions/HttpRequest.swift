@@ -15,7 +15,7 @@ enum RequestAddress: String {
 	case HTTP_UPLOAD_HEADER_IMAGE = "accept_image_iOS.php"
 	case HTTP_COMPLETE_USER_INFO = "complete_user_info.php"
 	case HTTP_GET_COMPANY_OF_USER = "company_of_user.php"
-	case HTTP_UPLOAD_COMPANY_SHOW_IMAGE = "accept_multi_image.php"
+	case HTTP_UPLOAD_COMPANY_SHOW_IMAGE = "accept_multi_company_image.php"
 	case HTTP_ADD_COMPANY = "add_company.php"
 	case HTTP_CHECK_WHETHER_HAS_CAMPANY = "check_user_wether_has_company.php"
 	case HTTP_UPDATE_COMPANY_INFO = "update_company_info.php"
@@ -32,6 +32,7 @@ enum RequestAddress: String {
 	case HTTP_SEARCH_PROJECT = "search_project.php"
 	case HTTP_ADD_FAV = "add_fav.php"
 	case HTTP_GET_USER_INFO_WITH_ID = "get_user_info_with_id.php"
+	case HTTP_UPLOAD_MULTI_AUTHENTICATION_IMAGES = "accept_multi_authentication_image.php"
 }
 
 class HttpRequest {

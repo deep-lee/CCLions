@@ -15,6 +15,7 @@
 		14015FC11CB53D08004B5F59 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14015FC01CB53D08004B5F59 /* QuartzCore.framework */; };
 		14015FC31CB53D13004B5F59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14015FC21CB53D13004B5F59 /* UIKit.framework */; };
 		14015FCB1CB5405A004B5F59 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14015FCA1CB5405A004B5F59 /* CoreText.framework */; };
+		14027CC41CFDF1FC0095D974 /* Marco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14027CC31CFDF1FC0095D974 /* Marco.swift */; };
 		1414AB1A1CE2EE49000A4620 /* bg-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 147D63B41CE2364F00543692 /* bg-video.mp4 */; };
 		1414AB1C1CE2F6DF000A4620 /* bg-video.mp4 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 147D63B41CE2364F00543692 /* bg-video.mp4 */; };
 		142578121CD0A5810007EA43 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142578111CD0A5810007EA43 /* SearchCollectionViewCell.swift */; };
@@ -32,6 +33,9 @@
 		14385C7F1CDF07D700A2D229 /* libFlurry_7.6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14385C7C1CDF07D700A2D229 /* libFlurry_7.6.0.a */; };
 		14385C821CDF0EEC00A2D229 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14385C811CDF0EEC00A2D229 /* Statistics.swift */; };
 		14385C851CDF0FD200A2D229 /* NSObject+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14385C841CDF0FD200A2D229 /* NSObject+Statistics.swift */; };
+		143B79381D007D8000920D06 /* AuthenticationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143B79371D007D8000920D06 /* AuthenticationModel.swift */; };
+		1449FCCF1CFF18B200A85FC2 /* AuthenticationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1449FCCE1CFF18B200A85FC2 /* AuthenticationVC.swift */; };
+		1449FCD41CFF202400A85FC2 /* AuthenticationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */; };
 		1476C6561CCFCBCA00BE6E64 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1476C6541CCFCBCA00BE6E64 /* HeaderView.swift */; };
 		1476C6571CCFCBCA00BE6E64 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1476C6551CCFCBCA00BE6E64 /* HeaderView.xib */; };
 		14789FD21CE2FBB700F47941 /* VipLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14789FD11CE2FBB700F47941 /* VipLoginView.swift */; };
@@ -180,6 +184,7 @@
 		14015FC61CB53E7C004B5F59 /* WordPressShared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WordPressShared.framework; path = "Pods/../build/Debug-iphoneos/WordPressShared.framework"; sourceTree = "<group>"; };
 		14015FC81CB53E81004B5F59 /* WordPressComAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WordPressComAnalytics.framework; path = "Pods/../build/Debug-iphoneos/WordPressComAnalytics.framework"; sourceTree = "<group>"; };
 		14015FCA1CB5405A004B5F59 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		14027CC31CFDF1FC0095D974 /* Marco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marco.swift; sourceTree = "<group>"; };
 		1403AA431C720A8600781580 /* CCLions-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCLions-Bridging-Header.h"; sourceTree = "<group>"; };
 		142578111CD0A5810007EA43 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		142578131CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCompanyLogoViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +203,9 @@
 		14385C7C1CDF07D700A2D229 /* libFlurry_7.6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.6.0.a; sourceTree = "<group>"; };
 		14385C811CDF0EEC00A2D229 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		14385C841CDF0FD200A2D229 /* NSObject+Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Statistics.swift"; sourceTree = "<group>"; };
+		143B79371D007D8000920D06 /* AuthenticationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationModel.swift; sourceTree = "<group>"; };
+		1449FCCE1CFF18B200A85FC2 /* AuthenticationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationVC.swift; sourceTree = "<group>"; };
+		1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationTableViewCell.swift; sourceTree = "<group>"; };
 		1476C6541CCFCBCA00BE6E64 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		1476C6551CCFCBCA00BE6E64 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		14789FD11CE2FBB700F47941 /* VipLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VipLoginView.swift; sourceTree = "<group>"; };
@@ -413,6 +421,44 @@
 				14385C841CDF0FD200A2D229 /* NSObject+Statistics.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		1449FCD01CFF1C0700A85FC2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				14EA0A521CCB34D000169116 /* EditSelectDataViewController.swift */,
+				14015FB71CB508D8004B5F59 /* CompanyInfoViewController.swift */,
+				14EA0A541CCB3D7900169116 /* EditTextViewViewController.swift */,
+				14015FB41CB4EA2B004B5F59 /* EditSelfProfileViewController.swift */,
+				14DCF0901CCA7F38001F2FE4 /* EditTextFieldViewController.swift */,
+				7C30AB1F1CC8A643002A7C3C /* EditCompanyIntroViewController.swift */,
+				1426B95D1CB416B00099ED69 /* SelfCenterViewController.swift */,
+				14DCF08E1CCA707B001F2FE4 /* AddCompanyViewController.swift */,
+				14BED0061CCB519B00091572 /* SelectMultiPhotoCollectionViewController.swift */,
+				14F539F81CCBD03000B319AC /* ShowImageViewController.swift */,
+				7C4287721CCC67FB00456E0E /* PickPositionOnMapViewController.swift */,
+				1426FA9D1CCD3090009FFC11 /* UpdateCompanyPhotoViewController.swift */,
+				1426FA9F1CCD35D3009FFC11 /* UpdateShowImageViewController.swift */,
+				142578131CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift */,
+				1449FCCE1CFF18B200A85FC2 /* AuthenticationVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		1449FCD11CFF1C4F00A85FC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1449FCD21CFF1C5400A85FC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				143B79371D007D8000920D06 /* AuthenticationModel.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		145664001CE399420077225C /* Model */ = {
@@ -714,21 +760,10 @@
 		7C06B8B41CB8A58000752A4B /* SelfCenter */ = {
 			isa = PBXGroup;
 			children = (
+				1449FCD21CFF1C5400A85FC2 /* Model */,
+				1449FCD11CFF1C4F00A85FC2 /* View */,
+				1449FCD01CFF1C0700A85FC2 /* Controller */,
 				14BED0031CCB50CF00091572 /* CustomeCollectionViewCell */,
-				14EA0A521CCB34D000169116 /* EditSelectDataViewController.swift */,
-				14015FB71CB508D8004B5F59 /* CompanyInfoViewController.swift */,
-				14EA0A541CCB3D7900169116 /* EditTextViewViewController.swift */,
-				14015FB41CB4EA2B004B5F59 /* EditSelfProfileViewController.swift */,
-				14DCF0901CCA7F38001F2FE4 /* EditTextFieldViewController.swift */,
-				7C30AB1F1CC8A643002A7C3C /* EditCompanyIntroViewController.swift */,
-				1426B95D1CB416B00099ED69 /* SelfCenterViewController.swift */,
-				14DCF08E1CCA707B001F2FE4 /* AddCompanyViewController.swift */,
-				14BED0061CCB519B00091572 /* SelectMultiPhotoCollectionViewController.swift */,
-				14F539F81CCBD03000B319AC /* ShowImageViewController.swift */,
-				7C4287721CCC67FB00456E0E /* PickPositionOnMapViewController.swift */,
-				1426FA9D1CCD3090009FFC11 /* UpdateCompanyPhotoViewController.swift */,
-				1426FA9F1CCD35D3009FFC11 /* UpdateShowImageViewController.swift */,
-				142578131CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift */,
 			);
 			name = SelfCenter;
 			sourceTree = "<group>";
@@ -789,6 +824,7 @@
 				7C4F33AF1CB963BC00892398 /* Tips.swift */,
 				14385C811CDF0EEC00A2D229 /* Statistics.swift */,
 				14789FDD1CE37F7800F47941 /* NetworkUtil.swift */,
+				14027CC31CFDF1FC0095D974 /* Marco.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1085,6 +1121,7 @@
 			files = (
 				14BECFEE1CCB4E1D00091572 /* ZZPhotoDatas.m in Sources */,
 				7CD1EC661CE48940001FB823 /* MainVCModel.swift in Sources */,
+				14027CC41CFDF1FC0095D974 /* Marco.swift in Sources */,
 				14EF2A131CD5F5F5008C521B /* SearchResultViewController.swift in Sources */,
 				14BED0071CCB519B00091572 /* SelectMultiPhotoCollectionViewController.swift in Sources */,
 				147D63A91CE2332900543692 /* LoginView.swift in Sources */,
@@ -1097,6 +1134,7 @@
 				14789FD81CE3111B00F47941 /* NonVipLoginView.swift in Sources */,
 				7C1D31061CBAAB7800BE0F56 /* Project.swift in Sources */,
 				7C4287731CCC67FB00456E0E /* PickPositionOnMapViewController.swift in Sources */,
+				143B79381D007D8000920D06 /* AuthenticationModel.swift in Sources */,
 				14EF2A181CD641A0008C521B /* SearchProjectViewController.swift in Sources */,
 				7C30AB201CC8A643002A7C3C /* EditCompanyIntroViewController.swift in Sources */,
 				14BECFE61CCB4E1D00091572 /* ZZCameraController.m in Sources */,
@@ -1112,6 +1150,7 @@
 				14BECFEC1CCB4E1D00091572 /* ZZCameraFlashState.m in Sources */,
 				7C4F33AE1CB9607300892398 /* HttpRequest.swift in Sources */,
 				14789FDE1CE37F7800F47941 /* NetworkUtil.swift in Sources */,
+				1449FCD41CFF202400A85FC2 /* AuthenticationTableViewCell.swift in Sources */,
 				142578141CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift in Sources */,
 				7C78D9431CB8CC29002122A1 /* CompanyMapViewController.swift in Sources */,
 				1426B95A1CB38A6D0099ED69 /* String.swift in Sources */,
@@ -1156,6 +1195,7 @@
 				14F539F91CCBD03000B319AC /* ShowImageViewController.swift in Sources */,
 				1476C6561CCFCBCA00BE6E64 /* HeaderView.swift in Sources */,
 				14BECFE71CCB4E1D00091572 /* ZZCameraPickerViewController.m in Sources */,
+				1449FCCF1CFF18B200A85FC2 /* AuthenticationVC.swift in Sources */,
 				14EF2A161CD63159008C521B /* SearhView.swift in Sources */,
 				14BED0011CCB4E1D00091572 /* ZZPhotoListCell.m in Sources */,
 				14DCF08F1CCA707B001F2FE4 /* AddCompanyViewController.swift in Sources */,

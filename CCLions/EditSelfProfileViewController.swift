@@ -47,7 +47,11 @@ class EditSelfProfileViewController: UIViewController {
 		dataArray.append(("性别", user.sex == 1 ? "男" : "女"))
 		dataArray.append(("地址", user.address))
 		dataArray.append(("联系方式", user.contact))
-		dataArray.append(("所属服务队", user.service_team))
+
+		// 如果不是狮子会会员的话就需要填写所属服务队
+		if user.user_type == UserType.CCLionVip.rawValue {
+			dataArray.append(("所属服务队", user.service_team))
+		}
 
 		self.headerImageView.sd_setImageWithURL(NSURL(string: self.user.header)) { (image, error, cacheType, url) in
 			if (image != nil) {
@@ -187,7 +191,7 @@ class EditSelfProfileViewController: UIViewController {
 			"sex": self.selectSex,
 			"address": self.dataArray[2].1,
 			"contact": self.dataArray[3].1,
-			"service_team": self.dataArray[4].1
+			"service_team": self.user.user_type == UserType.NonVip.rawValue ? "" : self.dataArray[4].1
 		]
 
 		print(paras)
@@ -201,7 +205,19 @@ class EditSelfProfileViewController: UIViewController {
 					if code == 200 {
 						// 更新成功
 						let data = json["data"]
-						let user = User(id: data["id"].intValue, username: data["username"].stringValue, password: data["password"].stringValue, header: data["header"].stringValue, name: data["name"].stringValue, sex: data["sex"].intValue, address: data["address"].stringValue, contact: data["contact"].stringValue, user_type: data["user_type"].intValue, service_team: data["service_team"].stringValue, update_time: data["update_time"].stringValue)
+						let user = User(
+							id: data["id"].intValue,
+							username: data["username"].stringValue,
+							password: data["password"].stringValue,
+							header: data["header"].stringValue,
+							name: data["name"].stringValue,
+							sex: data["sex"].intValue,
+							address: data["address"].stringValue,
+							contact: data["contact"].stringValue,
+							user_type: data["user_type"].intValue,
+							service_team: data["service_team"].stringValue,
+							authentication_status: data["authentication_status"].intValue,
+							update_time: data["update_time"].stringValue)
 
 						// 存储登录用户的信息
 						Util.updateUser(user)

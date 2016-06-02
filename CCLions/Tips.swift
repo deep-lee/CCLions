@@ -59,4 +59,5 @@ class Tips {
 	static let REGISTING = "正在注册..."
 	static let REFRESH_MAIN_PROJECT_FAIL = "刷新失败，请重试"
 	static let USER_NOT_LOGINED = "请先登录后再点赞"
+	static let UPLOAD_IMAGE_FAIL = "上传图片失败"
 }

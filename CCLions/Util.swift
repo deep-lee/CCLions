@@ -10,11 +10,6 @@ import Foundation
 import AssetsLibrary
 import MobileCoreServices
 
-enum UserType: Int {
-	case CCLionVip = 1
-	case NonVip = 0
-}
-
 class Util {
 	static let LOINGED_USER_KEY = "loginedUser"
 	static let ORIGINAL_MAX_WIDTH: CGFloat = 640.0

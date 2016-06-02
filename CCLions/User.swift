@@ -19,20 +19,25 @@ class User: NSObject, NSCoding {
 	var contact: String!
 	var user_type: Int!
 	var service_team: String!
+	var authentication_status: Int! // 认证状态
 	var update_time: String!
 
-	init(id: Int, username: String, password: String, header: String, name: String, sex: Int, address: String, contact: String, user_type: Int, service_team: String, update_time: String) {
-		self.id = id
-		self.username = username
-		self.password = password
-		self.header = header
-		self.name = name
-		self.sex = sex
-		self.address = address
-		self.contact = contact
-		self.user_type = user_type
-		self.service_team = service_team
-		self.update_time = update_time
+	init(id: Int, username: String, password: String,
+		header: String, name: String, sex: Int,
+		address: String, contact: String, user_type: Int,
+		service_team: String, authentication_status: Int, update_time: String) {
+			self.id = id
+			self.username = username
+			self.password = password
+			self.header = header
+			self.name = name
+			self.sex = sex
+			self.address = address
+			self.contact = contact
+			self.user_type = user_type
+			self.service_team = service_team
+			self.authentication_status = authentication_status
+			self.update_time = update_time
 	}
 
 	func encodeWithCoder(aCoder: NSCoder) {
@@ -46,6 +51,7 @@ class User: NSObject, NSCoding {
 		aCoder.encodeObject(self.contact, forKey: "contact")
 		aCoder.encodeObject(self.user_type, forKey: "user_type")
 		aCoder.encodeObject(self.service_team, forKey: "service_team")
+		aCoder.encodeObject(self.authentication_status, forKey: "authentication_status")
 		aCoder.encodeObject(self.update_time, forKey: "update_time")
 	}
 
@@ -61,6 +67,7 @@ class User: NSObject, NSCoding {
 		self.contact = aDecoder.decodeObjectForKey("contact") as! String
 		self.user_type = aDecoder.decodeObjectForKey("user_type") as! Int
 		self.service_team = aDecoder.decodeObjectForKey("service_team") as! String
+		self.authentication_status = aDecoder.decodeObjectForKey("authentication_status") as! Int
 		self.update_time = aDecoder.decodeObjectForKey("update_time") as! String
 
 	}

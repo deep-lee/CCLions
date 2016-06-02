@@ -125,7 +125,18 @@ class LoginModel: SuperModel {
 			case NetworkResponseState.SUCCESS.rawValue:
 				let dataString = response.objectForKey(NETWORK_SUCCESS_DATA) as! [String: AnyObject]
 				let data = JSON(dataString)
-				let user = User(id: data["id"].intValue, username: data["username"].stringValue, password: data["password"].stringValue, header: data["header"].stringValue, name: data["name"].stringValue, sex: data["sex"].intValue, address: data["address"].stringValue, contact: data["contact"].stringValue, user_type: data["user_type"].intValue, service_team: data["service_team"].stringValue, update_time: data["update_time"].stringValue)
+				let user = User(id: data["id"].intValue,
+					username: data["username"].stringValue,
+					password: data["password"].stringValue,
+					header: data["header"].stringValue,
+					name: data["name"].stringValue,
+					sex: data["sex"].intValue,
+					address: data["address"].stringValue,
+					contact: data["contact"].stringValue,
+					user_type: data["user_type"].intValue,
+					service_team: data["service_team"].stringValue,
+					authentication_status: data["authentication_status"].intValue,
+					update_time: data["update_time"].stringValue)
 
 				// 存储用户信息
 				Util.updateUser(user)

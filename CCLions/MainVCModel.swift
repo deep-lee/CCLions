@@ -59,7 +59,19 @@ class MainVCModel: SuperModel {
 				if data.count != 0 {
 					self.dataArray.removeAll()
 					for item in data {
-						let project = Project(id: item["id"].intValue, title: item["title"].stringValue, time: item["time"].stringValue, launcher_id: item["launcher_id"].intValue, favorite: item["favorite"].intValue, cover_image: item["cover_image"].stringValue, details_page: item["details_page"].stringValue, create_time: item["create_time"].stringValue, name: item["name"].stringValue)
+						let project = Project(id: item["id"].intValue,
+							title: item["title"].stringValue,
+							time: item["time"].stringValue,
+							launcher_id: item["launcher_id"].intValue,
+							favorite: item["favorite"].intValue,
+							cover_image: item["cover_image"].stringValue,
+							details_page: item["details_page"].stringValue,
+							project_type: item["project_type"].intValue,
+							fundraising_amount: item["fundraising_amount"].intValue,
+							has_raised_amount: item["has_raised_amount"].intValue,
+							withdraw_amount: item["withdraw_amount"].intValue,
+							create_time: item["create_time"].stringValue,
+							name: item["name"].stringValue)
 
 						self.dataArray.append(project)
 					}
@@ -96,7 +108,19 @@ class MainVCModel: SuperModel {
 				let data = JSON(dataString).arrayValue
 				if data.count != 0 {
 					for item in data {
-						let project = Project(id: item["id"].intValue, title: item["title"].stringValue, time: item["time"].stringValue, launcher_id: item["launcher_id"].intValue, favorite: item["favorite"].intValue, cover_image: item["cover_image"].stringValue, details_page: item["details_page"].stringValue, create_time: item["create_time"].stringValue, name: item["name"].stringValue)
+						let project = Project(id: item["id"].intValue,
+							title: item["title"].stringValue,
+							time: item["time"].stringValue,
+							launcher_id: item["launcher_id"].intValue,
+							favorite: item["favorite"].intValue,
+							cover_image: item["cover_image"].stringValue,
+							details_page: item["details_page"].stringValue,
+							project_type: item["project_type"].intValue,
+							fundraising_amount: item["fundraising_amount"].intValue,
+							has_raised_amount: item["has_raised_amount"].intValue,
+							withdraw_amount: item["withdraw_amount"].intValue,
+							create_time: item["create_time"].stringValue,
+							name: item["name"].stringValue)
 
 						self.dataArray.append(project)
 					}
@@ -137,7 +161,19 @@ class MainVCModel: SuperModel {
 				let data = JSON(dataString).arrayValue
 				if data.count != 0 {
 					for item in data {
-						let project = Project(id: item["id"].intValue, title: item["title"].stringValue, time: item["time"].stringValue, launcher_id: item["launcher_id"].intValue, favorite: item["favorite"].intValue, cover_image: item["cover_image"].stringValue, details_page: item["details_page"].stringValue, create_time: item["create_time"].stringValue, name: item["name"].stringValue)
+						let project = Project(id: item["id"].intValue,
+							title: item["title"].stringValue,
+							time: item["time"].stringValue,
+							launcher_id: item["launcher_id"].intValue,
+							favorite: item["favorite"].intValue,
+							cover_image: item["cover_image"].stringValue,
+							details_page: item["details_page"].stringValue,
+							project_type: item["project_type"].intValue,
+							fundraising_amount: item["fundraising_amount"].intValue,
+							has_raised_amount: item["has_raised_amount"].intValue,
+							withdraw_amount: item["withdraw_amount"].intValue,
+							create_time: item["create_time"].stringValue,
+							name: item["name"].stringValue)
 
 						self.searchResult.append(project)
 					}
@@ -202,7 +238,18 @@ class MainVCModel: SuperModel {
 				if state == NetworkResponseState.SUCCESS.rawValue {
 					let dataString = response.objectForKey(NETWORK_SUCCESS_DATA) as! [String: AnyObject]
 					let data = JSON(dataString)
-					let user = User(id: data["id"].intValue, username: data["username"].stringValue, password: data["password"].stringValue, header: data["header"].stringValue, name: data["name"].stringValue, sex: data["sex"].intValue, address: data["address"].stringValue, contact: data["contact"].stringValue, user_type: data["user_type"].intValue, service_team: data["service_team"].stringValue, update_time: data["update_time"].stringValue)
+					let user = User(id: data["id"].intValue,
+						username: data["username"].stringValue,
+						password: data["password"].stringValue,
+						header: data["header"].stringValue,
+						name: data["name"].stringValue,
+						sex: data["sex"].intValue,
+						address: data["address"].stringValue,
+						contact: data["contact"].stringValue,
+						user_type: data["user_type"].intValue,
+						service_team: data["service_team"].stringValue,
+						authentication_status: data["authentication_status"].intValue,
+						update_time: data["update_time"].stringValue)
 
 					// 存储登录用户的信息
 					Util.updateUser(user)
