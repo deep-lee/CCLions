@@ -112,6 +112,7 @@
 		7C1FF88F1CBB3BCA0039AD47 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1FF88E1CBB3BCA0039AD47 /* SDWebImage.framework */; };
 		7C1FF8911CBB59C30039AD47 /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FF8901CBB59C30039AD47 /* ProjectDetailsViewController.swift */; };
 		7C1FF8981CBB98830039AD47 /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FF8971CBB98830039AD47 /* VPImageCropperViewController.m */; };
+		7C2BFB6E1D0174F000524410 /* LaunchActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BFB6D1D0174F000524410 /* LaunchActivityModel.swift */; };
 		7C30AB201CC8A643002A7C3C /* EditCompanyIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30AB1F1CC8A643002A7C3C /* EditCompanyIntroViewController.swift */; };
 		7C4287711CCC607C00456E0E /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C4287701CCC607C00456E0E /* Eureka.framework */; };
 		7C4287731CCC67FB00456E0E /* PickPositionOnMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4287721CCC67FB00456E0E /* PickPositionOnMapViewController.swift */; };
@@ -314,6 +315,7 @@
 		7C1FF8901CBB59C30039AD47 /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
 		7C1FF8961CBB98830039AD47 /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
 		7C1FF8971CBB98830039AD47 /* VPImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPImageCropperViewController.m; sourceTree = "<group>"; };
+		7C2BFB6D1D0174F000524410 /* LaunchActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchActivityModel.swift; sourceTree = "<group>"; };
 		7C30AB1F1CC8A643002A7C3C /* EditCompanyIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCompanyIntroViewController.swift; sourceTree = "<group>"; };
 		7C4287701CCC607C00456E0E /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = "Pods/../build/Debug-iphoneos/Eureka.framework"; sourceTree = "<group>"; };
 		7C4287721CCC67FB00456E0E /* PickPositionOnMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickPositionOnMapViewController.swift; sourceTree = "<group>"; };
@@ -751,8 +753,9 @@
 		7C06B8B31CB8A55900752A4B /* LaunchActivity */ = {
 			isa = PBXGroup;
 			children = (
-				14015FBA1CB539C0004B5F59 /* LaunchActivityFirstViewController.swift */,
-				7C1E25321CCE02350053509C /* MoreInfoActivityViewController.swift */,
+				7C2BFB6C1D0174CA00524410 /* Model */,
+				7C2BFB6B1D0174C500524410 /* View */,
+				7C2BFB6A1D0174B300524410 /* Controller */,
 			);
 			name = LaunchActivity;
 			sourceTree = "<group>";
@@ -803,6 +806,30 @@
 				7C1FF8971CBB98830039AD47 /* VPImageCropperViewController.m */,
 			);
 			name = VPImageCropper;
+			sourceTree = "<group>";
+		};
+		7C2BFB6A1D0174B300524410 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				14015FBA1CB539C0004B5F59 /* LaunchActivityFirstViewController.swift */,
+				7C1E25321CCE02350053509C /* MoreInfoActivityViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		7C2BFB6B1D0174C500524410 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		7C2BFB6C1D0174CA00524410 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7C2BFB6D1D0174F000524410 /* LaunchActivityModel.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		7C4F33A71CB9472400892398 /* LoginAndRegiste */ = {
@@ -976,7 +1003,7 @@
 				TargetAttributes = {
 					14A58A691C6E0F8000EBDB2C = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 2H22YCYVGL;
+						DevelopmentTeam = 7GJNVF855T;
 					};
 					14A58A801C6E0F8000EBDB2C = {
 						CreatedOnToolsVersion = 7.2;
@@ -1129,6 +1156,7 @@
 				7C4F33B01CB963BC00892398 /* Tips.swift in Sources */,
 				14789FDA1CE313F700F47941 /* NonVipRegisterView.swift in Sources */,
 				14BECFFD1CCB4E1D00091572 /* ZZCameraFocusView.m in Sources */,
+				7C2BFB6E1D0174F000524410 /* LaunchActivityModel.swift in Sources */,
 				149791391CA8022D0014D377 /* UIImage+CornerRadius.swift in Sources */,
 				14BECFE81CCB4E1D00091572 /* ZZPhotoController.m in Sources */,
 				14789FD81CE3111B00F47941 /* NonVipLoginView.swift in Sources */,

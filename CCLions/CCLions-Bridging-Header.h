@@ -21,3 +21,4 @@
 #import "Flurry.h"
 #import <pop/POP.h>
 #import <SMS_SDK/SMSSDK.h>
+#import <Crashlytics/Crashlytics.h>

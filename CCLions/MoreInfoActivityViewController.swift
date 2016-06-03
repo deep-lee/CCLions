@@ -13,156 +13,141 @@ import SwiftyJSON
 import Alamofire
 typealias publishActivitySendValue = () -> Void
 class MoreInfoActivityViewController: FormViewController {
-
-	var activityTheme: String!
-	var activityContent: String!
-
-	var imagerow: ImageRow!
-	var dateRow: DateRow!
-	var raiseMoneyRow: IntRow!
-	var myClosure: publishActivitySendValue!
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-
-		// Do any additional setup after loading the view.
-		imagerow = ImageRow() {
-			$0.title = "封面照片"
-			// $0.value = UIImage(named: "icon-default-header")
-		}
-
-		dateRow = DateRow() { $0.value = NSDate(); $0.title = "活动时间" }
-
-		raiseMoneyRow = IntRow() {
-			$0.title = "求助金额"
-			$0.placeholder = "请输入求助金额"
-		}
-
-		form +++
-		Section("")
-		<<< imagerow
-		<<< dateRow
-		+++ Section("求助信息")
-		<<< raiseMoneyRow
-
-		// 以下是非狮子会会员求助需要填写的信息
-		<<< SwitchRow("是否为受助人自行发起") {
-			$0.title = $0.tag
-		}
-
-		<<< TextRow() {
-			$0.title = "受助人身份证号"
-			$0.placeholder = "请输入受助人身份证号"
-			$0.hidden = .Function(["是否为受助人自行发起"], { form -> Bool in
-				let row: RowOf<Bool>! = form.rowByTag("是否为受助人自行发起")
-				return row.value ?? false == false
-			})
-		}
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
-	@IBAction func launch(sender: AnyObject) {
-		// 首先判断资料是否填写完整
-		if !checkCompleted() {
-			Drop.down(Tips.USER_INFO_NOT_COMPLETED, state: DropState.Warning)
-			return
-		}
-
-		self.uploadCoverImage()
-	}
-
-	/**
-	 上传封面照片
-	 */
-	func uploadCoverImage() -> Void {
-		SVProgressHUD.showWithStatus(Tips.ADDING_ACTIVITY)
-		Alamofire.upload(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_ACCEPT_ACTIVITY_IMAGE.rawValue, data: UIImageJPEGRepresentation(self.imagerow.value! as UIImage, 0.5)!)
-			.responseJSON(completionHandler: { (response) in
-				if let value = response.result.value {
-
-					print(value)
-					// 解析JSON
-					let json = JSON(value)
-					let code = json["code"].intValue
-					if code == 200 { // 上传成功
-						let data = json["data"].stringValue
-						// 更新资料
-						self.requestAddActivity(HttpRequest.HTTP_ADDRESS + data)
-					} else { // 上传失败
-						Drop.down(Tips.ADD_ACTIVITY_FAIL, state: DropState.Error)
-						SVProgressHUD.dismiss()
-					}
-				} else { // 返回为空，说明网络连接失败
-					Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
-					SVProgressHUD.dismiss()
-				}
-		})
-	}
-
-	func setClosure(closure: publishActivitySendValue) -> Void {
-		self.myClosure = closure
-	}
-
-	/**
-	 请求发起新的活动
-	 */
-	func requestAddActivity(coverImageAddress: String) -> Void {
-		let paras: [String: AnyObject] = [
-			"title": self.activityTheme,
-			"time": (self.dateRow.cell.detailTextLabel?.text)!,
-			"launcher_id": (Util.getLoginedUser()?.id)!,
-			"cover_image": coverImageAddress,
-			"details_page": activityContent
-		]
-
-		Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_ADD_ACTIVITY.rawValue, parameters: paras)
-			.responseJSON { (response) in
-				if let value = response.result.value {
-					let json = JSON(value)
-					let code = json["code"].intValue
-					if code == 200 {
-						// 发起成功
-						Drop.down(Tips.ADD_ACTIVITY_SUCCESS, state: DropState.Success)
-						if (self.myClosure != nil) {
-							self.myClosure()
-						}
-						self.navigationController?.popToRootViewControllerAnimated(true)
-					} else {
-						// 发起失败
-						Drop.down(Tips.ADD_ACTIVITY_FAIL, state: DropState.Error)
-					}
-				} else {
-					Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
-				}
-
-				SVProgressHUD.dismiss()
-		}
-	}
-
-	/**
-	 检查资料是否填写完整
-
-	 - returns:
-	 */
-	func checkCompleted() -> Bool {
-		if self.imagerow.value != nil && self.dateRow.cell.detailTextLabel?.text != nil {
-			return true
-		}
-
-		return false
-	}
-	/*
-	 // MARK: - Navigation
-
-	 // In a storyboard-based application, you will often want to do a little preparation before navigation
-	 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-	 // Get the new view controller using segue.destinationViewController.
-	 // Pass the selected object to the new view controller.
-	 }
-	 */
-
+    
+    var activityTheme: String!
+    var activityContent: String!
+    
+    var imagerow: ImageRow!
+    var dateRow: DateRow!
+    var raiseMoneyRow: IntRow!
+    var myClosure: publishActivitySendValue!
+    var switchRow: SwitchRow!
+    var idNumRow: TextRow!
+    var idCardImageRow: ImageRow!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        imagerow = ImageRow() {
+            $0.title = "封面照片"
+            // $0.value = UIImage(named: "icon-default-header")
+        }
+        
+        dateRow = DateRow() { $0.value = NSDate(); $0.title = "活动时间" }
+        
+        raiseMoneyRow = IntRow() {
+            $0.title = "求助金额"
+            $0.placeholder = "请输入求助金额"
+        }
+        
+        switchRow = SwitchRow("是否为他人自行发起") {
+            $0.title = $0.tag
+        }
+        
+        idNumRow = TextRow() {
+            $0.title = "受助人身份证号"
+            $0.placeholder = "请输入受助人身份证号"
+            $0.hidden = .Function(["是否为他人自行发起"], { form -> Bool in
+                let row: RowOf<Bool>! = form.rowByTag("是否为他人自行发起")
+                return row.value ?? false == false
+            })
+        }
+        
+        idCardImageRow = ImageRow() {
+            $0.title = "受助人身份证照片"
+            $0.hidden = .Function(["是否为他人自行发起"], { form -> Bool in
+                let row: RowOf<Bool>! = form.rowByTag("是否为他人自行发起")
+                return row.value ?? false == false
+            })
+        }
+        
+        form +++
+            Section("受助人信息")
+            <<< imagerow
+            <<< dateRow
+            +++ Section("求助信息")
+            <<< raiseMoneyRow
+            
+            // 以下是非狮子会会员求助需要填写的信息
+            <<< switchRow
+            <<< idNumRow
+            <<< idCardImageRow
+        
+        self.initNoti()
+    }
+    
+    /**
+     初始化model通知
+     */
+    func initNoti() -> Void {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MoreInfoActivityViewController.addActivitySuccessCallBack(_:)), name: ADD_ACTIVITY_SUCCESS, object: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    /**
+     发布活动成功通知回调
+     
+     - parameter noti: 通知
+     */
+    func addActivitySuccessCallBack(noti: NSNotification) -> Void {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    @IBAction func launch(sender: AnyObject) {
+        // 首先判断资料是否填写完整
+        if !checkCompleted() {
+            Drop.down(Tips.USER_INFO_NOT_COMPLETED, state: DropState.Warning)
+            return
+        }
+        
+        // self.uploadCoverImage()
+        // 设置参数
+        let format = NSDateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        let dic = NSMutableDictionary()
+        dic.setValue(activityTheme, forKey: "title")
+        dic.setValue(format.stringFromDate(dateRow.value!), forKey: "time")
+        dic.setValue(Util.getLoginedUser()?.id, forKey: "launcher_id")
+        dic.setValue(activityContent, forKey: "details_page")
+        dic.setValue(Util.getLoginedUser()?.user_type == UserType.CCLionVip.rawValue ? 1 : 0, forKey: "project_type")
+        dic.setValue(raiseMoneyRow.value, forKey: "fundraising_amount")
+        dic.setValue((switchRow.value == nil || switchRow.value == false) ? 0 : 1, forKey: "apply_for_other")
+        dic.setValue(idNumRow.value, forKey: "aided_person_id_num")
+        if switchRow.value == nil || switchRow.value == false {
+            // 未自己发布
+            dic.setValue("", forKey: "aided_person_id_card_photo")
+            dic.setValue("", forKey: "aided_person_id_num")
+        } else {
+            // 为别人发布
+            dic.setValue(idNumRow.value, forKey: "aided_person_id_num")
+        }
+        
+        LaunchActivityModel.shareInstance().uploadCoverImage(dic, coverImage: imagerow.value!, idCardImage: idCardImageRow.value)
+    }
+    
+    func setClosure(closure: publishActivitySendValue) -> Void {
+        self.myClosure = closure
+    }
+    
+    /**
+     检查资料是否填写完整
+     
+     - returns:
+     */
+    func checkCompleted() -> Bool {
+        print(switchRow.value)
+        if self.imagerow.value != nil
+            && self.dateRow.cell.detailTextLabel?.text != nil
+            && raiseMoneyRow.value != nil
+            && (switchRow.value == nil || switchRow.value == false) ? (true) : (idNumRow.value != nil && idCardImageRow.value != nil) {
+            return true
+        }
+        return false
+    }
 }

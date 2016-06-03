@@ -878,6 +878,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="headerImageView" destination="jAp-tS-TGQ" id="4LC-BM-tz9"/>
+                        <outlet property="mTableView" destination="Asx-s8-oou" id="GNX-xg-iSb"/>
                         <outlet property="nameLabel" destination="WMf-XF-4co" id="9Wr-Nk-Ny8"/>
                     </connections>
                 </viewController>
