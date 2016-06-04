@@ -714,6 +714,24 @@
             </objects>
             <point key="canvasLocation" x="1880" y="231"/>
         </scene>
+        <!--More Project DetailsVC-->
+        <scene sceneID="Ia3-q8-WJS">
+            <objects>
+                <viewController storyboardIdentifier="MoreProjectDetailsVC" id="1Zs-wB-es1" customClass="MoreProjectDetailsVC" customModule="CCLions" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mOS-Ok-aTj"/>
+                        <viewControllerLayoutGuide type="bottom" id="8iC-rO-Pz8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wA2-aE-AJI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w7I-GG-ze7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2547" y="231"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="KbI-6S-KBZ">
             <objects>

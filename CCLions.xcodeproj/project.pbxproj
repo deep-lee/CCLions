@@ -57,6 +57,9 @@
 		14A58A7B1C6E0F8000EBDB2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A58A791C6E0F8000EBDB2C /* LaunchScreen.storyboard */; };
 		14A58A861C6E0F8000EBDB2C /* CCLionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A58A851C6E0F8000EBDB2C /* CCLionsTests.swift */; };
 		14A58A911C6E0F8000EBDB2C /* CCLionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A58A901C6E0F8000EBDB2C /* CCLionsUITests.swift */; };
+		14B3F6CF1D01D459007B9031 /* MoreProjectDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B3F6CE1D01D459007B9031 /* MoreProjectDetailsVC.swift */; };
+		14B3F6FD1D01E611007B9031 /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B3F6FA1D01E611007B9031 /* CircleProgressView.m */; };
+		14B3F6FE1D01E611007B9031 /* CircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B3F6FC1D01E611007B9031 /* CircleShapeLayer.m */; };
 		14BECFE51CCB4E1D00091572 /* ZZBrowserPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BECFB21CCB4E1D00091572 /* ZZBrowserPickerViewController.m */; };
 		14BECFE61CCB4E1D00091572 /* ZZCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BECFB41CCB4E1D00091572 /* ZZCameraController.m */; };
 		14BECFE71CCB4E1D00091572 /* ZZCameraPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BECFB61CCB4E1D00091572 /* ZZCameraPickerViewController.m */; };
@@ -109,6 +112,7 @@
 		7C1D31041CBAAA1200BE0F56 /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1D31031CBAAA1200BE0F56 /* MJRefresh.framework */; };
 		7C1D31061CBAAB7800BE0F56 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1D31051CBAAB7800BE0F56 /* Project.swift */; };
 		7C1E25331CCE02350053509C /* MoreInfoActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E25321CCE02350053509C /* MoreInfoActivityViewController.swift */; };
+		7C1E73441D0273FA00088693 /* MoreProjectDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E73431D0273FA00088693 /* MoreProjectDetailsView.swift */; };
 		7C1FF88F1CBB3BCA0039AD47 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1FF88E1CBB3BCA0039AD47 /* SDWebImage.framework */; };
 		7C1FF8911CBB59C30039AD47 /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FF8901CBB59C30039AD47 /* ProjectDetailsViewController.swift */; };
 		7C1FF8981CBB98830039AD47 /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FF8971CBB98830039AD47 /* VPImageCropperViewController.m */; };
@@ -237,6 +241,11 @@
 		14A58A8C1C6E0F8000EBDB2C /* CCLionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCLionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A58A901C6E0F8000EBDB2C /* CCLionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCLionsUITests.swift; sourceTree = "<group>"; };
 		14A58A921C6E0F8000EBDB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14B3F6CE1D01D459007B9031 /* MoreProjectDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreProjectDetailsVC.swift; sourceTree = "<group>"; };
+		14B3F6F91D01E611007B9031 /* CircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressView.h; sourceTree = "<group>"; };
+		14B3F6FA1D01E611007B9031 /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
+		14B3F6FB1D01E611007B9031 /* CircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleShapeLayer.h; sourceTree = "<group>"; };
+		14B3F6FC1D01E611007B9031 /* CircleShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleShapeLayer.m; sourceTree = "<group>"; };
 		14BECFB11CCB4E1D00091572 /* ZZBrowserPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowserPickerViewController.h; sourceTree = "<group>"; };
 		14BECFB21CCB4E1D00091572 /* ZZBrowserPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowserPickerViewController.m; sourceTree = "<group>"; };
 		14BECFB31CCB4E1D00091572 /* ZZCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraController.h; sourceTree = "<group>"; };
@@ -311,6 +320,7 @@
 		7C1D31031CBAAA1200BE0F56 /* MJRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJRefresh.framework; path = "../../Library/Developer/Xcode/DerivedData/CCLions-gqlpxsukzvzxdbbtdsoufwerpwjt/Build/Products/Debug-iphonesimulator/MJRefresh.framework"; sourceTree = "<group>"; };
 		7C1D31051CBAAB7800BE0F56 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		7C1E25321CCE02350053509C /* MoreInfoActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoActivityViewController.swift; sourceTree = "<group>"; };
+		7C1E73431D0273FA00088693 /* MoreProjectDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreProjectDetailsView.swift; sourceTree = "<group>"; };
 		7C1FF88E1CBB3BCA0039AD47 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../Library/Developer/Xcode/DerivedData/CCLions-gqlpxsukzvzxdbbtdsoufwerpwjt/Build/Products/Debug-iphonesimulator/SDWebImage.framework"; sourceTree = "<group>"; };
 		7C1FF8901CBB59C30039AD47 /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
 		7C1FF8961CBB98830039AD47 /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
@@ -478,6 +488,7 @@
 				14EF2A151CD63159008C521B /* SearhView.swift */,
 				7CD1EC611CE479C6001FB823 /* ActivityShowCell.swift */,
 				7CD1EC631CE47BD9001FB823 /* BottomItemView.swift */,
+				7C1E73431D0273FA00088693 /* MoreProjectDetailsView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -488,6 +499,7 @@
 				14EF2A171CD641A0008C521B /* SearchProjectViewController.swift */,
 				7C1FF8901CBB59C30039AD47 /* ProjectDetailsViewController.swift */,
 				14CCD9721C6F0F7E005AD882 /* MainViewController.swift */,
+				14B3F6CE1D01D459007B9031 /* MoreProjectDetailsVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -626,6 +638,17 @@
 				14A58A921C6E0F8000EBDB2C /* Info.plist */,
 			);
 			path = CCLionsUITests;
+			sourceTree = "<group>";
+		};
+		14B3F6F81D01E611007B9031 /* CircularProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				14B3F6F91D01E611007B9031 /* CircleProgressView.h */,
+				14B3F6FA1D01E611007B9031 /* CircleProgressView.m */,
+				14B3F6FB1D01E611007B9031 /* CircleShapeLayer.h */,
+				14B3F6FC1D01E611007B9031 /* CircleShapeLayer.m */,
+			);
+			path = CircularProgressView;
 			sourceTree = "<group>";
 		};
 		14BECFAF1CCB4E1D00091572 /* ZZPhotoRE */ = {
@@ -792,6 +815,7 @@
 		7C1FF8921CBB838F0039AD47 /* 3th */ = {
 			isa = PBXGroup;
 			children = (
+				14B3F6F81D01E611007B9031 /* CircularProgressView */,
 				14385C781CDF07D700A2D229 /* Flurry */,
 				14BECFAF1CCB4E1D00091572 /* ZZPhotoRE */,
 				7C1FF8951CBB98740039AD47 /* VPImageCropper */,
@@ -1003,7 +1027,7 @@
 				TargetAttributes = {
 					14A58A691C6E0F8000EBDB2C = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 7GJNVF855T;
+						DevelopmentTeam = 2H22YCYVGL;
 					};
 					14A58A801C6E0F8000EBDB2C = {
 						CreatedOnToolsVersion = 7.2;
@@ -1022,6 +1046,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pt,
 			);
 			mainGroup = 14A58A611C6E0F8000EBDB2C;
 			productRefGroup = 14A58A6B1C6E0F8000EBDB2C /* Products */;
@@ -1152,8 +1177,10 @@
 				14EF2A131CD5F5F5008C521B /* SearchResultViewController.swift in Sources */,
 				14BED0071CCB519B00091572 /* SelectMultiPhotoCollectionViewController.swift in Sources */,
 				147D63A91CE2332900543692 /* LoginView.swift in Sources */,
+				14B3F6CF1D01D459007B9031 /* MoreProjectDetailsVC.swift in Sources */,
 				14015FB51CB4EA2B004B5F59 /* EditSelfProfileViewController.swift in Sources */,
 				7C4F33B01CB963BC00892398 /* Tips.swift in Sources */,
+				7C1E73441D0273FA00088693 /* MoreProjectDetailsView.swift in Sources */,
 				14789FDA1CE313F700F47941 /* NonVipRegisterView.swift in Sources */,
 				14BECFFD1CCB4E1D00091572 /* ZZCameraFocusView.m in Sources */,
 				7C2BFB6E1D0174F000524410 /* LaunchActivityModel.swift in Sources */,
@@ -1174,6 +1201,7 @@
 				14F102E21CDE35DD00EEA789 /* SettingTableViewController.swift in Sources */,
 				14385C7E1CDF07D700A2D229 /* FlurryEmpty.m in Sources */,
 				7CD1EC621CE479C6001FB823 /* ActivityShowCell.swift in Sources */,
+				14B3F6FD1D01E611007B9031 /* CircleProgressView.m in Sources */,
 				7C4F33A91CB947E800892398 /* LoginViewController.swift in Sources */,
 				14BECFEC1CCB4E1D00091572 /* ZZCameraFlashState.m in Sources */,
 				7C4F33AE1CB9607300892398 /* HttpRequest.swift in Sources */,
@@ -1227,6 +1255,7 @@
 				14EF2A161CD63159008C521B /* SearhView.swift in Sources */,
 				14BED0011CCB4E1D00091572 /* ZZPhotoListCell.m in Sources */,
 				14DCF08F1CCA707B001F2FE4 /* AddCompanyViewController.swift in Sources */,
+				14B3F6FE1D01E611007B9031 /* CircleShapeLayer.m in Sources */,
 				1426B9501CB381400099ED69 /* SlideViewController.swift in Sources */,
 				1426FAA01CCD35D3009FFC11 /* UpdateShowImageViewController.swift in Sources */,
 				7C451B841CBA236F00490853 /* String+MD5.swift in Sources */,

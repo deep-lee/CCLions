@@ -9,15 +9,18 @@
 import Foundation
 
 enum UserType: Int {
-	case CCLionVip = 1
-	case NonVip = 0
+    case CCLionVip = 1
+    case NonVip = 0
 }
 
 enum UserAuthenticationStatus: Int {
-	case NotAuthentication = 0 // 未认证
-	case InAuthentication = 1 // 认证中
-	case FailAuthentication = 2 // 认证失败
-	case SuccessAuthentication = 3 // 通过认证
+    case NotAuthentication = 0 // 未认证
+    case InAuthentication = 1 // 认证中
+    case FailAuthentication = 2 // 认证失败
+    case SuccessAuthentication = 3 // 通过认证
 }
 
 let CELL_REUSE = "COMMON_CELL_REUSE"
+
+let SCREEN_WIDH = UIScreen.mainScreen().bounds.width
+let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.height
