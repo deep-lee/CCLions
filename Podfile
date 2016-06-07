@@ -33,6 +33,9 @@ pod 'pop', '~> 1.0'
 pod 'MOBFoundation_IDFA'
 pod 'SMSSDK'
 
+pod 'DateTools'
+pod 'XLPagerTabStrip', '~> 5.0'
+
 target ‘CCLions’ do
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end

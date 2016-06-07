@@ -182,18 +182,6 @@ class MainViewController: UIViewController {
 	func requestFav(sender: UIButton) -> Void {
 		self.mainModel.requestFav(Util.getLoginedUser()!.id, project_id: sender.tag)
 	}
-//
-//	func getRowForTag(tag: Int) -> Int {
-//		var row = 0
-//		for item in self.dataArray {
-//			if item.id == tag {
-//				return row
-//			}
-//			row += 1
-//		}
-//
-//		return row
-//	}
 
 	func favViewTaped(tap: UITapGestureRecognizer) -> Void {
 		let tag = tap.view?.tag

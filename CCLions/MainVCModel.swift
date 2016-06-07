@@ -59,31 +59,15 @@ class MainVCModel: SuperModel {
 				if data.count != 0 {
 					self.dataArray.removeAll()
 					for item in data {
-						let project = Project(id: item["id"].intValue,
-							title: item["title"].stringValue,
-							time: item["time"].stringValue,
-							launcher_id: item["launcher_id"].intValue,
-							favorite: item["favorite"].intValue,
-							cover_image: item["cover_image"].stringValue,
-							details_page: item["details_page"].stringValue,
-							project_type: item["project_type"].intValue,
-							fundraising_amount: item["fundraising_amount"].intValue,
-							has_raised_amount: item["has_raised_amount"].intValue,
-							withdraw_amount: item["withdraw_amount"].intValue,
-							apply_for_other: item["apply_for_other"].intValue,
-							aided_person_id_num: item["aided_person_id_num"].stringValue,
-							aided_person_id_card_photo: item["aided_person_id_card_photo"].stringValue,
-							left_time: item["left_time"].intValue,
-							sponsorship_company_id: item["sponsorship_company_id"].intValue,
-							create_time: item["create_time"].stringValue,
-							name: item["name"].stringValue)
-
+						let project = Util.getProjectFromJson(item)
 						self.dataArray.append(project)
 					}
 					// 重新加载TableView数据
 					self.postNotification(REFRESH_DATA_SUCCESS)
 					self.lastId = (self.dataArray.last?.id)!
-				}
+                } else {
+                    self.postNotification(REFRESH_DATA_FINISH)
+                }
 			case NetworkResponseState.FAIL.rawValue:
 				Drop.down(Tips.REFRESH_MAIN_PROJECT_FAIL, state: DropState.Error)
 				self.postNotification(REFRESH_DATA_FINISH)
@@ -113,31 +97,15 @@ class MainVCModel: SuperModel {
 				let data = JSON(dataString).arrayValue
 				if data.count != 0 {
 					for item in data {
-						let project = Project(id: item["id"].intValue,
-							title: item["title"].stringValue,
-							time: item["time"].stringValue,
-							launcher_id: item["launcher_id"].intValue,
-							favorite: item["favorite"].intValue,
-							cover_image: item["cover_image"].stringValue,
-							details_page: item["details_page"].stringValue,
-							project_type: item["project_type"].intValue,
-							fundraising_amount: item["fundraising_amount"].intValue,
-							has_raised_amount: item["has_raised_amount"].intValue,
-							withdraw_amount: item["withdraw_amount"].intValue,
-							apply_for_other: item["apply_for_other"].intValue,
-							aided_person_id_num: item["aided_person_id_num"].stringValue,
-							aided_person_id_card_photo: item["aided_person_id_card_photo"].stringValue,
-							left_time: item["left_time"].intValue,
-							sponsorship_company_id: item["sponsorship_company_id"].intValue,
-							create_time: item["create_time"].stringValue,
-							name: item["name"].stringValue)
-
+						let project = Util.getProjectFromJson(item)
 						self.dataArray.append(project)
 					}
 					// 重新加载TableView数据
 					self.postNotification(LOAD_MORE_DATA_SUCCESS)
 					self.lastId = (self.dataArray.last?.id)!
-				}
+                } else {
+                    self.postNotification(LOAD_MORE_DATA_FINISH)
+                }
 			case NetworkResponseState.FAIL.rawValue:
 				Drop.down(Tips.REFRESH_MAIN_PROJECT_FAIL, state: DropState.Error)
 				self.postNotification(LOAD_MORE_DATA_FINISH)
@@ -171,25 +139,7 @@ class MainVCModel: SuperModel {
 				let data = JSON(dataString).arrayValue
 				if data.count != 0 {
 					for item in data {
-						let project = Project(id: item["id"].intValue,
-							title: item["title"].stringValue,
-							time: item["time"].stringValue,
-							launcher_id: item["launcher_id"].intValue,
-							favorite: item["favorite"].intValue,
-							cover_image: item["cover_image"].stringValue,
-							details_page: item["details_page"].stringValue,
-							project_type: item["project_type"].intValue,
-							fundraising_amount: item["fundraising_amount"].intValue,
-							has_raised_amount: item["has_raised_amount"].intValue,
-							withdraw_amount: item["withdraw_amount"].intValue,
-							apply_for_other: item["apply_for_other"].intValue,
-							aided_person_id_num: item["aided_person_id_num"].stringValue,
-							aided_person_id_card_photo: item["aided_person_id_card_photo"].stringValue,
-							left_time: item["left_time"].intValue,
-							sponsorship_company_id: item["sponsorship_company_id"].intValue,
-							create_time: item["create_time"].stringValue,
-							name: item["name"].stringValue)
-
+						let project = Util.getProjectFromJson(item)
 						self.searchResult.append(project)
 					}
 

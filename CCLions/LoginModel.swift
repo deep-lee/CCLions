@@ -87,7 +87,6 @@ class LoginModel: SuperModel {
 				Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
 			case NetworkResponseState.SUCCESS.rawValue:
 				// 发出通知
-				// NSNotificationCenter.defaultCenter().postNotificationName(REGISTER_SUCCESS_NOTIFICATION, object: nil)
 				self.postNotification(REGISTER_SUCCESS_NOTIFICATION);
 			case NetworkResponseState.FAIL.rawValue:
 				let type = response.objectForKey(NETWORK_FAIL_TYPE) as! Int
@@ -125,26 +124,13 @@ class LoginModel: SuperModel {
 			case NetworkResponseState.SUCCESS.rawValue:
 				let dataString = response.objectForKey(NETWORK_SUCCESS_DATA) as! [String: AnyObject]
 				let data = JSON(dataString)
-				let user = User(id: data["id"].intValue,
-					username: data["username"].stringValue,
-					password: data["password"].stringValue,
-					header: data["header"].stringValue,
-					name: data["name"].stringValue,
-					sex: data["sex"].intValue,
-					address: data["address"].stringValue,
-					contact: data["contact"].stringValue,
-					user_type: data["user_type"].intValue,
-					service_team: data["service_team"].stringValue,
-					authentication_status: data["authentication_status"].intValue,
-					update_time: data["update_time"].stringValue)
-
+				let user = Util.getUserFromJson(data)
 				// 存储用户信息
 				Util.updateUser(user)
 				// 记录登录次数数据
 				self.flurryStatisticsWithName(Statistics.LOGIN_NUMBER, paras: ["LOGIN_USER_ID": "\(user.id)"])
 
 				// 发出通知
-				// NSNotificationCenter.defaultCenter().postNotificationName(LOGIN_SUCCESS_NOTIFICATION, object: nil)
 				self.postNotification(LOGIN_SUCCESS_NOTIFICATION);
 
 			case NetworkResponseState.FAIL.rawValue:

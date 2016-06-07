@@ -24,14 +24,24 @@ class MoreInfoActivityViewController: FormViewController {
 	var switchRow: SwitchRow!
 	var idNumRow: TextRow!
 	var idCardImageRow: ImageRow!
+    var projectTypeRow: PushRow<String>!
+    
+    var isCCLionVip = false
+    
+    var ARRAY_PROJECT_TYPE: [String]!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		// Do any additional setup after loading the view.
+        self.initNoti()
+        isCCLionVip = Util.getLoginedUser()?.user_type == UserType.CCLionVip.rawValue ? true : false
+        
+        ARRAY_PROJECT_TYPE = isCCLionVip ? VIP_ARRAY_PROJECT_TYPE : NOVIP_ARRAY_PROJECT_TYPE
+        
 		imagerow = ImageRow() {
 			$0.title = "封面照片"
-			// $0.value = UIImage(named: "icon-default-header")
+			// $0.value = UIImage(nvard: "icon-default-header")
 		}
 
 		dateRow = DateRow() { $0.value = NSDate(); $0.title = "活动时间" }
@@ -61,6 +71,13 @@ class MoreInfoActivityViewController: FormViewController {
 				return row.value ?? false == false
 			})
 		}
+        
+        projectTypeRow = PushRow<String>() {
+            $0.title = "项目类型"
+            $0.options = ARRAY_PROJECT_TYPE
+            $0.value = ARRAY_PROJECT_TYPE.first
+            $0.selectorTitle = "选择项目类型"
+        }
 
 		form +++
 		Section("受助人信息")
@@ -68,13 +85,12 @@ class MoreInfoActivityViewController: FormViewController {
 		<<< dateRow
 		+++ Section("求助信息")
 		<<< raiseMoneyRow
-
-		// 以下是非狮子会会员求助需要填写的信息
-		<<< switchRow
-		<<< idNumRow
-		<<< idCardImageRow
-
-		self.initNoti()
+        
+        +++ Section("以下部分狮子会会员不需要填写")
+        <<< projectTypeRow
+        <<< switchRow
+        <<< idNumRow
+        <<< idCardImageRow
 	}
 
 	/**
@@ -99,6 +115,20 @@ class MoreInfoActivityViewController: FormViewController {
 		let rootViewController = self.navigationController?.viewControllers.first as! LaunchActivityFirstViewController
 		rootViewController.clearInput()
 	}
+    
+    /**
+     获取项目类型
+     
+     - returns: 项目类型
+     */
+    func getProjectType() -> Int {
+        if isCCLionVip {
+            return 0
+        } else {
+            let index = NOVIP_ARRAY_PROJECT_TYPE.indexOf(projectTypeRow.value!)
+            return index! + 1
+        }
+    }
 
 	@IBAction func launch(sender: AnyObject) {
 		// 首先判断资料是否填写完整
@@ -116,7 +146,7 @@ class MoreInfoActivityViewController: FormViewController {
 		dic.setValue(format.stringFromDate(dateRow.value!), forKey: "time")
 		dic.setValue(Util.getLoginedUser()?.id, forKey: "launcher_id")
 		dic.setValue(activityContent, forKey: "details_page")
-		dic.setValue(Util.getLoginedUser()?.user_type == UserType.CCLionVip.rawValue ? 1 : 0, forKey: "project_type")
+		dic.setValue(self.getProjectType(), forKey: "project_type")
 		dic.setValue(raiseMoneyRow.value, forKey: "fundraising_amount")
 		dic.setValue((switchRow.value == nil || switchRow.value == false) ? 0 : 1, forKey: "apply_for_other")
 		dic.setValue(idNumRow.value, forKey: "aided_person_id_num")
@@ -142,7 +172,7 @@ class MoreInfoActivityViewController: FormViewController {
 	 - returns:
 	 */
 	func checkCompleted() -> Bool {
-		print(switchRow.value)
+		// print(projectTypeRow.value)
 		if self.imagerow.value != nil
 		&& self.dateRow.cell.detailTextLabel?.text != nil
 		&& raiseMoneyRow.value != nil

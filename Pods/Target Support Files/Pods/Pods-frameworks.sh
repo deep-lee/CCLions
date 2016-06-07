@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Alamofire.framework"
   install_framework "Pods/CocoaLumberjack.framework"
+  install_framework "Pods/DateTools.framework"
   install_framework "Pods/Eureka.framework"
   install_framework "Pods/IQKeyboardManagerSwift.framework"
   install_framework "Pods/JFImagePicker.framework"
@@ -100,11 +101,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/WordPressEditor.framework"
   install_framework "Pods/WordPressShared.framework"
   install_framework "Pods/WordPressComAnalytics.framework"
+  install_framework "Pods/XLPagerTabStrip.framework"
   install_framework "Pods/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Alamofire.framework"
   install_framework "Pods/CocoaLumberjack.framework"
+  install_framework "Pods/DateTools.framework"
   install_framework "Pods/Eureka.framework"
   install_framework "Pods/IQKeyboardManagerSwift.framework"
   install_framework "Pods/JFImagePicker.framework"
@@ -119,5 +122,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/WordPressEditor.framework"
   install_framework "Pods/WordPressShared.framework"
   install_framework "Pods/WordPressComAnalytics.framework"
+  install_framework "Pods/XLPagerTabStrip.framework"
   install_framework "Pods/pop.framework"
 fi

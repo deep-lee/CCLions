@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DateTools.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Eureka.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -104,6 +109,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>XLPagerTabStrip-XLPagerTabStrip.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>XLPagerTabStrip.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -112,7 +127,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1F317FD7DE5204AA6D2DC2141088F4AE</key>
+		<key>1221C36A8FA8AF18C704714282856CC8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1573656CD39DBBBC2A60FD3366494251</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>24D20EFEF2BAEDE6ED7B5FB41F3D62FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,22 +147,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62E0A4CBF09DA8862B0EAA246B96B844</key>
+		<key>3618E06DA4AC1E104B0CA3E07B3B11F2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3892983B75F05D892C8EBFB0B966E467</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5A15366DAEDB03497326B73FCD96574A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5EAD2DF0B9B707E167F193FD11A4E68E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>6847254D016329D4A531D34ED2B6DF81</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>704214B733794146B0654D743755FDEB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7219A96E8C5882FC2D8F2ECA45947D29</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,47 +187,47 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>826C3A9C0ED832AEA16FD14180B21CBD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8A2E8FED01C8A6BC8ADFCF3C3B78368F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9342CC5B57E682D9EBFA4E977435A5E2</key>
+		<key>8C7930967F780AB5CB46DD4CE5BC2D6C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>957DAB2E84DA837D816E10B7F2168FFA</key>
+		<key>9BC3D9BFD81D0A9574307982E8A8B957</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9A7720CA87D215D77E773F41BA3DBA02</key>
+		<key>AFEDA8059B169E4068B6DCC4D2F0B0E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B7817E949FDD5D397FC47EF0FB71E79B</key>
+		<key>BDF6880BC60F50AEE3F0905FAD20BDC5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC38F5CD013E310A12774E01E0FF360A</key>
+		<key>C3579B369911F2A8977728796CF798B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA14DFD3139B3DA7D4362954FF96BD73</key>
+		<key>E2BC6787F4E84E839586AB040F37190D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1D591560D611F1585C0AB22564D6075</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E424F77DADF0C2922013A398A0C86BC0</key>
+		<key>E46EA9B39838195CDE993426EA7E1220</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -207,12 +237,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F22F9EDC713D96D2A63626B2E21377EA</key>
+		<key>F370B1453FC92BF575E40DD9C6DAF924</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FAC8F64BCE0AB89D42E87EA3852359EA</key>
+		<key>F9A76FBB06DC2E80BD0A0EF435492935</key>
 		<dict>
 			<key>primary</key>
 			<true/>

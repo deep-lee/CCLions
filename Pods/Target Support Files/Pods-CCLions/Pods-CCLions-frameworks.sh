@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-CCLions/Alamofire.framework"
   install_framework "Pods-CCLions/CocoaLumberjack.framework"
+  install_framework "Pods-CCLions/DateTools.framework"
   install_framework "Pods-CCLions/Eureka.framework"
   install_framework "Pods-CCLions/IQKeyboardManagerSwift.framework"
   install_framework "Pods-CCLions/JFImagePicker.framework"
@@ -100,12 +101,14 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-CCLions/WordPressEditor.framework"
   install_framework "Pods-CCLions/WordPressShared.framework"
   install_framework "Pods-CCLions/WordPressComAnalytics.framework"
+  install_framework "Pods-CCLions/XLPagerTabStrip.framework"
   install_framework "Pods-CCLions/pop.framework"
   install_framework "Pods-CCLions/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-CCLions/Alamofire.framework"
   install_framework "Pods-CCLions/CocoaLumberjack.framework"
+  install_framework "Pods-CCLions/DateTools.framework"
   install_framework "Pods-CCLions/Eureka.framework"
   install_framework "Pods-CCLions/IQKeyboardManagerSwift.framework"
   install_framework "Pods-CCLions/JFImagePicker.framework"
@@ -120,6 +123,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-CCLions/WordPressEditor.framework"
   install_framework "Pods-CCLions/WordPressShared.framework"
   install_framework "Pods-CCLions/WordPressComAnalytics.framework"
+  install_framework "Pods-CCLions/XLPagerTabStrip.framework"
   install_framework "Pods-CCLions/pop.framework"
   install_framework "Pods-CCLions/SwiftyJSON.framework"
 fi
