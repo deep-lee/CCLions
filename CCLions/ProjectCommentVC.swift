@@ -14,6 +14,10 @@ class ProjectCommentVC: UIViewController {
     @IBOutlet var mTableView: UITableView!
     var model: ProjectCommentRecordModel!
     var project_id: Int!
+    
+    var commonFlowView: CommonFlowView!
+    var flowTextField: FlowTextFiled!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +41,24 @@ class ProjectCommentVC: UIViewController {
         
         // 初始在下拉刷新状态
         mTableView.mj_header.state = MJRefreshState.Refreshing
+        
+        commonFlowView = CommonFlowView(frame: CGRectZero)
+        self.view.insertSubview(commonFlowView, aboveSubview: self.mTableView)
+        commonFlowView.snp_makeConstraints { (make) in
+            make.left.bottom.right.equalTo(0)
+            make.height.equalTo(200)
+        }
+        commonFlowView.delegate = self
+        
+        flowTextField = FlowTextFiled(frame: CGRectZero)
+        self.view.addSubview(flowTextField)
+        flowTextField.snp_makeConstraints { (make) in
+            make.bottom.equalTo(0)
+            make.left.right.equalTo(0)
+            make.height.equalTo(49)
+        }
+        flowTextField.textFiled.delegate = self
+        flowTextField.textFiled.becomeFirstResponder()
     }
     
     func initNoti() -> Void {
@@ -44,6 +66,10 @@ class ProjectCommentVC: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProjectCommentVC.refreshDataFinishNoti(_:)), name: PROJECT_COMMENT_REFRESH_DATA_FINISH, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProjectCommentVC.loadMoreDataSuccessNoti(_:)), name: PROJECT_COMMENT_LOAD_MORE_DATA_SUCCESS, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProjectCommentVC.loadMoreDataFinishNoti(_:)), name: PROJECT_COMMENT_LOAD_MORE_DATA_FINISH, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProjectCommentVC.keyBoardWillHideNoti(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProjectCommentVC.addCommentSuccessNotiCallBack(_:)), name: PROJECT_COMMENT_ADD_COMMENT_SUCCESS, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProjectCommentVC.addCommentFailNotiCallBack(_:)), name: PROJECT_COMMENT_ADD_COMMENT_FAIL, object: nil)
+        
     }
     
     func refreshDataSuccessNoti(noti: NSNotification) -> Void {
@@ -85,6 +111,50 @@ class ProjectCommentVC: UIViewController {
     func loadMoreAction() -> Void {
         self.model.loadMore()
     }
+    
+    /**
+     添加评论成功回调
+     
+     - parameter noti: 回调通知
+     */
+    func addCommentSuccessNotiCallBack(noti: NSNotification) -> Void {
+        self.refreshAction()
+        self.flowTextField.textFiled.resignFirstResponder()
+        self.flowTextField.clearText()
+    }
+    
+    /**
+     添加评论失败回调
+     
+     - parameter noti: 回调通知
+     */
+    func addCommentFailNotiCallBack(noti: NSNotification) -> Void {
+        self.flowTextField.textFiled.becomeFirstResponder()
+    }
+    
+    /**
+     监听键盘消失事件
+     
+     - parameter noti: 通知
+     */
+    func keyBoardWillHideNoti(noti: NSNotification) -> Void {
+        self.flowTextField.hidden = true
+    }
+    
+    func addComment() -> Void {
+        print("回调")
+        if !self.flowTextField.hasText() {
+            return
+        }
+        
+        let paras = [
+            "user_id": Util.getLoginedUser()!.id,
+            "project_id": self.project_id,
+            "content": self.flowTextField.text()
+        ]
+        
+        model.addComment(paras as! [String : AnyObject])
+    }
 
     /*
     // MARK: - Navigation
@@ -109,5 +179,30 @@ extension ProjectCommentVC: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.setParas(comment)
         return cell
+    }
+}
+
+extension ProjectCommentVC: CommonFlowViewDelegate {
+    func buttonBackClicked() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func buttonCommentClicked() {
+        self.flowTextField.hidden = false
+        self.flowTextField.textFiled.becomeFirstResponder()
+    }
+    
+    func buttonSupportClicked() {
+        
+    }
+}
+
+extension ProjectCommentVC: UITextFieldDelegate {
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.addComment()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        return true
     }
 }

@@ -40,6 +40,9 @@ enum RequestAddress: String {
     case HTTP_DONATION_RECORD_BY_PAGE            = "donation_record_by_page.php"
     case HTTP_WITHDRAW_RECORD_BY_PAGE            = "withdraw_record_by_page.php"
     case HTTP_COMMENT_RECORD_BY_PAGE             = "comment_record_by_page.php"
+    case HTTP_HAS_USER_LOVED_PROJECT             = "has_user_love_project.php"
+    case HTTP_DELETE_FAV                         = "delete_fav.php"
+    case HTTP_ADD_COMMENT                        = "add_comment.php"
 }
 
 class HttpRequest {

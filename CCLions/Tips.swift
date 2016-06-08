@@ -62,4 +62,5 @@ class Tips {
     static let UPLOAD_IMAGE_FAIL                 = "上传图片失败"
     static let ADD_AUTHENTICATION_FAIL           = "请求身份认证失败"
     static let GET_MORE_PROJECT_DETAILS_ERROR    = "获取项目更多信息失败"
+    static let ADD_COMMENT_FAIL                  = "评论失败"
 }

@@ -26,8 +26,10 @@ class Project: NSObject {
 	var sponsorship_company_id: Int! // 冠名企业id
 	var create_time: String!
 	var name: String!
+    var header: String!
 
-	init(id: Int,
+	init(
+        id: Int,
 		title: String,
 		time: String,
 		launcher_id: Int,
@@ -44,7 +46,9 @@ class Project: NSObject {
 		left_time: Int,
 		sponsorship_company_id: Int,
 		create_time: String,
-		name: String) {
+		name: String,
+        header: String
+        ) {
 
 			self.id = id
 			self.title = title
@@ -64,5 +68,6 @@ class Project: NSObject {
 			self.sponsorship_company_id = sponsorship_company_id
 			self.create_time = create_time
 			self.name = name
+        self.header = header
 	}
 }

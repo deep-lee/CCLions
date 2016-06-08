@@ -14,6 +14,9 @@ class ProjectWithdrawRecordVC: UIViewController {
     @IBOutlet var mTableView: UITableView!
     var model: ProjectWithdrawRecordModel!
     var project_id: Int!
+    
+    var commonFlowView: CommonFlowView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +40,15 @@ class ProjectWithdrawRecordVC: UIViewController {
         
         // 初始在下拉刷新状态
         mTableView.mj_header.state = MJRefreshState.Refreshing
+        
+        commonFlowView = CommonFlowView(frame: CGRectZero)
+        self.view.insertSubview(commonFlowView, aboveSubview: self.mTableView)
+        commonFlowView.snp_makeConstraints { (make) in
+            make.left.bottom.right.equalTo(0)
+            make.height.equalTo(200)
+        }
+        commonFlowView.hideCommentBtn()
+        commonFlowView.delegate = self
     }
     
     func initNoti() -> Void {
@@ -109,5 +121,19 @@ extension ProjectWithdrawRecordVC: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.setParas(withdraw)
         return cell
+    }
+}
+
+extension ProjectWithdrawRecordVC: CommonFlowViewDelegate {
+    func buttonBackClicked() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func buttonCommentClicked() {
+        
+    }
+    
+    func buttonSupportClicked() {
+        
     }
 }

@@ -24,3 +24,4 @@
 #import <Crashlytics/Crashlytics.h>
 #import "CircleProgressView.h"
 #import "DateTools.h"
+#import <XLPagerTabStrip/FXPageControl.h>

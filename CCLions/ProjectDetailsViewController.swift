@@ -9,20 +9,85 @@
 import UIKit
 import Alamofire
 import SwiftyDrop
+import SnapKit
 
 class ProjectDetailsViewController: WPEditorViewController {
     var project: Project!
     var videoPressCache: NSCache = NSCache()
     var mediaAdded: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
     var contentHtml: String?
+    var flowView: FlowView!
+    var loved = false
+    var model: ProjectDetailsModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         self.delegate = self
+        initNoti()
+        self.initView()
         self.initWeight()
         self.updateEditorView()
+    }
+    
+    func initView() -> Void {
+        model = ProjectDetailsModel.shareInstance()
+        flowView = FlowView(frame: CGRectZero)
+        self.view.insertSubview(flowView, aboveSubview: self.editorView)
+        flowView.snp_makeConstraints { (make) in
+            make.left.bottom.right.equalTo(0)
+            make.height.equalTo(200)
+        }
+        flowView.delegate = self
+        
+        // 判断当前用户是否点赞了这个项目
+        model.checkUserHasLovedProject(self.project.id)
+    }
+    
+    func initNoti() -> Void {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProjectDetailsViewController.checkUserHasLovedProjectNotiCallBack(_:)), name: CHECK_USER_HAS_LOVED_PROJECT, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProjectDetailsViewController.addFavSuccessNotiCallBack(_:)), name: ADD_FAV_SUCCESS, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProjectDetailsViewController.deleteFavSuccessNotiCallBack(_:)), name: DELETE_FAV_SUCCESS, object: nil)
+    }
+    
+    /**
+     判断用户是否点赞了项目回调
+     
+     - parameter noti: 回调通知
+     */
+    func checkUserHasLovedProjectNotiCallBack(noti: NSNotification) -> Void {
+        let object = noti.object as! NSDictionary
+        let result = object.objectForKey(CHECK_LOVED_RECULT)?.integerValue
+        if result == 0 {
+            // 没有点赞
+            self.flowView.buttonLove.setImage(UIImage(named: "icon-flow-love"), forState: UIControlState.Normal)
+            loved = false
+        } else if result == 1 {
+            // 已经点赞了
+            self.flowView.buttonLove.setImage(UIImage(named: "icon-flow-loved"), forState: UIControlState.Normal)
+            loved = true
+        }
+    }
+    
+    /**
+     点赞成功回调
+     
+     - parameter noti: 回调通知
+     */
+    func addFavSuccessNotiCallBack(noti: NSNotification) -> Void {
+        self.flowView.buttonLove.setImage(UIImage(named: "icon-flow-loved"), forState: UIControlState.Normal)
+        loved = true
+    }
+    
+    /**
+     取消点赞回调
+     
+     - parameter noti: 通知回调
+     */
+    func deleteFavSuccessNotiCallBack(noti: NSNotification) -> Void {
+        self.flowView.buttonLove.setImage(UIImage(named: "icon-flow-love"), forState: UIControlState.Normal)
+        loved = false
     }
     
     func updateEditorView() {
@@ -51,6 +116,10 @@ class ProjectDetailsViewController: WPEditorViewController {
             self.editorView.titleField.disableEditing()
             self.editorView.contentField.disableEditing()
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = true
     }
     
     func updateHtml() -> Void {
@@ -155,6 +224,48 @@ extension ProjectDetailsViewController: WPEditorViewControllerDelegate, UINaviga
     func editorViewController(editorViewController: WPEditorViewController!, mediaRemoved mediaID: String!) {
         let progress = self.mediaAdded[mediaID] as! NSProgress
         progress.cancel()
+    }
+}
+
+extension ProjectDetailsViewController: FlowViewDelegate {
+    func buttonBackClicked() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func buttonLoveClicked() {
+        if loved {
+            // 如果已经点赞了
+            model.deleteFav(self.project.id)
+        } else {
+            // 如果没有点赞
+            model.addFav(self.project.id)
+        }
+    }
+    
+    func buttonSupportClicked() {
+        
+    }
+    
+    func buttonShareClicked() {
+        
+    }
+    
+    func buttonCommentClicked() {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ProjectCommentVC") as! ProjectCommentVC
+        vc.project_id = self.project.id
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func buttonDonationRecordClicked() {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ProjectDonationRecordVC") as! ProjectDonationRecordVC
+        vc.project_id = project.id
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func buttonWithdrawRecordClicked() {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ProjectWithdrawRecordVC") as! ProjectWithdrawRecordVC
+        vc.project_id = project.id
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

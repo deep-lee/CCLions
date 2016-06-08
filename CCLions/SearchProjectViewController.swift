@@ -48,8 +48,8 @@ class SearchProjectViewController: UIViewController {
 					if code == 200 {
 						dispatch_async(dispatch_get_main_queue(), {
 							// 点赞成功
-							let cell = self.mTableView.cellForRowAtIndexPath(NSIndexPath(forRow: (self.getRowForTag(sender.tag)), inSection: 0)) as! ActivityShowTableViewCell
-							cell.favLabel.text = "\(Int(cell.favLabel.text!)! + 1)"
+							let cell = self.mTableView.cellForRowAtIndexPath(NSIndexPath(forRow: (self.getRowForTag(sender.tag)), inSection: 0)) as! ActivityShowCell
+							// cell.favLabel.text = "\(Int(cell.favLabel.text!)! + 1)"
 						})
 					} else {
 						let type = json["type"].intValue
@@ -94,12 +94,12 @@ extension SearchProjectViewController: UITableViewDelegate, UITableViewDataSourc
 	}
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("SearchShowCell") as! ActivityShowTableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("SearchShowCell") as! ActivityShowCell
 		let project = self.dataArray[indexPath.row]
-		cell.showIamgeView.sd_setImageWithURL(NSURL(string: project.cover_image))
-		cell.activityTimeLabel.text = project.time
-		cell.activityLauncherLabel.text = project.name
-		cell.favLabel.text = "\(project.favorite)"
+//		cell.showIamgeView.sd_setImageWithURL(NSURL(string: project.cover_image))
+//		cell.activityTimeLabel.text = project.time
+//		cell.activityLauncherLabel.text = project.name
+//		cell.favLabel.text = "\(project.favorite)"
 //		cell.favBtn.tag = project.id
 //		cell.favBtn.addTarget(self, action: #selector(SearchProjectViewController.requestFav(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 		return cell

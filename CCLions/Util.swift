@@ -321,7 +321,8 @@ class Util {
 			left_time: item["left_time"].intValue,
 			sponsorship_company_id: item["sponsorship_company_id"].intValue,
 			create_time: item["create_time"].stringValue,
-			name: item["name"].stringValue)
+			name: item["name"].stringValue,
+            header: item["header"].stringValue)
 
 		return project
 	}
