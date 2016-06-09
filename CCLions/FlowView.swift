@@ -16,6 +16,7 @@ protocol FlowViewDelegate {
     func buttonSupportClicked()
     func buttonShareClicked()
     func buttonCommentClicked()
+    func buttonMoreClicked()
     func buttonDonationRecordClicked()
     func buttonWithdrawRecordClicked()
 }
@@ -245,6 +246,7 @@ class FlowView: UIView {
         delegate?.buttonShareClicked()
     }
     func buttonMoreClickedAction(sender: AnyObject) {
+        delegate?.buttonMoreClicked()
         if show {
             self.buttonMore.setImage(UIImage(named: "icon-flow-more-h"), forState: UIControlState.Normal)
             dismissMoreButton()

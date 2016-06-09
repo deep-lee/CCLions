@@ -37,7 +37,7 @@ class ProjectDetailsViewController: WPEditorViewController {
         self.view.insertSubview(flowView, aboveSubview: self.editorView)
         flowView.snp_makeConstraints { (make) in
             make.left.bottom.right.equalTo(0)
-            make.height.equalTo(200)
+            make.height.equalTo(180)
         }
         flowView.delegate = self
         
@@ -243,28 +243,37 @@ extension ProjectDetailsViewController: FlowViewDelegate {
     }
     
     func buttonSupportClicked() {
-        
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("DonateVC") as! DonateVC
+        vc.project = project
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func buttonShareClicked() {
         
     }
     
+    func buttonMoreClicked() {
+        
+    }
+    
     func buttonCommentClicked() {
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ProjectCommentVC") as! ProjectCommentVC
         vc.project_id = self.project.id
+        vc.project = project
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func buttonDonationRecordClicked() {
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ProjectDonationRecordVC") as! ProjectDonationRecordVC
         vc.project_id = project.id
+        vc.project = project
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func buttonWithdrawRecordClicked() {
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ProjectWithdrawRecordVC") as! ProjectWithdrawRecordVC
         vc.project_id = project.id
+        vc.project = project
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

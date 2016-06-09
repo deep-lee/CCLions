@@ -426,5 +426,22 @@ class Util {
         
         return date.timeAgoSinceNow()
     }
+    
+    /**
+     从JOSN中解析出DonationSuggestionMoney
+     
+     - parameter item: JSON
+     
+     - returns: MODEL
+     */
+    static func getDonationSuggestMoneyFromJson(item: JSON) -> DonationSuggestionMoney {
+        let suggest = DonationSuggestionMoney(
+            id: item["id"].intValue,
+            amount: item["amount"].intValue,
+            create_time: item["create_time"].stringValue
+        )
+        
+        return suggest
+    }
 
 }

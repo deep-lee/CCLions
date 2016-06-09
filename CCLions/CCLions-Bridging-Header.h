@@ -25,3 +25,4 @@
 #import "CircleProgressView.h"
 #import "DateTools.h"
 #import <XLPagerTabStrip/FXPageControl.h>
+#import "UIView+Layout.h"

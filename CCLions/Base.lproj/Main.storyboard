@@ -511,8 +511,27 @@
                     <view key="view" contentMode="scaleToFill" id="kDs-Tk-ph8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ORQ-Ij-uVI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cKX-bY-7ru" id="HOK-33-ml0"/>
+                                    <outlet property="delegate" destination="cKX-bY-7ru" id="dSu-zy-tNe"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ORQ-Ij-uVI" firstAttribute="top" secondItem="kDs-Tk-ph8" secondAttribute="top" id="5ed-20-o6f"/>
+                            <constraint firstItem="ORQ-Ij-uVI" firstAttribute="leading" secondItem="kDs-Tk-ph8" secondAttribute="leading" id="AvQ-T2-C9d"/>
+                            <constraint firstItem="BqJ-tc-Yf6" firstAttribute="top" secondItem="ORQ-Ij-uVI" secondAttribute="bottom" id="onH-Iu-J5T"/>
+                            <constraint firstAttribute="trailing" secondItem="ORQ-Ij-uVI" secondAttribute="trailing" id="zun-wy-LX1"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mTableView" destination="ORQ-Ij-uVI" id="vzY-63-1nT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nW0-7E-MGE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

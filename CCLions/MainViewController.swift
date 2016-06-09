@@ -56,6 +56,7 @@ class MainViewController: TwitterPagerTabStripViewController {
 	 */
 	func initView() -> Void {
 		//self.initSearchView()
+        MainVCModel.shareInstance().updateLoginedUserInfo()
 	}
 
 	override func didReceiveMemoryWarning() {

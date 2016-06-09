@@ -92,7 +92,7 @@ class NetworkUtil: NSObject {
                         let data = json["data"].arrayObject
                         print(data)
                         dic.setValue(NetworkResponseState.SUCCESS.rawValue, forKey: NETWORK_STATE)
-                        dic.setValue(data, forKey: NETWORK_SUCCESS_DATA)
+                        dic.setValue(data == nil ? NSArray() : data, forKey: NETWORK_SUCCESS_DATA)
                     } else { // 失败
                         let type = json["type"].intValue
                         dic.setValue(NetworkResponseState.FAIL.rawValue, forKey: NETWORK_STATE)

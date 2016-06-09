@@ -24,7 +24,7 @@ class SuperModel: NSObject {
 	func updateLoginedUserInfo() -> Void {
 		if Util.hasUserLogined() {
 			let paras = [
-				"userId": "\(Util.getLoginedUser()?.id)"
+				"userId": "\(Util.getLoginedUser()!.id)"
 			]
 
 			NetworkUtil.shareInstance().requestWithUrlWithReturnDictionary(HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_GET_USER_INFO_WITH_ID.rawValue, paras: paras, networkResponse: { (response) in

@@ -103,4 +103,8 @@ class CommonFlowView: UIView {
     func hideCommentBtn() -> Void {
         self.buttonComment.hidden = true
     }
+    
+    func hideSupportBtn() -> Void {
+        self.buttonSupport.hidden = true
+    }
 }

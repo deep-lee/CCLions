@@ -71,7 +71,7 @@ class PickPositionOnMapViewController: UIViewController {
 		self.mapView.showAnnotations(self.annotations, animated: true)
 
 		// 添加一个搜索框
-		self.searchBar = UISearchBar(frame: CGRectMake(0, (self.navigationController?.navigationBar.frame.size.height)! + 20, self.view.frame.size.width, 45))
+		self.searchBar = UISearchBar(frame: CGRectMake(0, (self.navigationController?.navigationBar.frame.size.height)!, self.view.frame.size.width, 45))
 		self.searchBar.placeholder = "搜索地图"
 		self.searchBar.delegate = self
 		self.view.addSubview(self.searchBar)
@@ -118,23 +118,34 @@ extension PickPositionOnMapViewController: MAMapViewDelegate {
 	 */
 	func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
 		if updatingLocation {
-			print("latitude:\(userLocation.coordinate.latitude), longitude:\(userLocation.coordinate.longitude)")
+			// print("latitude:\(userLocation.coordinate.latitude), longitude:\(userLocation.coordinate.longitude)")
 		}
 	}
 
 	func mapView(mapView: MAMapView!, viewForAnnotation annotation: MAAnnotation!) -> MAAnnotationView! {
-		let reuseId = "pointReuseIndetifier"
-		var annotationView: MAPinAnnotationView? = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MAPinAnnotationView
+		var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(CELL_REUSE)
 		if (annotationView == nil) {
-			annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+			annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: CELL_REUSE)
 		}
-		annotationView?.canShowCallout = true
-		annotationView?.animatesDrop = true
-		annotationView?.draggable = true
-		annotationView?.pinColor = MAPinAnnotationColor.Purple
+        annotationView?.image = UIImage(named: "icon-location")
 		return annotationView
 	}
 
+    func mapView(mapView: MAMapView!, didAddAnnotationViews views: [AnyObject]!) {
+        let view = views.first as! MAAnnotationView
+        if view.annotation.isKindOfClass(MAUserLocation.self) {
+            let pre = MAUserLocationRepresentation()
+            pre.fillColor = UIColor(red: 0.9, green: 0.1, blue: 0.1, alpha: 0.3)
+            pre.strokeColor = UIColor(red: 0.1, green: 0.1, blue: 0.9, alpha: 1.0)
+            pre.image = UIImage(named: "icon-my-location")
+            pre.lineWidth = 3
+            pre.lineDashPattern = [6, 3]
+            self.mapView.updateUserLocationRepresentation(pre)
+            view.calloutOffset = CGPointMake(0, 0)
+        }
+        
+    }
+    
 	func mapView(mapView: MAMapView!, didSelectAnnotationView view: MAAnnotationView!) {
 		self.selectedAnnotation = view.annotation as? MAPointAnnotation
 	}

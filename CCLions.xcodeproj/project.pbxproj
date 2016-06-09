@@ -52,6 +52,8 @@
 		1449FCD41CFF202400A85FC2 /* AuthenticationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */; };
 		1476C6561CCFCBCA00BE6E64 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1476C6541CCFCBCA00BE6E64 /* HeaderView.swift */; };
 		1476C6571CCFCBCA00BE6E64 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1476C6551CCFCBCA00BE6E64 /* HeaderView.xib */; };
+		1477931D1D093BD20042EAD2 /* SupportProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1477931C1D093BD20042EAD2 /* SupportProgressView.swift */; };
+		147793201D0941DA0042EAD2 /* LDProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1477931F1D0941DA0042EAD2 /* LDProgressView.swift */; };
 		14789FD21CE2FBB700F47941 /* VipLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14789FD11CE2FBB700F47941 /* VipLoginView.swift */; };
 		14789FD61CE30A8F00F47941 /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14789FD51CE30A8F00F47941 /* pop.framework */; };
 		14789FD81CE3111B00F47941 /* NonVipLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14789FD71CE3111B00F47941 /* NonVipLoginView.swift */; };
@@ -92,6 +94,7 @@
 		14B3F6CF1D01D459007B9031 /* MoreProjectDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B3F6CE1D01D459007B9031 /* MoreProjectDetailsVC.swift */; };
 		14B3F6FD1D01E611007B9031 /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B3F6FA1D01E611007B9031 /* CircleProgressView.m */; };
 		14B3F6FE1D01E611007B9031 /* CircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B3F6FC1D01E611007B9031 /* CircleShapeLayer.m */; };
+		14B4AE4E1D09DF840086FC16 /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B4AE4D1D09DF840086FC16 /* CustomCalloutView.swift */; };
 		14BECFE51CCB4E1D00091572 /* ZZBrowserPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BECFB21CCB4E1D00091572 /* ZZBrowserPickerViewController.m */; };
 		14BECFE61CCB4E1D00091572 /* ZZCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BECFB41CCB4E1D00091572 /* ZZCameraController.m */; };
 		14BECFE71CCB4E1D00091572 /* ZZCameraPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BECFB61CCB4E1D00091572 /* ZZCameraPickerViewController.m */; };
@@ -134,6 +137,11 @@
 		14D0B9E21CCE7F3F00FE2072 /* CompanyShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D0B9E11CCE7F3F00FE2072 /* CompanyShowViewController.swift */; };
 		14DCF08F1CCA707B001F2FE4 /* AddCompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DCF08E1CCA707B001F2FE4 /* AddCompanyViewController.swift */; };
 		14DCF0911CCA7F38001F2FE4 /* EditTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DCF0901CCA7F38001F2FE4 /* EditTextFieldViewController.swift */; };
+		14DE66741D095EF7003006F8 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DE66731D095EF7003006F8 /* UIView+Layout.m */; };
+		14DE66791D096767003006F8 /* DoantionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE66771D096767003006F8 /* DoantionTVCell.swift */; };
+		14DE667A1D096767003006F8 /* DoantionTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14DE66781D096767003006F8 /* DoantionTVCell.xib */; };
+		14DE667C1D099A1F003006F8 /* DonationSuggestionMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE667B1D099A1F003006F8 /* DonationSuggestionMoney.swift */; };
+		14DE667E1D099B35003006F8 /* DonationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE667D1D099B35003006F8 /* DonationModel.swift */; };
 		14EA0A531CCB34D000169116 /* EditSelectDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EA0A521CCB34D000169116 /* EditSelectDataViewController.swift */; };
 		14EA0A551CCB3D7900169116 /* EditTextViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EA0A541CCB3D7900169116 /* EditTextViewViewController.swift */; };
 		14EF2A111CD5F596008C521B /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF2A101CD5F596008C521B /* SearchResultTableViewCell.swift */; };
@@ -263,6 +271,8 @@
 		1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationTableViewCell.swift; sourceTree = "<group>"; };
 		1476C6541CCFCBCA00BE6E64 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		1476C6551CCFCBCA00BE6E64 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		1477931C1D093BD20042EAD2 /* SupportProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportProgressView.swift; sourceTree = "<group>"; };
+		1477931F1D0941DA0042EAD2 /* LDProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDProgressView.swift; sourceTree = "<group>"; };
 		14789FD11CE2FBB700F47941 /* VipLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VipLoginView.swift; sourceTree = "<group>"; };
 		14789FD31CE309A500F47941 /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = "Pods/../build/Debug-iphoneos/pop.framework"; sourceTree = "<group>"; };
 		14789FD51CE30A8F00F47941 /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = "../../Library/Developer/Xcode/DerivedData/CCLions-fpfktrodivzqfofwkpffzovrrdru/Build/Products/Debug-iphonesimulator/pop.framework"; sourceTree = "<group>"; };
@@ -314,6 +324,7 @@
 		14B3F6FA1D01E611007B9031 /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
 		14B3F6FB1D01E611007B9031 /* CircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleShapeLayer.h; sourceTree = "<group>"; };
 		14B3F6FC1D01E611007B9031 /* CircleShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleShapeLayer.m; sourceTree = "<group>"; };
+		14B4AE4D1D09DF840086FC16 /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
 		14BECFB11CCB4E1D00091572 /* ZZBrowserPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowserPickerViewController.h; sourceTree = "<group>"; };
 		14BECFB21CCB4E1D00091572 /* ZZBrowserPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowserPickerViewController.m; sourceTree = "<group>"; };
 		14BECFB31CCB4E1D00091572 /* ZZCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraController.h; sourceTree = "<group>"; };
@@ -376,6 +387,12 @@
 		14DCF08C1CCA5971001F2FE4 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = "../../Library/Developer/Xcode/DerivedData/CCLions-erekkjetaylcmzfxgehnpmpefara/Build/Products/Debug-iphoneos/Eureka.framework"; sourceTree = "<group>"; };
 		14DCF08E1CCA707B001F2FE4 /* AddCompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCompanyViewController.swift; sourceTree = "<group>"; };
 		14DCF0901CCA7F38001F2FE4 /* EditTextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTextFieldViewController.swift; sourceTree = "<group>"; };
+		14DE66721D095ED2003006F8 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		14DE66731D095EF7003006F8 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		14DE66771D096767003006F8 /* DoantionTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoantionTVCell.swift; sourceTree = "<group>"; };
+		14DE66781D096767003006F8 /* DoantionTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoantionTVCell.xib; sourceTree = "<group>"; };
+		14DE667B1D099A1F003006F8 /* DonationSuggestionMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationSuggestionMoney.swift; sourceTree = "<group>"; };
+		14DE667D1D099B35003006F8 /* DonationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationModel.swift; sourceTree = "<group>"; };
 		14EA0A521CCB34D000169116 /* EditSelectDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSelectDataViewController.swift; sourceTree = "<group>"; };
 		14EA0A541CCB3D7900169116 /* EditTextViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTextViewViewController.swift; sourceTree = "<group>"; };
 		14EF2A101CD5F596008C521B /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -507,6 +524,8 @@
 				1426B95B1CB38B120099ED69 /* UIViewController.swift */,
 				1426B9591CB38A6D0099ED69 /* String.swift */,
 				1426B9571CB38A490099ED69 /* UIColor.swift */,
+				14DE66721D095ED2003006F8 /* UIView+Layout.h */,
+				14DE66731D095EF7003006F8 /* UIView+Layout.m */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -522,6 +541,7 @@
 		142C8AE11D05651A00620ECD /* Donation */ = {
 			isa = PBXGroup;
 			children = (
+				14DE667D1D099B35003006F8 /* DonationModel.swift */,
 			);
 			name = Donation;
 			sourceTree = "<group>";
@@ -572,6 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */,
+				14B4AE4D1D09DF840086FC16 /* CustomCalloutView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -600,6 +621,7 @@
 		145664011CE399480077225C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1477931B1D093BB60042EAD2 /* Donation */,
 				14EF2A151CD63159008C521B /* SearhView.swift */,
 				7CD1EC611CE479C6001FB823 /* ActivityShowCell.swift */,
 				7CD1EC631CE47BD9001FB823 /* BottomItemView.swift */,
@@ -638,6 +660,24 @@
 				14EF2A101CD5F596008C521B /* SearchResultTableViewCell.swift */,
 			);
 			name = CustomView;
+			sourceTree = "<group>";
+		};
+		1477931B1D093BB60042EAD2 /* Donation */ = {
+			isa = PBXGroup;
+			children = (
+				1477931C1D093BD20042EAD2 /* SupportProgressView.swift */,
+				14DE66771D096767003006F8 /* DoantionTVCell.swift */,
+				14DE66781D096767003006F8 /* DoantionTVCell.xib */,
+			);
+			name = Donation;
+			sourceTree = "<group>";
+		};
+		1477931E1D0941C70042EAD2 /* CustomeView */ = {
+			isa = PBXGroup;
+			children = (
+				1477931F1D0941DA0042EAD2 /* LDProgressView.swift */,
+			);
+			path = CustomeView;
 			sourceTree = "<group>";
 		};
 		147D63A51CE2328600543692 /* Model */ = {
@@ -750,6 +790,7 @@
 			children = (
 				7C82CEF41CEEB3C700223D87 /* BaseClass */,
 				147D63B01CE2362500543692 /* Application */,
+				1477931E1D0941C70042EAD2 /* CustomeView */,
 				14385C831CDF0F7A00A2D229 /* Extension */,
 				7C1FF8921CBB838F0039AD47 /* 3th */,
 				7C4F33AC1CB9604D00892398 /* Utility */,
@@ -1062,6 +1103,7 @@
 				14113AB71D0681D8009D6EBA /* Donation.swift */,
 				14113AC11D06C33A009D6EBA /* Withdraw.swift */,
 				14113AC91D06DE30009D6EBA /* Comment.swift */,
+				14DE667B1D099A1F003006F8 /* DonationSuggestionMoney.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1230,6 +1272,7 @@
 				14BECFF71CCB4E1D00091572 /* select_yes.png in Resources */,
 				14BECFFA1CCB4E1D00091572 /* trash_btn_pic.png in Resources */,
 				148B21D71D0720AD00A1EA4C /* ProjectShowTVCell.xib in Resources */,
+				14DE667A1D096767003006F8 /* DoantionTVCell.xib in Resources */,
 				14BECFF51CCB4E1D00091572 /* remove_btn_pic.png in Resources */,
 				14BECFEF1CCB4E1D00091572 /* camera_focus_pic.png in Resources */,
 				14BECFF11CCB4E1D00091572 /* flash_close_pic.png in Resources */,
@@ -1329,6 +1372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14DE667C1D099A1F003006F8 /* DonationSuggestionMoney.swift in Sources */,
 				14BECFEE1CCB4E1D00091572 /* ZZPhotoDatas.m in Sources */,
 				7CD1EC661CE48940001FB823 /* MainVCModel.swift in Sources */,
 				148B21EB1D073BAF00A1EA4C /* OtherProjectModel.swift in Sources */,
@@ -1338,8 +1382,10 @@
 				14BED0071CCB519B00091572 /* SelectMultiPhotoCollectionViewController.swift in Sources */,
 				147D63A91CE2332900543692 /* LoginView.swift in Sources */,
 				14B3F6CF1D01D459007B9031 /* MoreProjectDetailsVC.swift in Sources */,
+				147793201D0941DA0042EAD2 /* LDProgressView.swift in Sources */,
 				142C8AE31D05653C00620ECD /* DonateVC.swift in Sources */,
 				14C515CB1D080598007BC096 /* FlowView.swift in Sources */,
+				14DE66741D095EF7003006F8 /* UIView+Layout.m in Sources */,
 				148B21DD1D07371C00A1EA4C /* NaturalDisasterProjectTVC.swift in Sources */,
 				14015FB51CB4EA2B004B5F59 /* EditSelfProfileViewController.swift in Sources */,
 				14113AC21D06C33A009D6EBA /* Withdraw.swift in Sources */,
@@ -1348,6 +1394,7 @@
 				7C1E73441D0273FA00088693 /* MoreProjectDetailsView.swift in Sources */,
 				14113AD01D06E94E009D6EBA /* ProjectCommentRecordModel.swift in Sources */,
 				14789FDA1CE313F700F47941 /* NonVipRegisterView.swift in Sources */,
+				1477931D1D093BD20042EAD2 /* SupportProgressView.swift in Sources */,
 				14C515CF1D087290007BC096 /* CommonFlowView.swift in Sources */,
 				14BECFFD1CCB4E1D00091572 /* ZZCameraFocusView.m in Sources */,
 				7C2BFB6E1D0174F000524410 /* LaunchActivityModel.swift in Sources */,
@@ -1376,6 +1423,7 @@
 				7C4F33AE1CB9607300892398 /* HttpRequest.swift in Sources */,
 				14789FDE1CE37F7800F47941 /* NetworkUtil.swift in Sources */,
 				148B21DB1D0735A600A1EA4C /* MedicalProjectModel.swift in Sources */,
+				14DE66791D096767003006F8 /* DoantionTVCell.swift in Sources */,
 				1449FCD41CFF202400A85FC2 /* AuthenticationTableViewCell.swift in Sources */,
 				142578141CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift in Sources */,
 				7C78D9431CB8CC29002122A1 /* CompanyMapViewController.swift in Sources */,
@@ -1420,6 +1468,7 @@
 				14113ABA1D068746009D6EBA /* ProjectDonationRecordVC.swift in Sources */,
 				14113ACA1D06DE30009D6EBA /* Comment.swift in Sources */,
 				148B21D61D0720AD00A1EA4C /* ProjectShowTVCell.swift in Sources */,
+				14B4AE4E1D09DF840086FC16 /* CustomCalloutView.swift in Sources */,
 				1426B95C1CB38B120099ED69 /* UIViewController.swift in Sources */,
 				14A58A6E1C6E0F8000EBDB2C /* AppDelegate.swift in Sources */,
 				14BED0051CCB50FF00091572 /* PhotoCollectionViewCell.swift in Sources */,
@@ -1451,6 +1500,7 @@
 				1426B9501CB381400099ED69 /* SlideViewController.swift in Sources */,
 				1426FAA01CCD35D3009FFC11 /* UpdateShowImageViewController.swift in Sources */,
 				7C451B841CBA236F00490853 /* String+MD5.swift in Sources */,
+				14DE667E1D099B35003006F8 /* DonationModel.swift in Sources */,
 				147D63AC1CE2355600543692 /* LoginBGVideoView.swift in Sources */,
 				14A58A761C6E0F8000EBDB2C /* CCLions.xcdatamodeld in Sources */,
 				14BECFEB1CCB4E1D00091572 /* UIImageHandle.m in Sources */,

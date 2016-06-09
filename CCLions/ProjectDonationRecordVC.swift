@@ -14,6 +14,7 @@ class ProjectDonationRecordVC: UIViewController {
 	@IBOutlet var mTableView: UITableView!
     var model: ProjectDoantionRecordModel!
     var project_id: Int!
+    var project: Project!
     
     var commonFlowView: CommonFlowView!
     
@@ -45,7 +46,7 @@ class ProjectDonationRecordVC: UIViewController {
         self.view.insertSubview(commonFlowView, aboveSubview: self.mTableView)
         commonFlowView.snp_makeConstraints { (make) in
             make.left.bottom.right.equalTo(0)
-            make.height.equalTo(200)
+            make.height.equalTo(64)
         }
         commonFlowView.hideCommentBtn()
         commonFlowView.delegate = self
@@ -134,6 +135,8 @@ extension ProjectDonationRecordVC: CommonFlowViewDelegate {
     }
     
     func buttonSupportClicked() {
-        
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("DonateVC") as! DonateVC
+        vc.project = project
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
