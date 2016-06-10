@@ -18,7 +18,7 @@ class CompanyInfoViewController: UIViewController {
 	var dataArray: [(String, String)]!
 	var selectedPhotos: [UIImage] = [UIImage]()
 	var selectedIndustry = -1
-	var selectedAnnotation: MAPointAnnotation?
+	var selectedAnnotation: MAAnnotation?
 	var selectedLogoImage: UIImage?
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -40,7 +40,7 @@ class CompanyInfoViewController: UIViewController {
 		self.hasUploadedPhotoArray.removeLast()
 		self.dataArray = [(String, String)]()
 		self.dataArray.append(("公司名称", (company?.company_name)!))
-		self.dataArray.append(("公司地址", "经度：\(company!.address_longitude!) 纬度：\(company!.address_latitude!)"))
+		self.dataArray.append(("公司地址", (company?.address_position)!))
 		self.dataArray.append(("经营范围", (company?.business_scope)!))
 		self.selectedIndustry = (company?.industry)!
 		self.dataArray.append(("所属行业", Util.INDUSTRY[(company?.industry)!]))
@@ -108,8 +108,8 @@ class CompanyInfoViewController: UIViewController {
 		self.navigationController?.pushViewController(pickPositionVC, animated: true)
 	}
 
-	func pickPositionCallBack(row: Int, annotation: MAPointAnnotation) -> Void {
-		self.dataArray[row].1 = annotation.title
+	func pickPositionCallBack(row: Int, annotation: MAAnnotation) -> Void {
+		self.dataArray[row].1 = annotation.title!
 		self.selectedAnnotation = annotation
 		self.tableView.reloadData()
 	}
@@ -263,11 +263,15 @@ class CompanyInfoViewController: UIViewController {
 	 - parameter photoAddress: 公司照片展示地址
 	 */
 	func requestUpdateCompany(photoAddress: String, logoAddress: String) -> Void {
+        let address_longitude = self.selectedAnnotation == nil ? (self.company?.address_longitude)! : String(self.selectedAnnotation!.coordinate.longitude)
+        let address_latitude = self.selectedAnnotation == nil ? (self.company?.address_latitude)! : String(self.selectedAnnotation!.coordinate.latitude)
+        let address_position = self.selectedAnnotation == nil ? (self.company?.address_position)! : self.selectedAnnotation?.title
 		let paras: [String: AnyObject] = [
 			"company_id": (self.company?.id)!,
 			"company_name": self.dataArray[0].1,
-			"address_longitude": self.selectedAnnotation == nil ? (self.company?.address_longitude)! : String(self.selectedAnnotation!.coordinate.longitude),
-			"address_latitude": self.selectedAnnotation == nil ? (self.company?.address_latitude)! : String(self.selectedAnnotation!.coordinate.latitude),
+			"address_longitude": address_longitude,
+			"address_latitude": address_latitude,
+			"address_position": address_position!,
 			"business_scope": self.dataArray[2].1,
 			"industry": self.selectedIndustry,
 			"show_photo": photoAddress,

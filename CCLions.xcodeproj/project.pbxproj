@@ -91,10 +91,13 @@
 		14A58A7B1C6E0F8000EBDB2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A58A791C6E0F8000EBDB2C /* LaunchScreen.storyboard */; };
 		14A58A861C6E0F8000EBDB2C /* CCLionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A58A851C6E0F8000EBDB2C /* CCLionsTests.swift */; };
 		14A58A911C6E0F8000EBDB2C /* CCLionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A58A901C6E0F8000EBDB2C /* CCLionsUITests.swift */; };
+		14AFE0941D0A82ED00A4A8BE /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AFE0931D0A82ED00A4A8BE /* CustomCalloutView.m */; };
+		14AFE0971D0A838100A4A8BE /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AFE0961D0A838100A4A8BE /* CustomAnnotationView.m */; };
+		14AFE09D1D0B0A9900A4A8BE /* CompanyMapCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AFE09C1D0B0A9900A4A8BE /* CompanyMapCalloutView.m */; };
+		14AFE0A01D0B0AE900A4A8BE /* CompanyMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AFE09F1D0B0AE900A4A8BE /* CompanyMapAnnotationView.m */; };
 		14B3F6CF1D01D459007B9031 /* MoreProjectDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B3F6CE1D01D459007B9031 /* MoreProjectDetailsVC.swift */; };
 		14B3F6FD1D01E611007B9031 /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B3F6FA1D01E611007B9031 /* CircleProgressView.m */; };
 		14B3F6FE1D01E611007B9031 /* CircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B3F6FC1D01E611007B9031 /* CircleShapeLayer.m */; };
-		14B4AE4E1D09DF840086FC16 /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B4AE4D1D09DF840086FC16 /* CustomCalloutView.swift */; };
 		14BECFE51CCB4E1D00091572 /* ZZBrowserPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BECFB21CCB4E1D00091572 /* ZZBrowserPickerViewController.m */; };
 		14BECFE61CCB4E1D00091572 /* ZZCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BECFB41CCB4E1D00091572 /* ZZCameraController.m */; };
 		14BECFE71CCB4E1D00091572 /* ZZCameraPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BECFB61CCB4E1D00091572 /* ZZCameraPickerViewController.m */; };
@@ -319,12 +322,19 @@
 		14A58A8C1C6E0F8000EBDB2C /* CCLionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCLionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A58A901C6E0F8000EBDB2C /* CCLionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCLionsUITests.swift; sourceTree = "<group>"; };
 		14A58A921C6E0F8000EBDB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14AFE0921D0A82ED00A4A8BE /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
+		14AFE0931D0A82ED00A4A8BE /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
+		14AFE0951D0A838100A4A8BE /* CustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
+		14AFE0961D0A838100A4A8BE /* CustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
+		14AFE09B1D0B0A9900A4A8BE /* CompanyMapCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyMapCalloutView.h; sourceTree = "<group>"; };
+		14AFE09C1D0B0A9900A4A8BE /* CompanyMapCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyMapCalloutView.m; sourceTree = "<group>"; };
+		14AFE09E1D0B0AE900A4A8BE /* CompanyMapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyMapAnnotationView.h; sourceTree = "<group>"; };
+		14AFE09F1D0B0AE900A4A8BE /* CompanyMapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyMapAnnotationView.m; sourceTree = "<group>"; };
 		14B3F6CE1D01D459007B9031 /* MoreProjectDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreProjectDetailsVC.swift; sourceTree = "<group>"; };
 		14B3F6F91D01E611007B9031 /* CircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressView.h; sourceTree = "<group>"; };
 		14B3F6FA1D01E611007B9031 /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
 		14B3F6FB1D01E611007B9031 /* CircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleShapeLayer.h; sourceTree = "<group>"; };
 		14B3F6FC1D01E611007B9031 /* CircleShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleShapeLayer.m; sourceTree = "<group>"; };
-		14B4AE4D1D09DF840086FC16 /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
 		14BECFB11CCB4E1D00091572 /* ZZBrowserPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowserPickerViewController.h; sourceTree = "<group>"; };
 		14BECFB21CCB4E1D00091572 /* ZZBrowserPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowserPickerViewController.m; sourceTree = "<group>"; };
 		14BECFB31CCB4E1D00091572 /* ZZCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraController.h; sourceTree = "<group>"; };
@@ -592,7 +602,10 @@
 			isa = PBXGroup;
 			children = (
 				1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */,
-				14B4AE4D1D09DF840086FC16 /* CustomCalloutView.swift */,
+				14AFE0921D0A82ED00A4A8BE /* CustomCalloutView.h */,
+				14AFE0931D0A82ED00A4A8BE /* CustomCalloutView.m */,
+				14AFE0951D0A838100A4A8BE /* CustomAnnotationView.h */,
+				14AFE0961D0A838100A4A8BE /* CustomAnnotationView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -832,6 +845,33 @@
 				14A58A921C6E0F8000EBDB2C /* Info.plist */,
 			);
 			path = CCLionsUITests;
+			sourceTree = "<group>";
+		};
+		14AFE0981D0B0A5B00A4A8BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		14AFE0991D0B0A6100A4A8BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				14AFE09B1D0B0A9900A4A8BE /* CompanyMapCalloutView.h */,
+				14AFE09C1D0B0A9900A4A8BE /* CompanyMapCalloutView.m */,
+				14AFE09E1D0B0AE900A4A8BE /* CompanyMapAnnotationView.h */,
+				14AFE09F1D0B0AE900A4A8BE /* CompanyMapAnnotationView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		14AFE09A1D0B0A6700A4A8BE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				14D0B9E11CCE7F3F00FE2072 /* CompanyShowViewController.swift */,
+				7C78D9421CB8CC29002122A1 /* CompanyMapViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		14B3F6F81D01E611007B9031 /* CircularProgressView */ = {
@@ -1077,8 +1117,9 @@
 		7C78D9411CB8CC05002122A1 /* CompanyMap */ = {
 			isa = PBXGroup;
 			children = (
-				7C78D9421CB8CC29002122A1 /* CompanyMapViewController.swift */,
-				14D0B9E11CCE7F3F00FE2072 /* CompanyShowViewController.swift */,
+				14AFE09A1D0B0A6700A4A8BE /* Controller */,
+				14AFE0991D0B0A6100A4A8BE /* View */,
+				14AFE0981D0B0A5B00A4A8BE /* Model */,
 			);
 			name = CompanyMap;
 			sourceTree = "<group>";
@@ -1374,6 +1415,7 @@
 			files = (
 				14DE667C1D099A1F003006F8 /* DonationSuggestionMoney.swift in Sources */,
 				14BECFEE1CCB4E1D00091572 /* ZZPhotoDatas.m in Sources */,
+				14AFE09D1D0B0A9900A4A8BE /* CompanyMapCalloutView.m in Sources */,
 				7CD1EC661CE48940001FB823 /* MainVCModel.swift in Sources */,
 				148B21EB1D073BAF00A1EA4C /* OtherProjectModel.swift in Sources */,
 				14113AC61D06D0EA009D6EBA /* ProjectWithdrawRecordTVCell.swift in Sources */,
@@ -1390,12 +1432,14 @@
 				14015FB51CB4EA2B004B5F59 /* EditSelfProfileViewController.swift in Sources */,
 				14113AC21D06C33A009D6EBA /* Withdraw.swift in Sources */,
 				7C4F33B01CB963BC00892398 /* Tips.swift in Sources */,
+				14AFE0971D0A838100A4A8BE /* CustomAnnotationView.m in Sources */,
 				148B21DF1D07372C00A1EA4C /* NaturalDisasterProjectModel.swift in Sources */,
 				7C1E73441D0273FA00088693 /* MoreProjectDetailsView.swift in Sources */,
 				14113AD01D06E94E009D6EBA /* ProjectCommentRecordModel.swift in Sources */,
 				14789FDA1CE313F700F47941 /* NonVipRegisterView.swift in Sources */,
 				1477931D1D093BD20042EAD2 /* SupportProgressView.swift in Sources */,
 				14C515CF1D087290007BC096 /* CommonFlowView.swift in Sources */,
+				14AFE0941D0A82ED00A4A8BE /* CustomCalloutView.m in Sources */,
 				14BECFFD1CCB4E1D00091572 /* ZZCameraFocusView.m in Sources */,
 				7C2BFB6E1D0174F000524410 /* LaunchActivityModel.swift in Sources */,
 				149791391CA8022D0014D377 /* UIImage+CornerRadius.swift in Sources */,
@@ -1467,8 +1511,8 @@
 				148B21AF1D070F6E00A1EA4C /* PoorProjectModel.swift in Sources */,
 				14113ABA1D068746009D6EBA /* ProjectDonationRecordVC.swift in Sources */,
 				14113ACA1D06DE30009D6EBA /* Comment.swift in Sources */,
+				14AFE0A01D0B0AE900A4A8BE /* CompanyMapAnnotationView.m in Sources */,
 				148B21D61D0720AD00A1EA4C /* ProjectShowTVCell.swift in Sources */,
-				14B4AE4E1D09DF840086FC16 /* CustomCalloutView.swift in Sources */,
 				1426B95C1CB38B120099ED69 /* UIViewController.swift in Sources */,
 				14A58A6E1C6E0F8000EBDB2C /* AppDelegate.swift in Sources */,
 				14BED0051CCB50FF00091572 /* PhotoCollectionViewCell.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 import SwiftyDrop
 
 let APIKey = "c8ae2ff34b5f1a87bd61304e1f75dba9"
-typealias pickPositionSendValue = (row: Int, annotation: MAPointAnnotation) -> Void
+typealias pickPositionSendValue = (row: Int, annotation: MAAnnotation) -> Void
 class PickPositionOnMapViewController: UIViewController {
 	var mapView: MAMapView!
 	var searchBar: UISearchBar!
@@ -19,6 +19,7 @@ class PickPositionOnMapViewController: UIViewController {
 	var selectedAnnotation: MAPointAnnotation?
 	var myClosure: pickPositionSendValue?
 	var row: Int?
+    var userLocation: MAUserLocation!
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -28,6 +29,7 @@ class PickPositionOnMapViewController: UIViewController {
 		self.initMapView()
 		self.initSearch()
 		self.initWeight()
+        self.initNoti()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -39,6 +41,10 @@ class PickPositionOnMapViewController: UIViewController {
 		let btn = UIBarButtonItem(title: "确定", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(PickPositionOnMapViewController.save(_:)))
 		self.navigationItem.rightBarButtonItem = btn
 	}
+    
+    func initNoti() -> Void {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PickPositionOnMapViewController.selectButtonClickedNotiCallBack(_:)), name: SELECT_COMPANY_POSITION_BUTTON_CLICKED, object: nil)
+    }
 
 	func save(sender: AnyObject) -> Void {
 		if self.selectedAnnotation == nil {
@@ -97,6 +103,45 @@ class PickPositionOnMapViewController: UIViewController {
 		self.search.AMapPOIKeywordsSearch(searchRequest)
 	}
 
+    
+    func selectButtonClickedNotiCallBack(noti: NSNotification) -> Void {
+        let dic = noti.object as! NSDictionary
+        let title = dic.objectForKey(POSITION_TITLE) as! String
+        
+        var annotation = getAnnotationFromPositionTitle(title)
+        
+        if title == userLocation.title {
+            annotation = userLocation
+        }
+
+        if annotation == nil {
+            Drop.down(Tips.PICK_ANNOTATION_ERROR, state: DropState.Warning)
+            return
+        }
+        
+        if self.myClosure != nil {
+            myClosure!(row: self.row!, annotation: annotation!)
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+    }
+    
+    func getAnnotationFromPositionTitle(title: String) -> MAAnnotation? {
+        for item in self.annotations {
+            if item.title == title {
+                return item
+            }
+        }
+        
+        return nil
+    }
+    
+    func getLocationName() -> Void {
+        let regeo = AMapReGeocodeSearchRequest()
+        regeo.location = AMapGeoPoint.locationWithLatitude(CGFloat(userLocation.coordinate.latitude), longitude: CGFloat(userLocation.coordinate.longitude))
+        regeo.requireExtension = true
+        self.search.AMapReGoecodeSearch(regeo)
+    }
+    
 	/*
 	 // MARK: - Navigation
 
@@ -117,17 +162,21 @@ extension PickPositionOnMapViewController: MAMapViewDelegate {
 	 - parameter updatingLocation: 是否更新
 	 */
 	func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
-		if updatingLocation {
-			// print("latitude:\(userLocation.coordinate.latitude), longitude:\(userLocation.coordinate.longitude)")
-		}
+        self.userLocation = userLocation
+        if updatingLocation {
+            // 发起逆地理编码
+            getLocationName()
+        }
 	}
 
 	func mapView(mapView: MAMapView!, viewForAnnotation annotation: MAAnnotation!) -> MAAnnotationView! {
 		var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(CELL_REUSE)
 		if (annotationView == nil) {
-			annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: CELL_REUSE)
+			annotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: CELL_REUSE)
 		}
         annotationView?.image = UIImage(named: "icon-location")
+        annotationView.canShowCallout = false
+        annotationView.centerOffset = CGPointMake(0, -16)
 		return annotationView
 	}
 
@@ -153,6 +202,13 @@ extension PickPositionOnMapViewController: MAMapViewDelegate {
 	func mapView(mapView: MAMapView!, didSingleTappedAtCoordinate coordinate: CLLocationCoordinate2D) {
 		self.selectedAnnotation = nil
 	}
+    
+    func onReGeocodeSearchDone(request: AMapReGeocodeSearchRequest!, response: AMapReGeocodeSearchResponse!) {
+        if response.regeocode != nil {
+            let regeocode = response.regeocode
+            self.userLocation.title = regeocode.formattedAddress
+        }
+    }
 }
 
 extension PickPositionOnMapViewController: AMapSearchDelegate {

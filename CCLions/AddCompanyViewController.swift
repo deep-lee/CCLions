@@ -18,7 +18,7 @@ class AddCompanyViewController: UIViewController {
     var selectedPhotoArray: [String]!
     var selectedIndustry = -1
     var selectedPhotos: [UIImage] = [UIImage]()
-    var selectedAnnotation: MAPointAnnotation?
+    var selectedAnnotation: MAAnnotation?
     var selectedLogoImage: UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,8 +122,8 @@ class AddCompanyViewController: UIViewController {
         self.navigationController?.pushViewController(pickPositionVC, animated: true)
     }
     
-    func pickPositionCallBack(row: Int, annotation: MAPointAnnotation) -> Void {
-        self.dataArray[row].1 = annotation.title
+    func pickPositionCallBack(row: Int, annotation: MAAnnotation) -> Void {
+        self.dataArray[row].1 = annotation.title!
         self.selectedAnnotation = annotation
         self.tableView.reloadData()
     }
@@ -226,6 +226,7 @@ class AddCompanyViewController: UIViewController {
             "company_name": self.dataArray[0].1,
             "address_longitude": (self.selectedAnnotation?.coordinate.longitude)!,
             "address_latitude": (self.selectedAnnotation?.coordinate.latitude)!,
+            "address_position": (self.selectedAnnotation?.title)!,
             "business_scope": self.dataArray[2].1,
             "industry": self.selectedIndustry,
             "show_photo": photoAddress,

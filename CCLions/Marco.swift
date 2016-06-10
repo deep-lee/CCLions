@@ -59,7 +59,7 @@ let DONATION_AMOUNT_SUGGEST_CELL_HEIGHT: CGFloat = 69
 var VIP_ARRAY_PROJECT_TYPE                       = ["狮子会"]
 var NOVIP_ARRAY_PROJECT_TYPE                     = ["贫困", "医疗", "自然灾害", "教育", "急救", "其他"]
 
-var ARRAY_DEFAULT_SUGGEST_DONATION_MONEY = [
+var ARRAY_DEFAULT_SUGGEST_DONATION_MONEY         = [
     DonationSuggestionMoney(id: 1, amount: 5, create_time: nil),
     DonationSuggestionMoney(id: 2, amount: 10, create_time: nil),
     DonationSuggestionMoney(id: 3, amount: 20, create_time: nil),
@@ -68,3 +68,8 @@ var ARRAY_DEFAULT_SUGGEST_DONATION_MONEY = [
     DonationSuggestionMoney(id: 6, amount: 200, create_time: nil),
     DonationSuggestionMoney(id: 7, amount: 500, create_time: nil),
 ]
+
+let SELECT_COMPANY_POSITION_BUTTON_CLICKED       = "SELECT_COMPANY_POSITION_BUTTON_CLICKED"
+let POSITION_LATITUDE                            = "POSITION_LATITUDE"
+let POSITION_LONGITUDE                           = "POSITION_LONGITUDE"
+let POSITION_TITLE                               = "POSITION_TITLE"

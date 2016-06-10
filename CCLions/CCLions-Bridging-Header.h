@@ -26,3 +26,5 @@
 #import "DateTools.h"
 #import <XLPagerTabStrip/FXPageControl.h>
 #import "UIView+Layout.h"
+#import "CustomAnnotationView.h"
+#import "CompanyMapAnnotationView.h"
