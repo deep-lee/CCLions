@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SnapKit
 
 class CompanyShowViewController: UIViewController {
 	@IBOutlet weak var topView: UIView!
@@ -57,20 +58,31 @@ class CompanyShowViewController: UIViewController {
 	 初始化底部的公司介绍界面
 	 */
 	func initBottomScrollView() -> Void {
-		print(self.bottomScrollView.frame)
-		self.companyNameLabel = UILabel(frame: CGRectMake(5, -64, self.view.frame.size.width - 10, 20))
+		self.companyNameLabel = UILabel(frame: CGRectZero)
+        self.bottomScrollView.addSubview(self.companyNameLabel!)
+        self.companyNameLabel?.snp_makeConstraints(closure: { (make) in
+            make.top.equalTo(5)
+            make.left.equalTo(5)
+            make.right.equalTo(-5)
+        })
 		self.companyNameLabel?.font = UIFont.boldSystemFontOfSize(15)
 		if (self.company != nil) {
 			self.companyNameLabel?.text = self.company?.company_name
 		}
-		self.bottomScrollView.addSubview(self.companyNameLabel!)
-
-		self.companyIntroTextView = UITextView(frame: CGRectMake(5, -64 + self.companyNameLabel!.frame.size.height + 10, self.view.frame.size.width - 10, self.bottomScrollView.frame.size.height))
+    
+		self.companyIntroTextView = UITextView(frame: CGRectZero)
+        self.bottomScrollView.addSubview(self.companyIntroTextView!)
+        self.companyIntroTextView?.snp_makeConstraints(closure: { (make) in
+            make.top.equalTo((companyNameLabel?.snp_bottom)!).offset(8)
+            make.left.equalTo(5)
+            make.right.equalTo(-5)
+            make.bottom.equalTo((companyIntroTextView?.superview)!)
+        })
 		if (self.company != nil) {
 			self.companyIntroTextView?.text = self.company?.introduction
 		}
 		self.companyIntroTextView?.editable = false
-		self.bottomScrollView.addSubview(self.companyIntroTextView!)
+		
 	}
 
 	override func didReceiveMemoryWarning() {

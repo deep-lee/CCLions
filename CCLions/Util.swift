@@ -444,6 +444,13 @@ class Util {
         return suggest
     }
     
+    /**
+     从JSON中解析出Company
+     
+     - parameter data: JSON
+     
+     - returns: Model
+     */
     static func getCompanyFromJson(data: JSON) -> Company {
         let company = Company(
             id: data["id"].intValue,
@@ -466,4 +473,17 @@ class Util {
         return company
     }
 
+    /**
+     获取两点之间的距离
+     
+     - parameter fromLocation: 起点
+     - parameter toLocation:   终点
+     
+     - returns: 距离
+     */
+    static func diatanceFromLocation(fromLocation: CLLocation, toLocation: CLLocation) -> CLLocationDistance{
+        let distance = fromLocation.distanceFromLocation(toLocation)
+        return distance
+    }
+    
 }

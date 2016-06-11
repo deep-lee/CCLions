@@ -14,4 +14,7 @@
 
 @property (nonatomic, copy) NSString *companyAddress;                 // 公司地址
 
+- (void)setCompanyAddress:(NSString *)companyAddress;
+- (void)setCompanyName:(NSString *)companyName;
+
 @end

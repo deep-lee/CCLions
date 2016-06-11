@@ -18,12 +18,14 @@ class CompanyMapViewController: UIViewController {
 	var companyArray: [Company]!
 	var flag = true
 	var selectedAnnotation: MAPointAnnotation?
+    var preLocation: CLLocation!
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		// Do any additional setup after loading the view.
 		MAMapServices.sharedServices().apiKey = APIKey
 		initMapView()
+        initNoti()
 	}
 
 	/**
@@ -36,7 +38,7 @@ class CompanyMapViewController: UIViewController {
 		self.mapView.delegate = self
 		self.view.addSubview(self.mapView)
 		// 开启地图定位功能
-		self.mapView.showsUserLocation = true
+		self.mapView.showsUserLocation = false
 		self.mapView.setUserTrackingMode(MAUserTrackingMode.Follow, animated: true)
 
 		self.mapView.addAnnotations(self.annotations)
@@ -47,6 +49,37 @@ class CompanyMapViewController: UIViewController {
 		// self.searchBar.delegate = self
 		self.view.addSubview(self.searchBar)
 	}
+    
+    func initNoti() -> Void {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CompanyMapViewController.detailsButtonClickedNotiCallBack(_:)), name: DETAILS_BUTTON_CLICKED, object: nil)
+    }
+    
+    func detailsButtonClickedNotiCallBack(noti: NSNotification) -> Void {
+        let dic = noti.object as! NSDictionary
+        let companyName = dic.objectForKey(COMOPANY_NAME) as! String
+        self.goToCompanyShowVC(companyName)
+    }
+    
+    func getIndexOfComapny(name: String) -> Int {
+        var index = 0
+        for company in self.companyArray {
+            if company.company_name == name {
+                return index
+            }
+            index += 1
+        }
+        
+        return index
+    }
+    
+    func goToCompanyShowVC(companyName: String) -> Void {
+		let companyShowViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CompanyShowViewController") as! CompanyShowViewController
+		let index = getIndexOfComapny(companyName)
+		companyShowViewController.company = self.companyArray[index]
+		companyShowViewController.title = "公司详情"
+		self.navigationController?.pushViewController(companyShowViewController, animated: true)
+        
+    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -63,10 +96,10 @@ class CompanyMapViewController: UIViewController {
 	 - parameter latitude:   纬度
 	 - parameter longtitude: 经度
 	 */
-	func getLocalCompany(latitude: Double, longtitude: Double) -> Void {
+    func getLocalCompany(location: CLLocation) -> Void {
 		let paras = [
-			"local_longitude": "\(longtitude)",
-			"local_latitude": "\(latitude)",
+			"local_longitude": "\(location.coordinate.longitude)",
+			"local_latitude": "\(location.coordinate.latitude)",
 			"length": Util.MAP_LIMIT_LENGTH
 		]
 
@@ -79,7 +112,6 @@ class CompanyMapViewController: UIViewController {
 					if code == 200 {
 						self.annotations.removeAll()
 						self.companyArray.removeAll()
-
 						let data = json["data"].arrayValue
 						for item in data {
 							let company = Util.getCompanyFromJson(item)
@@ -88,7 +120,7 @@ class CompanyMapViewController: UIViewController {
 							let annotation = MAPointAnnotation()
 							annotation.coordinate = coordinate
 							annotation.title = company.company_name
-							annotation.subtitle = company.user_name
+							annotation.subtitle = company.address_position
 							self.annotations.append(annotation)
 							self.companyArray.append(company)
 						}
@@ -110,16 +142,6 @@ class CompanyMapViewController: UIViewController {
 	func changeFlag() -> Void {
 		self.flag = true
 	}
-
-	/*
-	 // MARK: - Navigation
-
-	 // In a storyboard-based application, you will often want to do a little preparation before navigation
-	 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-	 // Get the new view controller using segue.destinationViewController.
-	 // Pass the selected object to the new view controller.
-	 }
-	 */
 }
 
 extension CompanyMapViewController: MAMapViewDelegate {
@@ -132,9 +154,9 @@ extension CompanyMapViewController: MAMapViewDelegate {
 	 */
 	func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
 		if updatingLocation {
-			// print("latitude:\(userLocation.coordinate.latitude), longitude:\(userLocation.coordinate.longitude)")
+            preLocation = CLLocation(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
 			if self.flag {
-				self.getLocalCompany(userLocation.coordinate.latitude, longtitude: userLocation.coordinate.longitude)
+				self.getLocalCompany(preLocation)
 				self.flag = false
 			}
 		}
@@ -146,7 +168,11 @@ extension CompanyMapViewController: MAMapViewDelegate {
 			annotationView = CompanyMapAnnotationView(annotation: annotation, reuseIdentifier: CELL_REUSE)
 		}
 		annotationView?.canShowCallout = false
-		annotationView?.image = UIImage(named: "icon-company")
+        if annotation.title == CURRENT_POSITION {
+            annotationView?.image = UIImage(named: "icon-my-location")
+        } else {
+            annotationView?.image = UIImage(named: "icon-company")
+        }
         annotationView.centerOffset = CGPointMake(0, -16)
 		return annotationView
 	}
@@ -160,16 +186,6 @@ extension CompanyMapViewController: MAMapViewDelegate {
 		self.selectedAnnotation = nil
 	}
 
-	func goToCompanyShowVC(sender: AnyObject) -> Void {
-		if (self.selectedAnnotation != nil) {
-			let index = self.annotations.indexOf(self.selectedAnnotation!)
-			let companyShowViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CompanyShowViewController") as! CompanyShowViewController
-			companyShowViewController.company = self.companyArray[index!]
-			companyShowViewController.title = "公司详情"
-			self.navigationController?.pushViewController(companyShowViewController, animated: true)
-		}
-	}
-
 	/**
 	 地图移动之后调用该函数
 
@@ -177,9 +193,18 @@ extension CompanyMapViewController: MAMapViewDelegate {
 	 - parameter wasUserAction:
 	 */
 	func mapView(mapView: MAMapView!, mapDidMoveByUser wasUserAction: Bool) {
-		print("移动了")
 		if wasUserAction {
-			self.getLocalCompany(self.mapView.centerCoordinate.latitude, longtitude: self.mapView.centerCoordinate.longitude)
+            if preLocation == nil {
+                preLocation = CLLocation(latitude: self.mapView.centerCoordinate.latitude, longitude: self.mapView.centerCoordinate.longitude)
+            } else {
+                let toLocation = CLLocation(latitude: self.mapView.centerCoordinate.latitude, longitude: self.mapView.centerCoordinate.longitude)
+                let distance = Util.diatanceFromLocation(preLocation, toLocation: toLocation)
+                if distance > Double(Util.MAP_LIMIT_LENGTH) {
+                    self.getLocalCompany(toLocation)
+                }
+            }
+            
+			
 		}
 	}
 }

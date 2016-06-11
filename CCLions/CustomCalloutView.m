@@ -88,7 +88,7 @@ typedef void (^SelectButtonClickBlock)(NSString *,NSString *);
     
     [self drawInContext:UIGraphicsGetCurrentContext()];
     
-    self.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.layer.shadowColor = UIColorFromHex(0x333333).CGColor;
     self.layer.shadowOpacity = 1.0;
     self.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     
@@ -98,7 +98,7 @@ typedef void (^SelectButtonClickBlock)(NSString *,NSString *);
 {
     
     CGContextSetLineWidth(context, 2.0);
-    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.8].CGColor);
+    CGContextSetFillColorWithColor(context, UIColorFromHex(0x333333).CGColor);
     
     [self getDrawPath:context];
     CGContextFillPath(context);

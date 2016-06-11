@@ -174,7 +174,12 @@ extension PickPositionOnMapViewController: MAMapViewDelegate {
 		if (annotationView == nil) {
 			annotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: CELL_REUSE)
 		}
-        annotationView?.image = UIImage(named: "icon-location")
+        if (annotation.title == CURRENT_POSITION) || (annotation.title == userLocation.title) {
+            annotationView?.image = UIImage(named: "icon-my-location")
+        } else {
+            annotationView?.image = UIImage(named: "icon-company")
+        }
+        
         annotationView.canShowCallout = false
         annotationView.centerOffset = CGPointMake(0, -16)
 		return annotationView

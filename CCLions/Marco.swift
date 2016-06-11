@@ -69,7 +69,10 @@ var ARRAY_DEFAULT_SUGGEST_DONATION_MONEY         = [
     DonationSuggestionMoney(id: 7, amount: 500, create_time: nil),
 ]
 
-let SELECT_COMPANY_POSITION_BUTTON_CLICKED       = "SELECT_COMPANY_POSITION_BUTTON_CLICKED"
-let POSITION_LATITUDE                            = "POSITION_LATITUDE"
-let POSITION_LONGITUDE                           = "POSITION_LONGITUDE"
-let POSITION_TITLE                               = "POSITION_TITLE"
+let SELECT_COMPANY_POSITION_BUTTON_CLICKED = "SELECT_COMPANY_POSITION_BUTTON_CLICKED"
+let POSITION_LATITUDE                      = "POSITION_LATITUDE"
+let POSITION_LONGITUDE                     = "POSITION_LONGITUDE"
+let POSITION_TITLE                         = "POSITION_TITLE"
+let DETAILS_BUTTON_CLICKED                 = "DETAILS_BUTTON_CLICKED"
+let COMOPANY_NAME                          = "COMOPANY_NAME"
+let CURRENT_POSITION                       = "当前位置"
