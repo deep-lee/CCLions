@@ -22,6 +22,7 @@ class LaunchActivityFirstViewController: WPEditorViewController {
 
 		// Do any additional setup after loading the view.
 		self.delegate = self
+        initWeight()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -33,6 +34,11 @@ class LaunchActivityFirstViewController: WPEditorViewController {
 		super.viewWillAppear(animated)
 		self.setNavigationBarItem()
 	}
+    
+    func initWeight() -> Void {
+        let next = UIBarButtonItem(title: "下一步", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(LaunchActivityFirstViewController.next(_:)))
+        self.navigationItem.rightBarButtonItem = next
+    }
 
 	@IBAction func leftMenu(sender: AnyObject) {
 		slideMenuController()?.toggleLeft()
@@ -150,7 +156,7 @@ class LaunchActivityFirstViewController: WPEditorViewController {
 		}
 	}
 
-	@IBAction func next(sender: AnyObject) {
+	func next(sender: AnyObject) {
 		// 首先判断内容是否填写完整
 		if !hasCompleted() {
 			Drop.down(Tips.ACTIVITY_CONTENT_NOT_COMPLETED, state: DropState.Warning)

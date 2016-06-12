@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyDrop
 
-let APIKey = "c8ae2ff34b5f1a87bd61304e1f75dba9"
 typealias pickPositionSendValue = (row: Int, annotation: MAAnnotation) -> Void
 class PickPositionOnMapViewController: UIViewController {
 	var mapView: MAMapView!
@@ -24,7 +23,7 @@ class PickPositionOnMapViewController: UIViewController {
 		super.viewDidLoad()
 
 		// Do any additional setup after loading the view.
-		MAMapServices.sharedServices().apiKey = APIKey
+		MAMapServices.sharedServices().apiKey = GAODE_APIKey
 		self.annotations = [MAPointAnnotation]()
 		self.initMapView()
 		self.initSearch()
@@ -87,7 +86,7 @@ class PickPositionOnMapViewController: UIViewController {
 	 初始化搜索
 	 */
 	func initSearch() -> Void {
-		AMapSearchServices.sharedServices().apiKey = APIKey
+		AMapSearchServices.sharedServices().apiKey = GAODE_APIKey
 		self.search = AMapSearchAPI()
 		self.search.delegate = self
 	}

@@ -14,4 +14,7 @@
 
 @property (nonatomic, readonly) CompanyMapCalloutView *calloutView;
 
+- (void)hideDetailsButton;
+- (void)showDetailsButton;
+
 @end

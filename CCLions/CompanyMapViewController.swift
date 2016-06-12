@@ -14,16 +14,24 @@ import Alamofire
 class CompanyMapViewController: UIViewController {
 	var mapView: MAMapView!
     var searchBar: UISearchBar!
-	var annotations: [MAPointAnnotation]!
+	var annotations: [MAAnnotation]!
 	var companyArray: [Company]!
 	var flag = true
-	var selectedAnnotation: MAPointAnnotation?
+	var selectedAnnotation: MAAnnotation?
     var preLocation: CLLocation!
+    
+    var model: CompanyMapModel!
+    
+    var isSearching = false
+    
+    var currentLocation: CLLocation!
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		// Do any additional setup after loading the view.
-		MAMapServices.sharedServices().apiKey = APIKey
+		MAMapServices.sharedServices().apiKey = GAODE_APIKey
+        initWeight()
 		initMapView()
         initNoti()
 	}
@@ -32,6 +40,9 @@ class CompanyMapViewController: UIViewController {
 	 初始化地图界面
 	 */
 	func initMapView() -> Void {
+        
+        model = CompanyMapModel.shareInstance()
+        
 		self.annotations = [MAPointAnnotation]()
 		self.companyArray = [Company]()
 		self.mapView = MAMapView(frame: self.view.bounds)
@@ -46,12 +57,20 @@ class CompanyMapViewController: UIViewController {
 		// 添加一个搜索框
 		self.searchBar = UISearchBar(frame: CGRectMake(0, (self.navigationController?.navigationBar.frame.size.height)!, self.view.frame.size.width, 45))
 		self.searchBar.placeholder = "搜索商家"
-		// self.searchBar.delegate = self
+		self.searchBar.delegate = self
 		self.view.addSubview(self.searchBar)
 	}
     
+    func initWeight() -> Void {
+        let clearButton = UIBarButtonItem(title: "清空搜索", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CompanyMapViewController.clearSearch(_:)))
+        self.navigationItem.rightBarButtonItem = clearButton
+    }
+    
     func initNoti() -> Void {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CompanyMapViewController.detailsButtonClickedNotiCallBack(_:)), name: DETAILS_BUTTON_CLICKED, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:
+            #selector(CompanyMapViewController.searchCompanySuccessNotiCallBack(_:)), name: COMPANY_MAP_SEARCH_COMPANY_SUCCESS, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CompanyMapViewController.searchCompanyFinishNotiCallBack(_:)), name: COMPANY_MAP_SEARCH_COMPANY_FINISH, object: nil)
     }
     
     func detailsButtonClickedNotiCallBack(noti: NSNotification) -> Void {
@@ -60,22 +79,51 @@ class CompanyMapViewController: UIViewController {
         self.goToCompanyShowVC(companyName)
     }
     
-    func getIndexOfComapny(name: String) -> Int {
-        var index = 0
-        for company in self.companyArray {
+    func searchCompanySuccessNotiCallBack(noti: NSNotification) -> Void {
+        
+        isSearching = true
+        
+        if model.annotationArray.count > 0 {
+            // 搜索结果不为空
+            let annotation = model.annotationArray.first
+            preLocation = CLLocation(latitude: (annotation?.coordinate.latitude)!, longitude: (annotation?.coordinate.longitude)!)
+        }
+        self.mapView.removeAnnotations(self.annotations)
+        self.annotations.removeAll()
+        self.annotations = model.annotationArray
+        self.mapView.addAnnotations(self.annotations)
+        self.mapView.showAnnotations(self.annotations, animated: true)
+        self.mapView.centerCoordinate = (self.annotations.first?.coordinate)!
+    }
+    
+    func searchCompanyFinishNotiCallBack(noti: NSNotification) -> Void {
+        
+    }
+    
+    func clearSearch(sender: AnyObject) -> Void {
+        isSearching = false
+        self.searchBar.text = ""
+        self.mapView.removeAnnotations(self.annotations)
+        self.annotations.removeAll()
+        preLocation = currentLocation
+        self.getLocalCompany(preLocation)
+    }
+    
+    func getComapnyWithCompanyName(name: String) -> Company? {
+        let array = isSearching ? model.companyArray : self.companyArray
+        for company in array {
             if company.company_name == name {
-                return index
+                return company
             }
-            index += 1
         }
         
-        return index
+        return nil
     }
     
     func goToCompanyShowVC(companyName: String) -> Void {
 		let companyShowViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CompanyShowViewController") as! CompanyShowViewController
-		let index = getIndexOfComapny(companyName)
-		companyShowViewController.company = self.companyArray[index]
+		let company = getComapnyWithCompanyName(companyName)
+        companyShowViewController.company = company
 		companyShowViewController.title = "公司详情"
 		self.navigationController?.pushViewController(companyShowViewController, animated: true)
         
@@ -97,6 +145,9 @@ class CompanyMapViewController: UIViewController {
 	 - parameter longtitude: 经度
 	 */
     func getLocalCompany(location: CLLocation) -> Void {
+        
+        SVProgressHUD.show()
+        
 		let paras = [
 			"local_longitude": "\(location.coordinate.longitude)",
 			"local_latitude": "\(location.coordinate.latitude)",
@@ -136,12 +187,21 @@ class CompanyMapViewController: UIViewController {
 				} else {
 					Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
 				}
+                
+                SVProgressHUD.dismiss()
 		}
 	}
 
 	func changeFlag() -> Void {
 		self.flag = true
 	}
+    
+    func searchText(text: String) -> Void {
+        if text.isEmpty {
+            return
+        }
+        model.searchCompanyWithCompanyName(text)
+    }
 }
 
 extension CompanyMapViewController: MAMapViewDelegate {
@@ -154,8 +214,9 @@ extension CompanyMapViewController: MAMapViewDelegate {
 	 */
 	func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
 		if updatingLocation {
-            preLocation = CLLocation(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
 			if self.flag {
+                preLocation = CLLocation(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+                currentLocation = preLocation
 				self.getLocalCompany(preLocation)
 				self.flag = false
 			}
@@ -163,7 +224,7 @@ extension CompanyMapViewController: MAMapViewDelegate {
 	}
 
 	func mapView(mapView: MAMapView!, viewForAnnotation annotation: MAAnnotation!) -> MAAnnotationView! {
-		var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(CELL_REUSE)
+		var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(CELL_REUSE) as! CompanyMapAnnotationView?
 		if (annotationView == nil) {
 			annotationView = CompanyMapAnnotationView(annotation: annotation, reuseIdentifier: CELL_REUSE)
 		}
@@ -173,13 +234,18 @@ extension CompanyMapViewController: MAMapViewDelegate {
         } else {
             annotationView?.image = UIImage(named: "icon-company")
         }
-        annotationView.centerOffset = CGPointMake(0, -16)
+        annotationView!.centerOffset = CGPointMake(0, -16)
 		return annotationView
 	}
 
 	func mapView(mapView: MAMapView!, didSelectAnnotationView view: MAAnnotationView!) {
 		print("点击了")
 		self.selectedAnnotation = view.annotation as? MAPointAnnotation
+        if view.annotation.title == CURRENT_POSITION {
+            (view as! CompanyMapAnnotationView).hideDetailsButton()
+        } else {
+            (view as! CompanyMapAnnotationView).showDetailsButton()
+        }
 	}
 
 	func mapView(mapView: MAMapView!, didSingleTappedAtCoordinate coordinate: CLLocationCoordinate2D) {
@@ -199,12 +265,18 @@ extension CompanyMapViewController: MAMapViewDelegate {
             } else {
                 let toLocation = CLLocation(latitude: self.mapView.centerCoordinate.latitude, longitude: self.mapView.centerCoordinate.longitude)
                 let distance = Util.diatanceFromLocation(preLocation, toLocation: toLocation)
-                if distance > Double(Util.MAP_LIMIT_LENGTH) {
+                if distance > Double(Util.MAP_LIMIT_LENGTH) && !isSearching {
                     self.getLocalCompany(toLocation)
                 }
+                print(distance)
             }
-            
-			
 		}
 	}
+}
+
+extension CompanyMapViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        // 开始搜索
+        self.searchText(self.searchBar.text!)
+    }
 }

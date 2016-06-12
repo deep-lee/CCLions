@@ -124,4 +124,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:DETAILS_BUTTON_CLICKED object:dic userInfo:nil];
 }
 
+- (void)hideDetailsButton {
+    self.buttonDetails.hidden = YES;
+}
+
+- (void)showDetailsButton {
+    self.buttonDetails.hidden = NO;
+}
+
 @end

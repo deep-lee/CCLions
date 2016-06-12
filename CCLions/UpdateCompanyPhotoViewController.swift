@@ -24,7 +24,7 @@ class UpdateCompanyPhotoViewController: UIViewController {
 
 		// Do any additional setup after loading the view.
 		self.initData()
-		print("\(self.dataArray.count + self.hasUploadedPhoto.count)")
+		initWeight()
 	}
 
 	func initData() -> Void {
@@ -34,6 +34,11 @@ class UpdateCompanyPhotoViewController: UIViewController {
 
 		self.dataArray.append(UIImage(named: "icon-add-normal")!)
 	}
+    
+    func initWeight() -> Void {
+        let next = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UpdateCompanyPhotoViewController.save(_:)))
+        self.navigationItem.rightBarButtonItem = next
+    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()

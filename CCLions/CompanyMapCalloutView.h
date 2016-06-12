@@ -16,5 +16,7 @@
 
 - (void)setCompanyAddress:(NSString *)companyAddress;
 - (void)setCompanyName:(NSString *)companyName;
+- (void)hideDetailsButton;
+- (void)showDetailsButton;
 
 @end

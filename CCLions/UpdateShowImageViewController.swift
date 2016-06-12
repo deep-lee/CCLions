@@ -26,6 +26,7 @@ class UpdateShowImageViewController: UIViewController {
 			self.dataArray.removeLast()
 		}
 		self.initScrollView()
+        initWeight()
 	}
 
 	func initScrollView() -> Void {
@@ -58,6 +59,11 @@ class UpdateShowImageViewController: UIViewController {
 
 		self.scrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UpdateShowImageViewController.scrollViewTaped(_:))))
 	}
+    
+    func initWeight() -> Void {
+        let next = UIBarButtonItem(title: "删除", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UpdateShowImageViewController.deleteAction(_:)))
+        self.navigationItem.rightBarButtonItem = next
+    }
 
 	func setClosure(closure: updateShowPhotoSendValues) -> Void {
 		self.myClosure = closure
@@ -81,7 +87,7 @@ class UpdateShowImageViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
-	@IBAction func deleteAction(sender: AnyObject) {
+    func deleteAction(sender: AnyObject) {
 		if currentIndex < self.hasUploadedPhotos.count {
 			self.hasUploadedPhotos.removeAtIndex(self.currentIndex)
 		} else {

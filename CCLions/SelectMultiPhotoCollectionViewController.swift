@@ -22,6 +22,7 @@ class SelectMultiPhotoCollectionViewController: UIViewController {
 		super.viewDidLoad()
 
 		self.initData()
+        initWeight()
 	}
 
 	override func viewWillDisappear(animated: Bool) {
@@ -38,6 +39,11 @@ class SelectMultiPhotoCollectionViewController: UIViewController {
 
 		self.dataArray.append(UIImage(named: "icon-add-normal")!)
 	}
+    
+    func initWeight() -> Void {
+        let next = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelectMultiPhotoCollectionViewController.save(_:)))
+        self.navigationItem.rightBarButtonItem = next
+    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -66,7 +72,7 @@ class SelectMultiPhotoCollectionViewController: UIViewController {
 		self.collectionView.reloadData()
 	}
 
-	@IBAction func save(sender: AnyObject) {
+    func save(sender: AnyObject) {
 		if (myClosure != nil) {
 			myClosure(dataArray: self.dataArray)
 			self.navigationController?.popViewControllerAnimated(true)

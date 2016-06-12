@@ -25,6 +25,7 @@ class CompanyInfoViewController: UIViewController {
 
 		// Do any additional setup after loading the view.
 		self.initData()
+        initWeight()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -49,6 +50,11 @@ class CompanyInfoViewController: UIViewController {
 		self.dataArray.append(("展示照片", "已选择\(self.hasUploadedPhotoArray.count)张照片"))
 		self.dataArray.append(("公司Logo", "已选择公司Logo"))
 	}
+    
+    func initWeight() -> Void {
+        let next = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CompanyInfoViewController.save(_:)))
+        self.navigationItem.rightBarButtonItem = next
+    }
 
 	func goToEditTextFieldVC(row: Int) -> Void {
 		let editTextFieldViewController = self.storyboard?.instantiateViewControllerWithIdentifier("EditTextFieldViewController") as! EditTextFieldViewController
@@ -154,7 +160,7 @@ class CompanyInfoViewController: UIViewController {
 		}
 	}
 
-	@IBAction func save(sender: AnyObject) {
+    func save(sender: AnyObject) {
 		// 首先检查资料是否填写完整
 		if !self.checkCompleted() {
 			Drop.down(Tips.USER_INFO_NOT_COMPLETED, state: DropState.Warning)

@@ -44,6 +44,7 @@ enum RequestAddress: String {
     case HTTP_DELETE_FAV                         = "delete_fav.php"
     case HTTP_ADD_COMMENT                        = "add_comment.php"
     case HTTP_GET_DONATION_SUGGEST_MONEY         = "get_donation_suggest_money.php"
+    case HTTP_SEARCH_COMPANY_WITH_COMPANYNAME    = "search_company_with_companyname.php"
 }
 
 class HttpRequest {

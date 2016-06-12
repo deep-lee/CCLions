@@ -22,6 +22,7 @@ class SelectCompanyLogoViewController: UIViewController {
 
 		// Do any additional setup after loading the view.
 		self.initView()
+        initWeight()
 	}
 
 	/**
@@ -32,6 +33,11 @@ class SelectCompanyLogoViewController: UIViewController {
 			self.logoImageView.sd_setImageWithURL(NSURL(string: self.hasUploadedLogo!))
 		}
 	}
+    
+    func initWeight() -> Void {
+        let next = UIBarButtonItem(title: "选择", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelectCompanyLogoViewController.selectLogo(_:)))
+        self.navigationItem.rightBarButtonItem = next
+    }
 
 	func setClosure(closure: selectLogoSendValue) -> Void {
 		self.myClosure = closure
@@ -53,7 +59,7 @@ class SelectCompanyLogoViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
-	@IBAction func selectLogo(sender: AnyObject) {
+    func selectLogo(sender: AnyObject) {
 		// 进入图片选择界面
 		let actionViewController = UIAlertController(title: "选择照片", message: "照片路径", preferredStyle: UIAlertControllerStyle.ActionSheet)
 		let cameraAction = UIAlertAction(title: "拍照", style: UIAlertActionStyle.Default) { (action) in

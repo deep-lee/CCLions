@@ -49,6 +49,13 @@
     [super setSelected:selected animated:animated];
 }
 
+- (void)hideDetailsButton {
+    [self.calloutView hideDetailsButton];
+}
+- (void)showDetailsButton {
+    [self.calloutView showDetailsButton];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

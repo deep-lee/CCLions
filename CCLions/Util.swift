@@ -10,6 +10,7 @@ import Foundation
 import AssetsLibrary
 import MobileCoreServices
 import SwiftyJSON
+import MapKit
 
 class Util {
 	static let LOINGED_USER_KEY = "loginedUser"
@@ -484,6 +485,16 @@ class Util {
     static func diatanceFromLocation(fromLocation: CLLocation, toLocation: CLLocation) -> CLLocationDistance{
         let distance = fromLocation.distanceFromLocation(toLocation)
         return distance
+    }
+    
+    static func getAnnotationFromComapny(company: Company) -> MAAnnotation {
+        let annotation = MAPointAnnotation()
+        let coordinate = CLLocationCoordinate2D(latitude: Double(company.address_latitude)!, longitude: Double(company.address_longitude)!)
+        annotation.coordinate = coordinate
+        annotation.title = company.company_name
+        annotation.subtitle = company.address_position
+        
+        return annotation
     }
     
 }

@@ -35,6 +35,7 @@ class MoreInfoActivityViewController: FormViewController {
 
 		// Do any additional setup after loading the view.
         self.initNoti()
+        initWeight()
         isCCLionVip = Util.getLoginedUser()?.user_type == UserType.CCLionVip.rawValue ? true : false
         
         ARRAY_PROJECT_TYPE = isCCLionVip ? VIP_ARRAY_PROJECT_TYPE : NOVIP_ARRAY_PROJECT_TYPE
@@ -99,6 +100,11 @@ class MoreInfoActivityViewController: FormViewController {
 	func initNoti() -> Void {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MoreInfoActivityViewController.addActivitySuccessCallBack(_:)), name: ADD_ACTIVITY_SUCCESS, object: nil)
 	}
+    
+    func initWeight() -> Void {
+        let next = UIBarButtonItem(title: "发布", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MoreInfoActivityViewController.launch(_:)))
+        self.navigationItem.rightBarButtonItem = next
+    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -130,7 +136,7 @@ class MoreInfoActivityViewController: FormViewController {
         }
     }
 
-	@IBAction func launch(sender: AnyObject) {
+    func launch(sender: AnyObject) {
 		// 首先判断资料是否填写完整
 		if !checkCompleted() {
 			Drop.down(Tips.USER_INFO_NOT_COMPLETED, state: DropState.Warning)

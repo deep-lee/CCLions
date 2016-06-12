@@ -29,6 +29,7 @@ class EditSelfProfileViewController: UIViewController {
 
 		// Do any additional setup after loading the view.
 		initData()
+        initWeight()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -67,6 +68,11 @@ class EditSelfProfileViewController: UIViewController {
 
 		self.selectSex = user.sex
 	}
+    
+    func initWeight() -> Void {
+        let next = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(EditSelfProfileViewController.saveAction(_:)))
+        self.navigationItem.rightBarButtonItem = next
+    }
 
 	/**
 	 图片点击事件，选择头像
@@ -121,8 +127,8 @@ class EditSelfProfileViewController: UIViewController {
 
 	 - parameter sender: 消息传递者
 	 */
-	@IBAction func saveAction(sender: AnyObject) {
-		SVProgressHUD.showWithStatus("正在保存...")
+    func saveAction(sender: AnyObject) {
+		SVProgressHUD.show()
 		// 如果是更新用户资料
 		if flag {
 			print("更新用户资料")

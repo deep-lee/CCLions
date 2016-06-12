@@ -19,13 +19,20 @@ class EditTextViewViewController: UITableViewController {
 		// Do any additional setup after loading the view.
 		self.textView.text = self.contentString
 		self.textView.becomeFirstResponder()
+        
+        initWeight()
 	}
+    
+    func initWeight() -> Void {
+        let next = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(EditTextViewViewController.save(_:)))
+        self.navigationItem.rightBarButtonItem = next
+    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-	@IBAction func save(sender: AnyObject) {
+    func save(sender: AnyObject) {
 		if (myClosure != nil) {
 			myClosure(string: self.textView.text!, row: self.row)
 			self.navigationController?.popViewControllerAnimated(true)

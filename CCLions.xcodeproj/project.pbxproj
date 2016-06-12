@@ -16,6 +16,7 @@
 		14015FC31CB53D13004B5F59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14015FC21CB53D13004B5F59 /* UIKit.framework */; };
 		14015FCB1CB5405A004B5F59 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14015FCA1CB5405A004B5F59 /* CoreText.framework */; };
 		14027CC41CFDF1FC0095D974 /* Marco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14027CC31CFDF1FC0095D974 /* Marco.swift */; };
+		140543FB1D0D3AD1008E2924 /* CompanyMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140543FA1D0D3AD1008E2924 /* CompanyMapModel.swift */; };
 		14113AB81D0681D8009D6EBA /* Donation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14113AB71D0681D8009D6EBA /* Donation.swift */; };
 		14113ABA1D068746009D6EBA /* ProjectDonationRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14113AB91D068746009D6EBA /* ProjectDonationRecordVC.swift */; };
 		14113ABD1D0688FE009D6EBA /* ProjectDonationRecordTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14113ABC1D0688FE009D6EBA /* ProjectDonationRecordTVCell.swift */; };
@@ -238,6 +239,7 @@
 		14015FCA1CB5405A004B5F59 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		14027CC31CFDF1FC0095D974 /* Marco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marco.swift; sourceTree = "<group>"; };
 		1403AA431C720A8600781580 /* CCLions-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCLions-Bridging-Header.h"; sourceTree = "<group>"; };
+		140543FA1D0D3AD1008E2924 /* CompanyMapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyMapModel.swift; sourceTree = "<group>"; };
 		14113AB71D0681D8009D6EBA /* Donation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Donation.swift; sourceTree = "<group>"; };
 		14113AB91D068746009D6EBA /* ProjectDonationRecordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDonationRecordVC.swift; sourceTree = "<group>"; };
 		14113ABC1D0688FE009D6EBA /* ProjectDonationRecordTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDonationRecordTVCell.swift; sourceTree = "<group>"; };
@@ -850,6 +852,7 @@
 		14AFE0981D0B0A5B00A4A8BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				140543FA1D0D3AD1008E2924 /* CompanyMapModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1435,6 +1438,7 @@
 				14AFE0971D0A838100A4A8BE /* CustomAnnotationView.m in Sources */,
 				148B21DF1D07372C00A1EA4C /* NaturalDisasterProjectModel.swift in Sources */,
 				7C1E73441D0273FA00088693 /* MoreProjectDetailsView.swift in Sources */,
+				140543FB1D0D3AD1008E2924 /* CompanyMapModel.swift in Sources */,
 				14113AD01D06E94E009D6EBA /* ProjectCommentRecordModel.swift in Sources */,
 				14789FDA1CE313F700F47941 /* NonVipRegisterView.swift in Sources */,
 				1477931D1D093BD20042EAD2 /* SupportProgressView.swift in Sources */,

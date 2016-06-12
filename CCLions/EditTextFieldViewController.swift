@@ -21,14 +21,20 @@ class EditTextFieldViewController: UITableViewController {
 		// Do any additional setup after loading the view.
 		self.textField.text = contentString
 		self.textField.becomeFirstResponder()
+        initWeight()
 	}
+    
+    func initWeight() -> Void {
+        let next = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(EditTextFieldViewController.save(_:)))
+        self.navigationItem.rightBarButtonItem = next
+    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
 
-	@IBAction func save(sender: AnyObject) {
+    func save(sender: AnyObject) {
 		if (myClosure != nil) {
 			print("毁掉了")
 			myClosure(string: self.textField.text!, row: self.row)

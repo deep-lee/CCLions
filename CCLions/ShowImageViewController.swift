@@ -25,6 +25,7 @@ class ShowImageViewController: UIViewController {
 			self.dataArray.removeLast()
 		}
 		self.initScrollView()
+        initWeight()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -53,6 +54,11 @@ class ShowImageViewController: UIViewController {
 
 		self.scrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ShowImageViewController.scrollViewTaped(_:))))
 	}
+    
+    func initWeight() -> Void {
+        let next = UIBarButtonItem(title: "删除", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ShowImageViewController.deleteAction(_:)))
+        self.navigationItem.rightBarButtonItem = next
+    }
 
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
@@ -61,7 +67,7 @@ class ShowImageViewController: UIViewController {
 		}
 	}
 
-	@IBAction func deleteAction(sender: AnyObject) {
+    func deleteAction(sender: AnyObject) {
 		print(self.currentIndex)
 		self.dataArray.removeAtIndex(self.currentIndex)
 		self.initScrollView()
