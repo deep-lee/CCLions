@@ -51,6 +51,11 @@
 		143B79381D007D8000920D06 /* AuthenticationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143B79371D007D8000920D06 /* AuthenticationModel.swift */; };
 		1449FCCF1CFF18B200A85FC2 /* AuthenticationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1449FCCE1CFF18B200A85FC2 /* AuthenticationVC.swift */; };
 		1449FCD41CFF202400A85FC2 /* AuthenticationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */; };
+		145D58021D0EA6A100592BB4 /* MyProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145D58011D0EA6A100592BB4 /* MyProjectVC.swift */; };
+		145D580B1D0EF4C700592BB4 /* SupportedProjectTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145D580A1D0EF4C700592BB4 /* SupportedProjectTVC.swift */; };
+		145D580D1D0EF4D900592BB4 /* LaunchedProjectTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145D580C1D0EF4D900592BB4 /* LaunchedProjectTVC.swift */; };
+		145D58101D0F06F900592BB4 /* SupportProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145D580F1D0F06F900592BB4 /* SupportProjectModel.swift */; };
+		1460618F1D0FEF4500BB9192 /* SupportedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460618E1D0FEF4500BB9192 /* SupportedProject.swift */; };
 		1476C6561CCFCBCA00BE6E64 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1476C6541CCFCBCA00BE6E64 /* HeaderView.swift */; };
 		1476C6571CCFCBCA00BE6E64 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1476C6551CCFCBCA00BE6E64 /* HeaderView.xib */; };
 		1477931D1D093BD20042EAD2 /* SupportProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1477931C1D093BD20042EAD2 /* SupportProgressView.swift */; };
@@ -131,6 +136,9 @@
 		14BED0021CCB4E1D00091572 /* ZZPhotoPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BECFE41CCB4E1D00091572 /* ZZPhotoPickerCell.m */; };
 		14BED0051CCB50FF00091572 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BED0041CCB50FF00091572 /* PhotoCollectionViewCell.swift */; };
 		14BED0071CCB519B00091572 /* SelectMultiPhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BED0061CCB519B00091572 /* SelectMultiPhotoCollectionViewController.swift */; };
+		14C404E61D0FFC8700BC12D7 /* SupportedProjectTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C404E41D0FFC8700BC12D7 /* SupportedProjectTVCell.swift */; };
+		14C404E71D0FFC8700BC12D7 /* SupportedProjectTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C404E51D0FFC8700BC12D7 /* SupportedProjectTVCell.xib */; };
+		14C404E91D105BC400BC12D7 /* LaunchedProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C404E81D105BC400BC12D7 /* LaunchedProjectModel.swift */; };
 		14C515C91D07D2A7007BC096 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C515C81D07D2A7007BC096 /* UIViewController+Extension.swift */; };
 		14C515CB1D080598007BC096 /* FlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C515CA1D080598007BC096 /* FlowView.swift */; };
 		14C515CD1D083F4B007BC096 /* ProjectDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C515CC1D083F4B007BC096 /* ProjectDetailsModel.swift */; };
@@ -274,6 +282,11 @@
 		143B79371D007D8000920D06 /* AuthenticationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationModel.swift; sourceTree = "<group>"; };
 		1449FCCE1CFF18B200A85FC2 /* AuthenticationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationVC.swift; sourceTree = "<group>"; };
 		1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationTableViewCell.swift; sourceTree = "<group>"; };
+		145D58011D0EA6A100592BB4 /* MyProjectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProjectVC.swift; sourceTree = "<group>"; };
+		145D580A1D0EF4C700592BB4 /* SupportedProjectTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedProjectTVC.swift; sourceTree = "<group>"; };
+		145D580C1D0EF4D900592BB4 /* LaunchedProjectTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchedProjectTVC.swift; sourceTree = "<group>"; };
+		145D580F1D0F06F900592BB4 /* SupportProjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportProjectModel.swift; sourceTree = "<group>"; };
+		1460618E1D0FEF4500BB9192 /* SupportedProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedProject.swift; sourceTree = "<group>"; };
 		1476C6541CCFCBCA00BE6E64 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		1476C6551CCFCBCA00BE6E64 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		1477931C1D093BD20042EAD2 /* SupportProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportProgressView.swift; sourceTree = "<group>"; };
@@ -388,6 +401,9 @@
 		14BECFE41CCB4E1D00091572 /* ZZPhotoPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoPickerCell.m; sourceTree = "<group>"; };
 		14BED0041CCB50FF00091572 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		14BED0061CCB519B00091572 /* SelectMultiPhotoCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMultiPhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		14C404E41D0FFC8700BC12D7 /* SupportedProjectTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedProjectTVCell.swift; sourceTree = "<group>"; };
+		14C404E51D0FFC8700BC12D7 /* SupportedProjectTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupportedProjectTVCell.xib; sourceTree = "<group>"; };
+		14C404E81D105BC400BC12D7 /* LaunchedProjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchedProjectModel.swift; sourceTree = "<group>"; };
 		14C515C81D07D2A7007BC096 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		14C515CA1D080598007BC096 /* FlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowView.swift; sourceTree = "<group>"; };
 		14C515CC1D083F4B007BC096 /* ProjectDetailsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsModel.swift; sourceTree = "<group>"; };
@@ -581,6 +597,7 @@
 		1449FCD01CFF1C0700A85FC2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				14CD481A1D0EA64D00DDFF32 /* MyProject */,
 				14EA0A521CCB34D000169116 /* EditSelectDataViewController.swift */,
 				14015FB71CB508D8004B5F59 /* CompanyInfoViewController.swift */,
 				14EA0A541CCB3D7900169116 /* EditTextViewViewController.swift */,
@@ -603,6 +620,7 @@
 		1449FCD11CFF1C4F00A85FC2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				14C404E31D0FFC6100BC12D7 /* MyProject */,
 				1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */,
 				14AFE0921D0A82ED00A4A8BE /* CustomCalloutView.h */,
 				14AFE0931D0A82ED00A4A8BE /* CustomCalloutView.m */,
@@ -615,6 +633,7 @@
 		1449FCD21CFF1C5400A85FC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				145D580E1D0F06DF00592BB4 /* MyProject */,
 				143B79371D007D8000920D06 /* AuthenticationModel.swift */,
 			);
 			name = Model;
@@ -664,6 +683,15 @@
 				14B3F6CE1D01D459007B9031 /* MoreProjectDetailsVC.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		145D580E1D0F06DF00592BB4 /* MyProject */ = {
+			isa = PBXGroup;
+			children = (
+				145D580F1D0F06F900592BB4 /* SupportProjectModel.swift */,
+				14C404E81D105BC400BC12D7 /* LaunchedProjectModel.swift */,
+			);
+			name = MyProject;
 			sourceTree = "<group>";
 		};
 		1476C6531CCFCB6400BE6E64 /* CustomView */ = {
@@ -984,6 +1012,25 @@
 			name = CustomeCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		14C404E31D0FFC6100BC12D7 /* MyProject */ = {
+			isa = PBXGroup;
+			children = (
+				14C404E41D0FFC8700BC12D7 /* SupportedProjectTVCell.swift */,
+				14C404E51D0FFC8700BC12D7 /* SupportedProjectTVCell.xib */,
+			);
+			name = MyProject;
+			sourceTree = "<group>";
+		};
+		14CD481A1D0EA64D00DDFF32 /* MyProject */ = {
+			isa = PBXGroup;
+			children = (
+				145D58011D0EA6A100592BB4 /* MyProjectVC.swift */,
+				145D580A1D0EF4C700592BB4 /* SupportedProjectTVC.swift */,
+				145D580C1D0EF4D900592BB4 /* LaunchedProjectTVC.swift */,
+			);
+			name = MyProject;
+			sourceTree = "<group>";
+		};
 		14F102E01CDE359900EEA789 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -1148,6 +1195,7 @@
 				14113AC11D06C33A009D6EBA /* Withdraw.swift */,
 				14113AC91D06DE30009D6EBA /* Comment.swift */,
 				14DE667B1D099A1F003006F8 /* DonationSuggestionMoney.swift */,
+				1460618E1D0FEF4500BB9192 /* SupportedProject.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1328,6 +1376,7 @@
 				147D63B31CE2364300543692 /* bg-video-info.plist in Resources */,
 				14BECFFB1CCB4E1D00091572 /* zz_alumb_rightCell.png in Resources */,
 				7C78D92F1CB8CA81002122A1 /* AMap.bundle in Resources */,
+				14C404E71D0FFC8700BC12D7 /* SupportedProjectTVCell.xib in Resources */,
 				1476C6571CCFCBCA00BE6E64 /* HeaderView.xib in Resources */,
 				14A58A731C6E0F8000EBDB2C /* Main.storyboard in Resources */,
 				14BECFF21CCB4E1D00091572 /* flash_open_pic.png in Resources */,
@@ -1499,6 +1548,7 @@
 				14EF2A111CD5F596008C521B /* SearchResultTableViewCell.swift in Sources */,
 				7C1FF8911CBB59C30039AD47 /* ProjectDetailsViewController.swift in Sources */,
 				7CD1EC641CE47BD9001FB823 /* BottomItemView.swift in Sources */,
+				145D580D1D0EF4D900592BB4 /* LaunchedProjectTVC.swift in Sources */,
 				7C1E25331CCE02350053509C /* MoreInfoActivityViewController.swift in Sources */,
 				14BECFE91CCB4E1D00091572 /* ZZPhotoListViewController.m in Sources */,
 				14BECFFC1CCB4E1D00091572 /* ZZBrowserPickerCell.m in Sources */,
@@ -1508,10 +1558,12 @@
 				14113ACE1D06E27A009D6EBA /* ProjectCommentRecordTVCell.swift in Sources */,
 				7C4F33AB1CB947F700892398 /* RegisterViewController.swift in Sources */,
 				7C1FF8981CBB98830039AD47 /* VPImageCropperViewController.m in Sources */,
+				145D58021D0EA6A100592BB4 /* MyProjectVC.swift in Sources */,
 				14113ACC1D06DF40009D6EBA /* ProjectCommentVC.swift in Sources */,
 				148B21E91D073BA000A1EA4C /* OtherProjectTVC.swift in Sources */,
 				7C78D9481CB8E4E5002122A1 /* SearchCompanyViewController.swift in Sources */,
 				7C06B8B21CB8A54500752A4B /* CommonInputTableViewCell.swift in Sources */,
+				14C404E91D105BC400BC12D7 /* LaunchedProjectModel.swift in Sources */,
 				148B21AF1D070F6E00A1EA4C /* PoorProjectModel.swift in Sources */,
 				14113ABA1D068746009D6EBA /* ProjectDonationRecordVC.swift in Sources */,
 				14113ACA1D06DE30009D6EBA /* Comment.swift in Sources */,
@@ -1521,10 +1573,12 @@
 				14A58A6E1C6E0F8000EBDB2C /* AppDelegate.swift in Sources */,
 				14BED0051CCB50FF00091572 /* PhotoCollectionViewCell.swift in Sources */,
 				14113AC81D06D2F5009D6EBA /* ProjectWithdrawRecordModel.swift in Sources */,
+				1460618F1D0FEF4500BB9192 /* SupportedProject.swift in Sources */,
 				14CDF0D41CD508DE00C6DB41 /* HotIndustry.swift in Sources */,
 				14BECFFE1CCB4E1D00091572 /* ZZCameraPickerCell.m in Sources */,
 				14BED0001CCB4E1D00091572 /* ZZPhotoHud.m in Sources */,
 				14C515C91D07D2A7007BC096 /* UIViewController+Extension.swift in Sources */,
+				14C404E61D0FFC8700BC12D7 /* SupportedProjectTVCell.swift in Sources */,
 				148B21E11D07390900A1EA4C /* EducationProjectTVC.swift in Sources */,
 				1426B9581CB38A490099ED69 /* UIColor.swift in Sources */,
 				148B21AD1D070F5200A1EA4C /* PoorProjectTVC.swift in Sources */,
@@ -1533,6 +1587,7 @@
 				148B21E51D073A5800A1EA4C /* FirstAidProjectTVC.swift in Sources */,
 				148B21D91D07357D00A1EA4C /* MedicalProjectTVC.swift in Sources */,
 				14385C821CDF0EEC00A2D229 /* Statistics.swift in Sources */,
+				145D580B1D0EF4C700592BB4 /* SupportedProjectTVC.swift in Sources */,
 				14385C851CDF0FD200A2D229 /* NSObject+Statistics.swift in Sources */,
 				14DCF0911CCA7F38001F2FE4 /* EditTextFieldViewController.swift in Sources */,
 				148B21B21D07142400A1EA4C /* YoutubeIconCell.swift in Sources */,
@@ -1546,6 +1601,7 @@
 				14DCF08F1CCA707B001F2FE4 /* AddCompanyViewController.swift in Sources */,
 				14B3F6FE1D01E611007B9031 /* CircleShapeLayer.m in Sources */,
 				1426B9501CB381400099ED69 /* SlideViewController.swift in Sources */,
+				145D58101D0F06F900592BB4 /* SupportProjectModel.swift in Sources */,
 				1426FAA01CCD35D3009FFC11 /* UpdateShowImageViewController.swift in Sources */,
 				7C451B841CBA236F00490853 /* String+MD5.swift in Sources */,
 				14DE667E1D099B35003006F8 /* DonationModel.swift in Sources */,

@@ -12,7 +12,9 @@ import SwiftyJSON
 import SwiftyDrop
 
 class SelfCenterViewController: UIViewController {
-    var dataArray = ["个人信息", "公司信息"]
+    var dataArray1 = ["个人信息", "公司信息"]
+    var dataArray2 = ["我的项目", "我的订单"]
+    var dataArray: [[String]]!
     var user: User!
     
     @IBOutlet weak var mTableView: UITableView!
@@ -29,6 +31,11 @@ class SelfCenterViewController: UIViewController {
      初始化界面
      */
     func initView() -> Void {
+        
+        self.dataArray = [[String]]()
+        self.dataArray.append(dataArray1)
+        self.dataArray.append(dataArray2)
+        
         self.user = Util.getLoginedUser()
         self.headerImageView.sd_setImageWithURL(NSURL(string: self.user.header)) { (image, error, cacheType, url) in
             self.headerImageView.image = image.imageWithCornerRadius(self.headerImageView.bounds.size.width / 2)
@@ -37,8 +44,8 @@ class SelfCenterViewController: UIViewController {
         
         // 判断当前用户的类型，如果当前不是狮子会会员，就不显示公司信息，显示身份认证状态
         if user.user_type == UserType.NonVip.rawValue {
-            self.dataArray.removeLast()
-            self.dataArray.append("身份认证")
+            self.dataArray1.removeLast()
+            self.dataArray1.append("身份认证")
         }
         self.mTableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(SelfCenterViewController.refresh))
     }
@@ -163,18 +170,28 @@ class SelfCenterViewController: UIViewController {
         
         mTableView.mj_header.state = MJRefreshState.Idle
     }
+    
+    func goToMyProjectVC() -> Void {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("MyProjectVC")
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
 }
 
 extension SelfCenterViewController: UITabBarDelegate, UITableViewDataSource {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return self.dataArray.count
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataArray.count
+        return dataArray[section].count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SelfCenterCell", forIndexPath: indexPath)
         
-        cell.textLabel?.text = dataArray[indexPath.row]
-        if indexPath.row == 1 && user.user_type == UserType.NonVip.rawValue {
+        cell.textLabel?.text = dataArray[indexPath.section][indexPath.row]
+        if indexPath.section == 0 && indexPath.row == 1 && user.user_type == UserType.NonVip.rawValue {
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             cell.detailTextLabel?.text = self.getUserAuthenticationType()
         }
@@ -183,17 +200,28 @@ extension SelfCenterViewController: UITabBarDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-        case 0:
-            self.goToEditSelfProfileViewController()
-        case 1:
-            if user.user_type == UserType.CCLionVip.rawValue {
-                self.checkCompanyInfo()
-            } else {
-                self.goToAuthenVC()
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 0:
+                self.goToEditSelfProfileViewController()
+            case 1:
+                if user.user_type == UserType.CCLionVip.rawValue {
+                    self.checkCompanyInfo()
+                } else {
+                    self.goToAuthenVC()
+                }
+            default:
+                return
             }
-        default:
-            return
+        } else if indexPath.section == 1 {
+            switch indexPath.row {
+            case 0:
+               self.goToMyProjectVC()
+            case 1:
+                break
+            default:
+                break
+            }
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

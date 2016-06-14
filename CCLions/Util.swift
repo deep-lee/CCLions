@@ -305,7 +305,8 @@ class Util {
 	 - returns: 项目
 	 */
 	static func getProjectFromJson(item: JSON) -> Project {
-		let project = Project(id: item["id"].intValue,
+		let project = Project(
+			id: item["id"].intValue,
 			title: item["title"].stringValue,
 			time: item["time"].stringValue,
 			launcher_id: item["launcher_id"].intValue,
@@ -323,7 +324,8 @@ class Util {
 			sponsorship_company_id: item["sponsorship_company_id"].intValue,
 			create_time: item["create_time"].stringValue,
 			name: item["name"].stringValue,
-            header: item["header"].stringValue)
+			header: item["header"].stringValue
+		)
 
 		return project
 	}
@@ -337,7 +339,7 @@ class Util {
 	 */
 	static func getUserFromJson(data: JSON) -> User {
 		let user = User(
-            id: data["id"].intValue,
+			id: data["id"].intValue,
 			username: data["username"].stringValue,
 			password: data["password"].stringValue,
 			header: data["header"].stringValue,
@@ -352,149 +354,177 @@ class Util {
 
 		return user
 	}
-    
-    /**
-     从JSON中解析出Donation Model
-     
-     - parameter item: JSON
-     
-     - returns: Donation  Model
-     */
-    static func getDoantionFromJson(item: JSON) -> Donation {
-        let donation = Donation(
-            id: item["id"].intValue,
-            header: item["header"].stringValue,
-            name: item["name"].stringValue,
-            user_type: item["user_type"].intValue,
-            user_id: item["user_id"].intValue,
-            project_id: item["project_id"].intValue,
-            amount: item["amount"].intValue,
-            application: item["application"].stringValue)
-        
-        return donation
-    }
-    
-    /**
-     从JSON中解析出Withdraw Model
-     
-     - parameter item: JSON
-     
-     - returns: Model
-     */
-    static func getWithdrawFromJson(item: JSON) -> Withdraw {
-        let withdraw = Withdraw(
-            id: item["id"].intValue,
-            name: item["name"].stringValue,
-            header: item["header"].stringValue,
-            contact: item["contact"].stringValue,
-            user_type: item["user_type"].intValue,
-            user_id: item["user_id"].intValue,
-            project_id: item["project_id"].intValue,
-            amount: item["amount"].intValue,
-            application: item["application"].stringValue,
-            prove: item["prove"].stringValue,
-            status: item["status"].intValue,
-            message: item["message"].stringValue
-        )
-        
-        return withdraw
-    }
-    
-    /**
-     从JSON中解析出Comment Model
-     
-     - parameter item: JSON
-     
-     - returns: Model
-     */
-    static func getCommentFromJson(item: JSON) -> Comment {
-        let comment = Comment(
-            id: item["id"].intValue,
-            header: item["header"].stringValue,
-            name: item["name"].stringValue,
-            user_type: item["user_type"].intValue,
-            project_id: item["project_id"].intValue,
-            user_id: item["user_id"].intValue,
-            content: item["content"].stringValue,
-            create_time: item["create_time"].stringValue
-        )
-        
-        return comment
-    }
-    
-    static func getTimeFromString(string: String) -> String {
-        let date = NSDate(string: string, formatString: "yyyy-MM-dd HH:mm:ss")
-        
-        return date.timeAgoSinceNow()
-    }
-    
-    /**
-     从JOSN中解析出DonationSuggestionMoney
-     
-     - parameter item: JSON
-     
-     - returns: MODEL
-     */
-    static func getDonationSuggestMoneyFromJson(item: JSON) -> DonationSuggestionMoney {
-        let suggest = DonationSuggestionMoney(
-            id: item["id"].intValue,
-            amount: item["amount"].intValue,
-            create_time: item["create_time"].stringValue
-        )
-        
-        return suggest
-    }
-    
-    /**
-     从JSON中解析出Company
-     
-     - parameter data: JSON
-     
-     - returns: Model
-     */
-    static func getCompanyFromJson(data: JSON) -> Company {
-        let company = Company(
-            id: data["id"].intValue,
-            user_id: data["user_id"].intValue,
-            company_name: data["company_name"].stringValue,
-            address_longitude: data["address_longitude"].stringValue,
-            address_latitude: data["address_latitude"].stringValue,
-            address_position: data["address_position"].stringValue,
-            business_scope: data["business_scope"].stringValue,
-            industry: data["industry"].intValue,
-            show_photo: data["show_photo"].stringValue,
-            introduction: data["introduction"].stringValue,
-            contact: data["contact"].stringValue,
-            create_time: data["create_time"].stringValue,
-            update_time: data["update_time"].stringValue,
-            company_logo: data["company_logo"].stringValue,
-            hits: data["hits"].intValue
-        )
-        
-        return company
-    }
 
-    /**
-     获取两点之间的距离
-     
-     - parameter fromLocation: 起点
-     - parameter toLocation:   终点
-     
-     - returns: 距离
-     */
-    static func diatanceFromLocation(fromLocation: CLLocation, toLocation: CLLocation) -> CLLocationDistance{
-        let distance = fromLocation.distanceFromLocation(toLocation)
-        return distance
-    }
-    
-    static func getAnnotationFromComapny(company: Company) -> MAAnnotation {
-        let annotation = MAPointAnnotation()
-        let coordinate = CLLocationCoordinate2D(latitude: Double(company.address_latitude)!, longitude: Double(company.address_longitude)!)
-        annotation.coordinate = coordinate
-        annotation.title = company.company_name
-        annotation.subtitle = company.address_position
+	/**
+	 从JSON中解析出Donation Model
+
+	 - parameter item: JSON
+
+	 - returns: Donation  Model
+	 */
+	static func getDoantionFromJson(item: JSON) -> Donation {
+		let donation = Donation(
+			id: item["id"].intValue,
+			header: item["header"].stringValue,
+			name: item["name"].stringValue,
+			user_type: item["user_type"].intValue,
+			user_id: item["user_id"].intValue,
+			project_id: item["project_id"].intValue,
+			amount: item["amount"].intValue,
+			application: item["application"].stringValue)
+
+		return donation
+	}
+
+	/**
+	 从JSON中解析出Withdraw Model
+
+	 - parameter item: JSON
+
+	 - returns: Model
+	 */
+	static func getWithdrawFromJson(item: JSON) -> Withdraw {
+		let withdraw = Withdraw(
+			id: item["id"].intValue,
+			name: item["name"].stringValue,
+			header: item["header"].stringValue,
+			contact: item["contact"].stringValue,
+			user_type: item["user_type"].intValue,
+			user_id: item["user_id"].intValue,
+			project_id: item["project_id"].intValue,
+			amount: item["amount"].intValue,
+			application: item["application"].stringValue,
+			prove: item["prove"].stringValue,
+			status: item["status"].intValue,
+			message: item["message"].stringValue
+		)
+
+		return withdraw
+	}
+
+	/**
+	 从JSON中解析出Comment Model
+
+	 - parameter item: JSON
+
+	 - returns: Model
+	 */
+	static func getCommentFromJson(item: JSON) -> Comment {
+		let comment = Comment(
+			id: item["id"].intValue,
+			header: item["header"].stringValue,
+			name: item["name"].stringValue,
+			user_type: item["user_type"].intValue,
+			project_id: item["project_id"].intValue,
+			user_id: item["user_id"].intValue,
+			content: item["content"].stringValue,
+			create_time: item["create_time"].stringValue
+		)
+
+		return comment
+	}
+
+	static func getTimeFromString(string: String) -> String {
+		let date = NSDate(string: string, formatString: "yyyy-MM-dd HH:mm:ss")
+
+		return date.timeAgoSinceNow()
+	}
+
+	/**
+	 从JOSN中解析出DonationSuggestionMoney
+
+	 - parameter item: JSON
+
+	 - returns: MODEL
+	 */
+	static func getDonationSuggestMoneyFromJson(item: JSON) -> DonationSuggestionMoney {
+		let suggest = DonationSuggestionMoney(
+			id: item["id"].intValue,
+			amount: item["amount"].intValue,
+			create_time: item["create_time"].stringValue
+		)
+
+		return suggest
+	}
+
+	/**
+	 从JSON中解析出Company
+
+	 - parameter data: JSON
+
+	 - returns: Model
+	 */
+	static func getCompanyFromJson(data: JSON) -> Company {
+		let company = Company(
+			id: data["id"].intValue,
+			user_id: data["user_id"].intValue,
+			company_name: data["company_name"].stringValue,
+			address_longitude: data["address_longitude"].stringValue,
+			address_latitude: data["address_latitude"].stringValue,
+			address_position: data["address_position"].stringValue,
+			business_scope: data["business_scope"].stringValue,
+			industry: data["industry"].intValue,
+			show_photo: data["show_photo"].stringValue,
+			introduction: data["introduction"].stringValue,
+			contact: data["contact"].stringValue,
+			create_time: data["create_time"].stringValue,
+			update_time: data["update_time"].stringValue,
+			company_logo: data["company_logo"].stringValue,
+			hits: data["hits"].intValue
+		)
+
+		return company
+	}
+
+	/**
+	 获取两点之间的距离
+
+	 - parameter fromLocation: 起点
+	 - parameter toLocation:   终点
+
+	 - returns: 距离
+	 */
+	static func diatanceFromLocation(fromLocation: CLLocation, toLocation: CLLocation) -> CLLocationDistance {
+		let distance = fromLocation.distanceFromLocation(toLocation)
+		return distance
+	}
+
+	static func getAnnotationFromComapny(company: Company) -> MAAnnotation {
+		let annotation = MAPointAnnotation()
+		let coordinate = CLLocationCoordinate2D(latitude: Double(company.address_latitude)!, longitude: Double(company.address_longitude)!)
+		annotation.coordinate = coordinate
+		annotation.title = company.company_name
+		annotation.subtitle = company.address_position
+
+		return annotation
+	}
+
+	static func getSupportedProjectFromJson(item: JSON) -> SupportedProject {
+		let supportedProject = SupportedProject(
+			id: item["id"].intValue,
+			title: item["title"].stringValue,
+			time: item["time"].stringValue,
+			launcher_id: item["launcher_id"].intValue,
+			favorite: item["favorite"].intValue,
+			cover_image: item["cover_image"].stringValue,
+			details_page: item["details_page"].stringValue,
+			project_type: item["project_type"].intValue,
+			fundraising_amount: item["fundraising_amount"].intValue,
+			has_raised_amount: item["has_raised_amount"].intValue,
+			withdraw_amount: item["withdraw_amount"].intValue,
+			apply_for_other: item["apply_for_other"].intValue,
+			aided_person_id_num: item["aided_person_id_num"].stringValue,
+			aided_person_id_card_photo: item["aided_person_id_card_photo"].stringValue,
+			left_time: item["left_time"].intValue,
+			sponsorship_company_id: item["sponsorship_company_id"].intValue,
+			create_time: item["create_time"].stringValue,
+			name: item["name"].stringValue,
+			header: item["header"].stringValue,
+			amount: item["amount"].intValue,
+			application: item["application"].stringValue
+		)
         
-        return annotation
-    }
-    
+        return supportedProject
+	}
+
 }
