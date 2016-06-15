@@ -90,6 +90,10 @@
 		148B21E91D073BA000A1EA4C /* OtherProjectTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148B21E81D073BA000A1EA4C /* OtherProjectTVC.swift */; };
 		148B21EB1D073BAF00A1EA4C /* OtherProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148B21EA1D073BAF00A1EA4C /* OtherProjectModel.swift */; };
 		149791391CA8022D0014D377 /* UIImage+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149791381CA8022D0014D377 /* UIImage+CornerRadius.swift */; };
+		149EC69D1D111D9500958EE1 /* LaunchedProjectTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149EC69B1D111D9500958EE1 /* LaunchedProjectTVCell.swift */; };
+		149EC69E1D111D9500958EE1 /* LaunchedProjectTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149EC69C1D111D9500958EE1 /* LaunchedProjectTVCell.xib */; };
+		149EC6A21D1149C900958EE1 /* WithdrawTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149EC6A11D1149C900958EE1 /* WithdrawTVC.swift */; };
+		149EC6A41D1174DD00958EE1 /* WithdrawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149EC6A31D1174DD00958EE1 /* WithdrawModel.swift */; };
 		14A58A6E1C6E0F8000EBDB2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A58A6D1C6E0F8000EBDB2C /* AppDelegate.swift */; };
 		14A58A731C6E0F8000EBDB2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A58A711C6E0F8000EBDB2C /* Main.storyboard */; };
 		14A58A761C6E0F8000EBDB2C /* CCLions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14A58A741C6E0F8000EBDB2C /* CCLions.xcdatamodeld */; };
@@ -324,6 +328,10 @@
 		148B21EA1D073BAF00A1EA4C /* OtherProjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherProjectModel.swift; sourceTree = "<group>"; };
 		149722AB1CCFA2DD005368A1 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/CCLions-fpfktrodivzqfofwkpffzovrrdru/Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		149791381CA8022D0014D377 /* UIImage+CornerRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CornerRadius.swift"; sourceTree = "<group>"; };
+		149EC69B1D111D9500958EE1 /* LaunchedProjectTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchedProjectTVCell.swift; sourceTree = "<group>"; };
+		149EC69C1D111D9500958EE1 /* LaunchedProjectTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchedProjectTVCell.xib; sourceTree = "<group>"; };
+		149EC6A11D1149C900958EE1 /* WithdrawTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithdrawTVC.swift; sourceTree = "<group>"; };
+		149EC6A31D1174DD00958EE1 /* WithdrawModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithdrawModel.swift; sourceTree = "<group>"; };
 		14A58A6A1C6E0F8000EBDB2C /* CCLions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCLions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A58A6D1C6E0F8000EBDB2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14A58A721C6E0F8000EBDB2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -597,6 +605,7 @@
 		1449FCD01CFF1C0700A85FC2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				149EC6A51D1183CA00958EE1 /* MyRecord */,
 				14CD481A1D0EA64D00DDFF32 /* MyProject */,
 				14EA0A521CCB34D000169116 /* EditSelectDataViewController.swift */,
 				14015FB71CB508D8004B5F59 /* CompanyInfoViewController.swift */,
@@ -690,6 +699,7 @@
 			children = (
 				145D580F1D0F06F900592BB4 /* SupportProjectModel.swift */,
 				14C404E81D105BC400BC12D7 /* LaunchedProjectModel.swift */,
+				149EC6A31D1174DD00958EE1 /* WithdrawModel.swift */,
 			);
 			name = MyProject;
 			sourceTree = "<group>";
@@ -803,6 +813,13 @@
 				148B21EA1D073BAF00A1EA4C /* OtherProjectModel.swift */,
 			);
 			name = Project;
+			sourceTree = "<group>";
+		};
+		149EC6A51D1183CA00958EE1 /* MyRecord */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MyRecord;
 			sourceTree = "<group>";
 		};
 		14A58A611C6E0F8000EBDB2C = {
@@ -1017,6 +1034,8 @@
 			children = (
 				14C404E41D0FFC8700BC12D7 /* SupportedProjectTVCell.swift */,
 				14C404E51D0FFC8700BC12D7 /* SupportedProjectTVCell.xib */,
+				149EC69B1D111D9500958EE1 /* LaunchedProjectTVCell.swift */,
+				149EC69C1D111D9500958EE1 /* LaunchedProjectTVCell.xib */,
 			);
 			name = MyProject;
 			sourceTree = "<group>";
@@ -1027,6 +1046,7 @@
 				145D58011D0EA6A100592BB4 /* MyProjectVC.swift */,
 				145D580A1D0EF4C700592BB4 /* SupportedProjectTVC.swift */,
 				145D580C1D0EF4D900592BB4 /* LaunchedProjectTVC.swift */,
+				149EC6A11D1149C900958EE1 /* WithdrawTVC.swift */,
 			);
 			name = MyProject;
 			sourceTree = "<group>";
@@ -1378,6 +1398,7 @@
 				7C78D92F1CB8CA81002122A1 /* AMap.bundle in Resources */,
 				14C404E71D0FFC8700BC12D7 /* SupportedProjectTVCell.xib in Resources */,
 				1476C6571CCFCBCA00BE6E64 /* HeaderView.xib in Resources */,
+				149EC69E1D111D9500958EE1 /* LaunchedProjectTVCell.xib in Resources */,
 				14A58A731C6E0F8000EBDB2C /* Main.storyboard in Resources */,
 				14BECFF21CCB4E1D00091572 /* flash_open_pic.png in Resources */,
 			);
@@ -1492,6 +1513,7 @@
 				14789FDA1CE313F700F47941 /* NonVipRegisterView.swift in Sources */,
 				1477931D1D093BD20042EAD2 /* SupportProgressView.swift in Sources */,
 				14C515CF1D087290007BC096 /* CommonFlowView.swift in Sources */,
+				149EC6A21D1149C900958EE1 /* WithdrawTVC.swift in Sources */,
 				14AFE0941D0A82ED00A4A8BE /* CustomCalloutView.m in Sources */,
 				14BECFFD1CCB4E1D00091572 /* ZZCameraFocusView.m in Sources */,
 				7C2BFB6E1D0174F000524410 /* LaunchActivityModel.swift in Sources */,
@@ -1588,6 +1610,7 @@
 				148B21D91D07357D00A1EA4C /* MedicalProjectTVC.swift in Sources */,
 				14385C821CDF0EEC00A2D229 /* Statistics.swift in Sources */,
 				145D580B1D0EF4C700592BB4 /* SupportedProjectTVC.swift in Sources */,
+				149EC69D1D111D9500958EE1 /* LaunchedProjectTVCell.swift in Sources */,
 				14385C851CDF0FD200A2D229 /* NSObject+Statistics.swift in Sources */,
 				14DCF0911CCA7F38001F2FE4 /* EditTextFieldViewController.swift in Sources */,
 				148B21B21D07142400A1EA4C /* YoutubeIconCell.swift in Sources */,
@@ -1606,6 +1629,7 @@
 				7C451B841CBA236F00490853 /* String+MD5.swift in Sources */,
 				14DE667E1D099B35003006F8 /* DonationModel.swift in Sources */,
 				147D63AC1CE2355600543692 /* LoginBGVideoView.swift in Sources */,
+				149EC6A41D1174DD00958EE1 /* WithdrawModel.swift in Sources */,
 				14A58A761C6E0F8000EBDB2C /* CCLions.xcdatamodeld in Sources */,
 				14BECFEB1CCB4E1D00091572 /* UIImageHandle.m in Sources */,
 			);

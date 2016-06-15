@@ -114,12 +114,20 @@ class MyProjectVC: ButtonBarPagerTabStripViewController {
     }
     */
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        buttonBarView.removeFromSuperview()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.addSubview(buttonBarView)
+    }
 }
 
 extension MyProjectVC: CommonFlowViewDelegate {
     func buttonBackClicked() {
         self.navigationController?.popViewControllerAnimated(true)
-        buttonBarView.removeFromSuperview()
     }
     
     func buttonCommentClicked() {

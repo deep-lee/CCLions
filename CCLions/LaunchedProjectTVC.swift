@@ -38,7 +38,7 @@ class LaunchedProjectTVC: UITableViewController, IndicatorInfoProvider {
 
     func initView() -> Void {
         model = LaunchedProjectModel.shareInstance()
-        self.tableView.registerNib(UINib(nibName: "ProjectShowTVCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: CELL_REUSE)
+        self.tableView.registerNib(UINib(nibName: "LaunchedProjectTVCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: CELL_REUSE)
         tableView.separatorStyle = .None
         tableView.backgroundColor = UIColor(hex: "fcfcfc")
         // 加入下拉刷新和上拉加载
@@ -106,15 +106,16 @@ class LaunchedProjectTVC: UITableViewController, IndicatorInfoProvider {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CELL_REUSE, forIndexPath: indexPath) as! ProjectShowTVCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CELL_REUSE, forIndexPath: indexPath) as! LaunchedProjectTVCell
         
         // Configure the cell...
         cell.setParas(model.dataArray[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return MAIN_CELL_HEIGHT
+        return HEIGHT_FOR_LAUNCHED_PROJECT_CELL
     }
     
     // MARK: - IndicatorInfoProvider
@@ -122,5 +123,18 @@ class LaunchedProjectTVC: UITableViewController, IndicatorInfoProvider {
     func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
+    
+    func goToWithdrawTVC(project: Project) -> Void {
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let vc = storyboard.instantiateViewControllerWithIdentifier("WithdrawTVC") as! WithdrawTVC
+        vc.project = project
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
+}
+
+extension LaunchedProjectTVC: LaunchedProjectTVCellDelegate {
+    func withdrawAction(project: Project) {
+        goToWithdrawTVC(project)
+    }
 }

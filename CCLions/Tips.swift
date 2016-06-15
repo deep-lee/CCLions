@@ -63,4 +63,7 @@ class Tips {
     static let ADD_AUTHENTICATION_FAIL           = "请求身份认证失败"
     static let GET_MORE_PROJECT_DETAILS_ERROR    = "获取项目更多信息失败"
     static let ADD_COMMENT_FAIL                  = "评论失败"
+    static let ADD_WITHDRAW_FAIL                 = "请求提款失败"
+    static let WITHDRAW_NO_ENOUGH_MONEY          = "可提款余额不足"
+    static let ADD_WITHDRAW_SUCCESS              = "申请提款成功"
 }

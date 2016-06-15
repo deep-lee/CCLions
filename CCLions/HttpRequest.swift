@@ -47,6 +47,8 @@ enum RequestAddress: String {
     case HTTP_SEARCH_COMPANY_WITH_COMPANYNAME    = "search_company_with_companyname.php"
     case HTTP_GET_SUPPORTED_PROJECT              = "get_supported_project.php"
     case HTTP_GET_MY_LAUNCHED_PROJECT            = "get_my_launched_project.php"
+    case HTTP_ACCEPT_MULTI_WITHDRAW_IMAGE        = "accept_multi_withdraw_image.php"
+    case HTTP_ADD_WITHDRAW                       = "add_withdraw.php"
 }
 
 class HttpRequest {
