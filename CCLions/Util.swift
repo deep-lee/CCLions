@@ -527,4 +527,43 @@ class Util {
         return supportedProject
 	}
 
+    static func getWithdrawSelfFromJson(item: JSON) -> WithdrawSelf {
+        let withdraw = WithdrawSelf(
+            id: item["id"].intValue,
+            contact: item["contact"].stringValue,
+            user_id: item["user_id"].intValue,
+            project_id: item["project_id"].intValue,
+            amount: item["amount"].intValue,
+            application: item["application"].stringValue,
+            prove: item["prove"].stringValue,
+            status: item["status"].intValue,
+            message: item["message"].stringValue,
+            title: item["title"].stringValue
+        )
+        
+        return withdraw
+    }
+    
+    static func getWithdrawStatusString(status: Int) -> String {
+        
+        var result = ""
+        
+        switch status {
+        case WithdrawStatus.ApplyIn.rawValue:
+            result = "申请中"
+        case WithdrawStatus.ApplyFail.rawValue:
+            result = "申请不通过"
+        case WithdrawStatus.ApplyHandle.rawValue:
+            result = "正在处理中"
+        case WithdrawStatus.ApplyAgreeNotPay.rawValue:
+            result = "申请通过，正在联系提款人"
+        case WithdrawStatus.ApplyPayed.rawValue:
+            result = "申请完成"
+        default:
+            break
+        }
+        
+        return result
+    }
+    
 }

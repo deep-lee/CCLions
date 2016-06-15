@@ -13,7 +13,7 @@ import SwiftyDrop
 
 class SelfCenterViewController: UIViewController {
     var dataArray1 = ["个人信息", "公司信息"]
-    var dataArray2 = ["我的项目", "我的订单"]
+    var dataArray2 = ["我的项目", "我的记录"]
     var dataArray: [[String]]!
     var user: User!
     
@@ -175,6 +175,11 @@ class SelfCenterViewController: UIViewController {
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("MyProjectVC")
         self.navigationController?.pushViewController(vc!, animated: true)
     }
+    
+    func goToMyRecordVC() -> Void {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("MyRecordVC")
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
 }
 
 extension SelfCenterViewController: UITabBarDelegate, UITableViewDataSource {
@@ -218,7 +223,7 @@ extension SelfCenterViewController: UITabBarDelegate, UITableViewDataSource {
             case 0:
                self.goToMyProjectVC()
             case 1:
-                break
+                self.goToMyRecordVC()
             default:
                 break
             }

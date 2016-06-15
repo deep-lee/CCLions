@@ -2374,6 +2374,38 @@
             </objects>
             <point key="canvasLocation" x="3195" y="1598"/>
         </scene>
+        <!--My RecordVC-->
+        <scene sceneID="4HH-ND-qOl">
+            <objects>
+                <viewController storyboardIdentifier="MyRecordVC" id="hjE-eT-xiD" customClass="MyRecordVC" customModule="CCLions" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nrW-ct-ijm"/>
+                        <viewControllerLayoutGuide type="bottom" id="d3m-w9-z0X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ty9-Go-ZEC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9EY-mv-1SZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9EY-mv-1SZ" secondAttribute="trailing" id="0Wh-6A-zb0"/>
+                            <constraint firstItem="d3m-w9-z0X" firstAttribute="top" secondItem="9EY-mv-1SZ" secondAttribute="bottom" id="hbb-ZT-PyC"/>
+                            <constraint firstItem="9EY-mv-1SZ" firstAttribute="leading" secondItem="ty9-Go-ZEC" secondAttribute="leading" id="of8-Pj-Ih5"/>
+                            <constraint firstItem="9EY-mv-1SZ" firstAttribute="top" secondItem="ty9-Go-ZEC" secondAttribute="top" id="sXJ-Os-G32"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="9EY-mv-1SZ" id="f8L-9V-b2f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z70-jt-fxJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3857" y="1598"/>
+        </scene>
         <!--Edit Select Data View Controller-->
         <scene sceneID="o95-wz-syD">
             <objects>

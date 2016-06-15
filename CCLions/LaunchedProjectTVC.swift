@@ -111,6 +111,7 @@ class LaunchedProjectTVC: UITableViewController, IndicatorInfoProvider {
         // Configure the cell...
         cell.setParas(model.dataArray[indexPath.row])
         cell.delegate = self
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
     

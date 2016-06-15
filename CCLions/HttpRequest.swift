@@ -49,6 +49,7 @@ enum RequestAddress: String {
     case HTTP_GET_MY_LAUNCHED_PROJECT            = "get_my_launched_project.php"
     case HTTP_ACCEPT_MULTI_WITHDRAW_IMAGE        = "accept_multi_withdraw_image.php"
     case HTTP_ADD_WITHDRAW                       = "add_withdraw.php"
+    case HTTP_WITHDRAW_SELF_BY_ROW               = "withdraw_self_by_row.php"
 }
 
 class HttpRequest {

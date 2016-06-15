@@ -59,6 +59,7 @@ let PROGRESS_VIEW_HEIGHT: CGFloat                = 5
 let DONATION_AMOUNT_SUGGEST_CELL_HEIGHT: CGFloat = 69
 let HEIGHT_FOR_SUPPORTED_PROJECT_CELL: CGFloat   = 434
 let HEIGHT_FOR_LAUNCHED_PROJECT_CELL: CGFloat    = 444
+let HEIGHT_FOR_WITHDRAW_RECORD_CELL: CGFloat     = 160
 
 var VIP_ARRAY_PROJECT_TYPE                       = ["狮子会"]
 var NOVIP_ARRAY_PROJECT_TYPE                     = ["贫困", "医疗", "自然灾害", "教育", "急救", "其他"]

@@ -94,6 +94,12 @@
 		149EC69E1D111D9500958EE1 /* LaunchedProjectTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149EC69C1D111D9500958EE1 /* LaunchedProjectTVCell.xib */; };
 		149EC6A21D1149C900958EE1 /* WithdrawTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149EC6A11D1149C900958EE1 /* WithdrawTVC.swift */; };
 		149EC6A41D1174DD00958EE1 /* WithdrawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149EC6A31D1174DD00958EE1 /* WithdrawModel.swift */; };
+		149EC6A71D11842600958EE1 /* MyRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149EC6A61D11842600958EE1 /* MyRecordVC.swift */; };
+		149EC6AB1D11849E00958EE1 /* WithdrawRecordTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149EC6AA1D11849E00958EE1 /* WithdrawRecordTVC.swift */; };
+		149EC6AD1D11852500958EE1 /* WithdrawRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149EC6AC1D11852500958EE1 /* WithdrawRecordModel.swift */; };
+		149EC6B21D1185AA00958EE1 /* WithdrawRecordTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149EC6B01D1185AA00958EE1 /* WithdrawRecordTVCell.swift */; };
+		149EC6B31D1185AA00958EE1 /* WithdrawRecordTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149EC6B11D1185AA00958EE1 /* WithdrawRecordTVCell.xib */; };
+		149EC6B51D11966900958EE1 /* WithdrawSelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149EC6B41D11966900958EE1 /* WithdrawSelf.swift */; };
 		14A58A6E1C6E0F8000EBDB2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A58A6D1C6E0F8000EBDB2C /* AppDelegate.swift */; };
 		14A58A731C6E0F8000EBDB2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A58A711C6E0F8000EBDB2C /* Main.storyboard */; };
 		14A58A761C6E0F8000EBDB2C /* CCLions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14A58A741C6E0F8000EBDB2C /* CCLions.xcdatamodeld */; };
@@ -332,6 +338,12 @@
 		149EC69C1D111D9500958EE1 /* LaunchedProjectTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchedProjectTVCell.xib; sourceTree = "<group>"; };
 		149EC6A11D1149C900958EE1 /* WithdrawTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithdrawTVC.swift; sourceTree = "<group>"; };
 		149EC6A31D1174DD00958EE1 /* WithdrawModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithdrawModel.swift; sourceTree = "<group>"; };
+		149EC6A61D11842600958EE1 /* MyRecordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecordVC.swift; sourceTree = "<group>"; };
+		149EC6AA1D11849E00958EE1 /* WithdrawRecordTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithdrawRecordTVC.swift; sourceTree = "<group>"; };
+		149EC6AC1D11852500958EE1 /* WithdrawRecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithdrawRecordModel.swift; sourceTree = "<group>"; };
+		149EC6B01D1185AA00958EE1 /* WithdrawRecordTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithdrawRecordTVCell.swift; sourceTree = "<group>"; };
+		149EC6B11D1185AA00958EE1 /* WithdrawRecordTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WithdrawRecordTVCell.xib; sourceTree = "<group>"; };
+		149EC6B41D11966900958EE1 /* WithdrawSelf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithdrawSelf.swift; sourceTree = "<group>"; };
 		14A58A6A1C6E0F8000EBDB2C /* CCLions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCLions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A58A6D1C6E0F8000EBDB2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14A58A721C6E0F8000EBDB2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -629,6 +641,7 @@
 		1449FCD11CFF1C4F00A85FC2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				149EC6AE1D11856900958EE1 /* MyRecord */,
 				14C404E31D0FFC6100BC12D7 /* MyProject */,
 				1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */,
 				14AFE0921D0A82ED00A4A8BE /* CustomCalloutView.h */,
@@ -642,6 +655,7 @@
 		1449FCD21CFF1C5400A85FC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				149EC6AF1D11858300958EE1 /* MyRecord */,
 				145D580E1D0F06DF00592BB4 /* MyProject */,
 				143B79371D007D8000920D06 /* AuthenticationModel.swift */,
 			);
@@ -818,6 +832,25 @@
 		149EC6A51D1183CA00958EE1 /* MyRecord */ = {
 			isa = PBXGroup;
 			children = (
+				149EC6A61D11842600958EE1 /* MyRecordVC.swift */,
+				149EC6AA1D11849E00958EE1 /* WithdrawRecordTVC.swift */,
+			);
+			name = MyRecord;
+			sourceTree = "<group>";
+		};
+		149EC6AE1D11856900958EE1 /* MyRecord */ = {
+			isa = PBXGroup;
+			children = (
+				149EC6B01D1185AA00958EE1 /* WithdrawRecordTVCell.swift */,
+				149EC6B11D1185AA00958EE1 /* WithdrawRecordTVCell.xib */,
+			);
+			name = MyRecord;
+			sourceTree = "<group>";
+		};
+		149EC6AF1D11858300958EE1 /* MyRecord */ = {
+			isa = PBXGroup;
+			children = (
+				149EC6AC1D11852500958EE1 /* WithdrawRecordModel.swift */,
 			);
 			name = MyRecord;
 			sourceTree = "<group>";
@@ -1216,6 +1249,7 @@
 				14113AC91D06DE30009D6EBA /* Comment.swift */,
 				14DE667B1D099A1F003006F8 /* DonationSuggestionMoney.swift */,
 				1460618E1D0FEF4500BB9192 /* SupportedProject.swift */,
+				149EC6B41D11966900958EE1 /* WithdrawSelf.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1390,6 +1424,7 @@
 				14BECFF11CCB4E1D00091572 /* flash_close_pic.png in Resources */,
 				14BECFF91CCB4E1D00091572 /* take_photo_pic@2x.png in Resources */,
 				14BECFF31CCB4E1D00091572 /* no_data.png in Resources */,
+				149EC6B31D1185AA00958EE1 /* WithdrawRecordTVCell.xib in Resources */,
 				14A58A781C6E0F8000EBDB2C /* Assets.xcassets in Resources */,
 				14BECFF01CCB4E1D00091572 /* change_camera_pic.png in Resources */,
 				14BECFF41CCB4E1D00091572 /* photo_add.png in Resources */,
@@ -1502,6 +1537,7 @@
 				14C515CB1D080598007BC096 /* FlowView.swift in Sources */,
 				14DE66741D095EF7003006F8 /* UIView+Layout.m in Sources */,
 				148B21DD1D07371C00A1EA4C /* NaturalDisasterProjectTVC.swift in Sources */,
+				149EC6AD1D11852500958EE1 /* WithdrawRecordModel.swift in Sources */,
 				14015FB51CB4EA2B004B5F59 /* EditSelfProfileViewController.swift in Sources */,
 				14113AC21D06C33A009D6EBA /* Withdraw.swift in Sources */,
 				7C4F33B01CB963BC00892398 /* Tips.swift in Sources */,
@@ -1519,6 +1555,7 @@
 				7C2BFB6E1D0174F000524410 /* LaunchActivityModel.swift in Sources */,
 				149791391CA8022D0014D377 /* UIImage+CornerRadius.swift in Sources */,
 				14BECFE81CCB4E1D00091572 /* ZZPhotoController.m in Sources */,
+				149EC6B51D11966900958EE1 /* WithdrawSelf.swift in Sources */,
 				14789FD81CE3111B00F47941 /* NonVipLoginView.swift in Sources */,
 				7C1D31061CBAAB7800BE0F56 /* Project.swift in Sources */,
 				7C4287731CCC67FB00456E0E /* PickPositionOnMapViewController.swift in Sources */,
@@ -1541,6 +1578,7 @@
 				14BECFEC1CCB4E1D00091572 /* ZZCameraFlashState.m in Sources */,
 				7C4F33AE1CB9607300892398 /* HttpRequest.swift in Sources */,
 				14789FDE1CE37F7800F47941 /* NetworkUtil.swift in Sources */,
+				149EC6B21D1185AA00958EE1 /* WithdrawRecordTVCell.swift in Sources */,
 				148B21DB1D0735A600A1EA4C /* MedicalProjectModel.swift in Sources */,
 				14DE66791D096767003006F8 /* DoantionTVCell.swift in Sources */,
 				1449FCD41CFF202400A85FC2 /* AuthenticationTableViewCell.swift in Sources */,
@@ -1577,6 +1615,7 @@
 				14C515CD1D083F4B007BC096 /* ProjectDetailsModel.swift in Sources */,
 				7C78D94B1CB8ECB7002122A1 /* User.swift in Sources */,
 				1426B95E1CB416B00099ED69 /* SelfCenterViewController.swift in Sources */,
+				149EC6A71D11842600958EE1 /* MyRecordVC.swift in Sources */,
 				14113ACE1D06E27A009D6EBA /* ProjectCommentRecordTVCell.swift in Sources */,
 				7C4F33AB1CB947F700892398 /* RegisterViewController.swift in Sources */,
 				7C1FF8981CBB98830039AD47 /* VPImageCropperViewController.m in Sources */,
@@ -1624,6 +1663,7 @@
 				14DCF08F1CCA707B001F2FE4 /* AddCompanyViewController.swift in Sources */,
 				14B3F6FE1D01E611007B9031 /* CircleShapeLayer.m in Sources */,
 				1426B9501CB381400099ED69 /* SlideViewController.swift in Sources */,
+				149EC6AB1D11849E00958EE1 /* WithdrawRecordTVC.swift in Sources */,
 				145D58101D0F06F900592BB4 /* SupportProjectModel.swift in Sources */,
 				1426FAA01CCD35D3009FFC11 /* UpdateShowImageViewController.swift in Sources */,
 				7C451B841CBA236F00490853 /* String+MD5.swift in Sources */,
