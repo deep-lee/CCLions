@@ -19,73 +19,24 @@ class SearchProjectViewController: UIViewController {
 		super.viewDidLoad()
 
 		// Do any additional setup after loading the view.
+        initView()
 	}
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-
-	/**
-	 点赞接口
-
-	 - parameter id: 活动id
-	 */
-	func requestFav(sender: UIButton) -> Void {
-		let paras = [
-			"user_id": "\(Util.getLoginedUser()!.id)",
-			"project_id": "\(sender.tag)"
-		]
-
-		print(paras)
-
-		Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_ADD_FAV.rawValue, parameters: paras)
-			.responseJSON { (response) in
-				if let value = response.result.value {
-					print(value)
-					let json = JSON(value)
-					let code = json["code"].intValue
-					if code == 200 {
-						dispatch_async(dispatch_get_main_queue(), {
-							// 点赞成功
-							let cell = self.mTableView.cellForRowAtIndexPath(NSIndexPath(forRow: (self.getRowForTag(sender.tag)), inSection: 0)) as! ActivityShowCell
-							// cell.favLabel.text = "\(Int(cell.favLabel.text!)! + 1)"
-						})
-					} else {
-						let type = json["type"].intValue
-						if type == 102 { // 已经点过赞了
-							Drop.down(Tips.ADD_FAV_AGAIN, state: DropState.Info)
-						} else {
-							Drop.down(Tips.ADD_FAV_FAIL, state: DropState.Error)
-						}
-					}
-				} else {
-					Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
-				}
-		}
-	}
-
-	func getRowForTag(tag: Int) -> Int {
-		var row = 0
-		for item in self.dataArray {
-			if item.id == tag {
-				return row
-			}
-			row += 1
-		}
-
-		return row
-	}
-
-	/*
-	 // MARK: - Navigation
-
-	 // In a storyboard-based application, you will often want to do a little preparation before navigation
-	 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-	 // Get the new view controller using segue.destinationViewController.
-	 // Pass the selected object to the new view controller.
-	 }
-	 */
+    
+    func initView() -> Void {
+        mTableView.registerNib(UINib(nibName: "ProjectShowTVCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: CELL_REUSE)
+        mTableView.separatorStyle = .None
+        mTableView.backgroundColor = UIColor(hex: "fcfcfc")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.hidden = false
+    }
 }
 
 extension SearchProjectViewController: UITableViewDelegate, UITableViewDataSource {
@@ -94,25 +45,19 @@ extension SearchProjectViewController: UITableViewDelegate, UITableViewDataSourc
 	}
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("SearchShowCell") as! ActivityShowCell
-		let project = self.dataArray[indexPath.row]
-//		cell.showIamgeView.sd_setImageWithURL(NSURL(string: project.cover_image))
-//		cell.activityTimeLabel.text = project.time
-//		cell.activityLauncherLabel.text = project.name
-//		cell.favLabel.text = "\(project.favorite)"
-//		cell.favBtn.tag = project.id
-//		cell.favBtn.addTarget(self, action: #selector(SearchProjectViewController.requestFav(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-		return cell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CELL_REUSE, forIndexPath: indexPath) as! ProjectShowTVCell
+        let project = self.dataArray[indexPath.row]
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.setParas(project)
+        return cell
 	}
 
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		tableView.deselectRowAtIndexPath(indexPath, animated: true)
-		let projectDetailsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProjectDetailsViewController") as! ProjectDetailsViewController
-		projectDetailsViewController.project = self.dataArray[indexPath.row]
-		self.navigationController?.pushViewController(projectDetailsViewController, animated: true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.goToProjectDetailsVC(self.dataArray[indexPath.row])
 	}
 
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		return 310
+		return MAIN_CELL_HEIGHT
 	}
 }

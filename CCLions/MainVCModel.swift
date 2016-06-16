@@ -137,6 +137,7 @@ class MainVCModel: SuperModel {
 				let dataString = response.objectForKey(NETWORK_SUCCESS_DATA) as! [AnyObject]
 				let data = JSON(dataString).arrayValue
 				if data.count != 0 {
+                    self.searchResult.removeAll()
 					for item in data {
 						let project = Util.getProjectFromJson(item)
 						self.searchResult.append(project)
@@ -155,6 +156,8 @@ class MainVCModel: SuperModel {
 			default:
 				break
 			}
+            
+            SVProgressHUD.dismiss()
 		}
 	}
 

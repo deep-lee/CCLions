@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SearhView: UIView {
     /*
@@ -25,18 +26,30 @@ class SearhView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor(hex: "f5f5f5")
-        backBtn = UIButton(frame: CGRectMake(10, frame.size.height / 2, 20, 20))
+        
+        backBtn = UIButton(frame: CGRectZero)
+        self.addSubview(backBtn)
+        backBtn.snp_makeConstraints { (make) in
+            make.width.height.equalTo(20)
+            make.centerY.equalTo(backBtn.superview!)
+            make.left.equalTo(10)
+        }
         backBtn.setImage(UIImage(named: "icon-search-back"), forState: UIControlState.Normal)
         backBtn.addTarget(self, action: #selector(SearhView.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        self.addSubview(backBtn)
         
-        searchTextField = UITextField(frame: CGRectMake(40, frame.size.height / 2 - 4, UIScreen.mainScreen().bounds.size.width - 50, 30))
+        CGRectMake(40, frame.size.height / 2 - 4, UIScreen.mainScreen().bounds.size.width - 50, 30)
+        searchTextField = UITextField(frame: CGRectZero)
+        self.addSubview(searchTextField)
+        searchTextField.snp_makeConstraints { (make) in
+            make.left.equalTo(backBtn.snp_right).offset(10)
+            make.centerY.equalTo(searchTextField.superview!)
+            make.right.equalTo(-10)
+        }
         searchTextField.borderStyle = UITextBorderStyle.None
         searchTextField.placeholder = "搜索项目"
         searchTextField.returnKeyType = UIReturnKeyType.Search
-        searchTextField.becomeFirstResponder()
         searchTextField.addTarget(self, action: #selector(SearhView.searchTextFieldDidEndOnExit(_:)), forControlEvents: UIControlEvents.EditingDidEndOnExit)
-        self.addSubview(searchTextField)
+        
     }
     
     func searchTextFieldDidEndOnExit(sender: AnyObject) -> Void {
@@ -51,5 +64,13 @@ class SearhView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func getInputText() -> String {
+        return self.searchTextField.text!
+    }
+    
+    func clearInput() -> Void {
+        self.searchTextField.text = ""
     }
 }

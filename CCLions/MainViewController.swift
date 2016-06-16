@@ -12,12 +12,15 @@ import XLPagerTabStrip
 class MainViewController: TwitterPagerTabStripViewController {
 	var searchView: SearhView!
     var isReload = false
+    var isSearching = false
+    var model: MainVCModel!
     
 	override func viewDidLoad() {
         super.viewDidLoad()
 
 		// Do any additional setup after loading the view.
 		self.initView()
+        initNoti()
         
         // #Mark 防止自动调整ScrollView内边距导致ScrollView上面出现空白
         self.automaticallyAdjustsScrollViewInsets = false
@@ -55,10 +58,32 @@ class MainViewController: TwitterPagerTabStripViewController {
 	 初始化界面
 	 */
 	func initView() -> Void {
-		//self.initSearchView()
+        model = MainVCModel.shareInstance()
+        self.initSearchView()
         MainVCModel.shareInstance().updateLoginedUserInfo()
 	}
+    
+    func initSearchView() -> Void{
+        self.searchView = SearhView(frame: CGRectMake(0, 0, SCREEN_WIDH, 44))
+        self.searchView.searchTextFieldEndCallBack = searchViewDidEndOnExit
+        self.searchView.buttonCallBack = searchBackCallBack
+        self.navigationController?.navigationBar.addSubview(self.searchView)
+        self.searchView.hidden = true
+    }
 
+    func initNoti() -> Void {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.goToSearchRecultVC(_:)), name: GO_TO_SEARCH_PROJECT, object: nil)
+    }
+    
+    func goToSearchRecultVC(noti: NSNotification) -> Void {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("SearchProjectViewController") as! SearchProjectViewController
+        vc.dataArray = model.searchResult
+        vc.title = self.searchView.getInputText()
+        self.searchView.clearInput()
+        self.searchView.hidden = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
@@ -73,5 +98,25 @@ class MainViewController: TwitterPagerTabStripViewController {
 	@IBAction func leftMenu(sender: AnyObject) {
 		slideMenuController()?.toggleLeft()
 	}
+    
+    @IBAction func searchAction(sender: AnyObject) {
+        if isSearching {
+            self.searchView.clearInput()
+            self.searchView.hidden = true
+        } else {
+             self.searchView.hidden = false
+            self.searchView.searchTextField.becomeFirstResponder()
+        }
+    }
+    
+    func searchViewDidEndOnExit() -> Void {
+        model.requestSearchWithText(self.searchView.getInputText())
+    }
+    
+    func searchBackCallBack() -> Void {
+        self.searchView.clearInput()
+        self.searchView.hidden = true
+        self.isSearching = false
+    }
 }
 
