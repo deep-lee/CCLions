@@ -50,6 +50,7 @@ enum RequestAddress: String {
     case HTTP_ACCEPT_MULTI_WITHDRAW_IMAGE        = "accept_multi_withdraw_image.php"
     case HTTP_ADD_WITHDRAW                       = "add_withdraw.php"
     case HTTP_WITHDRAW_SELF_BY_ROW               = "withdraw_self_by_row.php"
+    case HTTP_UPDATE_USER_PSW                    = "update_user_psw.php"
 }
 
 class HttpRequest {

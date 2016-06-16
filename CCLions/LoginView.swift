@@ -82,6 +82,8 @@ class LoginView: UIView {
 		self.nonVipRegisterBtn?.setTitle("非狮子会会员注册", forState: UIControlState.Normal)
 		self.nonVipRegisterBtn?.backgroundColor = UIColor(hex: "34ADEC")
 		self.nonVipRegisterBtn?.titleLabel?.font = UIFont.systemFontOfSize(BTN_TITLE_FONT_SIZE)
+        self.nonVipRegisterBtn?.layer.cornerRadius = 5
+        self.nonVipRegisterBtn?.layer.masksToBounds = true
 		self.nonVipRegisterBtn?.addTarget(self, action: #selector(LoginView.nonVipRegisterAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
 		self.nonVipLoginBtn = UIButton()
@@ -95,6 +97,8 @@ class LoginView: UIView {
 		self.nonVipLoginBtn?.setTitle("非狮子会会员登录", forState: UIControlState.Normal)
 		self.nonVipLoginBtn?.backgroundColor = UIColor(hex: "425C9A")
 		self.nonVipLoginBtn?.titleLabel?.font = UIFont.systemFontOfSize(BTN_TITLE_FONT_SIZE)
+        self.nonVipLoginBtn?.layer.cornerRadius = 5
+        self.nonVipLoginBtn?.layer.masksToBounds = true
 		self.nonVipLoginBtn?.addTarget(self, action: #selector(LoginView.nonVipLoginAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
 		self.vipLoginBtn = UIButton()
@@ -108,6 +112,8 @@ class LoginView: UIView {
 		self.vipLoginBtn?.setTitle("狮子会会员登录", forState: UIControlState.Normal)
 		self.vipLoginBtn?.backgroundColor = UIColor(hex: "425C9A")
 		self.vipLoginBtn?.titleLabel?.font = UIFont.systemFontOfSize(BTN_TITLE_FONT_SIZE)
+        self.vipLoginBtn?.layer.cornerRadius = 5
+        self.vipLoginBtn?.layer.masksToBounds = true
 		self.vipLoginBtn?.addTarget(self, action: #selector(LoginView.vipLoinAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
 		// 初始化VIP登录界面

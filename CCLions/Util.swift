@@ -28,6 +28,7 @@ class Util {
 	]
 
 	static let SETTING1 = [
+        "修改密码"
 	]
 
 	static let SETTING2 = [

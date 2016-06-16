@@ -12,7 +12,7 @@ import SwiftyJSON
 import Alamofire
 
 class RegisterViewController: UIViewController {
-// 用户名输入框
+    // 用户名输入框
 	@IBOutlet weak var usernameTextField: UITextField!
 	// 密码输入框
 	@IBOutlet weak var passwordTextField: UITextField!

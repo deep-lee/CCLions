@@ -66,4 +66,5 @@ class Tips {
     static let ADD_WITHDRAW_FAIL                 = "请求提款失败"
     static let WITHDRAW_NO_ENOUGH_MONEY          = "可提款余额不足"
     static let ADD_WITHDRAW_SUCCESS              = "申请提款成功"
+    static let UPDATE_PASSWORD_FAIL              = "密码修改失败"
 }

@@ -80,6 +80,8 @@ class NonVipRegisterView: UIView {
 		verCodeBtn?.setTitle("获取验证码", forState: UIControlState.Normal)
 		verCodeBtn?.titleLabel?.font = UIFont.systemFontOfSize(15)
 		verCodeBtn?.backgroundColor = UIColor(hex: "3C3E53")
+        self.verCodeBtn?.layer.cornerRadius = 5
+        self.verCodeBtn?.layer.masksToBounds = true
 		verCodeBtn?.addTarget(self, action: #selector(NonVipRegisterView.getVerCodeBtnAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
 		self.verCodeTextField = UITextField()
@@ -103,6 +105,8 @@ class NonVipRegisterView: UIView {
 		regBtn?.backgroundColor = UIColor(hex: "3C3E53")
 		regBtn?.setTitle("注册", forState: UIControlState.Normal)
 		regBtn?.titleLabel?.font = UIFont.systemFontOfSize(15)
+        self.regBtn?.layer.cornerRadius = 5
+        self.regBtn?.layer.masksToBounds = true
 		regBtn?.addTarget(self, action: #selector(NonVipRegisterView.regBtnAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 	}
 

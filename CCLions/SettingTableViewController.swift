@@ -17,6 +17,8 @@ class SettingTableViewController: UITableViewController {
 
 		// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
 		// self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -39,11 +41,17 @@ class SettingTableViewController: UITableViewController {
 	@IBAction func leftMenu(sender: AnyObject) {
 		slideMenuController()?.toggleLeft()
 	}
+    
+    func goToChangePasswordVC() -> Void {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ChangePasswordTVC") as! ChangePasswordTVC
+        vc.title = "修改密码"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("SettingTableViewCell", forIndexPath: indexPath)
 
-		cell.textLabel?.text = Util.SETTING_ARRAY[indexPath.section][indexPath.row] as! String
+		cell.textLabel?.text = Util.SETTING_ARRAY[indexPath.section][indexPath.row]
 
 		if indexPath.section == 1 && indexPath.row == 0 {
 			cell.accessoryType = UITableViewCellAccessoryType.None
@@ -64,6 +72,13 @@ class SettingTableViewController: UITableViewController {
 			default:
 				return
 			}
+        case 0:
+            switch indexPath.row {
+            case 0:
+                self.goToChangePasswordVC()
+            default:
+                break
+            }
 		default:
 			return
 		}

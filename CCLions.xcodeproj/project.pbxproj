@@ -71,6 +71,8 @@
 		147D63AC1CE2355600543692 /* LoginBGVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147D63AB1CE2355600543692 /* LoginBGVideoView.swift */; };
 		147D63AF1CE235ED00543692 /* VideoFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147D63AE1CE235ED00543692 /* VideoFunctions.swift */; };
 		147D63B31CE2364300543692 /* bg-video-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 147D63B21CE2364300543692 /* bg-video-info.plist */; };
+		1486374A1D12FDC900764B4B /* ChangePasswordTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148637491D12FDC900764B4B /* ChangePasswordTVC.swift */; };
+		1486374C1D1304D500764B4B /* ChangePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1486374B1D1304D500764B4B /* ChangePasswordModel.swift */; };
 		148B21A81D070CCF00A1EA4C /* CCLionProjectTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148B21A71D070CCF00A1EA4C /* CCLionProjectTVC.swift */; };
 		148B21AB1D070D1500A1EA4C /* CCLionProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148B21AA1D070D1500A1EA4C /* CCLionProjectModel.swift */; };
 		148B21AD1D070F5200A1EA4C /* PoorProjectTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148B21AC1D070F5200A1EA4C /* PoorProjectTVC.swift */; };
@@ -314,6 +316,8 @@
 		147D63AE1CE235ED00543692 /* VideoFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFunctions.swift; sourceTree = "<group>"; };
 		147D63B21CE2364300543692 /* bg-video-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "bg-video-info.plist"; sourceTree = "<group>"; };
 		147D63B41CE2364F00543692 /* bg-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bg-video.mp4"; sourceTree = "<group>"; };
+		148637491D12FDC900764B4B /* ChangePasswordTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordTVC.swift; sourceTree = "<group>"; };
+		1486374B1D1304D500764B4B /* ChangePasswordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordModel.swift; sourceTree = "<group>"; };
 		148B21A71D070CCF00A1EA4C /* CCLionProjectTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLionProjectTVC.swift; sourceTree = "<group>"; };
 		148B21AA1D070D1500A1EA4C /* CCLionProjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLionProjectModel.swift; sourceTree = "<group>"; };
 		148B21AC1D070F5200A1EA4C /* PoorProjectTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoorProjectTVC.swift; sourceTree = "<group>"; };
@@ -801,6 +805,31 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		148637441D12DA2800764B4B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				14F102E31CDE4B8900EEA789 /* FeedBackViewController.swift */,
+				14F102E11CDE35DD00EEA789 /* SettingTableViewController.swift */,
+				148637491D12FDC900764B4B /* ChangePasswordTVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		148637451D12DA2F00764B4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		148637461D12DA3400764B4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1486374B1D1304D500764B4B /* ChangePasswordModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		148B21A61D070C8C00A1EA4C /* Project */ = {
 			isa = PBXGroup;
 			children = (
@@ -1087,8 +1116,9 @@
 		14F102E01CDE359900EEA789 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				14F102E11CDE35DD00EEA789 /* SettingTableViewController.swift */,
-				14F102E31CDE4B8900EEA789 /* FeedBackViewController.swift */,
+				148637461D12DA3400764B4B /* Model */,
+				148637451D12DA2F00764B4B /* View */,
+				148637441D12DA2800764B4B /* Controller */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1552,6 +1582,7 @@
 				149EC6A21D1149C900958EE1 /* WithdrawTVC.swift in Sources */,
 				14AFE0941D0A82ED00A4A8BE /* CustomCalloutView.m in Sources */,
 				14BECFFD1CCB4E1D00091572 /* ZZCameraFocusView.m in Sources */,
+				1486374C1D1304D500764B4B /* ChangePasswordModel.swift in Sources */,
 				7C2BFB6E1D0174F000524410 /* LaunchActivityModel.swift in Sources */,
 				149791391CA8022D0014D377 /* UIImage+CornerRadius.swift in Sources */,
 				14BECFE81CCB4E1D00091572 /* ZZPhotoController.m in Sources */,
@@ -1569,6 +1600,7 @@
 				14BECFFF1CCB4E1D00091572 /* ZZPageControl.m in Sources */,
 				14F102E21CDE35DD00EEA789 /* SettingTableViewController.swift in Sources */,
 				14113AC41D06CF3B009D6EBA /* ProjectWithdrawRecordVC.swift in Sources */,
+				1486374A1D12FDC900764B4B /* ChangePasswordTVC.swift in Sources */,
 				148B21A81D070CCF00A1EA4C /* CCLionProjectTVC.swift in Sources */,
 				148B21E31D07391500A1EA4C /* EducationProjectModel.swift in Sources */,
 				14385C7E1CDF07D700A2D229 /* FlurryEmpty.m in Sources */,

@@ -78,6 +78,8 @@ class NonVipLoginView: UIView {
 		loginBtn?.backgroundColor = UIColor(hex: "3C3E53")
 		loginBtn?.setTitle("登录", forState: UIControlState.Normal)
 		loginBtn?.titleLabel?.font = UIFont.systemFontOfSize(15)
+        self.loginBtn?.layer.cornerRadius = 5
+        self.loginBtn?.layer.masksToBounds = true
 		loginBtn?.addTarget(self, action: #selector(NonVipLoginView.loginBtnAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 	}
 
