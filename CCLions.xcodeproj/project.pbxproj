@@ -48,6 +48,7 @@
 		14385C7F1CDF07D700A2D229 /* libFlurry_7.6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14385C7C1CDF07D700A2D229 /* libFlurry_7.6.0.a */; };
 		14385C821CDF0EEC00A2D229 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14385C811CDF0EEC00A2D229 /* Statistics.swift */; };
 		14385C851CDF0FD200A2D229 /* NSObject+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14385C841CDF0FD200A2D229 /* NSObject+Statistics.swift */; };
+		143A39FD1D13DD1500C603CC /* ForgetPswView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143A39FC1D13DD1500C603CC /* ForgetPswView.swift */; };
 		143B79381D007D8000920D06 /* AuthenticationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143B79371D007D8000920D06 /* AuthenticationModel.swift */; };
 		1449FCCF1CFF18B200A85FC2 /* AuthenticationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1449FCCE1CFF18B200A85FC2 /* AuthenticationVC.swift */; };
 		1449FCD41CFF202400A85FC2 /* AuthenticationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */; };
@@ -291,6 +292,7 @@
 		14385C7C1CDF07D700A2D229 /* libFlurry_7.6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.6.0.a; sourceTree = "<group>"; };
 		14385C811CDF0EEC00A2D229 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		14385C841CDF0FD200A2D229 /* NSObject+Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Statistics.swift"; sourceTree = "<group>"; };
+		143A39FC1D13DD1500C603CC /* ForgetPswView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPswView.swift; sourceTree = "<group>"; };
 		143B79371D007D8000920D06 /* AuthenticationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationModel.swift; sourceTree = "<group>"; };
 		1449FCCE1CFF18B200A85FC2 /* AuthenticationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationVC.swift; sourceTree = "<group>"; };
 		1449FCD31CFF202400A85FC2 /* AuthenticationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationTableViewCell.swift; sourceTree = "<group>"; };
@@ -762,6 +764,7 @@
 		147D63A61CE2328C00543692 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				143A39FC1D13DD1500C603CC /* ForgetPswView.swift */,
 				147D63A81CE2332900543692 /* LoginView.swift */,
 				147D63AB1CE2355600543692 /* LoginBGVideoView.swift */,
 				14789FD11CE2FBB700F47941 /* VipLoginView.swift */,
@@ -1647,6 +1650,7 @@
 				14C515CD1D083F4B007BC096 /* ProjectDetailsModel.swift in Sources */,
 				7C78D94B1CB8ECB7002122A1 /* User.swift in Sources */,
 				1426B95E1CB416B00099ED69 /* SelfCenterViewController.swift in Sources */,
+				143A39FD1D13DD1500C603CC /* ForgetPswView.swift in Sources */,
 				149EC6A71D11842600958EE1 /* MyRecordVC.swift in Sources */,
 				14113ACE1D06E27A009D6EBA /* ProjectCommentRecordTVCell.swift in Sources */,
 				7C4F33AB1CB947F700892398 /* RegisterViewController.swift in Sources */,

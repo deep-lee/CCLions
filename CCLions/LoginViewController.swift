@@ -34,6 +34,8 @@ class LoginViewController: UIViewController {
 		self.loginView?.nonVipLoginCallBack = nonVipLoginAction
 		self.loginView?.nonVipRegisterCallBAck = nonVipRegAction
 		self.loginView?.nonVipRegisterGetVerCodeCallBack = getVerCodeAction
+        self.loginView?.forgetPswGetVerCodeCallBack = getVerCodeAction
+        self.loginView?.foregtPswSureCallBack = forgetPswSureAction
 	}
 
 	/**
@@ -42,6 +44,7 @@ class LoginViewController: UIViewController {
 	func initNoti() -> Void {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.loginSuccessNoti(_:)), name: LOGIN_SUCCESS_NOTIFICATION, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.regSuccessNoti(_:)), name: REGISTER_SUCCESS_NOTIFICATION, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.forgetPswSuccessNotiCallBack(_:)), name: FORGET_PSW_SUCCESS_NOTIFICATION, object: nil)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -111,6 +114,14 @@ class LoginViewController: UIViewController {
 		// 获取验证码
 		LoginModel.shareInstance().getVerCode(username)
 	}
+    
+    func forgetPswSureAction(username: String, psw: String, verCode: String) -> Void {
+        if username.isEmpty || psw.isEmpty || verCode.isEmpty {
+            Drop.down(Tips.USER_INFO_NOT_COMPLETED, state: DropState.Warning)
+            return
+        }
+        LoginModel.shareInstance().forgetPsw(username, psw: psw, verCode: verCode)
+    }
 
 	/**
 	 登陆成功通知
@@ -137,6 +148,10 @@ class LoginViewController: UIViewController {
 		self.loginView?.dismissNonVipRegView()
 	}
 
+    func forgetPswSuccessNotiCallBack(noti: NSNotification) -> Void {
+        self.loginView?.dismissForgetPswView()
+    }
+    
 	/**
 	 进入到主界面
 	 */

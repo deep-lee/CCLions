@@ -51,6 +51,7 @@ enum RequestAddress: String {
     case HTTP_ADD_WITHDRAW                       = "add_withdraw.php"
     case HTTP_WITHDRAW_SELF_BY_ROW               = "withdraw_self_by_row.php"
     case HTTP_UPDATE_USER_PSW                    = "update_user_psw.php"
+    case HTTP_FORGET_PSW                         = "forget_psw.php"
 }
 
 class HttpRequest {

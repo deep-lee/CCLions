@@ -20,6 +20,7 @@ class LoginView: UIView {
 	var vipLoginView: VipLoginView?
 	var nonVipLoginView: NonVipLoginView?
 	var nonVipRegView: NonVipRegisterView?
+    var forgetPswView: ForgetPswView?
 
 	var vipLoginBtn: UIButton? // 狮子会会员登录
 	var nonVipLoginBtn: UIButton? // 非会员登录
@@ -36,6 +37,8 @@ class LoginView: UIView {
 	var nonVipLoginCallBack: LoginActionCallBack?
 	var nonVipRegisterCallBAck: RegisterActionCallBack?
 	var nonVipRegisterGetVerCodeCallBack: GetVerCodeCallBack?
+    var forgetPswGetVerCodeCallBack: GetVerCodeCallBack?
+    var foregtPswSureCallBack: RegisterActionCallBack?
 
 	/*
 	 // Only override drawRect: if you perform custom drawing.
@@ -69,6 +72,7 @@ class LoginView: UIView {
 		self.forgetPswBtn?.setTitle("忘记密码？", forState: UIControlState.Normal)
 		self.forgetPswBtn?.backgroundColor = UIColor.clearColor()
 		self.forgetPswBtn?.titleLabel?.font = UIFont.systemFontOfSize(12)
+        self.forgetPswBtn?.addTarget(self, action: #selector(LoginView.forgetPswAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
 		// 初始化登录按钮
 		self.nonVipRegisterBtn = UIButton()
@@ -135,6 +139,13 @@ class LoginView: UIView {
 		nonVipRegView?.dismiss = nonVipRegBackBtnAction
 		self.nonVipRegView?.regAction = nonVipRegAction
 		self.nonVipRegView?.getVerCodeAction = nonVipRegGetVerCodeAction
+        
+        self.forgetPswView = ForgetPswView(frame: self.frame)
+        self.insertSubview(forgetPswView!, aboveSubview: vipLoginBtn!)
+        forgetPswView?.alpha = 0.0
+        forgetPswView?.dismiss = forgetPswBackBtnAction
+        self.forgetPswView?.sureAction = forgetPswSureAction
+        self.forgetPswView?.getVerCodeAction = forgetPswGetVerCodeAction
 
 	}
 
@@ -380,6 +391,83 @@ class LoginView: UIView {
 			self.nonVipRegisterGetVerCodeCallBack!(username: username)
 		}
 	}
+    
+    // MARK 忘记密码
+    
+    func forgetPswAction(sender: AnyObject) -> Void {
+        showForgetPswView()
+    }
+    
+    func showForgetPswView() -> Void {
+        let alphaAnimationDes = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        alphaAnimationDes.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        alphaAnimationDes.fromValue = 1.0
+        alphaAnimationDes.toValue = 0.5
+        alphaAnimationDes.duration = 0.5
+        self.bgPlayView!.pop_addAnimation(alphaAnimationDes, forKey: "fade")
+        
+        let btnDismssAniamtion = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        btnDismssAniamtion.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        btnDismssAniamtion.fromValue = 1.0
+        btnDismssAniamtion.toValue = 0.0
+        btnDismssAniamtion.duration = 0.5
+        self.vipLoginBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
+        self.nonVipLoginBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
+        self.nonVipRegisterBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
+        self.forgetPswBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
+        
+        let showNonVipRegAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        showNonVipRegAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        showNonVipRegAnimation.fromValue = 0.0
+        showNonVipRegAnimation.toValue = 1.0
+        showNonVipRegAnimation.duration = 0.5
+        self.forgetPswView?.pop_addAnimation(showNonVipRegAnimation, forKey: "show")
+    }
+    
+    /**
+     忘记密码界面返回按钮点击
+     */
+    func forgetPswBackBtnAction() -> Void {
+        dismissForgetPswView()
+    }
+    
+    func dismissForgetPswView() -> Void {
+        let alphaAnimationInc = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        alphaAnimationInc.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        alphaAnimationInc.fromValue = 0.5
+        alphaAnimationInc.toValue = 1.0
+        alphaAnimationInc.duration = 0.5
+        self.bgPlayView!.pop_addAnimation(alphaAnimationInc, forKey: "fade")
+        
+        let btnShowAniamtion = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        btnShowAniamtion.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        btnShowAniamtion.fromValue = 0.0
+        btnShowAniamtion.toValue = 1.0
+        btnShowAniamtion.duration = 0.5
+        self.vipLoginBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
+        self.nonVipLoginBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
+        self.nonVipRegisterBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
+        self.forgetPswBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
+        
+        let dismissNonVipRegAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        dismissNonVipRegAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        dismissNonVipRegAnimation.fromValue = 1.0
+        dismissNonVipRegAnimation.toValue = 0.0
+        dismissNonVipRegAnimation.duration = 0.5
+        self.forgetPswView?.pop_addAnimation(dismissNonVipRegAnimation, forKey: "show")
+    }
+    
+    func forgetPswSureAction(username: String, psw: String, verCode: String) -> Void {
+        if self.foregtPswSureCallBack != nil {
+            self.foregtPswSureCallBack!(username: username, psw: psw, verCode: verCode)
+        }
+    }
+    
+    func forgetPswGetVerCodeAction(username: String) -> Void {
+        if self.forgetPswGetVerCodeCallBack != nil {
+            self.forgetPswGetVerCodeCallBack!(username: username)
+        }
+    }
 
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")

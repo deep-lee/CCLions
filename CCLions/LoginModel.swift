@@ -13,6 +13,7 @@ import SwiftyJSON
 
 let LOGIN_SUCCESS_NOTIFICATION = "login_success"
 let REGISTER_SUCCESS_NOTIFICATION = "register_success"
+let FORGET_PSW_SUCCESS_NOTIFICATION = "FORGET_PSW_SUCCESS_NOTIFICATION"
 
 class LoginModel: SuperModel {
 	// 单例
@@ -143,6 +144,60 @@ class LoginModel: SuperModel {
 				default:
 					break
 				}
+			default:
+				break
+			}
+
+			SVProgressHUD.dismiss()
+		}
+	}
+
+	/**
+	 忘记密码
+
+	 - parameter username: 用户名
+	 - parameter psw:      密码
+	 - parameter verCode:  验证码
+	 */
+	func forgetPsw(username: String, psw: String, verCode: String) -> Void {
+
+		SVProgressHUD.showWithStatus(Tips.CONFIRM_VER_CODE)
+
+		// 首先判断验证码是否正确
+		SMSSDK.commitVerificationCode(verCode, phoneNumber: username, zone: "86") { (error) in
+			if error != nil { // 失败
+				Drop.down(Tips.VER_CODE_WRONG, state: DropState.Error)
+			} else { // 成功
+				SVProgressHUD.showWithStatus(Tips.REGISTING)
+				// 发起注册请求
+				let paras: [String: AnyObject] = [
+					"username": username,
+					"password": psw.md5,
+				]
+
+				// 发起请求
+				self.requestForgetPsw(paras)
+			}
+		}
+	}
+
+	/**
+	 发送忘记密码请求
+
+	 - parameter paras: 请求参数
+	 */
+	func requestForgetPsw(paras: NSDictionary) -> Void {
+		NetworkUtil.shareInstance().requestWithUrlWithReturnString(HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_FORGET_PSW.rawValue, paras: paras as! [String: AnyObject]) { (response) in
+			let state = response.objectForKey(NETWORK_STATE) as! Int
+			switch state {
+			case NetworkResponseState.CONNECT_FAIL.rawValue:
+				Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
+			case NetworkResponseState.SUCCESS.rawValue:
+				// 发出通知
+				self.postNotification(FORGET_PSW_SUCCESS_NOTIFICATION);
+			case NetworkResponseState.FAIL.rawValue:
+				Drop.down(Tips.FORGET_PSW_FAIL, state: DropState.Error)
+
 			default:
 				break
 			}
