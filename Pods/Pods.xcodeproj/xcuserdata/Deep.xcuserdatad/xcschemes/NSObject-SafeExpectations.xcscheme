@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '08408D7510F851E1967128FA'
+               BlueprintIdentifier = 'DE4171C2AEAE6926C94CCBE8'
                BlueprintName = 'NSObject-SafeExpectations'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'NSObject_SafeExpectations.framework'>

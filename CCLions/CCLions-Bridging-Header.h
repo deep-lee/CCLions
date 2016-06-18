@@ -28,3 +28,4 @@
 #import "UIView+Layout.h"
 #import "CustomAnnotationView.h"
 #import "CompanyMapAnnotationView.h"
+#import <YYCache/YYCache.h>

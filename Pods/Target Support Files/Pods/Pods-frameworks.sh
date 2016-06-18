@@ -102,6 +102,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/WordPressShared.framework"
   install_framework "Pods/WordPressComAnalytics.framework"
   install_framework "Pods/XLPagerTabStrip.framework"
+  install_framework "Pods/YYCache.framework"
   install_framework "Pods/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -123,5 +124,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/WordPressShared.framework"
   install_framework "Pods/WordPressComAnalytics.framework"
   install_framework "Pods/XLPagerTabStrip.framework"
+  install_framework "Pods/YYCache.framework"
   install_framework "Pods/pop.framework"
 fi

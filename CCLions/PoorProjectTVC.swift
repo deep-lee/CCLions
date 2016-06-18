@@ -57,6 +57,7 @@ class PoorProjectTVC: UITableViewController, IndicatorInfoProvider {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PoorProjectTVC.refreshDataFinishNoti(_:)), name: POOR_PROJECT_REFRESH_DATA_FINISH, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PoorProjectTVC.loadMoreDataSuccessNoti(_:)), name: POOR_PROJECT_LOAD_MORE_DATA_SUCCESS, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PoorProjectTVC.loadMoreDataFinishNoti(_:)), name: POOR_PROJECT_LOAD_MORE_DATA_FINISH, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PoorProjectTVC.loadDataArrayFromDiskCacheNotiCallBack(_:)), name: POOR_PROJECT_GET_DATAARRAY_FROM_DISK_CACHE_SUCCESS, object: nil)
     }
     
     // Mark Notification
@@ -96,6 +97,16 @@ class PoorProjectTVC: UITableViewController, IndicatorInfoProvider {
      */
     func loadMoreDataFinishNoti(noti: NSNotification) -> Void {
         tableView.mj_footer.state = MJRefreshState.Idle
+    }
+    
+    /**
+     从DiskCache加载数据成功
+     
+     - parameter noti: 通知
+     */
+    func loadDataArrayFromDiskCacheNotiCallBack(noti: NSNotification) -> Void {
+        tableView.mj_header.state = MJRefreshState.Idle
+        tableView.reloadData()
     }
     
     func refreshAction() -> Void {

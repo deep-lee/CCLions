@@ -10,11 +10,14 @@ import Foundation
 import Alamofire
 import SwiftyDrop
 import SwiftyJSON
+import YYCache
 
 let FIRST_AID_PROJECT_REFRESH_DATA_SUCCESS   = "FIRST_AID_PROJECT_REFRESH_DATA_SUCCESS"
 let FIRST_AID_PROJECT_REFRESH_DATA_FINISH    = "FIRST_AID_PROJECT_REFRESH_DATA_FINISH"
 let FIRST_AID_PROJECT_LOAD_MORE_DATA_SUCCESS = "FIRST_AID_PROJECT_LOAD_MORE_DATA_SUCCESS"
 let FIRST_AID_PROJECT_LOAD_MORE_DATA_FINISH  = "FIRST_AID_PROJECT_LOAD_MORE_DATA_FINISH"
+
+let FIRST_AID_PROJECT_GET_DATAARRAY_FROM_DISK_CACHE_SUCCESS  = "FIRST_AID_PROJECT_GET_DATAARRAY_FROM_DISK_CACHE_SUCCESS"
 
 class FirstAidProjectModel: SuperModel {
     let project_type = ProjectType.FirstAid.rawValue
@@ -51,7 +54,8 @@ class FirstAidProjectModel: SuperModel {
             switch state {
             case NetworkResponseState.CONNECT_FAIL.rawValue:
                 Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
-                self.postNotification(FIRST_AID_PROJECT_REFRESH_DATA_FINISH)
+                // self.postNotification(FIRST_AID_PROJECT_REFRESH_DATA_FINISH)
+                self.getDiskCache()
             case NetworkResponseState.SUCCESS.rawValue:
                 let dataString = response.objectForKey(NETWORK_SUCCESS_DATA) as! [AnyObject]
                 let data = JSON(dataString).arrayValue
@@ -64,12 +68,14 @@ class FirstAidProjectModel: SuperModel {
                     // 重新加载TableView数据
                     self.postNotification(FIRST_AID_PROJECT_REFRESH_DATA_SUCCESS)
                     self.lastId = (self.dataArray.last?.id)!
+                    self.updateDiskCache()
                 } else {
                     self.postNotification(FIRST_AID_PROJECT_REFRESH_DATA_FINISH)
                 }
             case NetworkResponseState.FAIL.rawValue:
                 Drop.down(Tips.REFRESH_MAIN_PROJECT_FAIL, state: DropState.Error)
-                self.postNotification(FIRST_AID_PROJECT_REFRESH_DATA_FINISH)
+                // self.postNotification(FIRST_AID_PROJECT_REFRESH_DATA_FINISH)
+                self.getDiskCache()
             default:
                 break
             }
@@ -112,6 +118,29 @@ class FirstAidProjectModel: SuperModel {
             default:
                 break
             }
+        }
+    }
+    
+    /**
+     更新本地缓存
+     */
+    func updateDiskCache() -> Void {
+        let cache = YYCache(name: FIRST_AID_PROJECT_CACHE)
+        cache?.diskCache.setObject(self.dataArray, forKey: FIRST_AID_PROJECT_DATAARRAY)
+    }
+    
+    /**
+     从缓存中加载数据
+     */
+    func getDiskCache() -> Void {
+        let cache = YYCache(name: FIRST_AID_PROJECT_CACHE)
+        let array = cache?.diskCache.objectForKey(FIRST_AID_PROJECT_DATAARRAY) as? [Project]
+        if array != nil {
+            print(array?.count)
+            self.dataArray = array
+            self.postNotification(FIRST_AID_PROJECT_GET_DATAARRAY_FROM_DISK_CACHE_SUCCESS)
+        } else {
+            self.postNotification(FIRST_AID_PROJECT_REFRESH_DATA_FINISH)
         }
     }
 }

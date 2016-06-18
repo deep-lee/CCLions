@@ -102,6 +102,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-CCLions/WordPressShared.framework"
   install_framework "Pods-CCLions/WordPressComAnalytics.framework"
   install_framework "Pods-CCLions/XLPagerTabStrip.framework"
+  install_framework "Pods-CCLions/YYCache.framework"
   install_framework "Pods-CCLions/pop.framework"
   install_framework "Pods-CCLions/SwiftyJSON.framework"
 fi
@@ -124,6 +125,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-CCLions/WordPressShared.framework"
   install_framework "Pods-CCLions/WordPressComAnalytics.framework"
   install_framework "Pods-CCLions/XLPagerTabStrip.framework"
+  install_framework "Pods-CCLions/YYCache.framework"
   install_framework "Pods-CCLions/pop.framework"
   install_framework "Pods-CCLions/SwiftyJSON.framework"
 fi

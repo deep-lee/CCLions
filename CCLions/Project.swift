@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Project: NSObject {
+class Project: NSObject, NSCoding {
 	var id: Int!
 	var title: String!
 	var time: String!
@@ -68,6 +68,53 @@ class Project: NSObject {
 			self.sponsorship_company_id = sponsorship_company_id
 			self.create_time = create_time
 			self.name = name
-        self.header = header
+            self.header = header
 	}
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.id, forKey: "id")
+        aCoder.encodeObject(self.title, forKey: "title")
+        aCoder.encodeObject(self.time, forKey: "time")
+        aCoder.encodeObject(self.launcher_id, forKey: "launcher_id")
+        aCoder.encodeObject(self.favorite, forKey: "favorite")
+        aCoder.encodeObject(self.cover_image, forKey: "cover_image")
+        aCoder.encodeObject(self.details_page, forKey: "details_page")
+        aCoder.encodeObject(self.project_type, forKey: "project_type")
+        aCoder.encodeObject(self.fundraising_amount, forKey: "fundraising_amount")
+        aCoder.encodeObject(self.has_raised_amount, forKey: "has_raised_amount")
+        aCoder.encodeObject(self.withdraw_amount, forKey: "withdraw_amount")
+        aCoder.encodeObject(self.apply_for_other, forKey: "apply_for_other")
+        aCoder.encodeObject(self.aided_person_id_num, forKey: "aided_person_id_num")
+        aCoder.encodeObject(self.aided_person_id_card_photo, forKey: "aided_person_id_card_photo")
+        aCoder.encodeObject(self.left_time, forKey: "left_time")
+        aCoder.encodeObject(self.sponsorship_company_id, forKey: "sponsorship_company_id")
+        aCoder.encodeObject(self.create_time, forKey: "create_time")
+        aCoder.encodeObject(self.name, forKey: "name")
+        aCoder.encodeObject(self.header, forKey: "header")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init()
+        id = aDecoder.decodeObjectForKey("id") as! Int
+        self.title = aDecoder.decodeObjectForKey("title") as! String
+        self.time = aDecoder.decodeObjectForKey("time") as! String
+        self.launcher_id = aDecoder.decodeObjectForKey("launcher_id") as! Int
+        self.favorite = aDecoder.decodeObjectForKey("favorite") as! Int
+        self.cover_image = aDecoder.decodeObjectForKey("cover_image") as! String
+        self.details_page = aDecoder.decodeObjectForKey("details_page") as! String
+        self.project_type = aDecoder.decodeObjectForKey("project_type") as! Int
+        self.fundraising_amount = aDecoder.decodeObjectForKey("fundraising_amount") as! Int
+        self.has_raised_amount = aDecoder.decodeObjectForKey("has_raised_amount") as! Int
+        self.withdraw_amount = aDecoder.decodeObjectForKey("withdraw_amount") as! Int
+        self.apply_for_other = aDecoder.decodeObjectForKey("apply_for_other") as! Int
+        self.aided_person_id_num = aDecoder.decodeObjectForKey("aided_person_id_num") as! String
+        self.aided_person_id_card_photo = aDecoder.decodeObjectForKey("aided_person_id_card_photo") as! String
+        self.left_time = aDecoder.decodeObjectForKey("left_time") as! Int
+        self.sponsorship_company_id = aDecoder.decodeObjectForKey("sponsorship_company_id") as! Int
+        self.create_time = aDecoder.decodeObjectForKey("create_time") as! String
+        self.name = aDecoder.decodeObjectForKey("name") as! String
+        self.header = aDecoder.decodeObjectForKey("header") as! String
+
+        
+    }
 }

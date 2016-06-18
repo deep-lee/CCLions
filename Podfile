@@ -35,6 +35,7 @@ pod 'SMSSDK'
 
 pod 'DateTools'
 pod 'XLPagerTabStrip', '~> 5.0'
+pod 'YYCache'
 
 target ‘CCLions’ do
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'

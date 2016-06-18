@@ -10,11 +10,15 @@ import Foundation
 import Alamofire
 import SwiftyDrop
 import SwiftyJSON
+import YYCache
 
 let MEDICAL_PROJECT_REFRESH_DATA_SUCCESS   = "MEDICAL_PROJECT_REFRESH_DATA_SUCCESS"
 let MEDICAL_PROJECT_REFRESH_DATA_FINISH    = "MEDICAL_PROJECT_REFRESH_DATA_FINISH"
 let MEDICAL_PROJECT_LOAD_MORE_DATA_SUCCESS = "MEDICAL_PROJECT_LOAD_MORE_DATA_SUCCESS"
 let MEDICAL_PROJECT_LOAD_MORE_DATA_FINISH  = "MEDICAL_PROJECT_LOAD_MORE_DATA_FINISH"
+
+let MEDICAL_PROJECT_GET_DATAARRAY_FROM_DISK_CACHE_SUCCESS  = "MEDICAL_PROJECT_GET_DATAARRAY_FROM_DISK_CACHE_SUCCESS"
+
 
 class MedicalProjectModel: SuperModel {
     let project_type = ProjectType.Medical.rawValue
@@ -51,7 +55,8 @@ class MedicalProjectModel: SuperModel {
             switch state {
             case NetworkResponseState.CONNECT_FAIL.rawValue:
                 Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
-                self.postNotification(MEDICAL_PROJECT_REFRESH_DATA_FINISH)
+               // self.postNotification(MEDICAL_PROJECT_REFRESH_DATA_FINISH)
+                self.getDiskCache()
             case NetworkResponseState.SUCCESS.rawValue:
                 let dataString = response.objectForKey(NETWORK_SUCCESS_DATA) as! [AnyObject]
                 let data = JSON(dataString).arrayValue
@@ -64,12 +69,14 @@ class MedicalProjectModel: SuperModel {
                     // 重新加载TableView数据
                     self.postNotification(MEDICAL_PROJECT_REFRESH_DATA_SUCCESS)
                     self.lastId = (self.dataArray.last?.id)!
+                    self.updateDiskCache()
                 } else {
                     self.postNotification(MEDICAL_PROJECT_REFRESH_DATA_FINISH)
                 }
             case NetworkResponseState.FAIL.rawValue:
                 Drop.down(Tips.REFRESH_MAIN_PROJECT_FAIL, state: DropState.Error)
-                self.postNotification(MEDICAL_PROJECT_REFRESH_DATA_FINISH)
+                // self.postNotification(MEDICAL_PROJECT_REFRESH_DATA_FINISH)
+                self.getDiskCache()
             default:
                 break
             }
@@ -112,6 +119,29 @@ class MedicalProjectModel: SuperModel {
             default:
                 break
             }
+        }
+    }
+    
+    /**
+     更新本地缓存
+     */
+    func updateDiskCache() -> Void {
+        let cache = YYCache(name: MEDICAL_PROJECT_CACHE)
+        cache?.diskCache.setObject(self.dataArray, forKey: MEDICAL_PROJECT_DATAARRAY)
+    }
+    
+    /**
+     从缓存中加载数据
+     */
+    func getDiskCache() -> Void {
+        let cache = YYCache(name: MEDICAL_PROJECT_CACHE)
+        let array = cache?.diskCache.objectForKey(MEDICAL_PROJECT_DATAARRAY) as? [Project]
+        if array != nil {
+            print(array?.count)
+            self.dataArray = array
+            self.postNotification(MEDICAL_PROJECT_GET_DATAARRAY_FROM_DISK_CACHE_SUCCESS)
+        } else {
+            self.postNotification(MEDICAL_PROJECT_REFRESH_DATA_FINISH)
         }
     }
 }

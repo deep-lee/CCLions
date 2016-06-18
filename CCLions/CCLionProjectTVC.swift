@@ -58,6 +58,7 @@ class CCLionProjectTVC: UITableViewController, IndicatorInfoProvider {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CCLionProjectTVC.refreshDataFinishNoti(_:)), name: CCLION_PROJECT_REFRESH_DATA_FINISH, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CCLionProjectTVC.loadMoreDataSuccessNoti(_:)), name: CCLION_PROJECT_LOAD_MORE_DATA_SUCCESS, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CCLionProjectTVC.loadMoreDataFinishNoti(_:)), name: CCLION_PROJECT_LOAD_MORE_DATA_FINISH, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CCLionProjectTVC.loadDataArrayFromDiskCacheNotiCallBack(_:)), name: CCLION_PROJECT_GET_DATAARRAY_FROM_DISK_CACHE_SUCCESS, object: nil)
     }
     
     // Mark Notification
@@ -97,6 +98,16 @@ class CCLionProjectTVC: UITableViewController, IndicatorInfoProvider {
      */
     func loadMoreDataFinishNoti(noti: NSNotification) -> Void {
         tableView.mj_footer.state = MJRefreshState.Idle
+    }
+    
+    /**
+     从DiskCache加载数据成功
+     
+     - parameter noti: 通知
+     */
+    func loadDataArrayFromDiskCacheNotiCallBack(noti: NSNotification) -> Void {
+        tableView.mj_header.state = MJRefreshState.Idle
+        tableView.reloadData()
     }
     
     func refreshAction() -> Void {
