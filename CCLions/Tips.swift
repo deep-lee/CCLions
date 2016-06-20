@@ -68,4 +68,5 @@ class Tips {
     static let ADD_WITHDRAW_SUCCESS              = "申请提款成功"
     static let UPDATE_PASSWORD_FAIL              = "密码修改失败"
     static let FORGET_PSW_FAIL                   = "更新密码失败"
+    static let AUTHENTICATION_FIRST              = "请先完成身份认证"
 }

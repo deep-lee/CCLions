@@ -27,15 +27,28 @@
                                             <constraint firstAttribute="width" constant="81" id="RqX-yY-0U0"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李冬" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIF-ET-iTL">
-                                        <rect key="frame" x="136" y="66" width="28" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIF-ET-iTL">
+                                        <rect key="frame" x="164" y="66" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiZ-Z8-Gf4">
+                                        <rect key="frame" x="3" y="39" width="151" height="71"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="71" id="jkn-ev-Ehr"/>
+                                            <constraint firstAttribute="width" constant="151" id="sXm-GN-PAz"/>
+                                        </constraints>
+                                        <state key="normal" image="icon-login"/>
+                                        <connections>
+                                            <action selector="loginAction:" destination="Jlb-jL-7bC" eventType="touchUpInside" id="BM9-Ku-Ygp"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20784313725490194" green="0.66666666666666663" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="qiZ-Z8-Gf4" firstAttribute="centerY" secondItem="MEw-hd-TLK" secondAttribute="centerY" id="8lh-RP-f35"/>
+                                    <constraint firstItem="qiZ-Z8-Gf4" firstAttribute="leading" secondItem="MEw-hd-TLK" secondAttribute="leading" constant="3" id="Afi-9i-Q72"/>
                                     <constraint firstItem="cIF-ET-iTL" firstAttribute="leading" secondItem="c61-4Y-xF8" secondAttribute="trailing" constant="17" id="DTI-cG-oJj"/>
                                     <constraint firstItem="c61-4Y-xF8" firstAttribute="centerY" secondItem="MEw-hd-TLK" secondAttribute="centerY" id="XKv-J7-tTb"/>
                                     <constraint firstAttribute="height" constant="150" id="jTb-hq-exZ"/>
@@ -95,6 +108,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonLogin" destination="qiZ-Z8-Gf4" id="cKn-9M-iYt"/>
                         <outlet property="headerImageView" destination="c61-4Y-xF8" id="Z9d-jX-Vqs"/>
                         <outlet property="nameLabel" destination="cIF-ET-iTL" id="X1J-Qn-cmJ"/>
                     </connections>
@@ -2712,7 +2726,8 @@
         <image name="close" width="64" height="64"/>
         <image name="icon-background" width="375" height="667"/>
         <image name="icon-default-header" width="91" height="90"/>
-        <image name="icon-header-example" width="91" height="90"/>
+        <image name="icon-header-example" width="66" height="66"/>
+        <image name="icon-login" width="110" height="66"/>
         <image name="icon-login-btn-bg" width="266" height="43"/>
         <image name="icon-login-input-bg" width="266" height="43"/>
         <image name="icon-logo" width="84" height="98"/>

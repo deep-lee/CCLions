@@ -21,6 +21,9 @@ class LoginView: UIView {
 	var nonVipLoginView: NonVipLoginView?
 	var nonVipRegView: NonVipRegisterView?
     var forgetPswView: ForgetPswView?
+    var backBtn: UIButton?
+    
+    var dismiss: dismissAction?
 
 	var vipLoginBtn: UIButton? // 狮子会会员登录
 	var nonVipLoginBtn: UIButton? // 非会员登录
@@ -60,6 +63,16 @@ class LoginView: UIView {
 		// 初始化背景视频界面
 		bgPlayView = LoginBGVideoView(frame: self.frame)
 		self.addSubview(bgPlayView!)
+        
+        self.backBtn = UIButton()
+        self.addSubview(backBtn!)
+        backBtn?.snp_makeConstraints(closure: { (make) in
+            make.left.equalTo(20)
+            make.top.equalTo(40)
+            make.size.width.height.equalTo(20)
+        })
+        backBtn?.setImage(UIImage(named: "icon-search-back"), forState: UIControlState.Normal)
+        backBtn?.addTarget(self, action: #selector(LoginView.backBtnAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
 		self.forgetPswBtn = UIButton()
 		self.insertSubview(forgetPswBtn!, aboveSubview: bgPlayView!)
@@ -187,6 +200,7 @@ class LoginView: UIView {
 		self.nonVipLoginBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
 		self.nonVipRegisterBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
 		self.forgetPswBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
+        self.backBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
 
 		let dismissVipLoginAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
 		dismissVipLoginAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
@@ -218,6 +232,7 @@ class LoginView: UIView {
 		self.nonVipLoginBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
 		self.nonVipRegisterBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
 		self.forgetPswBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
+        self.backBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
 
 		vipLoginView?.hidden = false
 		let showVipLoginAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
@@ -262,6 +277,7 @@ class LoginView: UIView {
 		self.nonVipLoginBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
 		self.nonVipRegisterBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
 		self.forgetPswBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
+        self.backBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
 
 		let showNonVipLoginAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
 		showNonVipLoginAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
@@ -298,6 +314,7 @@ class LoginView: UIView {
 		self.nonVipLoginBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
 		self.nonVipRegisterBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
 		self.forgetPswBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
+        self.backBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
 
 		let dismissNonVipLoginAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
 		dismissNonVipLoginAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
@@ -335,6 +352,7 @@ class LoginView: UIView {
 		self.nonVipLoginBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
 		self.nonVipRegisterBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
 		self.forgetPswBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
+        self.backBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
 
 		let showNonVipRegAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
 		showNonVipRegAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
@@ -371,7 +389,8 @@ class LoginView: UIView {
 		self.nonVipLoginBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
 		self.nonVipRegisterBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
 		self.forgetPswBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
-
+        self.backBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
+        
 		let dismissNonVipRegAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
 		dismissNonVipRegAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
 		dismissNonVipRegAnimation.fromValue = 1.0
@@ -415,6 +434,7 @@ class LoginView: UIView {
         self.nonVipLoginBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
         self.nonVipRegisterBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
         self.forgetPswBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
+        self.backBtn?.pop_addAnimation(btnDismssAniamtion, forKey: "dismiss")
         
         let showNonVipRegAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
         showNonVipRegAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
@@ -448,6 +468,7 @@ class LoginView: UIView {
         self.nonVipLoginBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
         self.nonVipRegisterBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
         self.forgetPswBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
+        self.backBtn?.pop_addAnimation(btnShowAniamtion, forKey: "dismiss")
         
         let dismissNonVipRegAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
         dismissNonVipRegAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
@@ -466,6 +487,12 @@ class LoginView: UIView {
     func forgetPswGetVerCodeAction(username: String) -> Void {
         if self.forgetPswGetVerCodeCallBack != nil {
             self.forgetPswGetVerCodeCallBack!(username: username)
+        }
+    }
+    
+    func backBtnAction(sender: AnyObject) -> Void {
+        if self.dismiss != nil {
+            self.dismiss!()
         }
     }
 

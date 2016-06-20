@@ -77,8 +77,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController = slideMenuController
             }
         } else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            self.window?.rootViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            self.window?.rootViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+            let leftViewController = storyboard.instantiateViewControllerWithIdentifier("SlideViewController") as! SlideViewController
+            
+            let nvc: UINavigationController = storyboard.instantiateViewControllerWithIdentifier("MainNavagationController") as! UINavigationController
+            nvc.navigationBar.barTintColor = UIColor(hex: "0395d8")
+            leftViewController.mainViewController = nvc
+            
+            let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
+            slideMenuController.automaticallyAdjustsScrollViewInsets = true
+            self.window?.rootViewController = slideMenuController
         }
         self.window?.makeKeyAndVisible()
         

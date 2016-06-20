@@ -34,6 +34,11 @@ class ProjectDetailsModel: SuperModel {
      - parameter project_id: 项目id
      */
     func checkUserHasLovedProject(project_id: Int) -> Void {
+        
+        if !Util.hasUserLogined() {
+            return
+        }
+        
         let paras = [
             "user_id": Util.getLoginedUser()!.id,
             "project_id": project_id

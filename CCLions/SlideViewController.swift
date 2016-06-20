@@ -37,6 +37,7 @@ class SlideViewController: UIViewController {
 
 	@IBOutlet weak var headerImageView: UIImageView!
 	@IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet var buttonLogin: UIButton!
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -51,12 +52,7 @@ class SlideViewController: UIViewController {
 		self.companySearchViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SearchCompanyViewControllerNvc")
 		self.settingViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SettingTableViewControllerNVC")
 
-		self.user = Util.getLoginedUser()
-//		self.headerImageView.sd_setImageWithURL(NSURL(string: self.user.header), placeholderImage: UIImage(named: "icon-default-header"))
-		self.headerImageView.sd_setImageWithURL(NSURL(string: self.user.header)) { (image, error, cacheType, url) in
-			self.headerImageView.image = image.imageWithCornerRadius(self.headerImageView.bounds.size.width / 2)
-		}
-		self.nameLabel.text = self.user.name
+		self.updateUserInfo()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -74,7 +70,43 @@ class SlideViewController: UIViewController {
 //		dataArray.append(("icon-feedback", "反馈"))
 //		dataArray.append(("icon-about", "关于"))
 	}
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.updateUserInfo()
+    }
+    
+    /**
+     更新用户信息
+     */
+    func updateUserInfo() -> Void {
+        self.user = Util.getLoginedUser()
+        if user != nil {
+            self.headerImageView.hidden = false
+            self.nameLabel.hidden = false
+            self.buttonLogin.hidden = true
+            self.headerImageView.sd_setImageWithURL(NSURL(string: self.user.header)) { (image, error, cacheType, url) in
+                self.headerImageView.image = image.imageWithCornerRadius(self.headerImageView.bounds.size.width / 2)
+            }
+            self.nameLabel.text = self.user.name
+        } else {
+            self.headerImageView.hidden = true
+            self.nameLabel.hidden = true
+            self.buttonLogin.hidden = false
+        }
+    }
 
+    @IBAction func loginAction(sender: AnyObject) {
+        self.goToLoginVC()
+    }
+    
+    func goToLoginVC() -> Void {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController")
+        self.presentViewController(vc!, animated: true) {
+        }
+    }
+    
 	/*
 	 // MARK: - Navigation
 
@@ -113,32 +145,69 @@ extension SlideViewController: UITableViewDelegate, UITableViewDataSource, LeftM
 	func checkLaunchProject() -> Void {
 		// 判断当前用户是否有已经添加了公司信息
 		SVProgressHUD.showWithStatus(Tips.LOADING)
-		let paras = [
-			"user_id": Util.getLoginedUser()!.id
-		]
-		Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_GET_COMPANY_OF_USER.rawValue, parameters: paras)
-			.responseJSON { (response) in
-				if let value = response.result.value {
-					print(value)
-					let json = JSON(value)
-					let code = json["code"].intValue
-					if code == 200 { // 添加了公司信息
-						self.slideMenuController()?.changeMainViewController(self.addActivityViewController, close: true)
-					} else if code == 201 {
-						let type = json["type"].intValue
-						if type == 102 { // 没有添加公司信息
-							Drop.down(Tips.ADD_PROJECT_NO_AUTHORIZATION, state: DropState.Error)
-						} else {
-							Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
-						}
-					}
-				} else {
-					Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
-				}
-
-				SVProgressHUD.dismiss()
-		}
+        
+        // 首先检查当前用户是否登录
+        if !Util.hasUserLogined() {
+            // 没有登录的话就进入到登录界面
+            self.goToLoginVC()
+        } else {
+            // 如果当前有用户登录
+            // 首先检查用户类型
+            // 如果是普通用户，那么检查用户是否已经通过的身份认证
+            let user = Util.getLoginedUser()
+            if user?.user_type == UserType.NonVip.rawValue {
+                // 如果是通过了认证的话，就进入添加项目界面
+                if user?.authentication_status == UserAuthenticationStatus.SuccessAuthentication.rawValue {
+                    self.slideMenuController()?.changeMainViewController(self.addActivityViewController, close: true)
+                } else {
+                    Drop.down(Tips.AUTHENTICATION_FIRST)
+                }
+            } else if user?.user_type == UserType.CCLionVip.rawValue {
+                // 如果是狮子会会员
+                // 首先判断用户是否绑定了公司
+                let paras = [
+                    "user_id": Util.getLoginedUser()!.id
+                ]
+                Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_GET_COMPANY_OF_USER.rawValue, parameters: paras)
+                    .responseJSON { (response) in
+                        if let value = response.result.value {
+                            print(value)
+                            let json = JSON(value)
+                            let code = json["code"].intValue
+                            if code == 200 { // 添加了公司信息
+                                self.slideMenuController()?.changeMainViewController(self.addActivityViewController, close: true)
+                            } else if code == 201 {
+                                let type = json["type"].intValue
+                                if type == 102 { // 没有添加公司信息
+                                    Drop.down(Tips.ADD_PROJECT_NO_AUTHORIZATION, state: DropState.Error)
+                                } else {
+                                    Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
+                                }
+                            }
+                        } else {
+                            Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
+                        }
+                        
+                        SVProgressHUD.dismiss()
+                }
+            }
+        }
+        
+		
 	}
+    
+    /**
+     检查点击个人中心
+     */
+    func checkSelfCenter() -> Void {
+        // 判断当前用户是否登录了
+        if !Util.hasUserLogined() {
+            // 没有用户登录
+            self.goToLoginVC()
+        } else {
+            self.slideMenuController()?.changeMainViewController(self.selfCenterViewController, close: true)
+        }
+    }
 
 	/**
 	 切换ViewController
@@ -151,7 +220,7 @@ extension SlideViewController: UITableViewDelegate, UITableViewDataSource, LeftM
 			self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
 
 		case .SelfCenter:
-			self.slideMenuController()?.changeMainViewController(self.selfCenterViewController, close: true)
+			self.checkSelfCenter()
 
 		case .AddActivity:
 			self.checkLaunchProject()

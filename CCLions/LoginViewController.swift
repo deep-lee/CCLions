@@ -36,6 +36,7 @@ class LoginViewController: UIViewController {
 		self.loginView?.nonVipRegisterGetVerCodeCallBack = getVerCodeAction
         self.loginView?.forgetPswGetVerCodeCallBack = getVerCodeAction
         self.loginView?.foregtPswSureCallBack = forgetPswSureAction
+        self.loginView?.dismiss = mainViewBackAction
 	}
 
 	/**
@@ -183,4 +184,13 @@ class LoginViewController: UIViewController {
 		nvc.navigationBar.tintColor = UIColor.whiteColor()
 		self.presentViewController(nvc, animated: true, completion: nil)
 	}
+    
+    /**
+     登录注册主界面返回项目主界面事件
+     */
+    func mainViewBackAction() -> Void {
+        self.dismissViewControllerAnimated(true) { 
+            
+        }
+    }
 }

@@ -117,6 +117,7 @@ class MainViewController: TwitterPagerTabStripViewController {
         self.searchView.clearInput()
         self.searchView.hidden = true
         self.isSearching = false
+        self.searchView.searchTextField.resignFirstResponder()
     }
 }
 
