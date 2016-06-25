@@ -110,7 +110,7 @@ class Util {
 
 	static func hasUserCompletedInfo() -> Bool {
 		let user = Util.getLoginedUser()
-		if user?.name != nil {
+		if user?.name != nil && !user!.name.isEmpty {
 			return true
 		}
 

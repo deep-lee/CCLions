@@ -300,11 +300,16 @@ extension SearchCompanyViewController: UICollectionViewDelegate, UICollectionVie
 			let item = self.dataArray1[indexPath.row]
 			cell.showImageView.sd_setImageWithURL(NSURL(string: item.show_photo))
 			cell.showLabel.text = Util.INDUSTRY[item.industry]
+            cell.showLabel.hidden = false
 		} else if indexPath.section == 1 {
 			cell.showImageView.sd_setImageWithURL(NSURL(string: self.dataArray2[indexPath.row].company_logo))
 			cell.showLabel.hidden = true
 		}
 
+        cell.showImageView.layer.cornerRadius = 15.0
+        cell.showImageView.layer.masksToBounds = true
+        cell.backgroundColor = UIColor.clearColor()
+        
 		return cell
 	}
 

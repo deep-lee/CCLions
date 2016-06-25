@@ -13,7 +13,6 @@ import SwiftyDrop
 
 class SelfCenterViewController: UIViewController {
     var dataArray1 = ["个人信息", "公司信息"]
-    var dataArray2 = ["我的项目", "我的记录"]
     var dataArray: [[String]]!
     var user: User!
     
@@ -34,7 +33,6 @@ class SelfCenterViewController: UIViewController {
         
         self.dataArray = [[String]]()
         self.dataArray.append(dataArray1)
-        self.dataArray.append(dataArray2)
         
         self.user = Util.getLoginedUser()
         self.headerImageView.sd_setImageWithURL(NSURL(string: self.user.header)) { (image, error, cacheType, url) in
@@ -42,11 +40,11 @@ class SelfCenterViewController: UIViewController {
         }
         self.nameLabel.text = self.user.name
         
-        // 判断当前用户的类型，如果当前不是狮子会会员，就不显示公司信息，显示身份认证状态
-        if user.user_type == UserType.NonVip.rawValue {
-            self.dataArray1.removeLast()
-            self.dataArray1.append("身份认证")
-        }
+//        // 判断当前用户的类型，如果当前不是狮子会会员，就不显示公司信息，显示身份认证状态
+//        if user.user_type == UserType.NonVip.rawValue {
+//            self.dataArray1.removeLast()
+//            self.dataArray1.append("身份认证")
+//        }
         self.mTableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(SelfCenterViewController.refresh))
     }
     
@@ -101,9 +99,7 @@ class SelfCenterViewController: UIViewController {
                     } else if code == 201 {
                         let type = json["type"].intValue
                         if type == 102 { // 没有添加公司信息
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.goToAddCompanyInfoVC()
-                            })
+                            self.checkUserCompanyInVerfy()
                         } else {
                             Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
                         }
@@ -116,9 +112,44 @@ class SelfCenterViewController: UIViewController {
         }
     }
     
-    func goToAddCompanyInfoVC() -> Void {
+    /**
+     检查用户是否有新建的公司正在审核中
+     */
+    func checkUserCompanyInVerfy() -> Void {
+        
+        SVProgressHUD.show()
+        
+        let paras = [
+            "user_id": Util.getLoginedUser()!.id
+        ]
+        
+        NetworkUtil.shareInstance().requestWithUrlWithReturnString(HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_CHECK_USER_COMPANY_NEW_IN_VERFY.rawValue, paras: paras) { (response) in
+            let state = response.objectForKey(NETWORK_STATE) as! Int
+            switch state {
+            case NetworkResponseState.CONNECT_FAIL.rawValue:
+                Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
+                SVProgressHUD.dismiss()
+            case NetworkResponseState.SUCCESS.rawValue:
+                // 发起认证请求成功
+                
+                let data = response.valueForKey(NETWORK_SUCCESS_DATA)?.integerValue
+                self.goToAddCompanyInfoVC(data!)
+                
+                SVProgressHUD.dismiss()
+            case NetworkResponseState.FAIL.rawValue:
+                // 发起认证请求失败
+                Drop.down(Tips.ADD_ACTIVITY_FAIL, state: DropState.Error)
+                SVProgressHUD.dismiss()
+            default:
+                break
+            }
+        }
+    }
+    
+    func goToAddCompanyInfoVC(value: Int) -> Void {
         let addCompanyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddCompanyViewController") as! AddCompanyViewController
         addCompanyViewController.title = "添加公司"
+        addCompanyViewController.value = value
         self.navigationController?.pushViewController(addCompanyViewController, animated: true)
     }
     
@@ -162,11 +193,11 @@ class SelfCenterViewController: UIViewController {
             self.headerImageView.image = image.imageWithCornerRadius(self.headerImageView.bounds.size.width / 2)
         }
         self.nameLabel.text = user.name
-        if user.user_type == UserType.NonVip.rawValue {
-            let indexPath = NSIndexPath(forRow: 1, inSection: 0);
-            let cell = mTableView.cellForRowAtIndexPath(indexPath)
-            cell!.detailTextLabel?.text = getUserAuthenticationType()
-        }
+//        if user.user_type == UserType.NonVip.rawValue {
+//            let indexPath = NSIndexPath(forRow: 1, inSection: 0);
+//            let cell = mTableView.cellForRowAtIndexPath(indexPath)
+//            cell!.detailTextLabel?.text = getUserAuthenticationType()
+//        }
         
         mTableView.mj_header.state = MJRefreshState.Idle
     }
@@ -196,10 +227,10 @@ extension SelfCenterViewController: UITabBarDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("SelfCenterCell", forIndexPath: indexPath)
         
         cell.textLabel?.text = dataArray[indexPath.section][indexPath.row]
-        if indexPath.section == 0 && indexPath.row == 1 && user.user_type == UserType.NonVip.rawValue {
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            cell.detailTextLabel?.text = self.getUserAuthenticationType()
-        }
+//        if indexPath.section == 0 && indexPath.row == 1 && user.user_type == UserType.NonVip.rawValue {
+//            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+//            cell.detailTextLabel?.text = self.getUserAuthenticationType()
+//        }
         
         return cell
     }
@@ -210,11 +241,12 @@ extension SelfCenterViewController: UITabBarDelegate, UITableViewDataSource {
             case 0:
                 self.goToEditSelfProfileViewController()
             case 1:
-                if user.user_type == UserType.CCLionVip.rawValue {
-                    self.checkCompanyInfo()
-                } else {
-                    self.goToAuthenVC()
-                }
+//                if user.user_type == UserType.CCLionVip.rawValue {
+//                    self.checkCompanyInfo()
+//                } else {
+//                    self.goToAuthenVC()
+//                }
+                self.checkCompanyInfo()
             default:
                 return
             }

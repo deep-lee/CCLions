@@ -50,6 +50,7 @@ class ProjectCommentVC: UIViewController {
             make.height.equalTo(64)
         }
         commonFlowView.delegate = self
+        commonFlowView.hideSupportBtn()
         
         flowTextField = FlowTextFiled(frame: CGRectZero)
         self.view.addSubview(flowTextField)

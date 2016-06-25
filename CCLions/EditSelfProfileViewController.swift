@@ -49,7 +49,7 @@ class EditSelfProfileViewController: UIViewController {
 		dataArray.append(("地址", user.address))
 		dataArray.append(("联系方式", user.contact))
 
-		// 如果不是狮子会会员的话就需要填写所属服务队
+		// 如果是狮子会会员的话就需要填写所属服务队
 		if user.user_type == UserType.CCLionVip.rawValue {
 			dataArray.append(("所属服务队", user.service_team))
 		}
@@ -160,6 +160,7 @@ class EditSelfProfileViewController: UIViewController {
 	 上传用户头像
 	 */
 	func uploadUserHeader() -> Void {
+        SVProgressHUD.show()
 		// 首先上传用户的头像
 		Alamofire.upload(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_UPLOAD_HEADER_IMAGE.rawValue, data: UIImageJPEGRepresentation(self.headerImageView.image!, 0.5)!)
 			.responseJSON(completionHandler: { (response) in
@@ -181,6 +182,7 @@ class EditSelfProfileViewController: UIViewController {
 					Drop.down(Tips.NETWORK_CONNECT_ERROR, state: DropState.Error)
 					SVProgressHUD.dismiss()
 				}
+                SVProgressHUD.dismiss()
 		})
 	}
 
@@ -190,6 +192,7 @@ class EditSelfProfileViewController: UIViewController {
 	 - parameter headerAddress: 头像地址
 	 */
 	func updateUserInfo(headerAddress: String) -> Void {
+        SVProgressHUD.show()
 		let paras = [
 			"userId": self.user.id,
 			"header": headerAddress,

@@ -291,6 +291,10 @@ including Freepik Icons. Please consult their
 respective headers for the terms of their individual licenses.
 
 
+## ShareSDK3
+
+Copyright © 2012-2015 mob
+
 ## SlideMenuControllerSwift
 
 The MIT License (MIT)

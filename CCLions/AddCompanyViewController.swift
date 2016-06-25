@@ -13,6 +13,10 @@ import Alamofire
 
 class AddCompanyViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var labelTips: UILabel!
+    
+    var user: User!
+    var value = 0
     
     var dataArray: [(String, String)]!
     var selectedPhotoArray: [String]!
@@ -24,8 +28,8 @@ class AddCompanyViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.initView()
         self.initData()
-        initWeight()
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,10 +37,22 @@ class AddCompanyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func initView() -> Void {
+        if value == 1 {
+            self.labelTips.hidden = false
+            self.tableView.hidden = true
+        } else {
+            initWeight()
+        }
+    }
+    
     /**
      初始化数据
      */
     func initData() {
+        
+        user = Util.getLoginedUser()
+        
         self.selectedPhotoArray = [String]()
         self.dataArray = [(String, String)]()
         self.dataArray.append(("公司名称", ""))
@@ -47,11 +63,14 @@ class AddCompanyViewController: UIViewController {
         self.dataArray.append(("联系方式", ""))
         self.dataArray.append(("展示照片", ""))
         self.dataArray.append(("公司Logo", ""))
+        self.dataArray.append(("狮子会会员编号", ""))
     }
     
     func initWeight() -> Void {
         let next = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AddCompanyViewController.save(_:)))
         self.navigationItem.rightBarButtonItem = next
+        
+        self.showTipsAlertWithTwoBtn("如果您没有狮子会编号，请联系后台：+28 12345678", okString: "确定", cancleString: "取消", okAction: {_ in }, cancleAction: {_ in })
     }
     
     func goToEditTextFieldVC(row: Int) -> Void {
@@ -239,7 +258,8 @@ class AddCompanyViewController: UIViewController {
             "create_time": NSDate(),
             "introduction": self.dataArray[4].1,
             "contact": self.dataArray[5].1,
-            "company_logo": logoAddress
+            "company_logo": logoAddress,
+            "cclion_vip_no": dataArray[8].1
         ]
         
         Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_ADD_COMPANY.rawValue, parameters: paras)
@@ -252,6 +272,9 @@ class AddCompanyViewController: UIViewController {
                         Drop.down(Tips.ADD_COMPANY_SUCCESS, state: DropState.Success)
                         self.navigationController?.popViewControllerAnimated(true)
                         SVProgressHUD.dismiss()
+                        
+                        self.showTipsAlertWithOneBtn("我们将在48个小时内处理，请等待审核", okString: "确定", okAction: {_ in })
+                        
                     } else {
                         Drop.down(Tips.ADD_COMPANY_ERROR, state: DropState.Error)
                         SVProgressHUD.dismiss()
@@ -322,6 +345,8 @@ extension AddCompanyViewController: UITableViewDelegate, UITableViewDataSource {
             self.goToSelectMultiPhotoVC(indexPath.row)
         case 7:
             self.goToSelectLogoVC(indexPath.row)
+        case 8:
+            self.goToEditTextFieldVC(indexPath.row)
         default:
             return
         }

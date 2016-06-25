@@ -19,7 +19,7 @@ PODS:
   - IQKeyboardManagerSwift (4.0.0)
   - JFImagePicker (1.0.0)
   - MJRefresh (3.1.0)
-  - MOBFoundation_IDFA (1.5.1)
+  - MOBFoundation_IDFA (2.0.1)
   - NSObject-SafeExpectations (0.0.2)
   - pop (1.0.9)
   - SDCycleScrollView (1.64):
@@ -27,6 +27,12 @@ PODS:
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
+  - ShareSDK3 (3.3.2):
+    - ShareSDK3/ShareSDK (= 3.3.2)
+  - ShareSDK3/ShareSDK (3.3.2)
+  - ShareSDK3/ShareSDKPlatforms/SinaWeibo (3.3.2)
+  - ShareSDK3/ShareSDKPlatforms/WeChat (3.3.2)
+  - ShareSDK3/ShareSDKUI (3.3.2)
   - SlideMenuControllerSwift (2.1.1)
   - SMSSDK (2.0.4)
   - SnapKit (0.15.0)
@@ -60,6 +66,10 @@ DEPENDENCIES:
   - pop (~> 1.0)
   - SDCycleScrollView (~> 1.64)
   - SDWebImage (~> 3.7)
+  - ShareSDK3
+  - ShareSDK3/ShareSDKPlatforms/SinaWeibo
+  - ShareSDK3/ShareSDKPlatforms/WeChat
+  - ShareSDK3/ShareSDKUI
   - SlideMenuControllerSwift
   - SMSSDK
   - SnapKit (~> 0.15.0)
@@ -92,11 +102,12 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: ede2a27b4e1ce053d03073b9c7fa439322f5e405
   JFImagePicker: 2914c69dac80767a98664e768ac50118664e9f04
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
-  MOBFoundation_IDFA: f5d3d1f89166f60c6985e34b7d90e6fb5d58fb61
+  MOBFoundation_IDFA: 23c44027c5f4bfb185cb14274d05e1cf63467f06
   NSObject-SafeExpectations: 7d7f48df90df4e11da7cfe86b64f45eff7a7f521
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SDCycleScrollView: 806fedb9342ab03b58b84442f985517b42c7cbb7
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  ShareSDK3: c76cb96eb38e079952b8157071486d945faa2df2
   SlideMenuControllerSwift: 82ada9b04e03538c84d034cf1c09e5849c0113f7
   SMSSDK: 642b6a8c55fd382be44487cd5e0b0710681895f9
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87

@@ -14,7 +14,7 @@ import SwiftyJSON
 enum LeftMenu: Int {
 	case Main = 0
 	case CompanyMap
-	case AddActivity
+	// case AddActivity
 	case SelfCenter
 	case SearchCompany
 	case Setting
@@ -63,7 +63,7 @@ class SlideViewController: UIViewController {
 	func initData() {
 		dataArray.append(("icon-activity", "活动主页"))
 		dataArray.append(("icon-global", "商家地图"))
-		dataArray.append(("icon-activity", "添加活动"))
+		// dataArray.append(("icon-activity", "添加活动"))
 		dataArray.append(("icon-selfcenter", "个人中心"))
 		dataArray.append(("icon-searchcompany", "搜索企业"))
 		dataArray.append(("icon-setting", "设置"))
@@ -221,9 +221,9 @@ extension SlideViewController: UITableViewDelegate, UITableViewDataSource, LeftM
 
 		case .SelfCenter:
 			self.checkSelfCenter()
-
-		case .AddActivity:
-			self.checkLaunchProject()
+//
+//		case .AddActivity:
+//			self.checkLaunchProject()
 
 		case .CompanyMap:
 			self.slideMenuController()?.changeMainViewController(self.comppanyMapViewController, close: true)

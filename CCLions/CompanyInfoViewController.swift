@@ -274,6 +274,7 @@ class CompanyInfoViewController: UIViewController {
         let address_position = self.selectedAnnotation == nil ? (self.company?.address_position)! : self.selectedAnnotation?.title
 		let paras: [String: AnyObject] = [
 			"company_id": (self.company?.id)!,
+			"user_id": Util.getLoginedUser()!.id,
 			"company_name": self.dataArray[0].1,
 			"address_longitude": address_longitude,
 			"address_latitude": address_latitude,
@@ -285,17 +286,24 @@ class CompanyInfoViewController: UIViewController {
 			"contact": self.dataArray[5].1,
 			"company_logo": logoAddress
 		]
+        
+        print(paras)
 
 		Alamofire.request(.POST, HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_UPDATE_COMPANY_INFO.rawValue, parameters: paras)
 			.responseJSON { (response) in
 				if let value = response.result.value {
+                    print(value)
 					let json = JSON(value)
 					let code = json["code"].intValue
 					if code == 200 {
 						// 更新公司成功
 						Drop.down(Tips.UPDATE_COMPANY_SUCCESS, state: DropState.Success)
-						self.navigationController?.popViewControllerAnimated(true)
 						SVProgressHUD.dismiss()
+                        
+                        self.showTipsAlertWithOneBtn("我们将在48小时内处理您的更新请求，请等待", okString: "确定", okAction: { (action) in
+                            self.navigationController?.popViewControllerAnimated(true)
+                        })
+                        
 					} else {
 						Drop.down(Tips.UPDATE_COMPANY_FAIL, state: DropState.Error)
 						SVProgressHUD.dismiss()

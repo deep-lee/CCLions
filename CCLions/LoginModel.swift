@@ -65,7 +65,7 @@ class LoginModel: SuperModel {
 				let paras: [String: AnyObject] = [
 					"username": username,
 					"password": psw.md5,
-					"user_type": UserType.CCLionVip.rawValue,
+					"user_type": UserType.NonVip.rawValue,
 					"create_time": NSDate()
 				]
 

@@ -843,17 +843,30 @@
                                     <outlet property="delegate" destination="8MT-po-tf2" id="d2Z-MK-LlU"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的公司信息正在后台审核中，请等待" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cb8-0v-fl5">
+                                <rect key="frame" x="0.0" y="278" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="PiV-y2-bR8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6sa-PW-Wzg" firstAttribute="top" secondItem="66O-H8-QdS" secondAttribute="bottom" id="1gs-Rr-jvT"/>
                             <constraint firstItem="66O-H8-QdS" firstAttribute="leading" secondItem="bIJ-Us-ZHI" secondAttribute="leading" id="9ud-1G-0xJ"/>
+                            <constraint firstAttribute="trailing" secondItem="cb8-0v-fl5" secondAttribute="trailing" id="Vd1-9U-o3O"/>
                             <constraint firstAttribute="trailing" secondItem="66O-H8-QdS" secondAttribute="trailing" id="dHk-jO-yHF"/>
+                            <constraint firstItem="cb8-0v-fl5" firstAttribute="leading" secondItem="bIJ-Us-ZHI" secondAttribute="leading" id="fib-IG-n8j"/>
+                            <constraint firstItem="cb8-0v-fl5" firstAttribute="centerY" secondItem="bIJ-Us-ZHI" secondAttribute="centerY" id="jSH-GO-HBy"/>
                             <constraint firstItem="66O-H8-QdS" firstAttribute="top" secondItem="bIJ-Us-ZHI" secondAttribute="top" id="yXc-Fp-xD3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TEg-s7-mgk"/>
                     <connections>
+                        <outlet property="labelTips" destination="cb8-0v-fl5" id="bWr-Cb-6v1"/>
                         <outlet property="tableView" destination="66O-H8-QdS" id="0EE-fp-tUb"/>
                     </connections>
                 </viewController>
@@ -1532,7 +1545,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="uVK-9m-UpJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingTableViewCell" textLabel="oxu-xx-cJ4" style="IBUITableViewCellStyleDefault" id="dRq-ni-Jap">
                                 <rect key="frame" x="0.0" y="114" width="600" height="44"/>
