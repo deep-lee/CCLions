@@ -146,7 +146,9 @@ class OtherProjectTVC: UITableViewController, IndicatorInfoProvider {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.goToProjectDetailsVC(model.dataArray[indexPath.row])
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ProjectShowTVCell
+        let image = cell.imageViewShow.image
+        self.goToProjectDetailsVC(model.dataArray[indexPath.row], image: image!)
     }
     
     // MARK: - IndicatorInfoProvider

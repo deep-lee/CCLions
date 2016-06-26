@@ -20,6 +20,8 @@ class ProjectDetailsViewController: WPEditorViewController {
 	var newFlowView: NewFlowView!
 	var loved = false
 	var model: ProjectDetailsModel!
+    
+    var cover_image: UIImage!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -146,6 +148,8 @@ class ProjectDetailsViewController: WPEditorViewController {
 	func initWeight() -> Void {
 		self.title = "活动详情"
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "更多信息", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ProjectDetailsViewController.moreDetailsAction))
+        
+        
 	}
 
 	/**
@@ -155,6 +159,18 @@ class ProjectDetailsViewController: WPEditorViewController {
 		let vc = self.storyboard?.instantiateViewControllerWithIdentifier("MoreProjectDetailsVC") as! MoreProjectDetailsVC
 		vc.setParas(self.project)
 		self.navigationController?.pushViewController(vc, animated: true)
+	}
+
+	/**
+	 显示分享界面
+	 */
+	func showShareView() -> Void {
+        
+        UMSocialData.defaultData().urlResource.setResourceType(UMSocialUrlResourceTypeWeb, url: project.details_page)
+        UMSocialData.defaultData().extConfig.wechatSessionData.urlResource.setResourceType(UMSocialUrlResourceTypeWeb, url: project.details_page)
+        UMSocialData.defaultData().extConfig.wxMessageType = UMSocialWXMessageTypeWeb
+        
+        UMSocialSnsService.presentSnsIconSheetView(self, appKey: SHARE_SDK_APP_KEY, shareText: project.title, shareImage: cover_image, shareToSnsNames: [UMShareToSina, UMShareToWechatSession, UMShareToWechatTimeline, UMShareToWechatFavorite], delegate: self)
 	}
 }
 
@@ -259,8 +275,12 @@ extension ProjectDetailsViewController: NewFlowViewDelegate {
 	}
 
 	func buttonShareClicked() {
-
+		self.showShareView()
 	}
+}
+
+extension ProjectDetailsViewController: UMSocialUIDelegate {
+    
 }
 
 //extension ProjectDetailsViewController: FlowViewDelegate {

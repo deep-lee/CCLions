@@ -11,11 +11,8 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.2.0):
     - CocoaLumberjack/Default
-  - Crashlytics (3.7.0):
-    - Fabric (~> 1.6.3)
   - DateTools (1.7.0)
   - Eureka (1.5.0)
-  - Fabric (1.6.7)
   - IQKeyboardManagerSwift (4.0.0)
   - JFImagePicker (1.0.0)
   - MJRefresh (3.1.0)
@@ -27,18 +24,13 @@ PODS:
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
-  - ShareSDK3 (3.3.2):
-    - ShareSDK3/ShareSDK (= 3.3.2)
-  - ShareSDK3/ShareSDK (3.3.2)
-  - ShareSDK3/ShareSDKPlatforms/SinaWeibo (3.3.2)
-  - ShareSDK3/ShareSDKPlatforms/WeChat (3.3.2)
-  - ShareSDK3/ShareSDKUI (3.3.2)
   - SlideMenuControllerSwift (2.1.1)
   - SMSSDK (2.0.4)
   - SnapKit (0.15.0)
   - SVProgressHUD (2.0.3)
   - SwiftyDrop (2.4.1)
   - SwiftyJSON (2.3.2)
+  - UMengSocialCOM (5.2.1)
   - WordPress-iOS-Editor (1.5):
     - CocoaLumberjack (~> 2.2.0)
     - NSObject-SafeExpectations (~> 0.0.2)
@@ -55,10 +47,8 @@ DEPENDENCIES:
   - AMap2DMap
   - AMapLocation
   - AMapSearch
-  - Crashlytics
   - DateTools
   - Eureka (~> 1.5)
-  - Fabric
   - IQKeyboardManagerSwift
   - JFImagePicker
   - MJRefresh
@@ -66,16 +56,13 @@ DEPENDENCIES:
   - pop (~> 1.0)
   - SDCycleScrollView (~> 1.64)
   - SDWebImage (~> 3.7)
-  - ShareSDK3
-  - ShareSDK3/ShareSDKPlatforms/SinaWeibo
-  - ShareSDK3/ShareSDKPlatforms/WeChat
-  - ShareSDK3/ShareSDKUI
   - SlideMenuControllerSwift
   - SMSSDK
   - SnapKit (~> 0.15.0)
   - SVProgressHUD
   - SwiftyDrop (~> 2.0)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - UMengSocialCOM (~> 5.2.1)
   - WordPress-iOS-Editor
   - XLPagerTabStrip (~> 5.0)
   - YYCache
@@ -95,10 +82,8 @@ SPEC CHECKSUMS:
   AMapLocation: 5412fbf0385716d4d481e39a95929057cddc093f
   AMapSearch: cff4faf59c007f7d1f2bae2d7170c3912783981a
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
-  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Eureka: 2fb37bb50569c62ee3284689d5b7aca694b040e0
-  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   IQKeyboardManagerSwift: ede2a27b4e1ce053d03073b9c7fa439322f5e405
   JFImagePicker: 2914c69dac80767a98664e768ac50118664e9f04
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
@@ -107,13 +92,13 @@ SPEC CHECKSUMS:
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SDCycleScrollView: 806fedb9342ab03b58b84442f985517b42c7cbb7
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
-  ShareSDK3: c76cb96eb38e079952b8157071486d945faa2df2
   SlideMenuControllerSwift: 82ada9b04e03538c84d034cf1c09e5849c0113f7
   SMSSDK: 642b6a8c55fd382be44487cd5e0b0710681895f9
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SwiftyDrop: 54a30c4edd51be9863429c3ad2ad4108eb7b7814
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  UMengSocialCOM: 074c135ce349aa4c8848d3fb8458757bcb6ffb67
   WordPress-iOS-Editor: dcb5a4bb666c64a4f42b01915f375f5818970951
   WordPress-iOS-Shared: ce4b6e02763532e1737bf2bc7deed78d64ba4934
   WordPressCom-Analytics-iOS: 3fccb433506f136cc04b735e6ab2efae9edfae7e

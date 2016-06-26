@@ -21,7 +21,7 @@
 #import "Flurry.h"
 #import <pop/POP.h>
 #import <SMS_SDK/SMSSDK.h>
-#import <Crashlytics/Crashlytics.h>
+//#import <Crashlytics/Crashlytics.h>
 #import "CircleProgressView.h"
 #import "DateTools.h"
 #import <XLPagerTabStrip/FXPageControl.h>
@@ -30,12 +30,15 @@
 #import "CompanyMapAnnotationView.h"
 #import <YYCache/YYCache.h>
 
-#import <ShareSDK/ShareSDK.h>
-#import <ShareSDKUI/ShareSDK+SSUI.h>
-#import <ShareSDKConnector/ShareSDKConnector.h>
+#import "UMSocial.h"
+#import "UMSocialSnsPlatformManager.h"
 
-//微信SDK头文件
-#import "WXApi.h"
-
-//新浪微博SDK头文件
-#import "WeiboSDK.h"
+//#import <ShareSDK/ShareSDK.h>
+//#import <ShareSDKUI/ShareSDK+SSUI.h>
+//#import <ShareSDKConnector/ShareSDKConnector.h>
+//
+////微信SDK头文件
+//#import "WXApi.h"
+//
+////新浪微博SDK头文件
+//#import "WeiboSDK.h"

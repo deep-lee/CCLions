@@ -54,7 +54,9 @@ extension SearchProjectViewController: UITableViewDelegate, UITableViewDataSourc
 
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.goToProjectDetailsVC(self.dataArray[indexPath.row])
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ProjectShowTVCell
+        let image = cell.imageViewShow.image
+        self.goToProjectDetailsVC(self.dataArray[indexPath.row], image: image!)
 	}
 
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

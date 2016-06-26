@@ -9,7 +9,11 @@
 import Foundation
 
 let GAODE_APIKey                                 = "c8ae2ff34b5f1a87bd61304e1f75dba9"
-let SHARE_SDK_APP_KEY                            = "144a8bb350dc0"
+let SHARE_SDK_APP_KEY                            = "572ee078e0f55a962d000682"
+let WECHAT_APP_ID                                = "wx91ab3e743811fe3b"
+let WECHAT_APP_KEY                               = "b726a691dde793cd7166d92c6f0aa1cb"
+let SINA_WEIBO_APP_KEY                           = "1399359717"
+let SINA_WEIBO_APP_SECRET                        = "c4d6f2df67b96c3d18ff27cdc12298ee"
 
 // 用户类型
 enum UserType: Int {
