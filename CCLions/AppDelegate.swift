@@ -15,7 +15,7 @@ import MapKit
 //import Crashlytics
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GeTuiSdkDelegate {
 	var window: UIWindow?
 	let SMS_APP_KEY = "12ab781ef0456"
 	let SMS_APP_SECRET = "4d41c4165cab290613996495b1d76988"
@@ -35,6 +35,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.window?.rootViewController = slideMenuController
 		self.window?.makeKeyAndVisible()
 	}
+    
+//    func registerPushForIOS8() -> Void {
+//        let types: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+//        let acceptAction = UIMutableUserNotificationAction()
+//        acceptAction.identifier = "ACCEPT_IDENTIFIER"
+//        acceptAction.title = "Accept"
+//        acceptAction.activationMode = UIUserNotificationActivationMode.Foreground
+//        acceptAction.destructive = false
+//        acceptAction.authenticationRequired = false
+//        
+//        let inviteCategory = UIMutableUserNotificationCategory()
+//        inviteCategory.identifier = "INVITE_CATEGORY"
+//        inviteCategory.setActions([acceptAction], forContext: UIUserNotificationActionContext.Default)
+//        inviteCategory.setActions([acceptAction], forContext: UIUserNotificationActionContext.Minimal)
+//        
+//        let categories = NSSet(object: inviteCategory)
+//        
+//        let mySettings = UIUserNotificationSettings(forTypes: types, categories: categories as? Set<UIUserNotificationCategory>)
+//        
+//        UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
+//        UIApplication.sharedApplication().registerForRemoteNotifications()
+//    }
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
@@ -52,6 +74,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UMSocialData.setAppKey(SHARE_SDK_APP_KEY)
         UMSocialWechatHandler.setWXAppId(WECHAT_APP_ID, appSecret: WECHAT_APP_KEY, url: "http://www.umeng.com/social")
         UMSocialSinaSSOHandler.openNewSinaSSOWithAppKey(SINA_WEIBO_APP_KEY, secret: SINA_WEIBO_APP_SECRET, redirectURL: "http://sns.whalecloud.com/sina2/callback")
+        
+        // 通过 appId、 appKey 、appSecret 启动SDK，注：该方法需要在主线程中调用
+        GeTuiSdk.startSdkWithAppId(kGtAppId, appKey: kGtAppKey, appSecret: kGtAppSecret, delegate: self);
+        
+        // 注册Apns
+        self.registerUserNotification(application);
+        
+//        // 信鸽推送
+//        XGPush.startApp(XINGE_APP_ID, appKey: XINGE_APP_KEY)
+//        XGPush.handleLaunching(launchOptions)
+//        XGSetting.getInstance().enableDebug(true)
+//        self.registerPushForIOS8()
 
 		IQKeyboardManager.sharedManager().enable = true
         
@@ -99,6 +133,86 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		return true
 	}
+    
+    // MARK: - 用户通知(推送) _自定义方法
+    
+    /** 注册用户通知(推送) */
+    func registerUserNotification(application: UIApplication) {
+        let result = UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch)
+        if (result != NSComparisonResult.OrderedAscending) {
+            UIApplication.sharedApplication().registerForRemoteNotifications()
+            
+            let userSettings = UIUserNotificationSettings(forTypes: [.Badge, .Sound, .Alert], categories: nil)
+            UIApplication.sharedApplication().registerUserNotificationSettings(userSettings)
+        } else {
+            UIApplication.sharedApplication().registerForRemoteNotificationTypes([.Alert, .Sound, .Badge])
+        }
+    }
+    
+    // MARK: - 远程通知(推送)回调
+    
+    /** 远程通知注册成功委托 */
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        var token = deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>"));
+        token = token.stringByReplacingOccurrencesOfString(" ", withString: "")
+        
+        // [3]:向个推服务器注册deviceToken
+        GeTuiSdk.registerDeviceToken(token);
+        
+        NSLog("\n>>>[DeviceToken Success]:%@\n\n",token);
+    }
+    
+    /** 远程通知注册失败委托 */
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        NSLog("\n>>>[DeviceToken Error]:%@\n\n",error.description);
+    }
+    
+    // MARK: - APP运行中接收到通知(推送)处理
+    
+    /** APP已经接收到“远程”通知(推送) - (App运行在后台/App运行在前台) */
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        application.applicationIconBadgeNumber = 0;        // 标签
+        
+        NSLog("\n>>>[Receive RemoteNotification]:%@\n\n",userInfo);
+    }
+    
+    // MARK: - GeTuiSdkDelegate
+    
+    /** SDK启动成功返回cid */
+    func GeTuiSdkDidRegisterClient(clientId: String!) {
+        // [4-EXT-1]: 个推SDK已注册，返回clientId
+        NSLog("\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
+    }
+    
+    /** SDK遇到错误回调 */
+    func GeTuiSdkDidOccurError(error: NSError!) {
+        // [EXT]:个推错误报告，集成步骤发生的任何错误都在这里通知，如果集成后，无法正常收到消息，查看这里的通知。
+        NSLog("\n>>>[GeTuiSdk error]:%@\n\n", error.localizedDescription);
+    }
+    
+    /** SDK收到sendMessage消息回调 */
+    func GeTuiSdkDidSendMessage(messageId: String!, result: Int32) {
+        // [4-EXT]:发送上行消息结果反馈
+        let msg:String = "sendmessage=\(messageId),result=\(result)";
+        NSLog("\n>>>[GeTuiSdk DidSendMessage]:%@\n\n",msg);
+    }
+    
+//    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+//        
+//        XGPush.setAccount("test")
+//        
+//        let deviceTokenStr = XGPush.registerDevice(deviceToken)
+//        
+//        print("DeviceToken: " + deviceTokenStr)
+//    }
+//    
+//    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+//        print(error)
+//    }
+//    
+//    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+//        XGPush.handleReceiveNotification(userInfo)
+//    }
 
 	func applicationWillResignActive(application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

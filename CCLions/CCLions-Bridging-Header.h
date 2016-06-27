@@ -33,9 +33,16 @@
 #import "UMSocial.h"
 #import "UMSocialSnsPlatformManager.h"
 
-//#import <ShareSDK/ShareSDK.h>
-//#import <ShareSDKUI/ShareSDK+SSUI.h>
-//#import <ShareSDKConnector/ShareSDKConnector.h>
+#import "GeTuiSdk.h"
+
+//// 信鸽推送
+//#import "XGPush.h"
+//#import "XGSetting.h"
+//
+//
+////#import <ShareSDK/ShareSDK.h>
+////#import <ShareSDKUI/ShareSDK+SSUI.h>
+////#import <ShareSDKConnector/ShareSDKConnector.h>
 //
 ////微信SDK头文件
 //#import "WXApi.h"

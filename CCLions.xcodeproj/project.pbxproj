@@ -31,6 +31,11 @@
 		14113AD01D06E94E009D6EBA /* ProjectCommentRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14113ACF1D06E94D009D6EBA /* ProjectCommentRecordModel.swift */; };
 		1414AB1A1CE2EE49000A4620 /* bg-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 147D63B41CE2364F00543692 /* bg-video.mp4 */; };
 		1414AB1C1CE2F6DF000A4620 /* bg-video.mp4 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 147D63B41CE2364F00543692 /* bg-video.mp4 */; };
+		1423E6C21D2185EA00A72C3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1423E6C11D2185EA00A72C3E /* CFNetwork.framework */; };
+		1423E6C61D21978600A72C3E /* libGeTuiSdk-1.4.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1423E6C51D21978600A72C3E /* libGeTuiSdk-1.4.2.a */; };
+		1423E6C81D2197C900A72C3E /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1423E6C71D2197C900A72C3E /* JavaScriptCore.framework */; };
+		1423E6CA1D2197EE00A72C3E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1423E6C91D2197EE00A72C3E /* AVFoundation.framework */; };
+		1423E6CC1D2197FC00A72C3E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1423E6CB1D2197FC00A72C3E /* CoreBluetooth.framework */; };
 		142578121CD0A5810007EA43 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142578111CD0A5810007EA43 /* SearchCollectionViewCell.swift */; };
 		142578141CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142578131CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift */; };
 		1426B9501CB381400099ED69 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426B94F1CB381400099ED69 /* SlideViewController.swift */; };
@@ -277,6 +282,12 @@
 		14113ACB1D06DF40009D6EBA /* ProjectCommentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCommentVC.swift; sourceTree = "<group>"; };
 		14113ACD1D06E27A009D6EBA /* ProjectCommentRecordTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCommentRecordTVCell.swift; sourceTree = "<group>"; };
 		14113ACF1D06E94D009D6EBA /* ProjectCommentRecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCommentRecordModel.swift; sourceTree = "<group>"; };
+		1423E6C11D2185EA00A72C3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		1423E6C41D21978600A72C3E /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
+		1423E6C51D21978600A72C3E /* libGeTuiSdk-1.4.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.4.2.a"; sourceTree = "<group>"; };
+		1423E6C71D2197C900A72C3E /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		1423E6C91D2197EE00A72C3E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1423E6CB1D2197FC00A72C3E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		142578111CD0A5810007EA43 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		142578131CD0AAF70007EA43 /* SelectCompanyLogoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCompanyLogoViewController.swift; sourceTree = "<group>"; };
 		1426B94F1CB381400099ED69 /* SlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
@@ -512,6 +523,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C78D9331CB8CAAE002122A1 /* CoreLocation.framework in Frameworks */,
+				1423E6CC1D2197FC00A72C3E /* CoreBluetooth.framework in Frameworks */,
+				1423E6CA1D2197EE00A72C3E /* AVFoundation.framework in Frameworks */,
+				1423E6C81D2197C900A72C3E /* JavaScriptCore.framework in Frameworks */,
+				1423E6C61D21978600A72C3E /* libGeTuiSdk-1.4.2.a in Frameworks */,
+				1423E6C21D2185EA00A72C3E /* CFNetwork.framework in Frameworks */,
 				14EA1A411D1FBC0500318CFA /* libsqlite3.tbd in Frameworks */,
 				14EA1A3F1D1FBBED00318CFA /* libiconv.tbd in Frameworks */,
 				14EA1A3D1D1FBBD800318CFA /* ImageIO.framework in Frameworks */,
@@ -530,7 +547,6 @@
 				7C78D9391CB8CACF002122A1 /* libz.tbd in Frameworks */,
 				7C78D9371CB8CAC4002122A1 /* SystemConfiguration.framework in Frameworks */,
 				7C78D9351CB8CABB002122A1 /* CoreTelephony.framework in Frameworks */,
-				7C78D9331CB8CAAE002122A1 /* CoreLocation.framework in Frameworks */,
 				7C78D9311CB8CAA4002122A1 /* OpenGLES.framework in Frameworks */,
 				14015FC31CB53D13004B5F59 /* UIKit.framework in Frameworks */,
 				14015FC11CB53D08004B5F59 /* QuartzCore.framework in Frameworks */,
@@ -579,6 +595,15 @@
 				14113ACF1D06E94D009D6EBA /* ProjectCommentRecordModel.swift */,
 			);
 			name = Record;
+			sourceTree = "<group>";
+		};
+		1423E6C31D21978600A72C3E /* GtSdkLib */ = {
+			isa = PBXGroup;
+			children = (
+				1423E6C41D21978600A72C3E /* GeTuiSdk.h */,
+				1423E6C51D21978600A72C3E /* libGeTuiSdk-1.4.2.a */,
+			);
+			path = GtSdkLib;
 			sourceTree = "<group>";
 		};
 		1426B9551CB38A340099ED69 /* Extension */ = {
@@ -1197,6 +1222,7 @@
 		7C1FF8921CBB838F0039AD47 /* 3th */ = {
 			isa = PBXGroup;
 			children = (
+				1423E6C31D21978600A72C3E /* GtSdkLib */,
 				14B3F6F81D01E611007B9031 /* CircularProgressView */,
 				14385C781CDF07D700A2D229 /* Flurry */,
 				14BECFAF1CCB4E1D00091572 /* ZZPhotoRE */,
@@ -1310,6 +1336,10 @@
 		C1180DFFFBDEA85C74CA2B1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1423E6CB1D2197FC00A72C3E /* CoreBluetooth.framework */,
+				1423E6C91D2197EE00A72C3E /* AVFoundation.framework */,
+				1423E6C71D2197C900A72C3E /* JavaScriptCore.framework */,
+				1423E6C11D2185EA00A72C3E /* CFNetwork.framework */,
 				14EA1A401D1FBC0500318CFA /* libsqlite3.tbd */,
 				14EA1A3E1D1FBBED00318CFA /* libiconv.tbd */,
 				14EA1A3C1D1FBBD800318CFA /* ImageIO.framework */,
@@ -1881,6 +1911,8 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/CCLions/Flurry",
 					"$(PROJECT_DIR)/CCLions/UMAnalytics",
+					"$(PROJECT_DIR)/CCLions",
+					"$(PROJECT_DIR)/CCLions/GtSdkLib",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1971,6 +2003,8 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/CCLions/Flurry",
 					"$(PROJECT_DIR)/CCLions/UMAnalytics",
+					"$(PROJECT_DIR)/CCLions",
+					"$(PROJECT_DIR)/CCLions/GtSdkLib",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

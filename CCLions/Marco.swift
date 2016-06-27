@@ -14,6 +14,12 @@ let WECHAT_APP_ID                                = "wx91ab3e743811fe3b"
 let WECHAT_APP_KEY                               = "b726a691dde793cd7166d92c6f0aa1cb"
 let SINA_WEIBO_APP_KEY                           = "1399359717"
 let SINA_WEIBO_APP_SECRET                        = "c4d6f2df67b96c3d18ff27cdc12298ee"
+let XINGE_APP_ID: UInt32                         = 2200206532
+let XINGE_APP_KEY                                = "ILZ68NR81X8E"
+
+let kGtAppId:String                              = "UUG1ngqmtj7heGc4rmJ8B8"
+let kGtAppKey:String                             = "CXMb8OeOcQ9zuXJbnVtUP9"
+let kGtAppSecret:String                          = "6dJAhh99FvAVF6cCc4Pxa2"
 
 // 用户类型
 enum UserType: Int {
