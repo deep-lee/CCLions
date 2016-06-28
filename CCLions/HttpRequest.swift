@@ -53,6 +53,9 @@ enum RequestAddress: String {
     case HTTP_UPDATE_USER_PSW                    = "update_user_psw.php"
     case HTTP_FORGET_PSW                         = "forget_psw.php"
     case HTTP_CHECK_USER_COMPANY_NEW_IN_VERFY    = "check_user_company_new_in_verfy.php"
+    case HTTP_ADD_PUSH_CLIENT                    = "add_push_client.php"
+    case HTTP_DELETE_PUSH_CLIENT                 = "delete_push_client.php"
+
 }
 
 class HttpRequest {

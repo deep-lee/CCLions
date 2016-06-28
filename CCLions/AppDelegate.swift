@@ -35,28 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GeTuiSdkDelegate {
 		self.window?.rootViewController = slideMenuController
 		self.window?.makeKeyAndVisible()
 	}
-    
-//    func registerPushForIOS8() -> Void {
-//        let types: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
-//        let acceptAction = UIMutableUserNotificationAction()
-//        acceptAction.identifier = "ACCEPT_IDENTIFIER"
-//        acceptAction.title = "Accept"
-//        acceptAction.activationMode = UIUserNotificationActivationMode.Foreground
-//        acceptAction.destructive = false
-//        acceptAction.authenticationRequired = false
-//        
-//        let inviteCategory = UIMutableUserNotificationCategory()
-//        inviteCategory.identifier = "INVITE_CATEGORY"
-//        inviteCategory.setActions([acceptAction], forContext: UIUserNotificationActionContext.Default)
-//        inviteCategory.setActions([acceptAction], forContext: UIUserNotificationActionContext.Minimal)
-//        
-//        let categories = NSSet(object: inviteCategory)
-//        
-//        let mySettings = UIUserNotificationSettings(forTypes: types, categories: categories as? Set<UIUserNotificationCategory>)
-//        
-//        UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
-//        UIApplication.sharedApplication().registerForRemoteNotifications()
-//    }
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
@@ -77,15 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GeTuiSdkDelegate {
         
         // 通过 appId、 appKey 、appSecret 启动SDK，注：该方法需要在主线程中调用
         GeTuiSdk.startSdkWithAppId(kGtAppId, appKey: kGtAppKey, appSecret: kGtAppSecret, delegate: self);
-        
         // 注册Apns
         self.registerUserNotification(application);
-        
-//        // 信鸽推送
-//        XGPush.startApp(XINGE_APP_ID, appKey: XINGE_APP_KEY)
-//        XGPush.handleLaunching(launchOptions)
-//        XGSetting.getInstance().enableDebug(true)
-//        self.registerPushForIOS8()
+        GeTuiSdk.runBackgroundEnable(true)
 
 		IQKeyboardManager.sharedManager().enable = true
         
@@ -176,6 +148,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GeTuiSdkDelegate {
         NSLog("\n>>>[Receive RemoteNotification]:%@\n\n",userInfo);
     }
     
+    /** APP已经接收到“远程”通知(推送) - 透传推送消息  */
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        NSLog("\n>>>[Receive RemoteNotification - Background Fetch]:%@\n\n",userInfo);
+        completionHandler(UIBackgroundFetchResult.NewData)
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        application.registerForRemoteNotifications()
+    }
+    
+    /** Background Fetch 接口回调 */
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        GeTuiSdk.resume()
+        completionHandler(UIBackgroundFetchResult.NewData)
+    }
+    
     // MARK: - GeTuiSdkDelegate
     
     /** SDK启动成功返回cid */
@@ -197,22 +185,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GeTuiSdkDelegate {
         NSLog("\n>>>[GeTuiSdk DidSendMessage]:%@\n\n",msg);
     }
     
-//    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-//        
-//        XGPush.setAccount("test")
-//        
-//        let deviceTokenStr = XGPush.registerDevice(deviceToken)
-//        
-//        print("DeviceToken: " + deviceTokenStr)
-//    }
-//    
-//    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-//        print(error)
-//    }
-//    
-//    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-//        XGPush.handleReceiveNotification(userInfo)
-//    }
+    func GeTuiSdkDidReceivePayloadData(payloadData: NSData!, andTaskId taskId: String!, andMsgId msgId: String!, andOffLine offLine: Bool, fromGtAppId appId: String!) {
+        
+        var payloadMsg = "";
+        if((payloadData) != nil) {
+            payloadMsg = String.init(data: payloadData, encoding: NSUTF8StringEncoding)!;
+        }
+        
+        let msg:String = "Receive Payload: \(payloadMsg), taskId:\(taskId), messageId:\(msgId)";
+        
+        NSLog("\n>>>[GeTuiSdk DidReceivePayload]:%@\n\n",msg);
+    }
 
 	func applicationWillResignActive(application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -286,7 +269,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GeTuiSdkDelegate {
 	}()
 
 	// MARK: - Core Data Saving support
-
+    
 	func saveContext() {
 		if managedObjectContext.hasChanges {
 			do {

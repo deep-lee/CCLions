@@ -55,6 +55,14 @@ case FirstAid                                    = 5// 急救
 case Other                                       = 6// 其他
 }
 
+// 信诺益帮人消息推送类型
+enum PushMessageType: Int {
+case CompanyVerifySuccess                        = 0// 公司审核通过
+case CompanyVerifyFail                           = 1// 公司审核不通过
+case UserTypeChanged                             = 2// 用户类型改变，比如后台设置用户成为狮子会会员
+}
+
+
 // 通用Cell重用符号
 let CELL_REUSE                                   = "COMMON_CELL_REUSE"
 

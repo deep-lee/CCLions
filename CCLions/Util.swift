@@ -86,9 +86,25 @@ class Util {
 	 */
 	static func clearLoginedUser() {
 		if hasUserLogined() { // 当前有用户登录
+            deleteUserClientId((getLoginedUser()?.id)!)
 			NSUserDefaults.standardUserDefaults().removeObjectForKey(LOINGED_USER_KEY)
 		}
 	}
+    
+    /**
+     删除用户clientid
+     
+     - parameter userId: 用户id
+     */
+    static func deleteUserClientId(userId: Int) -> Void {
+        let paras = [
+            "user_id": userId
+        ]
+        
+        NetworkUtil.shareInstance().requestWithUrlWithReturnString(HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_DELETE_PUSH_CLIENT.rawValue, paras: paras) { (response) in
+            
+        }
+    }
 
 	/**
 	 向存储中插入用户对象
@@ -98,7 +114,25 @@ class Util {
 	static func insertUser(user: User) {
 		let data = NSKeyedArchiver.archivedDataWithRootObject(user)
 		NSUserDefaults.standardUserDefaults().setObject(data, forKey: LOINGED_USER_KEY)
+        
+        updateUserClientId(user.id)
 	}
+    
+    /**
+     更新用户的clientid
+     
+     - parameter userId: 用户id
+     */
+    static func updateUserClientId(userId: Int) -> Void {
+        let paras = [
+            "user_id": userId,
+            "client_id": GeTuiSdk.clientId()
+        ]
+        
+        NetworkUtil.shareInstance().requestWithUrlWithReturnString(HttpRequest.HTTP_ADDRESS + RequestAddress.HTTP_ADD_PUSH_CLIENT.rawValue, paras: paras as! [String : AnyObject]) { (response) in
+            
+        }
+    }
 
 	/**
 	 登出
